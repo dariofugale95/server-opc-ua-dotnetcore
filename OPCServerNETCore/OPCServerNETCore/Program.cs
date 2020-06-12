@@ -6,7 +6,8 @@ namespace OPCServerNETCore
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            ServerLauncher launcher = new ServerLauncher();
+            launcher.Run();
         }
     }
 }
