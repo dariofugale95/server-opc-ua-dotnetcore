@@ -1,0 +1,4 @@
+D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\bin\Debug\netcoreapp3.1\OPCServerNETCore.exe
+D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\OPCServerNETCore.csprojAssemblyReference.cache
+D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\OPCServerNETCore.AssemblyInfoInputs.cache
+D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\OPCServerNETCore.AssemblyInfo.cs
