@@ -33,7 +33,6 @@ namespace OPCServerNETCore.OPCServer
             {
                 serverConfiguration = new MyOPCServerConfiguration();
             }
-
             m_dynamicNodes = new List<BaseDataVariableState>();
         }
         #endregion
@@ -63,7 +62,6 @@ namespace OPCServerNETCore.OPCServer
                 references.Add(new NodeStateReference(ReferenceTypes.Organizes, false, root.NodeId));
                 root.EventNotifier = EventNotifiers.SubscribeToEvents;
                 AddRootNotifier(root);
-
 
                 List<BaseDataVariableState> variables = new List<BaseDataVariableState>();
             }
@@ -111,7 +109,6 @@ namespace OPCServerNETCore.OPCServer
 
             return folder;
         }
-
         private BaseObjectTypeState CreateObjectType(NodeState parent, IDictionary<NodeId, IList<IReference>> externalReferences, string path, string name)
         {
             BaseObjectTypeState type = new BaseObjectTypeState();

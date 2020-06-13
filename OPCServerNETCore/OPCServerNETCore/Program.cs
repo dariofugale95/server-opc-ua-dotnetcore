@@ -8,6 +8,7 @@ namespace OPCServerNETCore
         {
             ServerLauncher launcher = new ServerLauncher();
             launcher.Run();
+
         }
     }
 }
