@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "78tEb4jmC0OpmzYOol0XHVIV+Zx8dY5B1Ivn5AKUgBw46WRMsBtA5hrkMtAq4IKvOQ1Wkilkn3FDy/xcW3UtPg==",
+  "dgSpecHash": "7ZoPTSnQqutowN7YTeg3Ff3FMFwcQ5vlR30Cz1h7qBeLinj4WWsHRoFUEdgEph2wYn+kUQ3Rn6mJztoMDoeqDw==",
   "success": true,
   "projectFilePath": "D:\\Progetti\\II_Project\\server-opc-ua-dotnetcore\\OPCServerNETCore\\OPCServerNETCore\\OPCServerNETCore.csproj",
   "expectedPackageFiles": [
@@ -43,7 +43,6 @@
     "C:\\Users\\Utente\\.nuget\\packages\\newtonsoft.json\\10.0.3\\newtonsoft.json.10.0.3.nupkg.sha512",
     "C:\\Users\\Utente\\.nuget\\packages\\opcfoundation.netstandard.opc.ua\\1.4.361.39\\opcfoundation.netstandard.opc.ua.1.4.361.39.nupkg.sha512",
     "C:\\Users\\Utente\\.nuget\\packages\\portable.bouncycastle\\1.8.4\\portable.bouncycastle.1.8.4.nupkg.sha512",
-    "C:\\Users\\Utente\\.nuget\\packages\\restsharp\\106.11.4\\restsharp.106.11.4.nupkg.sha512",
     "C:\\Users\\Utente\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Utente\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Utente\\.nuget\\packages\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

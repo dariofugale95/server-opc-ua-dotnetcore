@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "OPC Weather Map";
+}
+
+    <body>
+        <div class="text-center">
+            <h1 class="display-4">Welcome</h1>
+            <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        </div>
+
+        <br>
+
+        <div class="text-center">
+            <div class="form-group">
+                <label for="InputCity">City: </label>
+                <input type="text" placeholder=" insert a city" />
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary" onclick="location.href='@Url.Action("SendRequest", "HomeController")'">
+                Send Request
+            </button>
+        </div>
+
+    </body>

@@ -55,3 +55,4 @@ D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCor
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\OPCServerNETCore.dll
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\OPCServerNETCore.pdb
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\OPCServerNETCore.genruntimeconfig.cache
+D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\OPCServerNETCore.csproj.CoreCompileInputs.cache

@@ -1,0 +1,151 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Progetti\\II_Project\\server-opc-ua-dotnetcore\\OPCServerNETCore\\OPCWeatherMap\\OPCWeatherMap.csproj": {}
+  },
+  "projects": {
+    "D:\\Progetti\\II_Project\\server-opc-ua-dotnetcore\\OPCServerNETCore\\OPCServerNETCore\\OPCServerNETCore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Progetti\\II_Project\\server-opc-ua-dotnetcore\\OPCServerNETCore\\OPCServerNETCore\\OPCServerNETCore.csproj",
+        "projectName": "OPCServerNETCore",
+        "projectPath": "D:\\Progetti\\II_Project\\server-opc-ua-dotnetcore\\OPCServerNETCore\\OPCServerNETCore\\OPCServerNETCore.csproj",
+        "packagesPath": "C:\\Users\\Utente\\.nuget\\packages\\",
+        "outputPath": "D:\\Progetti\\II_Project\\server-opc-ua-dotnetcore\\OPCServerNETCore\\OPCServerNETCore\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Utente\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "OPCFoundation.NetStandard.Opc.Ua": {
+              "target": "Package",
+              "version": "[1.4.361.39, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.2, 3.1.2]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Progetti\\II_Project\\server-opc-ua-dotnetcore\\OPCServerNETCore\\OPCWeatherMap\\OPCWeatherMap.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Progetti\\II_Project\\server-opc-ua-dotnetcore\\OPCServerNETCore\\OPCWeatherMap\\OPCWeatherMap.csproj",
+        "projectName": "OPCWeatherMap",
+        "projectPath": "D:\\Progetti\\II_Project\\server-opc-ua-dotnetcore\\OPCServerNETCore\\OPCWeatherMap\\OPCWeatherMap.csproj",
+        "packagesPath": "C:\\Users\\Utente\\.nuget\\packages\\",
+        "outputPath": "D:\\Progetti\\II_Project\\server-opc-ua-dotnetcore\\OPCServerNETCore\\OPCWeatherMap\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Utente\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\Progetti\\II_Project\\server-opc-ua-dotnetcore\\OPCServerNETCore\\OPCServerNETCore\\OPCServerNETCore.csproj": {
+                "projectPath": "D:\\Progetti\\II_Project\\server-opc-ua-dotnetcore\\OPCServerNETCore\\OPCServerNETCore\\OPCServerNETCore.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[106.11.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.2, 3.1.2]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
