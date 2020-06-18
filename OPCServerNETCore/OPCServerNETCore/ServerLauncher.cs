@@ -49,18 +49,35 @@ namespace Quickstarts.MyOPCServer
         static bool autoAccept = false;
         static ExitCode exitCode;
 
+        OpenWeatherMapDataClass openWeatherData;
+        OpenWeatherMapApiRequests openWeatherApiRequest;
+        
         public ServerLauncher(bool _autoAccept, int _stopTimeout)
         {
             autoAccept = _autoAccept;
             serverRunTime = _stopTimeout == 0 ? Timeout.Infinite : _stopTimeout * 1000;
         }
 
-        public void Run()
+        public async Task RunAsync()
         {
             try
             {
                 exitCode = ExitCode.ErrorServerNotStarted;
                 ConsoleSampleServer().Wait();
+                openWeatherApiRequest = new OpenWeatherMapApiRequests();
+                openWeatherData = await openWeatherApiRequest.GetWeatherDataByCity();
+                Console.WriteLine(openWeatherData.Base);
+                Console.WriteLine(openWeatherData.Clouds);
+                Console.WriteLine(openWeatherData.Cod);
+                Console.WriteLine(openWeatherData.Coord);
+                Console.WriteLine(openWeatherData.Dt);
+                Console.WriteLine(openWeatherData.Main);
+                Console.WriteLine(openWeatherData.Id);
+                Console.WriteLine(openWeatherData.Name);
+                Console.WriteLine(openWeatherData.Sys.Country);
+                Console.WriteLine(openWeatherData.Timezone);
+                Console.WriteLine(openWeatherData.Visibility);
+                Console.WriteLine(openWeatherData.Weather);
                 Console.WriteLine("Server started. Press Ctrl-C to exit...");
                 exitCode = ExitCode.ErrorServerRunning;
             }

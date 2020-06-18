@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "h99bPjW3xNlAADLSRypZdViCbLSU1exkyddj+YCDenDPXGbSqQQKtllW/j+6CoD8qXBt5qETnm+rffuGy2uj/w==",
+  "dgSpecHash": "BbNGwOexfmxgbb5knXXAxL0roXkndk9yP5+o1AQ3IVacwPk9Xk+vg1LOXF9mKAPfkfkAXgqDPdMsXFsEFJH+qw==",
   "success": true,
   "projectFilePath": "D:\\Progetti\\II_Project\\server-opc-ua-dotnetcore\\OPCServerNETCore\\OPCWeatherMap\\OPCWeatherMap.csproj",
   "expectedPackageFiles": [

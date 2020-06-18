@@ -38,7 +38,7 @@ namespace Quickstarts.MyOPCServer
 {
     class Program
     {
-        static int Main(string[] args)
+        static async Task<int> Main(string[] args)
         {
 
             // command line options
@@ -46,7 +46,7 @@ namespace Quickstarts.MyOPCServer
             bool autoAccept = args.Contains("-a");
 
             ServerLauncher server = new ServerLauncher(autoAccept, stopTimeout);
-            server.Run();
+            await server.RunAsync();
 
             return (int)ServerLauncher.ExitCode;
         }

@@ -47,7 +47,6 @@ D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCor
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Private.ServiceModel.dll
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\OPCServerNETCore.csproj.CopyComplete
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\OPCServerNETCore.genruntimeconfig.cache
-D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\OPCServerNETCore.csproj.CoreCompileInputs.cache
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\bin\Debug\netcoreapp3.1\Quickstarts.MyOPCServer.exe
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\bin\Debug\netcoreapp3.1\Quickstarts.MyOPCServer.deps.json
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\bin\Debug\netcoreapp3.1\Quickstarts.MyOPCServer.runtimeconfig.json
@@ -57,3 +56,5 @@ D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCor
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\Quickstarts.MyOPCServer.dll
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\Quickstarts.MyOPCServer.pdb
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\bin\Debug\netcoreapp3.1\Quickstarts.MyOPCServer.dll.config
+D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\bin\Debug\netcoreapp3.1\RestSharp.dll
+D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\OPCServerNETCore.csproj.CoreCompileInputs.cache

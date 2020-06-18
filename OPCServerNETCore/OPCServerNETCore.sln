@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OPCServerNETCore", "OPCServerNETCore\OPCServerNETCore.csproj", "{54427BD0-BA65-4D72-89BA-1B0FF612A878}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OPCWeatherMap", "OPCWeatherMap\OPCWeatherMap.csproj", "{3F3E7068-DC99-4B37-8C6A-8E5837744451}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{54427BD0-BA65-4D72-89BA-1B0FF612A878}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54427BD0-BA65-4D72-89BA-1B0FF612A878}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54427BD0-BA65-4D72-89BA-1B0FF612A878}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3F3E7068-DC99-4B37-8C6A-8E5837744451}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3F3E7068-DC99-4B37-8C6A-8E5837744451}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3F3E7068-DC99-4B37-8C6A-8E5837744451}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3F3E7068-DC99-4B37-8C6A-8E5837744451}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2532,7 +2532,9 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "OPCFoundation.NetStandard.Opc.Ua": "1.4.361.39"
+          "Newtonsoft.Json": "12.0.3",
+          "OPCFoundation.NetStandard.Opc.Ua": "1.4.361.39",
+          "RestSharp": "106.11.4"
         },
         "compile": {
           "bin/placeholder/Quickstarts.MyOPCServer.dll": {}
