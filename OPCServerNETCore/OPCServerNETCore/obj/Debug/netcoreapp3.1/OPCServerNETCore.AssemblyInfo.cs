@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("OPCServerNETCore")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("Quickstarts.MyOPCServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("OPCServerNETCore")]
-[assembly: System.Reflection.AssemblyTitleAttribute("OPCServerNETCore")]
+[assembly: System.Reflection.AssemblyProductAttribute("Quickstarts.MyOPCServer")]
+[assembly: System.Reflection.AssemblyTitleAttribute("Quickstarts.MyOPCServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Generato dalla classe WriteCodeFragment di MSBuild.

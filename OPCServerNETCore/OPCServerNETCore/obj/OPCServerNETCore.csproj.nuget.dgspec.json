@@ -8,7 +8,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "D:\\Progetti\\II_Project\\server-opc-ua-dotnetcore\\OPCServerNETCore\\OPCServerNETCore\\OPCServerNETCore.csproj",
-        "projectName": "OPCServerNETCore",
+        "projectName": "Quickstarts.MyOPCServer",
         "projectPath": "D:\\Progetti\\II_Project\\server-opc-ua-dotnetcore\\OPCServerNETCore\\OPCServerNETCore\\OPCServerNETCore.csproj",
         "packagesPath": "C:\\Users\\Utente\\.nuget\\packages\\",
         "outputPath": "D:\\Progetti\\II_Project\\server-opc-ua-dotnetcore\\OPCServerNETCore\\OPCServerNETCore\\obj\\",
@@ -38,9 +38,17 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
             "OPCFoundation.NetStandard.Opc.Ua": {
               "target": "Package",
               "version": "[1.4.361.39, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[106.11.4, )"
             }
           },
           "imports": [
