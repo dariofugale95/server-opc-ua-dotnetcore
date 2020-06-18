@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "7ZoPTSnQqutowN7YTeg3Ff3FMFwcQ5vlR30Cz1h7qBeLinj4WWsHRoFUEdgEph2wYn+kUQ3Rn6mJztoMDoeqDw==",
+  "dgSpecHash": "kp5BYgWB1JQWygAjlXFSRiQ4gr9BzTWdaGc0uy6X6go8DNuOmr2bQO2C1FxQos6tz9kqSbbe8VjQnF38RWrrOw==",
   "success": true,
   "projectFilePath": "D:\\Progetti\\II_Project\\server-opc-ua-dotnetcore\\OPCServerNETCore\\OPCServerNETCore\\OPCServerNETCore.csproj",
   "expectedPackageFiles": [

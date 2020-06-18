@@ -33,7 +33,6 @@ D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCWeatherMap\o
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCWeatherMap\obj\Debug\netcoreapp3.1\OPCWeatherMap.pdb
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCWeatherMap\obj\Debug\netcoreapp3.1\OPCWeatherMap.genruntimeconfig.cache
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCWeatherMap\obj\Debug\netcoreapp3.1\OPCWeatherMap.csproj.CopyComplete
-D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCWeatherMap\bin\Debug\netcoreapp3.1\OPCServerNETCore.exe
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCWeatherMap\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Server.Kestrel.Https.dll
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCWeatherMap\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCWeatherMap\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
@@ -49,8 +48,6 @@ D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCWeatherMap\b
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCWeatherMap\bin\Debug\netcoreapp3.1\System.ServiceModel.dll
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCWeatherMap\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netstandard2.0\System.Private.ServiceModel.dll
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCWeatherMap\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Private.ServiceModel.dll
-D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCWeatherMap\bin\Debug\netcoreapp3.1\OPCServerNETCore.dll
-D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCWeatherMap\bin\Debug\netcoreapp3.1\OPCServerNETCore.pdb
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCWeatherMap\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCWeatherMap\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCWeatherMap\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
@@ -126,3 +123,6 @@ D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCWeatherMap\b
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCWeatherMap\obj\Debug\netcoreapp3.1\OPCWeatherMap.csproj.CoreCompileInputs.cache
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCWeatherMap\obj\Debug\netcoreapp3.1\OPCWeatherMap.MvcApplicationPartsAssemblyInfo.cache
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCWeatherMap\obj\Debug\netcoreapp3.1\Razor\Views\Home\SendRequest.cshtml.g.cs
+D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCWeatherMap\bin\Debug\netcoreapp3.1\Quickstarts.MyOPCServer.exe
+D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCWeatherMap\bin\Debug\netcoreapp3.1\Quickstarts.MyOPCServer.dll
+D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCWeatherMap\bin\Debug\netcoreapp3.1\Quickstarts.MyOPCServer.pdb

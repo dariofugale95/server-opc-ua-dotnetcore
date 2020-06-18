@@ -1,0 +1,20 @@
+D:\Progetti\II_Project\UA-.NETStandard-master\UA-.NETStandard-master\SampleApplications\bin\Debug\Quickstarts.EmptyServer.Config.xml
+D:\Progetti\II_Project\UA-.NETStandard-master\UA-.NETStandard-master\SampleApplications\bin\Debug\App.ico
+D:\Progetti\II_Project\UA-.NETStandard-master\UA-.NETStandard-master\SampleApplications\bin\Debug\Quickstarts.EmptyServer.exe.config
+D:\Progetti\II_Project\UA-.NETStandard-master\UA-.NETStandard-master\SampleApplications\bin\Debug\Quickstarts.EmptyServer.exe
+D:\Progetti\II_Project\UA-.NETStandard-master\UA-.NETStandard-master\SampleApplications\bin\Debug\Quickstarts.EmptyServer.pdb
+D:\Progetti\II_Project\UA-.NETStandard-master\UA-.NETStandard-master\SampleApplications\Workshop\Empty\Server\obj\Debug\Empty Server.csprojAssemblyReference.cache
+D:\Progetti\II_Project\UA-.NETStandard-master\UA-.NETStandard-master\SampleApplications\Workshop\Empty\Server\obj\Debug\Quickstarts.EmptyServer.exe.config
+D:\Progetti\II_Project\UA-.NETStandard-master\UA-.NETStandard-master\SampleApplications\Workshop\Empty\Server\obj\Debug\Quickstarts.EmptyServer.Properties.Resources.resources
+D:\Progetti\II_Project\UA-.NETStandard-master\UA-.NETStandard-master\SampleApplications\Workshop\Empty\Server\obj\Debug\Empty Server.csproj.GenerateResource.cache
+D:\Progetti\II_Project\UA-.NETStandard-master\UA-.NETStandard-master\SampleApplications\Workshop\Empty\Server\obj\Debug\Empty Server.csproj.CoreCompileInputs.cache
+D:\Progetti\II_Project\UA-.NETStandard-master\UA-.NETStandard-master\SampleApplications\Workshop\Empty\Server\obj\Debug\Empty Server.csproj.CopyComplete
+D:\Progetti\II_Project\UA-.NETStandard-master\UA-.NETStandard-master\SampleApplications\Workshop\Empty\Server\obj\Debug\Quickstarts.EmptyServer.exe
+D:\Progetti\II_Project\UA-.NETStandard-master\UA-.NETStandard-master\SampleApplications\Workshop\Empty\Server\obj\Debug\Quickstarts.EmptyServer.pdb
+D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\MyOPCServer\obj\Debug\Empty Server.csprojAssemblyReference.cache
+D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\MyOPCServer\obj\Debug\Quickstarts.EmptyServer.Properties.Resources.resources
+D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\MyOPCServer\obj\Debug\Empty Server.csproj.GenerateResource.cache
+D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\MyOPCServer\obj\Debug\Empty Server.csproj.CoreCompileInputs.cache
+D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\MyOPCServer\obj\Debug\Quickstarts.EmptyServer.exe
+D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\MyOPCServer\obj\Debug\Quickstarts.EmptyServer.pdb
+D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\MyOPCServer\obj\Debug\Quickstarts.MyOPCServer.Properties.Resources.resources

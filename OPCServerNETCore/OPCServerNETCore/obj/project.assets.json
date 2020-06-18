@@ -7338,7 +7338,7 @@
     "version": "1.0.0",
     "restore": {
       "projectUniqueName": "D:\\Progetti\\II_Project\\server-opc-ua-dotnetcore\\OPCServerNETCore\\OPCServerNETCore\\OPCServerNETCore.csproj",
-      "projectName": "OPCServerNETCore",
+      "projectName": "Quickstarts.MyOPCServer",
       "projectPath": "D:\\Progetti\\II_Project\\server-opc-ua-dotnetcore\\OPCServerNETCore\\OPCServerNETCore\\OPCServerNETCore.csproj",
       "packagesPath": "C:\\Users\\Utente\\.nuget\\packages\\",
       "outputPath": "D:\\Progetti\\II_Project\\server-opc-ua-dotnetcore\\OPCServerNETCore\\OPCServerNETCore\\obj\\",

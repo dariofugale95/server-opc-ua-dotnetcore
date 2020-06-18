@@ -6,12 +6,12 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "OPCServerNETCore/1.0.0": {
+      "Quickstarts.MyOPCServer/1.0.0": {
         "dependencies": {
           "OPCFoundation.NetStandard.Opc.Ua": "1.4.361.39"
         },
         "runtime": {
-          "OPCServerNETCore.dll": {}
+          "Quickstarts.MyOPCServer.dll": {}
         }
       },
       "Microsoft.AspNetCore.Connections.Abstractions/2.2.0": {
@@ -1400,7 +1400,7 @@
     }
   },
   "libraries": {
-    "OPCServerNETCore/1.0.0": {
+    "Quickstarts.MyOPCServer/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
