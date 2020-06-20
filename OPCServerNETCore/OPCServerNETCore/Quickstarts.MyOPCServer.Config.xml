@@ -11,7 +11,7 @@ https://github.com/OPCFoundation/UA-.NETStandard/blob/master/Stack/Opc.Ua.Core/S
   schemaLocation="./Schema/ApplicationConfiguration.xsd">
 
 	<ApplicationName>MyOPCServer</ApplicationName>
-	<ApplicationUri>urn:localhost:cactuaroid:MyOPCServer</ApplicationUri>
+	<ApplicationUri>urn:localhost:castagnolofugale:MyOPCServer</ApplicationUri>
 	<ProductUri>https://github.com/dariofugale95/server-opc-ua-dotnetcore</ProductUri>
 	<ApplicationType>Server_0</ApplicationType>
 
@@ -21,7 +21,7 @@ https://github.com/OPCFoundation/UA-.NETStandard/blob/master/Stack/Opc.Ua.Core/S
 		<ApplicationCertificate>
 			<StoreType>X509Store</StoreType>
 			<StorePath>CurrentUser\My</StorePath>
-			<SubjectName>CN=MyOPCServer, C=US, O=cactuaroid, DC=localhost</SubjectName>
+			<SubjectName>CN=MyOPCServer, C=IT, O=castagnolofugale, DC=localhost</SubjectName>
 		</ApplicationCertificate>
 
 		<!-- Where the issuer certificate are stored (certificate authorities) -->
@@ -44,7 +44,7 @@ https://github.com/OPCFoundation/UA-.NETStandard/blob/master/Stack/Opc.Ua.Core/S
 
 		<!-- WARNING: The following setting (to automatically accept untrusted certificates) should be used
     for easy debugging purposes ONLY and turned off for production deployments! -->
-		<AutoAcceptUntrustedCertificates>false</AutoAcceptUntrustedCertificates>
+		<AutoAcceptUntrustedCertificates>true</AutoAcceptUntrustedCertificates>
 
 	</SecurityConfiguration>
 
@@ -71,6 +71,10 @@ https://github.com/OPCFoundation/UA-.NETStandard/blob/master/Stack/Opc.Ua.Core/S
 				<SecurityMode>SignAndEncrypt_3</SecurityMode>
 				<SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Basic256Sha256</SecurityPolicyUri>
 			</ServerSecurityPolicy>
+      <ServerSecurityPolicy>
+        <SecurityMode>None_1</SecurityMode>
+        <SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#None</SecurityPolicyUri>
+      </ServerSecurityPolicy>
 		</SecurityPolicies>
 
 		<MinRequestThreadCount>5</MinRequestThreadCount>

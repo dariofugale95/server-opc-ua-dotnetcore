@@ -248,6 +248,40 @@ namespace Quickstarts.MyOPCServer
                 throw ServiceResultException.Create(StatusCodes.BadIdentityTokenInvalid,
                    "Security token is not a valid username token. An empty password is not accepted.");
             }
+            if (String.IsNullOrEmpty(password))
+            {
+                // an empty password is not accepted.
+                throw ServiceResultException.Create(StatusCodes.BadIdentityTokenRejected,
+                    "Security token is not a valid username token. An empty password is not accepted.");
+            }
+
+            // User with permission to configure server
+            if (user == "sysadmin" && password == "demo")
+            {
+                return new SystemConfigurationIdentity(new UserIdentity(userNameToken));
+            }
+
+            // standard users for CTT verification
+            if (!((user == "user1" && password == "password") ||
+                (user == "user2" && password == "password1")))
+
+            {
+                TranslationInfo info;
+                // construct translation object with default text.
+                info = new TranslationInfo(
+                    "InvalidPassword",
+                    "en-US",
+                    "Invalid username or password.",
+                    user);
+
+                // create an exception with a vendor defined sub-code.
+                throw new ServiceResultException(new ServiceResult(
+                    StatusCodes.BadUserAccessDenied,
+                    "InvalidPassword",
+                    LoadServerProperties().ProductUri,
+                    new LocalizedText(info)));
+            }
+
             return new UserIdentity(userNameToken);
         }
 
