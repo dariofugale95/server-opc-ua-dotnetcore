@@ -1,100 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ModelDesign
-        xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:ua="http://opcfoundation.org/UA/"
-        xmlns:MyOPCServer="https://github.com/dariofugale95/server-opc-ua-dotnetcore"
-        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-        TargetNamespace="https://github.com/dariofugale95/server-opc-ua-dotnetcore"
-        TargetXmlNamespace="https://github.com/dariofugale95/server-opc-ua-dotnetcore"
-        TargetVersion="0.9.0"
-        TargetPublicationDate="2019-04-01T00:00:00Z"
-        xmlns="http://opcfoundation.org/UA/ModelDesign.xsd">
+<opc:ModelDesign
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:opc="http://opcfoundation.org/UA/ModelDesign.xsd"
+  xmlns:ua="http://opcfoundation.org/UA/"
+  xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd"
+	xmlns="https://github.com/dariofugale95/server-opc-ua-dotnetcore"
+  TargetNamespace="https://github.com/dariofugale95/server-opc-ua-dotnetcore">
 
-  <Namespaces>
-    <Namespace Name="OpcUa" Prefix="Opc.Ua" XmlNamespace="http://opcfoundation.org/UA/2008/02/Types.xsd">http://opcfoundation.org/UA/</Namespace>
-    <Namespace Name="MyOPCServer" Prefix="MyOPCServer">https://github.com/dariofugale95/server-opc-ua-dotnetcore</Namespace>
-  </Namespaces>
+  <opc:Namespaces>
+    <opc:Namespace Name="OpcUa" Prefix="Opc.Ua" XmlNamespace="http://opcfoundation.org/UA/2008/02/Types.xsd">http://opcfoundation.org/UA/</opc:Namespace>
+    <opc:Namespace Name="MyOPCServer" Prefix="MyOPCServer">https://github.com/dariofugale95/server-opc-ua-dotnetcore</opc:Namespace>
+  </opc:Namespaces>
 
   <!-- Types -->
 
-    <ObjectType SymbolicName="MyOPCServer:WeatherObjectType" BaseType="ua:BaseObjectType" SupportsEvents="true" IsAbstract="true" >
-    <Description>Base type for all weather object</Description>
-    <Children>
-     <Property SymbolicName="MyOPCServer:Name" DataType="ua:String" ValueRank="Scalar" ModellingRule="Mandatory">
-      <Description>Name of weather object</Description>
-    </Property>
-    </Children>
-  </ObjectType>
+  <opc:ObjectType SymbolicName="OpenWeatherMapType" BaseType="ua:BaseObjectType" SupportsEvents="true">
+    <opc:Children>
+		<opc:Property SymbolicName="WeatherData" TypeDefinition="WeatherMapDataType" />
+    </opc:Children>
+  </opc:ObjectType>
 
-    <ObjectType SymbolicName="MyOPCServer:OpenWeatherMapObjectType" BaseType="MyOPCServer:WeatherObjectType" SupportsEvents="true" IsAbstract="true" >
-    <Description>Base type for all OpenWeatherMapObject</Description>
-    <Children>
-     <Property SymbolicName="MyOPCServer:DescriptionOfWeatherApi" DataType="ua:String" ValueRank="Scalar" ModellingRule="Optional">
-      <Description>description of weather api</Description>
-    </Property>
-    </Children>
-  </ObjectType>
 
-  <VariableType SymbolicName="MyOPCServer:WeatherMapDataType" DataType="MyOPCServer:WeatherData" BaseType="ua:BaseDataVariableType" ValueRank="Scalar" ExposesItsChildren="true">
-    <Description>Represents a WeatherMapData</Description>
-    <Children>
-      <Variable SymbolicName="Day_date" TypeDefinition="ua:BaseDataVariableType" DataType="ua:DateTime" ModellingRule="Mandatory"> 
-      <Description>Date of weather prevision </Description> </Variable>
-       <Variable SymbolicName="Temperature" TypeDefinition="ua:BaseDataVariableType" DataType="ua:Float" ModellingRule="Mandatory">
-       <Description>Temperature prevision in kelvin </Description>  </Variable>
-        <Variable SymbolicName="City" TypeDefinition="ua:BaseDataVariableType" DataType="ua:String" ModellingRule="Mandatory">
-        <Description>City of weather prevision </Description> </Variable>
-    </Children>
-  </VariableType>
+  <opc:VariableType SymbolicName="WeatherMapDataType" DataType="WeatherData" BaseType="ua:BaseDataVariableType" ValueRank="Scalar" ExposesItsChildren="true">
+    <opc:Description>Represents a WeatherMapData</opc:Description>
+    <opc:Children>
+      <opc:Variable SymbolicName="Date" TypeDefinition="ua:BaseDataVariableType" DataType="ua:DateTime" ModellingRule="Mandatory"> 
+      <opc:Description>Date of weather prevision </opc:Description> </opc:Variable>
+       <opc:Variable SymbolicName="Temperature" TypeDefinition="ua:BaseDataVariableType" DataType="ua:Float" ModellingRule="Mandatory">
+       <opc:Description>Temperature prevision in kelvin </opc:Description>  </opc:Variable>
+        <opc:Variable SymbolicName="City" TypeDefinition="ua:BaseDataVariableType" DataType="ua:String" ModellingRule="Mandatory">
+        <opc:Description>City of weather prevision </opc:Description> </opc:Variable>
+    </opc:Children>
+  </opc:VariableType>
 
-  <DataType SymbolicName="MyOPCServer:WeatherData" BaseType="ua:Structure">
-    <Description>Information about waether in a specific city</Description>
-    <Fields>
-      <Field Name="Date" DataType="ua:DateTime">
-        <Description>The prevision are for a specific day, this day is express with Datetime format</Description> </Field>
-      <Field Name="Temperature" DataType="ua:Float">
-        <Description>Temperature prevision in Kelvin</Description> </Field>
-      <Field Name="City" DataType="ua:String">
-        <Description>City of weather prevision </Description> </Field>
-    </Fields>
-  </DataType>
-
-    <!--  Objects -->
+  <opc:DataType SymbolicName="WeatherData" BaseType="ua:Structure">
+    <opc:Description>Information about waether in a specific city</opc:Description>
+    <opc:Fields>
+      <opc:Field Name="Date" DataType="ua:DateTime" />
+      <opc:Field Name="Temperature" DataType="ua:Float" />
+      <opc:Field Name="City" DataType="ua:String" />
+    </opc:Fields>
+  </opc:DataType>
   
-  <Object SymbolicName="MyOPCServer:WeatherSet" BaseType="ua:BaseObjectType" >
-     <Description>Contains all instances of weather object</Description>
-    <References>
-      <Reference IsInverse="true">
-        <ReferenceType>ua:Organizes</ReferenceType>
-        <TargetId>ua:ObjectsFolder</TargetId>
-      </Reference>
-     
-    </References>
-  </Object>
-
-  <Object SymbolicName="MyOPCServer:OpenWeatherMapObject" TypeDefinition="MyOPCServer:OpenWeatherMapObjectType">
-        <Description> Weather Object called OpenWeather</Description>
-        <References>
-            <Reference IsInverse="true">
-                <ReferenceType>ua:Organizes</ReferenceType>
-                <TargetId>MyOPCServer:WeatherSet</TargetId>
-            </Reference>
-        </References>
-        <Children>
-            <Property SymbolicName="MyOPCServer:Name" DataType="ua:String" AccessLevel="Read">
-                <DefaultValue>
-                    <uax:String>Open Weather Map</uax:String>
-                </DefaultValue>
-            </Property>
-            <Property SymbolicName="MyOPCServer:DescriptionOfWeatherApi" DataType="ua:String" AccessLevel="Read">
-                <DefaultValue>
-                    <uax:String>https://openweathermap.org/api</uax:String>
-                </DefaultValue>
-            </Property>
-        </Children>
-    </Object>
+  <!--  Objects -->
   
+  <opc:Object SymbolicName="OpenWeatherMap" TypeDefinition="OpenWeatherMapType">
+    <opc:References>
+      <opc:Reference IsInverse="true">
+        <opc:ReferenceType>ua:Organizes</opc:ReferenceType>
+        <opc:TargetId>ua:ObjectsFolder</opc:TargetId>
+      </opc:Reference>
+      <opc:Reference IsInverse="true">
+        <opc:ReferenceType>ua:HasNotifier</opc:ReferenceType>
+        <opc:TargetId>ua:Server</opc:TargetId>
+      </opc:Reference>
+    </opc:References>
+  </opc:Object>
 
-</ModelDesign>
+</opc:ModelDesign>
