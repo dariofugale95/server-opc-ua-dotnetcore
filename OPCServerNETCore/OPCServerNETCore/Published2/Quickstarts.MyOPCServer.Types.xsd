@@ -1,0 +1,29 @@
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:ua="http://opcfoundation.org/UA/2008/02/Types.xsd"
+  xmlns:tns="https://github.com/dariofugale95/server-opc-ua-dotnetcore"
+  targetNamespace="https://github.com/dariofugale95/server-opc-ua-dotnetcore"
+  elementFormDefault="qualified"
+>
+  <xs:import namespace="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+
+  <xs:complexType name="WeatherData">
+    <xs:annotation>
+      <xs:documentation>Information about waether in a specific city</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Date" type="xs:dateTime" minOccurs="0" />
+      <xs:element name="Temperature" type="xs:float" minOccurs="0" />
+      <xs:element name="City" type="xs:string" minOccurs="0" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WeatherData" type="tns:WeatherData" />
+
+  <xs:complexType name="ListOfWeatherData">
+    <xs:sequence>
+      <xs:element name="WeatherData" type="tns:WeatherData" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfWeatherData" type="tns:ListOfWeatherData" nillable="true"></xs:element>
+
+</xs:schema>

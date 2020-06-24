@@ -1,0 +1,200 @@
+﻿@model OPCWeatherMap.Models.OpenWeatherMapDataClass
+
+@{
+    ViewData["Title"] = "SendRequest";
+}
+
+<h1>Data</h1>
+
+<div>
+    <h4>Open Weather Map Data</h4>
+    <hr />
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Base)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Base)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Visibility)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Visibility)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Dt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Dt)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Timezone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Timezone)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cod)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cod)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Coord.Latitude)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Coord.Latitude)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Coord.Longitude)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Coord.Longitude)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Weather.First().Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Weather.First().Description)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Weather.First().Icon)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Weather.First().Icon)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Weather.First().Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Weather.First().Id)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Weather.First().Main)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Weather.First().Main)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Main.Humidity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Main.Humidity)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Main.Pressure)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Main.Pressure)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Main.Temp)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Main.Temp)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Main.TempMax)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Main.TempMax)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Main.TempMin)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Main.TempMin)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Wind.Speed)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Wind.Speed)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Clouds.All)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Clouds.All)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sys.Country)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sys.Country)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sys.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sys.Id)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sys.Message)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sys.Message)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sys.Sunrise)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sys.Sunrise)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sys.Sunset)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sys.Sunset)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sys.Type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sys.Type)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
