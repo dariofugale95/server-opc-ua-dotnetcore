@@ -65,7 +65,7 @@ namespace Quickstarts.MyOPCServer
                 exitCode = ExitCode.ErrorServerNotStarted;
                 ConsoleSampleServer().Wait();
                 openWeatherApiRequest = new OpenWeatherMapApiRequests();
-                openWeatherData = await openWeatherApiRequest.GetWeatherDataByCity();
+                openWeatherData = await openWeatherApiRequest.GetWeatherDataByCity("catania");
                 Console.WriteLine(openWeatherData.Base);
                 Console.WriteLine(openWeatherData.Clouds);
                 Console.WriteLine(openWeatherData.Cod);

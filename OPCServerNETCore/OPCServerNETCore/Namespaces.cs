@@ -41,6 +41,6 @@ namespace Quickstarts.MyOPCServer
         /// <summary>
         /// The namespace for the nodes provided by the server.
         /// </summary>
-        public const string MyOPCServer = "http://opcfoundation.org/Quickstarts/MyOPCServer";
+        public const string MyOPCServerSt = "http://opcfoundation.org/Quickstarts/MyOPCServer";
     }
 }

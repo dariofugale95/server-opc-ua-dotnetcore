@@ -38,6 +38,8 @@ using System.Reflection;
 using Opc.Ua;
 using Opc.Ua.Server;
 
+
+
 namespace Quickstarts.MyOPCServer
 {
     /// <summary>
@@ -105,15 +107,17 @@ namespace Quickstarts.MyOPCServer
             lock (Lock)
             {
                 base.CreateAddressSpace(externalReferences);
+                SetupNodes();
                 // ensure trigger can be found via the server object. 
 
                 IList<IReference> references = null;
-
+                /*
                 if (!externalReferences.TryGetValue(ObjectIds.ObjectsFolder, out references))
                 {
                     externalReferences[ObjectIds.ObjectsFolder] = references = new List<IReference>();
                 }
-
+                */
+                /*
                 FolderState dataSourcesFolder = CreateFolder(null, "DataSourceFolder", "DataSourceFolder");
                 dataSourcesFolder.AddReference(ReferenceTypes.Organizes, true, ObjectIds.ObjectsFolder);
                 references.Add(new NodeStateReference(ReferenceTypes.Organizes, false, dataSourcesFolder.NodeId));
@@ -121,11 +125,15 @@ namespace Quickstarts.MyOPCServer
                 dataSourcesFolder.Description = "A folder containing data sources";
 
                 AddRootNotifier(dataSourcesFolder);
+                */
 
                 try
                 {
-                    //CreateDataType()
-                    //BaseDataVariableState openWeatherMapData = CreateVariable(dataSourcesFolder,"/OpenWeatherMapData", "OpenWeatherMapData", DataTypeIds.OpenWeatherMapDataClass, ValueRanks.Scalar)
+                   
+
+                    //BaseDataVariableState openWeatherMapData = CreateVariable(dataSourcesFolder, "/OpenWeatherMapData", "OpenWeatherMapData", DataTypeIds.Float, ValueRanks.Scalar);
+                     
+
                 }
 
                 catch (Exception e)
@@ -133,14 +141,22 @@ namespace Quickstarts.MyOPCServer
                     Utils.Trace(e, "Error creating the address space.");
                 }
 
-                AddPredefinedNode(SystemContext, dataSourcesFolder);
+               // AddPredefinedNode(SystemContext, dataSourcesFolder);
             }
+        }
+
+        private void SetupNodes()
+        {
+  
+                Console.WriteLine("Prova"+Objects.WeatherData_Encoding_DefaultXml.ToString());
+            Console.WriteLine("Prova" + Objects.OpenWeatherMap.ToString());
         }
 
 
         /// <summary>
         /// Creates a new folder.
         /// </summary>
+        /*
         private FolderState CreateFolder(NodeState parent, string path, string name)
         {
             FolderState folder = new FolderState(parent);
@@ -162,51 +178,68 @@ namespace Quickstarts.MyOPCServer
 
             return folder;
         }
+        */
+        protected override NodeStateCollection LoadPredefinedNodes(ISystemContext context)
+        {
+            // Set your .uanodes file to Build Action = Embedded Resource
+            // resourcePath parameter of LoadFromBinaryResource() is project name + directory + file name
+
+            NodeStateCollection predefinedNodes = new NodeStateCollection();
+            //predefinedNodes.LoadFromBinaryResource(context, "Published2/" + "Quickstarts.MyOPCServer.PredefinedNodes.uanodes", this.GetType().GetTypeInfo().Assembly, true);
+             predefinedNodes.LoadFromBinaryResource(context, "/Users/giuli/Documents/GitHub/server-opc-ua-dotnetcore/OPCServerNETCore/OPCServerNETCore/Published/Quickstarts.MyOPCServer.PredefinedNodes.uanodes", this.GetType().GetTypeInfo().Assembly, true);
+
+            return predefinedNodes;
+        }
 
         /// <summary>
         /// Creates a new variable.
         /// </summary>
-        private BaseDataVariableState CreateVariable(NodeState parent, string path, string name, NodeId dataType, int valueRank)
+        /// ObjectsType
+
+
+        /*
+    private BaseDataVariableState CreateVariable(NodeState parent, string path, string name, NodeId dataType, int valueRank)
+    {
+        BaseDataVariableState variable = new BaseDataVariableState(parent);
+
+        variable.SymbolicName = name;
+        variable.ReferenceTypeId = ReferenceTypes.Organizes;
+        variable.TypeDefinitionId = VariableTypeIds.BaseDataVariableType;
+        variable.NodeId = new NodeId(path, NamespaceIndex);
+        variable.BrowseName = new QualifiedName(path, NamespaceIndex);
+        variable.DisplayName = new LocalizedText("en", name);
+        variable.WriteMask = AttributeWriteMask.DisplayName | AttributeWriteMask.Description;
+        variable.UserWriteMask = AttributeWriteMask.DisplayName | AttributeWriteMask.Description;
+        variable.DataType = dataType;
+        variable.ValueRank = valueRank;
+        variable.AccessLevel = AccessLevels.CurrentReadOrWrite;
+        variable.UserAccessLevel = AccessLevels.CurrentReadOrWrite;
+        variable.Historizing = false;
+        variable.Value = apiRequests.GetWeatherDataByCity("Catania");
+        variable.StatusCode = StatusCodes.Good;
+        variable.Timestamp = DateTime.UtcNow;
+
+        if (valueRank == ValueRanks.OneDimension)
         {
-            BaseDataVariableState variable = new BaseDataVariableState(parent);
-
-            variable.SymbolicName = name;
-            variable.ReferenceTypeId = ReferenceTypes.Organizes;
-            variable.TypeDefinitionId = VariableTypeIds.BaseDataVariableType;
-            variable.NodeId = new NodeId(path, NamespaceIndex);
-            variable.BrowseName = new QualifiedName(path, NamespaceIndex);
-            variable.DisplayName = new LocalizedText("en", name);
-            variable.WriteMask = AttributeWriteMask.DisplayName | AttributeWriteMask.Description;
-            variable.UserWriteMask = AttributeWriteMask.DisplayName | AttributeWriteMask.Description;
-            variable.DataType = dataType;
-            variable.ValueRank = valueRank;
-            variable.AccessLevel = AccessLevels.CurrentReadOrWrite;
-            variable.UserAccessLevel = AccessLevels.CurrentReadOrWrite;
-            variable.Historizing = false;
-            variable.Value = apiRequests.GetWeatherDataByCity("Catania");
-            variable.StatusCode = StatusCodes.Good;
-            variable.Timestamp = DateTime.UtcNow;
-
-            if (valueRank == ValueRanks.OneDimension)
-            {
-                variable.ArrayDimensions = new ReadOnlyList<uint>(new List<uint> { 0 });
-            }
-            else if (valueRank == ValueRanks.TwoDimensions)
-            {
-                variable.ArrayDimensions = new ReadOnlyList<uint>(new List<uint> { 0, 0 });
-            }
-
-            if (parent != null)
-            {
-                parent.AddChild(variable);
-            }
-
-            return variable;
+            variable.ArrayDimensions = new ReadOnlyList<uint>(new List<uint> { 0 });
+        }
+        else if (valueRank == ValueRanks.TwoDimensions)
+        {
+            variable.ArrayDimensions = new ReadOnlyList<uint>(new List<uint> { 0, 0 });
         }
 
+        if (parent != null)
+        {
+            parent.AddChild(variable);
+        }
+
+        return variable;
+    }
+    */
         /// <summary>
         /// Creates a new data type.
         /// </summary>
+        /*
         private DataTypeState CreateDataType(NodeState parent, IDictionary<NodeId, IList<IReference>> externalReferences, string path, string name)
         {
             DataTypeState type = new DataTypeState();
@@ -249,11 +282,19 @@ namespace Quickstarts.MyOPCServer
             {
                 base.DeleteAddressSpace();
             }
-        }
+        }*/
         #endregion
 
-        #region Overridden Methods
-        #endregion
+
+
+        private ServiceResult OnWriteMyNode(ISystemContext context, NodeState node, ref object value)
+        {
+            
+            Console.WriteLine("Received '" + value.ToString() + "'.");
+
+            Utils.Trace("Received '" + value.ToString() + "'.");
+            return ServiceResult.Good;
+        }
 
         #region Private Fields
         private MyOPCServerConfiguration m_configuration;

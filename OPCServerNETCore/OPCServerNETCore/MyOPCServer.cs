@@ -143,6 +143,10 @@ namespace Quickstarts.MyOPCServer
             {
                 //il metodo verifypassword verifica che la password sia valida per lo usertoken corrente
                 args.Identity = VerifyPassword(userNameToken);
+                Utils.Trace("UserName Token Accepted: {0}", args.Identity.DisplayName);
+                
+
+                /*
 
                 // set AuthenticatedUser role for accepted user/password authentication
                 args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_AuthenticatedUser);
@@ -153,6 +157,7 @@ namespace Quickstarts.MyOPCServer
                     args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_ConfigureAdmin);
                     args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_SecurityAdmin);
                 }
+                */
 
                 return;
             }
@@ -167,14 +172,15 @@ namespace Quickstarts.MyOPCServer
                 Utils.Trace("X509 Token Accepted: {0}", args.Identity.DisplayName);
 
                 // set AuthenticatedUser role for accepted certificate authentication
-                args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_AuthenticatedUser);
+                //args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_AuthenticatedUser);
+                Utils.Trace("X509 Token Accepted: {0}", args.Identity.DisplayName);
 
                 return;
             }
 
             // se il token è nullo allora come identità si setta quella anonima 
             args.Identity = new UserIdentity();
-            args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_Anonymous);
+            //args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_Anonymous);
         }
 
 

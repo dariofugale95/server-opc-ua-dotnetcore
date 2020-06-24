@@ -110,7 +110,6 @@ C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCSer
 C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\bin\Debug\netcoreapp3.1\System.ServiceModel.dll
 C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netstandard2.0\System.Private.ServiceModel.dll
 C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Private.ServiceModel.dll
-C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\OPCServerNETCore.csprojAssemblyReference.cache
 C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\OPCServerNETCore.AssemblyInfoInputs.cache
 C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\OPCServerNETCore.AssemblyInfo.cs
 C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\OPCServerNETCore.csproj.CoreCompileInputs.cache
@@ -118,3 +117,4 @@ C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCSer
 C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\Quickstarts.MyOPCServer.dll
 C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\Quickstarts.MyOPCServer.pdb
 C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\OPCServerNETCore.genruntimeconfig.cache
+C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\OPCServerNETCore.csprojAssemblyReference.cache

@@ -1,0 +1,18 @@
+<opc:TypeDictionary
+  xmlns:opc="http://opcfoundation.org/BinarySchema/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:ua="http://opcfoundation.org/UA/"
+  xmlns:tns="https://github.com/dariofugale95/server-opc-ua-dotnetcore"
+  DefaultByteOrder="LittleEndian"
+  TargetNamespace="https://github.com/dariofugale95/server-opc-ua-dotnetcore"
+>
+  <opc:Import Namespace="http://opcfoundation.org/UA/" Location="Opc.Ua.BinarySchema.bsd"/>
+
+  <opc:StructuredType Name="WeatherData" BaseType="ua:ExtensionObject">
+    <opc:Documentation>Information about waether in a specific city</opc:Documentation>
+    <opc:Field Name="Date" TypeName="opc:DateTime" />
+    <opc:Field Name="Temperature" TypeName="opc:Float" />
+    <opc:Field Name="City" TypeName="opc:String" />
+  </opc:StructuredType>
+
+</opc:TypeDictionary>
