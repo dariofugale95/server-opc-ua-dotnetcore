@@ -11,7 +11,7 @@
 
   <opc:Namespaces>
     <opc:Namespace Name="OpcUa" Prefix="Opc.Ua" XmlNamespace="http://opcfoundation.org/UA/2008/02/Types.xsd">http://opcfoundation.org/UA/</opc:Namespace>
-    <opc:Namespace Name="MyOPCServer" Prefix="MyOPCServer">https://github.com/dariofugale95/server-opc-ua-dotnetcore</opc:Namespace>
+    <opc:Namespace Name="MyOPCServer" Prefix="Quickstarts.MyOPCServer">https://github.com/dariofugale95/server-opc-ua-dotnetcore</opc:Namespace>
   </opc:Namespaces>
 
   <!-- Types -->
@@ -20,7 +20,7 @@
     <opc:Children>
     <opc:Property SymbolicName="ApiURL" DataType="ua:String" ValueRank="Scalar" ModellingRule="Mandatory" />
 		<opc:Variable SymbolicName="WeatherData" TypeDefinition="WeatherMapDataType" ModellingRule="Mandatory" />
-    <opc:Method SymbolicName="OpenWeatherMapMethod" TypeDefinition="WeatherMethodType"  />
+    <opc:Method SymbolicName="OpenWeatherMapMethod" TypeDefinition="WeatherMethodType" ModellingRule="Mandatory" />
     </opc:Children>
   </opc:ObjectType>
 
@@ -34,6 +34,9 @@
     </opc:References>
     <opc:InputArguments>
       <opc:Argument Name="City" DataType="ua:String" />
+      <opc:Argument Name="date" DataType="ua:DateTime" />
+      <opc:Argument Name="Temp" DataType="ua:Float" />
+
     </opc:InputArguments>
   </opc:Method>
 
