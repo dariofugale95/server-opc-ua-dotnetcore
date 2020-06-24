@@ -18,7 +18,29 @@
 
   <opc:ObjectType SymbolicName="OpenWeatherMapType" BaseType="ua:BaseObjectType" SupportsEvents="true">
     <opc:Children>
-		<opc:Property SymbolicName="WeatherData" TypeDefinition="WeatherMapDataType" />
+    <opc:Property SymbolicName="ApiURL" DataType="ua:String" ValueRank="Scalar" ModellingRule="Mandatory" />
+		<opc:Variable SymbolicName="WeatherData" TypeDefinition="WeatherMapDataType" ModellingRule="Mandatory" />
+    <opc:Method SymbolicName="OpenWeatherMapMethod" TypeDefinition="WeatherMethodType"  />
+    </opc:Children>
+  </opc:ObjectType>
+
+
+ <opc:Method SymbolicName="WeatherMethodType">
+    <opc:References>
+      <opc:Reference>
+        <opc:ReferenceType>ua:AlwaysGeneratesEvent</opc:ReferenceType>
+        <opc:TargetId>WeatherEventType</opc:TargetId>
+      </opc:Reference>
+    </opc:References>
+    <opc:InputArguments>
+      <opc:Argument Name="City" DataType="ua:String" />
+    </opc:InputArguments>
+  </opc:Method>
+
+
+<opc:ObjectType SymbolicName="WeatherEventType" BaseType="ua:BaseEventType">
+    <opc:Children>
+      <opc:Property SymbolicName="WeatherMap" TypeDefinition="WeatherMapDataType" ModellingRule="Mandatory" />
     </opc:Children>
   </opc:ObjectType>
 
@@ -57,6 +79,13 @@
         <opc:TargetId>ua:Server</opc:TargetId>
       </opc:Reference>
     </opc:References>
+     <Children>
+            <Property SymbolicName="ApiURL" DataType="ua:String" AccessLevel="Read">
+                <DefaultValue>
+                    <uax:String>https://openweathermap.org/</uax:String>
+                </DefaultValue>
+            </Property>
+     </Children>
   </opc:Object>
 
 </opc:ModelDesign>

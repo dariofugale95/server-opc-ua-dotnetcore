@@ -92,17 +92,40 @@ namespace Quickstarts.MyOPCServer
         private const string InitializationString =
            "AQAAADkAAABodHRwczovL2dpdGh1Yi5jb20vZGFyaW9mdWdhbGU5NS9zZXJ2ZXItb3BjLXVhLWRvdG5l" +
            "dGNvcmX/////hGCAAgEAAAABABoAAABPcGVuV2VhdGhlck1hcFR5cGVJbnN0YW5jZQEBmToBAZk6mToA" +
-           "AAH/////AQAAABVgiQoCAAAAAQALAAAAV2VhdGhlckRhdGEBAZo6AC4BAZ46mjoAAAEBojr/////AQH/" +
-           "////AwAAADVgiQoCAAAAAQAEAAAARGF0ZQEBmzoDAAAAABkAAABEYXRlIG9mIHdlYXRoZXIgcHJldmlz" +
-           "aW9uAC8AP5s6AAAADf////8BAf////8AAAAANWCJCgIAAAABAAsAAABUZW1wZXJhdHVyZQEBnDoDAAAA" +
-           "AB8AAABUZW1wZXJhdHVyZSBwcmV2aXNpb24gaW4ga2VsdmluAC8AP5w6AAAACv////8BAf////8AAAAA" +
-           "NWCJCgIAAAABAAQAAABDaXR5AQGdOgMAAAAAGQAAAENpdHkgb2Ygd2VhdGhlciBwcmV2aXNpb24ALwA/" +
-           "nToAAAAM/////wEB/////wAAAAA=";
+           "AAH/////AwAAABVgiQoCAAAAAQAGAAAAQXBpVVJMAQGaOgAuAESaOgAAAAz/////AQH/////AAAAABVg" +
+           "iQoCAAAAAQALAAAAV2VhdGhlckRhdGEBAZs6AC8BAbE6mzoAAAEBtTr/////AQH/////AwAAADVgiQoC" +
+           "AAAAAQAEAAAARGF0ZQEBnDoDAAAAABkAAABEYXRlIG9mIHdlYXRoZXIgcHJldmlzaW9uAC8AP5w6AAAA" +
+           "Df////8BAf////8AAAAANWCJCgIAAAABAAsAAABUZW1wZXJhdHVyZQEBnToDAAAAAB8AAABUZW1wZXJh" +
+           "dHVyZSBwcmV2aXNpb24gaW4ga2VsdmluAC8AP506AAAACv////8BAf////8AAAAANWCJCgIAAAABAAQA" +
+           "AABDaXR5AQGeOgMAAAAAGQAAAENpdHkgb2Ygd2VhdGhlciBwcmV2aXNpb24ALwA/njoAAAAM/////wEB" +
+           "/////wAAAAAEYYIKBAAAAAEAFAAAAE9wZW5XZWF0aGVyTWFwTWV0aG9kAQGfOgAvAQGfOp86AAABAQEA" +
+           "AAABAPkLAAEBozoBAAAAF2CpCgIAAAAAAA4AAABJbnB1dEFyZ3VtZW50cwEBoDoALgBEoDoAAJYDAAAA" +
+           "AQAqAQETAAAABAAAAENpdHkADP////8AAAAAAAEAKgEBEwAAAAQAAABkYXRlAA3/////AAAAAAABACoB" +
+           "ARMAAAAEAAAAVGVtcAAK/////wAAAAAAAQAoAQEAAAABAAAAAAAAAAEB/////wAAAAA=";
         #endregion
         #endif
         #endregion
 
         #region Public Properties
+        /// <remarks />
+        public PropertyState<string> ApiURL
+        {
+            get
+            {
+                return m_apiURL;
+            }
+
+            set
+            {
+                if (!Object.ReferenceEquals(m_apiURL, value))
+                {
+                    ChangeMasks |= NodeStateChangeMasks.Children;
+                }
+
+                m_apiURL = value;
+            }
+        }
+
         /// <remarks />
         public WeatherMapDataState WeatherData
         {
@@ -121,6 +144,25 @@ namespace Quickstarts.MyOPCServer
                 m_weatherData = value;
             }
         }
+
+        /// <remarks />
+        public WeatherMethodState OpenWeatherMapMethod
+        {
+            get
+            {
+                return m_openWeatherMapMethodMethod;
+            }
+
+            set
+            {
+                if (!Object.ReferenceEquals(m_openWeatherMapMethodMethod, value))
+                {
+                    ChangeMasks |= NodeStateChangeMasks.Children;
+                }
+
+                m_openWeatherMapMethodMethod = value;
+            }
+        }
         #endregion
 
         #region Overridden Methods
@@ -133,9 +175,19 @@ namespace Quickstarts.MyOPCServer
             ISystemContext context,
             IList<BaseInstanceState> children)
         {
+            if (m_apiURL != null)
+            {
+                children.Add(m_apiURL);
+            }
+
             if (m_weatherData != null)
             {
                 children.Add(m_weatherData);
+            }
+
+            if (m_openWeatherMapMethodMethod != null)
+            {
+                children.Add(m_openWeatherMapMethodMethod);
             }
 
             base.GetChildren(context, children);
@@ -159,6 +211,27 @@ namespace Quickstarts.MyOPCServer
 
             switch (browseName.Name)
             {
+                case Quickstarts.MyOPCServer.BrowseNames.ApiURL:
+                {
+                    if (createOrReplace)
+                    {
+                        if (ApiURL == null)
+                        {
+                            if (replacement == null)
+                            {
+                                ApiURL = new PropertyState<string>(this);
+                            }
+                            else
+                            {
+                                ApiURL = (PropertyState<string>)replacement;
+                            }
+                        }
+                    }
+
+                    instance = ApiURL;
+                    break;
+                }
+
                 case Quickstarts.MyOPCServer.BrowseNames.WeatherData:
                 {
                     if (createOrReplace)
@@ -179,6 +252,27 @@ namespace Quickstarts.MyOPCServer
                     instance = WeatherData;
                     break;
                 }
+
+                case Quickstarts.MyOPCServer.BrowseNames.OpenWeatherMapMethod:
+                {
+                    if (createOrReplace)
+                    {
+                        if (OpenWeatherMapMethod == null)
+                        {
+                            if (replacement == null)
+                            {
+                                OpenWeatherMapMethod = new WeatherMethodState(this);
+                            }
+                            else
+                            {
+                                OpenWeatherMapMethod = (WeatherMethodState)replacement;
+                            }
+                        }
+                    }
+
+                    instance = OpenWeatherMapMethod;
+                    break;
+                }
             }
 
             if (instance != null)
@@ -191,7 +285,297 @@ namespace Quickstarts.MyOPCServer
         #endregion
 
         #region Private Fields
+        private PropertyState<string> m_apiURL;
         private WeatherMapDataState m_weatherData;
+        private WeatherMethodState m_openWeatherMapMethodMethod;
+        #endregion
+    }
+    #endif
+    #endregion
+
+    #region WeatherMethodState Class
+    #if (!OPCUA_EXCLUDE_WeatherMethodState)
+    /// <summary>
+    /// Stores an instance of the WeatherMethodType Method.
+    /// </summary>
+    /// <exclude />
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
+    public partial class WeatherMethodState : MethodState
+    {
+        #region Constructors
+        /// <summary>
+        /// Initializes the type with its default attribute values.
+        /// </summary>
+        public WeatherMethodState(NodeState parent) : base(parent)
+        {
+        }
+
+        /// <summary>
+        /// Constructs an instance of a node.
+        /// </summary>
+        /// <param name="parent">The parent.</param>
+        /// <returns>The new node.</returns>
+        public new static NodeState Construct(NodeState parent)
+        {
+            return new WeatherMethodState(parent);
+        }
+
+        #if (!OPCUA_EXCLUDE_InitializationStrings)
+        /// <summary>
+        /// Initializes the instance.
+        /// </summary>
+        protected override void Initialize(ISystemContext context)
+        {
+            Initialize(context, InitializationString);
+            InitializeOptionalChildren(context);
+        }
+
+        /// <summary>
+        /// Initializes the any option children defined for the instance.
+        /// </summary>
+        protected override void InitializeOptionalChildren(ISystemContext context)
+        {
+            base.InitializeOptionalChildren(context);
+        }
+
+        #region Initialization String
+        private const string InitializationString =
+           "AQAAADkAAABodHRwczovL2dpdGh1Yi5jb20vZGFyaW9mdWdhbGU5NS9zZXJ2ZXItb3BjLXVhLWRvdG5l" +
+           "dGNvcmX/////BGGCCgQAAAABABEAAABXZWF0aGVyTWV0aG9kVHlwZQEBoToALwEBoTqhOgAAAQEBAAAA" +
+           "AQD5CwABAaM6AQAAABdgqQoCAAAAAAAOAAAASW5wdXRBcmd1bWVudHMBAaI6AC4ARKI6AACWAwAAAAEA" +
+           "KgEBEwAAAAQAAABDaXR5AAz/////AAAAAAABACoBARMAAAAEAAAAZGF0ZQAN/////wAAAAAAAQAqAQET" +
+           "AAAABAAAAFRlbXAACv////8AAAAAAAEAKAEBAAAAAQAAAAAAAAABAf////8AAAAA";
+        #endregion
+        #endif
+        #endregion
+
+        #region Event Callbacks
+        /// <summary>
+        /// Raised when the the method is called.
+        /// </summary>
+        public WeatherMethodStateMethodCallHandler OnCall;
+        #endregion
+
+        #region Public Properties
+        #endregion
+
+        #region Overridden Methods
+        /// <summary>
+        /// Invokes the method, returns the result and output argument.
+        /// </summary>
+        protected override ServiceResult Call(
+            ISystemContext _context,
+            NodeId _objectId,
+            IList<object> _inputArguments,
+            IList<object> _outputArguments)
+        {
+            if (OnCall == null)
+            {
+                return base.Call(_context, _objectId, _inputArguments, _outputArguments);
+            }
+
+            ServiceResult result = null;
+
+            string city = (string)_inputArguments[0];
+            DateTime date = (DateTime)_inputArguments[1];
+            float temp = (float)_inputArguments[2];
+
+            if (OnCall != null)
+            {
+                result = OnCall(
+                    _context,
+                    this,
+                    _objectId,
+                    city,
+                    date,
+                    temp);
+            }
+
+            return result;
+        }
+        #endregion
+
+        #region Private Fields
+        #endregion
+    }
+
+    /// <summary>
+    /// Used to receive notifications when the method is called.
+    /// </summary>
+    /// <exclude />
+    public delegate ServiceResult WeatherMethodStateMethodCallHandler(
+        ISystemContext context,
+        MethodState method,
+        NodeId objectId,
+        string city,
+        DateTime date,
+        float temp);
+    #endif
+    #endregion
+
+    #region WeatherEventState Class
+    #if (!OPCUA_EXCLUDE_WeatherEventState)
+    /// <summary>
+    /// Stores an instance of the WeatherEventType ObjectType.
+    /// </summary>
+    /// <exclude />
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
+    public partial class WeatherEventState : BaseEventState
+    {
+        #region Constructors
+        /// <summary>
+        /// Initializes the type with its default attribute values.
+        /// </summary>
+        public WeatherEventState(NodeState parent) : base(parent)
+        {
+        }
+
+        /// <summary>
+        /// Returns the id of the default type definition node for the instance.
+        /// </summary>
+        protected override NodeId GetDefaultTypeDefinitionId(NamespaceTable namespaceUris)
+        {
+            return Opc.Ua.NodeId.Create(Quickstarts.MyOPCServer.ObjectTypes.WeatherEventType, Quickstarts.MyOPCServer.Namespaces.MyOPCServer, namespaceUris);
+        }
+
+        #if (!OPCUA_EXCLUDE_InitializationStrings)
+        /// <summary>
+        /// Initializes the instance.
+        /// </summary>
+        protected override void Initialize(ISystemContext context)
+        {
+            Initialize(context, InitializationString);
+            InitializeOptionalChildren(context);
+        }
+
+        /// <summary>
+        /// Initializes the instance with a node.
+        /// </summary>
+        protected override void Initialize(ISystemContext context, NodeState source)
+        {
+            InitializeOptionalChildren(context);
+            base.Initialize(context, source);
+        }
+
+        /// <summary>
+        /// Initializes the any option children defined for the instance.
+        /// </summary>
+        protected override void InitializeOptionalChildren(ISystemContext context)
+        {
+            base.InitializeOptionalChildren(context);
+        }
+
+        #region Initialization String
+        private const string InitializationString =
+           "AQAAADkAAABodHRwczovL2dpdGh1Yi5jb20vZGFyaW9mdWdhbGU5NS9zZXJ2ZXItb3BjLXVhLWRvdG5l" +
+           "dGNvcmX/////BGCAAgEAAAABABgAAABXZWF0aGVyRXZlbnRUeXBlSW5zdGFuY2UBAaM6AQGjOqM6AAD/" +
+           "////CgAAABVgiQoCAAAAAAAHAAAARXZlbnRJZAEBpDoALgBEpDoAAAAP/////wEB/////wAAAAAVYIkK" +
+           "AgAAAAAACQAAAEV2ZW50VHlwZQEBpToALgBEpToAAAAR/////wEB/////wAAAAAVYIkKAgAAAAAACgAA" +
+           "AFNvdXJjZU5vZGUBAaY6AC4ARKY6AAAAEf////8BAf////8AAAAAFWCJCgIAAAAAAAoAAABTb3VyY2VO" +
+           "YW1lAQGnOgAuAESnOgAAAAz/////AQH/////AAAAABVgiQoCAAAAAAAEAAAAVGltZQEBqDoALgBEqDoA" +
+           "AAEAJgH/////AQH/////AAAAABVgiQoCAAAAAAALAAAAUmVjZWl2ZVRpbWUBAak6AC4ARKk6AAABACYB" +
+           "/////wEB/////wAAAAAVYIkKAgAAAAAACQAAAExvY2FsVGltZQEBqjoALgBEqjoAAAEA0CL/////AQH/" +
+           "////AAAAABVgiQoCAAAAAAAHAAAATWVzc2FnZQEBqzoALgBEqzoAAAAV/////wEB/////wAAAAAVYIkK" +
+           "AgAAAAAACAAAAFNldmVyaXR5AQGsOgAuAESsOgAAAAX/////AQH/////AAAAABVgiQoCAAAAAQAKAAAA" +
+           "V2VhdGhlck1hcAEBrToALgEBsTqtOgAAAQG1Ov////8BAf////8DAAAANWCJCgIAAAABAAQAAABEYXRl" +
+           "AQGuOgMAAAAAGQAAAERhdGUgb2Ygd2VhdGhlciBwcmV2aXNpb24ALwA/rjoAAAAN/////wEB/////wAA" +
+           "AAA1YIkKAgAAAAEACwAAAFRlbXBlcmF0dXJlAQGvOgMAAAAAHwAAAFRlbXBlcmF0dXJlIHByZXZpc2lv" +
+           "biBpbiBrZWx2aW4ALwA/rzoAAAAK/////wEB/////wAAAAA1YIkKAgAAAAEABAAAAENpdHkBAbA6AwAA" +
+           "AAAZAAAAQ2l0eSBvZiB3ZWF0aGVyIHByZXZpc2lvbgAvAD+wOgAAAAz/////AQH/////AAAAAA==";
+        #endregion
+        #endif
+        #endregion
+
+        #region Public Properties
+        /// <remarks />
+        public WeatherMapDataState WeatherMap
+        {
+            get
+            {
+                return m_weatherMap;
+            }
+
+            set
+            {
+                if (!Object.ReferenceEquals(m_weatherMap, value))
+                {
+                    ChangeMasks |= NodeStateChangeMasks.Children;
+                }
+
+                m_weatherMap = value;
+            }
+        }
+        #endregion
+
+        #region Overridden Methods
+        /// <summary>
+        /// Populates a list with the children that belong to the node.
+        /// </summary>
+        /// <param name="context">The context for the system being accessed.</param>
+        /// <param name="children">The list of children to populate.</param>
+        public override void GetChildren(
+            ISystemContext context,
+            IList<BaseInstanceState> children)
+        {
+            if (m_weatherMap != null)
+            {
+                children.Add(m_weatherMap);
+            }
+
+            base.GetChildren(context, children);
+        }
+
+        /// <summary>
+        /// Finds the child with the specified browse name.
+        /// </summary>
+        protected override BaseInstanceState FindChild(
+            ISystemContext context,
+            QualifiedName browseName,
+            bool createOrReplace,
+            BaseInstanceState replacement)
+        {
+            if (QualifiedName.IsNull(browseName))
+            {
+                return null;
+            }
+
+            BaseInstanceState instance = null;
+
+            switch (browseName.Name)
+            {
+                case Quickstarts.MyOPCServer.BrowseNames.WeatherMap:
+                {
+                    if (createOrReplace)
+                    {
+                        if (WeatherMap == null)
+                        {
+                            if (replacement == null)
+                            {
+                                WeatherMap = new WeatherMapDataState(this);
+                            }
+                            else
+                            {
+                                WeatherMap = (WeatherMapDataState)replacement;
+                            }
+                        }
+                    }
+
+                    instance = WeatherMap;
+                    break;
+                }
+            }
+
+            if (instance != null)
+            {
+                return instance;
+            }
+
+            return base.FindChild(context, browseName, createOrReplace, replacement);
+        }
+        #endregion
+
+        #region Private Fields
+        private WeatherMapDataState m_weatherMap;
         #endregion
     }
     #endif
@@ -268,12 +652,12 @@ namespace Quickstarts.MyOPCServer
         #region Initialization String
         private const string InitializationString =
            "AQAAADkAAABodHRwczovL2dpdGh1Yi5jb20vZGFyaW9mdWdhbGU5NS9zZXJ2ZXItb3BjLXVhLWRvdG5l" +
-           "dGNvcmX/////FWCJAgIAAAABABoAAABXZWF0aGVyTWFwRGF0YVR5cGVJbnN0YW5jZQEBnjoBAZ46njoA" +
-           "AAEBojr/////AQH/////AwAAADVgiQoCAAAAAQAEAAAARGF0ZQEBnzoDAAAAABkAAABEYXRlIG9mIHdl" +
-           "YXRoZXIgcHJldmlzaW9uAC8AP586AAAADf////8BAf////8AAAAANWCJCgIAAAABAAsAAABUZW1wZXJh" +
-           "dHVyZQEBoDoDAAAAAB8AAABUZW1wZXJhdHVyZSBwcmV2aXNpb24gaW4ga2VsdmluAC8AP6A6AAAACv//" +
-           "//8BAf////8AAAAANWCJCgIAAAABAAQAAABDaXR5AQGhOgMAAAAAGQAAAENpdHkgb2Ygd2VhdGhlciBw" +
-           "cmV2aXNpb24ALwA/oToAAAAM/////wEB/////wAAAAA=";
+           "dGNvcmX/////FWCJAgIAAAABABoAAABXZWF0aGVyTWFwRGF0YVR5cGVJbnN0YW5jZQEBsToBAbE6sToA" +
+           "AAEBtTr/////AQH/////AwAAADVgiQoCAAAAAQAEAAAARGF0ZQEBsjoDAAAAABkAAABEYXRlIG9mIHdl" +
+           "YXRoZXIgcHJldmlzaW9uAC8AP7I6AAAADf////8BAf////8AAAAANWCJCgIAAAABAAsAAABUZW1wZXJh" +
+           "dHVyZQEBszoDAAAAAB8AAABUZW1wZXJhdHVyZSBwcmV2aXNpb24gaW4ga2VsdmluAC8AP7M6AAAACv//" +
+           "//8BAf////8AAAAANWCJCgIAAAABAAQAAABDaXR5AQG0OgMAAAAAGQAAAENpdHkgb2Ygd2VhdGhlciBw" +
+           "cmV2aXNpb24ALwA/tDoAAAAM/////wEB/////wAAAAA=";
         #endregion
         #endif
         #endregion

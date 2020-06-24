@@ -48,7 +48,27 @@ namespace Quickstarts.MyOPCServer
         /// <summary>
         /// The identifier for the WeatherData DataType.
         /// </summary>
-        public const uint WeatherData = 15010;
+        public const uint WeatherData = 15029;
+    }
+    #endregion
+
+    #region Method Identifiers
+    /// <summary>
+    /// A class that declares constants for all Methods in the Model Design.
+    /// </summary>
+    /// <exclude />
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
+    public static partial class Methods
+    {
+        /// <summary>
+        /// The identifier for the OpenWeatherMapType_OpenWeatherMapMethod Method.
+        /// </summary>
+        public const uint OpenWeatherMapType_OpenWeatherMapMethod = 15007;
+
+        /// <summary>
+        /// The identifier for the OpenWeatherMap_OpenWeatherMapMethod Method.
+        /// </summary>
+        public const uint OpenWeatherMap_OpenWeatherMapMethod = 15036;
     }
     #endregion
 
@@ -63,22 +83,22 @@ namespace Quickstarts.MyOPCServer
         /// <summary>
         /// The identifier for the OpenWeatherMap Object.
         /// </summary>
-        public const uint OpenWeatherMap = 15011;
+        public const uint OpenWeatherMap = 15030;
 
         /// <summary>
         /// The identifier for the WeatherData_Encoding_DefaultBinary Object.
         /// </summary>
-        public const uint WeatherData_Encoding_DefaultBinary = 15016;
+        public const uint WeatherData_Encoding_DefaultBinary = 15038;
 
         /// <summary>
         /// The identifier for the WeatherData_Encoding_DefaultXml Object.
         /// </summary>
-        public const uint WeatherData_Encoding_DefaultXml = 15024;
+        public const uint WeatherData_Encoding_DefaultXml = 15046;
 
         /// <summary>
         /// The identifier for the WeatherData_Encoding_DefaultJson Object.
         /// </summary>
-        public const uint WeatherData_Encoding_DefaultJson = 15032;
+        public const uint WeatherData_Encoding_DefaultJson = 15054;
     }
     #endregion
 
@@ -94,6 +114,11 @@ namespace Quickstarts.MyOPCServer
         /// The identifier for the OpenWeatherMapType ObjectType.
         /// </summary>
         public const uint OpenWeatherMapType = 15001;
+
+        /// <summary>
+        /// The identifier for the WeatherEventType ObjectType.
+        /// </summary>
+        public const uint WeatherEventType = 15011;
     }
     #endregion
 
@@ -106,99 +131,139 @@ namespace Quickstarts.MyOPCServer
     public static partial class Variables
     {
         /// <summary>
+        /// The identifier for the OpenWeatherMapType_ApiURL Variable.
+        /// </summary>
+        public const uint OpenWeatherMapType_ApiURL = 15002;
+
+        /// <summary>
         /// The identifier for the OpenWeatherMapType_WeatherData Variable.
         /// </summary>
-        public const uint OpenWeatherMapType_WeatherData = 15002;
+        public const uint OpenWeatherMapType_WeatherData = 15003;
 
         /// <summary>
         /// The identifier for the OpenWeatherMapType_WeatherData_Date Variable.
         /// </summary>
-        public const uint OpenWeatherMapType_WeatherData_Date = 15003;
+        public const uint OpenWeatherMapType_WeatherData_Date = 15004;
 
         /// <summary>
         /// The identifier for the OpenWeatherMapType_WeatherData_Temperature Variable.
         /// </summary>
-        public const uint OpenWeatherMapType_WeatherData_Temperature = 15004;
+        public const uint OpenWeatherMapType_WeatherData_Temperature = 15005;
 
         /// <summary>
         /// The identifier for the OpenWeatherMapType_WeatherData_City Variable.
         /// </summary>
-        public const uint OpenWeatherMapType_WeatherData_City = 15005;
+        public const uint OpenWeatherMapType_WeatherData_City = 15006;
+
+        /// <summary>
+        /// The identifier for the OpenWeatherMapType_OpenWeatherMapMethod_InputArguments Variable.
+        /// </summary>
+        public const uint OpenWeatherMapType_OpenWeatherMapMethod_InputArguments = 15008;
+
+        /// <summary>
+        /// The identifier for the WeatherEventType_WeatherMap Variable.
+        /// </summary>
+        public const uint WeatherEventType_WeatherMap = 15021;
+
+        /// <summary>
+        /// The identifier for the WeatherEventType_WeatherMap_Date Variable.
+        /// </summary>
+        public const uint WeatherEventType_WeatherMap_Date = 15022;
+
+        /// <summary>
+        /// The identifier for the WeatherEventType_WeatherMap_Temperature Variable.
+        /// </summary>
+        public const uint WeatherEventType_WeatherMap_Temperature = 15023;
+
+        /// <summary>
+        /// The identifier for the WeatherEventType_WeatherMap_City Variable.
+        /// </summary>
+        public const uint WeatherEventType_WeatherMap_City = 15024;
 
         /// <summary>
         /// The identifier for the WeatherMapDataType_Date Variable.
         /// </summary>
-        public const uint WeatherMapDataType_Date = 15007;
+        public const uint WeatherMapDataType_Date = 15026;
 
         /// <summary>
         /// The identifier for the WeatherMapDataType_Temperature Variable.
         /// </summary>
-        public const uint WeatherMapDataType_Temperature = 15008;
+        public const uint WeatherMapDataType_Temperature = 15027;
 
         /// <summary>
         /// The identifier for the WeatherMapDataType_City Variable.
         /// </summary>
-        public const uint WeatherMapDataType_City = 15009;
+        public const uint WeatherMapDataType_City = 15028;
+
+        /// <summary>
+        /// The identifier for the OpenWeatherMap_ApiURL Variable.
+        /// </summary>
+        public const uint OpenWeatherMap_ApiURL = 15031;
 
         /// <summary>
         /// The identifier for the OpenWeatherMap_WeatherData Variable.
         /// </summary>
-        public const uint OpenWeatherMap_WeatherData = 15012;
+        public const uint OpenWeatherMap_WeatherData = 15032;
 
         /// <summary>
         /// The identifier for the OpenWeatherMap_WeatherData_Date Variable.
         /// </summary>
-        public const uint OpenWeatherMap_WeatherData_Date = 15013;
+        public const uint OpenWeatherMap_WeatherData_Date = 15033;
 
         /// <summary>
         /// The identifier for the OpenWeatherMap_WeatherData_Temperature Variable.
         /// </summary>
-        public const uint OpenWeatherMap_WeatherData_Temperature = 15014;
+        public const uint OpenWeatherMap_WeatherData_Temperature = 15034;
 
         /// <summary>
         /// The identifier for the OpenWeatherMap_WeatherData_City Variable.
         /// </summary>
-        public const uint OpenWeatherMap_WeatherData_City = 15015;
+        public const uint OpenWeatherMap_WeatherData_City = 15035;
+
+        /// <summary>
+        /// The identifier for the OpenWeatherMap_OpenWeatherMapMethod_InputArguments Variable.
+        /// </summary>
+        public const uint OpenWeatherMap_OpenWeatherMapMethod_InputArguments = 15037;
 
         /// <summary>
         /// The identifier for the MyOPCServer_BinarySchema Variable.
         /// </summary>
-        public const uint MyOPCServer_BinarySchema = 15017;
+        public const uint MyOPCServer_BinarySchema = 15039;
 
         /// <summary>
         /// The identifier for the MyOPCServer_BinarySchema_NamespaceUri Variable.
         /// </summary>
-        public const uint MyOPCServer_BinarySchema_NamespaceUri = 15019;
+        public const uint MyOPCServer_BinarySchema_NamespaceUri = 15041;
 
         /// <summary>
         /// The identifier for the MyOPCServer_BinarySchema_Deprecated Variable.
         /// </summary>
-        public const uint MyOPCServer_BinarySchema_Deprecated = 15020;
+        public const uint MyOPCServer_BinarySchema_Deprecated = 15042;
 
         /// <summary>
         /// The identifier for the MyOPCServer_BinarySchema_WeatherData Variable.
         /// </summary>
-        public const uint MyOPCServer_BinarySchema_WeatherData = 15021;
+        public const uint MyOPCServer_BinarySchema_WeatherData = 15043;
 
         /// <summary>
         /// The identifier for the MyOPCServer_XmlSchema Variable.
         /// </summary>
-        public const uint MyOPCServer_XmlSchema = 15025;
+        public const uint MyOPCServer_XmlSchema = 15047;
 
         /// <summary>
         /// The identifier for the MyOPCServer_XmlSchema_NamespaceUri Variable.
         /// </summary>
-        public const uint MyOPCServer_XmlSchema_NamespaceUri = 15027;
+        public const uint MyOPCServer_XmlSchema_NamespaceUri = 15049;
 
         /// <summary>
         /// The identifier for the MyOPCServer_XmlSchema_Deprecated Variable.
         /// </summary>
-        public const uint MyOPCServer_XmlSchema_Deprecated = 15028;
+        public const uint MyOPCServer_XmlSchema_Deprecated = 15050;
 
         /// <summary>
         /// The identifier for the MyOPCServer_XmlSchema_WeatherData Variable.
         /// </summary>
-        public const uint MyOPCServer_XmlSchema_WeatherData = 15029;
+        public const uint MyOPCServer_XmlSchema_WeatherData = 15051;
     }
     #endregion
 
@@ -213,7 +278,7 @@ namespace Quickstarts.MyOPCServer
         /// <summary>
         /// The identifier for the WeatherMapDataType VariableType.
         /// </summary>
-        public const uint WeatherMapDataType = 15006;
+        public const uint WeatherMapDataType = 15025;
     }
     #endregion
 
@@ -229,6 +294,26 @@ namespace Quickstarts.MyOPCServer
         /// The identifier for the WeatherData DataType.
         /// </summary>
         public static readonly ExpandedNodeId WeatherData = new ExpandedNodeId(Quickstarts.MyOPCServer.DataTypes.WeatherData, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
+    }
+    #endregion
+
+    #region Method Node Identifiers
+    /// <summary>
+    /// A class that declares constants for all Methods in the Model Design.
+    /// </summary>
+    /// <exclude />
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
+    public static partial class MethodIds
+    {
+        /// <summary>
+        /// The identifier for the OpenWeatherMapType_OpenWeatherMapMethod Method.
+        /// </summary>
+        public static readonly ExpandedNodeId OpenWeatherMapType_OpenWeatherMapMethod = new ExpandedNodeId(Quickstarts.MyOPCServer.Methods.OpenWeatherMapType_OpenWeatherMapMethod, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
+
+        /// <summary>
+        /// The identifier for the OpenWeatherMap_OpenWeatherMapMethod Method.
+        /// </summary>
+        public static readonly ExpandedNodeId OpenWeatherMap_OpenWeatherMapMethod = new ExpandedNodeId(Quickstarts.MyOPCServer.Methods.OpenWeatherMap_OpenWeatherMapMethod, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
     }
     #endregion
 
@@ -274,6 +359,11 @@ namespace Quickstarts.MyOPCServer
         /// The identifier for the OpenWeatherMapType ObjectType.
         /// </summary>
         public static readonly ExpandedNodeId OpenWeatherMapType = new ExpandedNodeId(Quickstarts.MyOPCServer.ObjectTypes.OpenWeatherMapType, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
+
+        /// <summary>
+        /// The identifier for the WeatherEventType ObjectType.
+        /// </summary>
+        public static readonly ExpandedNodeId WeatherEventType = new ExpandedNodeId(Quickstarts.MyOPCServer.ObjectTypes.WeatherEventType, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
     }
     #endregion
 
@@ -285,6 +375,11 @@ namespace Quickstarts.MyOPCServer
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
     public static partial class VariableIds
     {
+        /// <summary>
+        /// The identifier for the OpenWeatherMapType_ApiURL Variable.
+        /// </summary>
+        public static readonly ExpandedNodeId OpenWeatherMapType_ApiURL = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.OpenWeatherMapType_ApiURL, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
+
         /// <summary>
         /// The identifier for the OpenWeatherMapType_WeatherData Variable.
         /// </summary>
@@ -306,6 +401,31 @@ namespace Quickstarts.MyOPCServer
         public static readonly ExpandedNodeId OpenWeatherMapType_WeatherData_City = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.OpenWeatherMapType_WeatherData_City, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
 
         /// <summary>
+        /// The identifier for the OpenWeatherMapType_OpenWeatherMapMethod_InputArguments Variable.
+        /// </summary>
+        public static readonly ExpandedNodeId OpenWeatherMapType_OpenWeatherMapMethod_InputArguments = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.OpenWeatherMapType_OpenWeatherMapMethod_InputArguments, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
+
+        /// <summary>
+        /// The identifier for the WeatherEventType_WeatherMap Variable.
+        /// </summary>
+        public static readonly ExpandedNodeId WeatherEventType_WeatherMap = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.WeatherEventType_WeatherMap, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
+
+        /// <summary>
+        /// The identifier for the WeatherEventType_WeatherMap_Date Variable.
+        /// </summary>
+        public static readonly ExpandedNodeId WeatherEventType_WeatherMap_Date = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.WeatherEventType_WeatherMap_Date, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
+
+        /// <summary>
+        /// The identifier for the WeatherEventType_WeatherMap_Temperature Variable.
+        /// </summary>
+        public static readonly ExpandedNodeId WeatherEventType_WeatherMap_Temperature = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.WeatherEventType_WeatherMap_Temperature, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
+
+        /// <summary>
+        /// The identifier for the WeatherEventType_WeatherMap_City Variable.
+        /// </summary>
+        public static readonly ExpandedNodeId WeatherEventType_WeatherMap_City = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.WeatherEventType_WeatherMap_City, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
+
+        /// <summary>
         /// The identifier for the WeatherMapDataType_Date Variable.
         /// </summary>
         public static readonly ExpandedNodeId WeatherMapDataType_Date = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.WeatherMapDataType_Date, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
@@ -319,6 +439,11 @@ namespace Quickstarts.MyOPCServer
         /// The identifier for the WeatherMapDataType_City Variable.
         /// </summary>
         public static readonly ExpandedNodeId WeatherMapDataType_City = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.WeatherMapDataType_City, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
+
+        /// <summary>
+        /// The identifier for the OpenWeatherMap_ApiURL Variable.
+        /// </summary>
+        public static readonly ExpandedNodeId OpenWeatherMap_ApiURL = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.OpenWeatherMap_ApiURL, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
 
         /// <summary>
         /// The identifier for the OpenWeatherMap_WeatherData Variable.
@@ -339,6 +464,11 @@ namespace Quickstarts.MyOPCServer
         /// The identifier for the OpenWeatherMap_WeatherData_City Variable.
         /// </summary>
         public static readonly ExpandedNodeId OpenWeatherMap_WeatherData_City = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.OpenWeatherMap_WeatherData_City, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
+
+        /// <summary>
+        /// The identifier for the OpenWeatherMap_OpenWeatherMapMethod_InputArguments Variable.
+        /// </summary>
+        public static readonly ExpandedNodeId OpenWeatherMap_OpenWeatherMapMethod_InputArguments = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.OpenWeatherMap_OpenWeatherMapMethod_InputArguments, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
 
         /// <summary>
         /// The identifier for the MyOPCServer_BinarySchema Variable.
@@ -405,6 +535,11 @@ namespace Quickstarts.MyOPCServer
     public static partial class BrowseNames
     {
         /// <summary>
+        /// The BrowseName for the ApiURL component.
+        /// </summary>
+        public const string ApiURL = "ApiURL";
+
+        /// <summary>
         /// The BrowseName for the City component.
         /// </summary>
         public const string City = "City";
@@ -430,6 +565,11 @@ namespace Quickstarts.MyOPCServer
         public const string OpenWeatherMap = "OpenWeatherMap";
 
         /// <summary>
+        /// The BrowseName for the OpenWeatherMapMethod component.
+        /// </summary>
+        public const string OpenWeatherMapMethod = "OpenWeatherMapMethod";
+
+        /// <summary>
         /// The BrowseName for the OpenWeatherMapType component.
         /// </summary>
         public const string OpenWeatherMapType = "OpenWeatherMapType";
@@ -443,6 +583,16 @@ namespace Quickstarts.MyOPCServer
         /// The BrowseName for the WeatherData component.
         /// </summary>
         public const string WeatherData = "WeatherData";
+
+        /// <summary>
+        /// The BrowseName for the WeatherEventType component.
+        /// </summary>
+        public const string WeatherEventType = "WeatherEventType";
+
+        /// <summary>
+        /// The BrowseName for the WeatherMap component.
+        /// </summary>
+        public const string WeatherMap = "WeatherMap";
 
         /// <summary>
         /// The BrowseName for the WeatherMapDataType component.
