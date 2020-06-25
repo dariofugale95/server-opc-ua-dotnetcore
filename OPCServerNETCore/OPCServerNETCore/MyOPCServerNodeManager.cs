@@ -40,6 +40,7 @@ using Opc.Ua.Server;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using Opc.Ua.Configuration;
+using Org.BouncyCastle.Security;
 
 namespace Quickstarts.MyOPCServer
 {
@@ -80,6 +81,8 @@ namespace Quickstarts.MyOPCServer
             Console.WriteLine(m_typeNamespaceIndex);
             m_namespaceIndex = Server.NamespaceUris.GetIndexOrAppend(namespaceUris[1]);
             Console.WriteLine(m_namespaceIndex);
+            
+            
         }
         #endregion
 
@@ -120,33 +123,34 @@ namespace Quickstarts.MyOPCServer
             lock (Lock)
             {
                 base.CreateAddressSpace(externalReferences);
-              
+                
+
                 // ensure trigger can be found via the server object. 
-                /*
+               
                 IList<IReference> references = null;
-                ImportXml(externalReferences, "/Users/giuli/Documents/GitHub/server-opc-ua-dotnetcore/OPCServerNETCore/OPCServerNETCore/Published2/Quickstarts.MyOPCServer.PredefinedNodes.uanodes")
 
 
-                if (!externalReferences.TryGetValue(ObjectIds.ObjectsFolder, out references))
+
+                if (!externalReferences.TryGetValue(Opc.Ua.ObjectIds.ObjectsFolder, out references))
                 {
-                    externalReferences[ObjectIds.ObjectsFolder] = references = new List<IReference>();
+                    externalReferences[Opc.Ua.ObjectIds.ObjectsFolder] = references = new List<IReference>();
                 }
                 
-                /*
+                
                 FolderState dataSourcesFolder = CreateFolder(null, "DataSourceFolder", "DataSourceFolder");
-                dataSourcesFolder.AddReference(ReferenceTypes.Organizes, true, ObjectIds.ObjectsFolder);
+                dataSourcesFolder.AddReference(ReferenceTypes.Organizes, true, Opc.Ua.ObjectIds.ObjectsFolder);
                 references.Add(new NodeStateReference(ReferenceTypes.Organizes, false, dataSourcesFolder.NodeId));
                 dataSourcesFolder.EventNotifier = EventNotifiers.SubscribeToEvents;
                 dataSourcesFolder.Description = "A folder containing data sources";
 
                 AddRootNotifier(dataSourcesFolder);
-                */
+               
 
                 try
                 {
 
                     SetupNodes();
-                    //BaseDataVariableState openWeatherMapData = CreateVariable(dataSourcesFolder, "/OpenWeatherMapData", "OpenWeatherMapData", DataTypeIds.Float, ValueRanks.Scalar);
+                    
 
 
                 }
@@ -157,9 +161,9 @@ namespace Quickstarts.MyOPCServer
                 }
 
 
-               
-               
-              
+                AddPredefinedNode(SystemContext, dataSourcesFolder);
+
+                
             }
         }
 
@@ -194,14 +198,14 @@ namespace Quickstarts.MyOPCServer
         /// <summary>
         /// Creates a new folder.
         /// </summary>
-        /*
+       
         private FolderState CreateFolder(NodeState parent, string path, string name)
         {
             FolderState folder = new FolderState(parent);
 
             folder.SymbolicName = name;
             folder.ReferenceTypeId = ReferenceTypes.Organizes;
-            folder.TypeDefinitionId = ObjectTypeIds.FolderType;
+            folder.TypeDefinitionId = Opc.Ua.ObjectTypeIds.FolderType;
             folder.NodeId = new NodeId(path, NamespaceIndex);
             folder.BrowseName = new QualifiedName(path, NamespaceIndex);
             folder.DisplayName = new LocalizedText("en", name);
@@ -216,7 +220,7 @@ namespace Quickstarts.MyOPCServer
 
             return folder;
         }
-        */
+        
         protected override NodeStateCollection LoadPredefinedNodes(ISystemContext context)
         {
           
@@ -226,7 +230,7 @@ namespace Quickstarts.MyOPCServer
             //predefinedNodes.LoadFromBinaryResource(context, "Published2/" + "Quickstarts.MyOPCServer.PredefinedNodes.uanodes", this.GetType().GetTypeInfo().Assembly, true);
             predefinedNodes.LoadFromBinaryResource(context, "/Users/giuli/Documents/GitHub/server-opc-ua-dotnetcore/OPCServerNETCore/OPCServerNETCore/Published2/Quickstarts.MyOPCServer.PredefinedNodes.uanodes", this.GetType().GetTypeInfo().Assembly, true);
             Console.WriteLine(predefinedNodes.Count.ToString());
-   
+            
             return predefinedNodes;
         }
 
@@ -414,7 +418,9 @@ namespace Quickstarts.MyOPCServer
         private OpenWeatherMapState openWeatherObject;
         private ushort m_namespaceIndex;
         private ushort m_typeNamespaceIndex;
+
         
+
         #endregion
     }
 }

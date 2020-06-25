@@ -144,13 +144,13 @@ namespace Quickstarts.MyOPCServer
                 args.Identity = VerifyPassword(userNameToken);
 
                 // set AuthenticatedUser role for accepted user/password authentication
-                //args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_AuthenticatedUser);
+                args.Identity.GrantedRoleIds.Add(Opc.Ua.ObjectIds.WellKnownRole_AuthenticatedUser);
 
                 if (args.Identity is SystemConfigurationIdentity)
                 {
                     // set ConfigureAdmin role for user with permission to configure server
-                    //args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_ConfigureAdmin);
-                    //args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_SecurityAdmin);
+                    args.Identity.GrantedRoleIds.Add(Opc.Ua.ObjectIds.WellKnownRole_ConfigureAdmin);
+                    args.Identity.GrantedRoleIds.Add(Opc.Ua.ObjectIds.WellKnownRole_SecurityAdmin);
                 }
 
                 return;
@@ -166,7 +166,7 @@ namespace Quickstarts.MyOPCServer
                 Utils.Trace("X509 Token Accepted: {0}", args.Identity.DisplayName);
 
                 // set AuthenticatedUser role for accepted certificate authentication
-                //args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_AuthenticatedUser);
+                args.Identity.GrantedRoleIds.Add(Opc.Ua.ObjectIds.WellKnownRole_AuthenticatedUser);
 
                 return;
             }
@@ -174,7 +174,7 @@ namespace Quickstarts.MyOPCServer
             // allow anonymous authentication and set Anonymous role for this authentication
             args.Identity = new UserIdentity();
             
-            //args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_Anonymous);
+            args.Identity.GrantedRoleIds.Add(Opc.Ua.ObjectIds.WellKnownRole_Anonymous);
         }
 
         private void VerifyUserTokenCertificate(X509Certificate2 certificate)

@@ -5,41 +5,43 @@ Find document comments here
 https://github.com/OPCFoundation/UA-.NETStandard/blob/master/Stack/Opc.Ua.Core/Schema/ApplicationConfiguration.cs
 -->
 
+
 <ApplicationConfiguration
   xmlns:ua="http://opcfoundation.org/UA/2008/02/Types.xsd"
   xmlns="http://opcfoundation.org/UA/SDK/Configuration.xsd"
   schemaLocation="./Schema/ApplicationConfiguration.xsd">
 
-	<ApplicationName>MyOPCServer</ApplicationName>
-	<ApplicationUri>urn:localhost:castagnolofugale:MyOPCServer</ApplicationUri>
-	<ProductUri>https://github.com/dariofugale95/server-opc-ua-dotnetcore</ProductUri>
-	<ApplicationType>Server_0</ApplicationType>
+  <ApplicationName>MyOPCServer</ApplicationName>
+  <ApplicationUri>urn:localhost:castagnolofugale:MyOPCServer</ApplicationUri>
+  <ProductUri>https://github.com/dariofugale95/server-opc-ua-dotnetcore</ProductUri>
+  <ApplicationType>Server_0</ApplicationType>
 
   <SecurityConfiguration>
 
     <!-- Where the application instance certificate is stored-->
     <ApplicationCertificate>
       <StoreType>Directory</StoreType>
-      <StorePath>C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\cert\own</StorePath>
-      <SubjectName>CN=Server C#, C=US, S=Arizona, O=OPC Foundation, DC=localhost</SubjectName>
+      <StorePath>%CommonApplicationData%\OPC Foundation\pki\own</StorePath>
+      <SubjectName>CN=MyOPCServer, C=IT, S=Sicily, O=OPC Foundation, DC=localhost</SubjectName>
     </ApplicationCertificate>
+
 
     <!-- Where the issuer certificate are stored (certificate authorities) -->
     <TrustedIssuerCertificates>
       <StoreType>Directory</StoreType>
-      <StorePath>C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\cert\issuer</StorePath>
+      <StorePath>%CommonApplicationData%\OPC Foundation\pki\issuer</StorePath>
     </TrustedIssuerCertificates>
 
     <!-- Where the trust list is stored -->
     <TrustedPeerCertificates>
       <StoreType>Directory</StoreType>
-      <StorePath>C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\cert\trusted</StorePath>
+      <StorePath>%CommonApplicationData%\OPC Foundation\pki\trusted</StorePath>
     </TrustedPeerCertificates>
 
     <!-- The directory used to store invalid certficates for later review by the administrator. -->
     <RejectedCertificateStore>
       <StoreType>Directory</StoreType>
-      <StorePath>C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\cert\rejected</StorePath>
+      <StorePath>%CommonApplicationData%\OPC Foundation\pki\rejected</StorePath>
     </RejectedCertificateStore>
 
     <!-- WARNING: The following setting (to automatically accept untrusted certificates) should be used
@@ -57,13 +59,13 @@ https://github.com/OPCFoundation/UA-.NETStandard/blob/master/Stack/Opc.Ua.Core/S
     <!-- Where the User issuer certificates are stored -->
     <UserIssuerCertificates>
       <StoreType>Directory</StoreType>
-      <StorePath>C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\cert\issuerUser</StorePath>
+      <StorePath>%CommonApplicationData%\OPC Foundation\pki\issuerUser</StorePath>
     </UserIssuerCertificates>
 
     <!-- Where the User trust list is stored-->
     <TrustedUserCertificates>
       <StoreType>Directory</StoreType>
-      <StorePath>C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\cert\trustedUser</StorePath>
+      <StorePath>%CommonApplicationData%\OPC Foundation\pki\trustedUser</StorePath>
     </TrustedUserCertificates>
   </SecurityConfiguration>
 
@@ -78,11 +80,11 @@ https://github.com/OPCFoundation/UA-.NETStandard/blob/master/Stack/Opc.Ua.Core/S
     <ChannelLifetime>300000</ChannelLifetime>
     <SecurityTokenLifetime>3600000</SecurityTokenLifetime>
   </TransportQuotas>
-  
-	<ServerConfiguration>
-		<BaseAddresses>
-			<ua:String>opc.tcp://localhost:51210/UA/MyOPCServer</ua:String>
-		</BaseAddresses>
+
+  <ServerConfiguration>
+    <BaseAddresses>
+      <ua:String>opc.tcp://localhost:51210/UA/MyOPCServer</ua:String>
+    </BaseAddresses>
 
     <SecurityPolicies>
       <ServerSecurityPolicy>
@@ -140,9 +142,9 @@ https://github.com/OPCFoundation/UA-.NETStandard/blob/master/Stack/Opc.Ua.Core/S
         <SecurityPolicyUri></SecurityPolicyUri>
       </ServerSecurityPolicy>
     </SecurityPolicies>
-		<MinRequestThreadCount>5</MinRequestThreadCount>
-		<MaxRequestThreadCount>100</MaxRequestThreadCount>
-		<MaxQueuedRequestCount>2000</MaxQueuedRequestCount>
+    <MinRequestThreadCount>5</MinRequestThreadCount>
+    <MaxRequestThreadCount>100</MaxRequestThreadCount>
+    <MaxQueuedRequestCount>2000</MaxQueuedRequestCount>
 
     <!-- The SDK expects the server to support the same set of user tokens for every endpoint. -->
     <UserTokenPolicies>
@@ -207,53 +209,53 @@ https://github.com/OPCFoundation/UA-.NETStandard/blob/master/Stack/Opc.Ua.Core/S
       </SamplingRateGroup>
     </AvailableSamplingRates>
 
-		<MaxRegistrationInterval>30000</MaxRegistrationInterval>
-		<NodeManagerSaveFile>Opc.Ua.Server.nodes.xml</NodeManagerSaveFile>
+    <MaxRegistrationInterval>30000</MaxRegistrationInterval>
+    <NodeManagerSaveFile>Opc.Ua.Server.nodes.xml</NodeManagerSaveFile>
 
-		<MaxPublishRequestCount>20</MaxPublishRequestCount>
-		<MaxSubscriptionCount>100</MaxSubscriptionCount>
-		<MaxEventQueueSize>10000</MaxEventQueueSize>
-		<MinSubscriptionLifetime>10000</MinSubscriptionLifetime>
+    <MaxPublishRequestCount>20</MaxPublishRequestCount>
+    <MaxSubscriptionCount>100</MaxSubscriptionCount>
+    <MaxEventQueueSize>10000</MaxEventQueueSize>
+    <MinSubscriptionLifetime>10000</MinSubscriptionLifetime>
 
-		<!-- see https://opcfoundation-onlineapplications.org/profilereporting/ for list of available profiles -->
-		<ServerProfileArray>
-			<ua:String>Standard UA Server Profile</ua:String>
-			<ua:String>Data Access Server Facet</ua:String>
-			<ua:String>Method Server Facet</ua:String>
-		</ServerProfileArray>
-		<ShutdownDelay>5</ShutdownDelay>
-		<ServerCapabilities>
-			<ua:String>DA</ua:String>
-		</ServerCapabilities>
-		<SupportedPrivateKeyFormats>
-			<ua:String>PFX</ua:String>
-			<ua:String>PEM</ua:String>
-		</SupportedPrivateKeyFormats>
-		<MaxTrustListSize>0</MaxTrustListSize>
-		<MultiCastDnsEnabled>false</MultiCastDnsEnabled>
+    <!-- see https://opcfoundation-onlineapplications.org/profilereporting/ for list of available profiles -->
+    <ServerProfileArray>
+      <ua:String>Standard UA Server Profile</ua:String>
+      <ua:String>Data Access Server Facet</ua:String>
+      <ua:String>Method Server Facet</ua:String>
+    </ServerProfileArray>
+    <ShutdownDelay>5</ShutdownDelay>
+    <ServerCapabilities>
+      <ua:String>DA</ua:String>
+    </ServerCapabilities>
+    <SupportedPrivateKeyFormats>
+      <ua:String>PFX</ua:String>
+      <ua:String>PEM</ua:String>
+    </SupportedPrivateKeyFormats>
+    <MaxTrustListSize>0</MaxTrustListSize>
+    <MultiCastDnsEnabled>false</MultiCastDnsEnabled>
 
-	</ServerConfiguration>
+  </ServerConfiguration>
 
-	<TraceConfiguration>
-		<OutputFilePath>%LocalApplicationData%/Logs/MyOPCServer.log.txt</OutputFilePath>
-		<DeleteOnLoad>true</DeleteOnLoad>
-		<!-- Show Only Security, Errors and StartStop-->
-		<TraceMasks>641</TraceMasks>
-		<!-- Show Only Errors -->
-		<!-- <TraceMasks>1</TraceMasks> -->
-		<!-- Show Only Security and Errors -->
-		<!-- <TraceMasks>513</TraceMasks> -->
-		<!-- Show Only Security, Errors and Trace -->
-		<!-- <TraceMasks>515</TraceMasks> -->
-		<!-- Show Only Security, COM Calls, Errors and Trace -->
-		<!-- <TraceMasks>771</TraceMasks> -->
-		<!-- Show Only Security, Service Calls, Errors and Trace -->
-		<!-- <TraceMasks>523</TraceMasks> -->
-		<!-- Show Only Security, ServiceResultExceptions, Errors and Trace -->
-		<!-- <TraceMasks>519</TraceMasks> -->
-	</TraceConfiguration>
+  <TraceConfiguration>
+    <OutputFilePath>%LocalApplicationData%/Logs/MyOPCServer.log.txt</OutputFilePath>
+    <DeleteOnLoad>true</DeleteOnLoad>
+    <!-- Show Only Security, Errors and StartStop-->
+    <TraceMasks>641</TraceMasks>
+    <!-- Show Only Errors -->
+    <!-- <TraceMasks>1</TraceMasks> -->
+    <!-- Show Only Security and Errors -->
+    <!-- <TraceMasks>513</TraceMasks> -->
+    <!-- Show Only Security, Errors and Trace -->
+    <!-- <TraceMasks>515</TraceMasks> -->
+    <!-- Show Only Security, COM Calls, Errors and Trace -->
+    <!-- <TraceMasks>771</TraceMasks> -->
+    <!-- Show Only Security, Service Calls, Errors and Trace -->
+    <!-- <TraceMasks>523</TraceMasks> -->
+    <!-- Show Only Security, ServiceResultExceptions, Errors and Trace -->
+    <!-- <TraceMasks>519</TraceMasks> -->
+  </TraceConfiguration>
 
-	<!-- Disables the hi-res clock if the QueryPerformanceCounter does work on a particular machine. -->
-	<DisableHiResClock>true</DisableHiResClock>
+  <!-- Disables the hi-res clock if the QueryPerformanceCounter does work on a particular machine. -->
+  <DisableHiResClock>true</DisableHiResClock>
 
 </ApplicationConfiguration>
