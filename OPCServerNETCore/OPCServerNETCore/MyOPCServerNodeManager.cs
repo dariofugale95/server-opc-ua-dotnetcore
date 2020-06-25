@@ -162,28 +162,23 @@ namespace Quickstarts.MyOPCServer
 
         private void SetupNodes()
         {
-         
+
             Console.WriteLine("SetupNodes");
-           
-            weather_prova = FindPredefinedNode<OpenWeatherMapState>(Objects.OpenWeatherMap);
-    
-            weather_prova.OpenWeatherMapMethod.OnCall = setup_input;
-            /*
-            weather_prova.WeatherData.Temperature.Value = (float)23.3;
-            weather_prova.WeatherData.City.Value = "Catania";
-            weather_prova.WeatherData.Date.Value = DateTime.UtcNow.Date;
-            */
+            openWeatherObject = FindPredefinedNode<OpenWeatherMapState>(Objects.OpenWeatherMap);
+
+            openWeatherObject.OpenWeatherMapMethod.OnCall = WeatherRequest;
+         
 
         }
 
-        private ServiceResult setup_input(ISystemContext context, MethodState method, NodeId objectId, string city)
+        private ServiceResult WeatherRequest(ISystemContext context, MethodState method, NodeId objectId, string city)
         {
             Console.WriteLine("Il metodo è stato invocato dal client con seguente input"+city);
             OpenWeatherMapDataClass openWeatherData=apiRequests.GetWeatherDataByCity(city);
             double temp=openWeatherData.Main.Temp-273.15;
-            weather_prova.WeatherData.Temperature.Value = (float)temp;
-            weather_prova.WeatherData.City.Value = openWeatherData.Name.ToString();
-            weather_prova.WeatherData.Date.Value = DateTime.UtcNow.Date;
+            openWeatherObject.WeatherData.Temperature.Value = (float)temp;
+            openWeatherObject.WeatherData.City.Value = openWeatherData.Name.ToString();
+            openWeatherObject.WeatherData.Date.Value = DateTime.UtcNow.Date;
 
             return ServiceResult.Good;
         }
@@ -385,14 +380,14 @@ namespace Quickstarts.MyOPCServer
         }
 
 
-        private OpenWeatherMapState weather_prova;
+        
         
  
         #region Private Fields
         private MyOPCServerConfiguration m_configuration;
         private OpenWeatherMapApiRequests apiRequests;
       
-        
+        private OpenWeatherMapState openWeatherObject;
         private ushort m_namespaceIndex;
         private ushort m_typeNamespaceIndex;
         
