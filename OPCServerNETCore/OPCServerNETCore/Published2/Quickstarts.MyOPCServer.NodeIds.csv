@@ -1,3 +1,5 @@
+InputClient,15057,Object
+InputClientType,15055,ObjectType
 MyOPCServer_BinarySchema,15039,Variable
 MyOPCServer_XmlSchema,15047,Variable
 OpenWeatherMap,15030,Object

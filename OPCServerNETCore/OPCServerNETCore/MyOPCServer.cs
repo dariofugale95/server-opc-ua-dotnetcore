@@ -136,33 +136,27 @@ namespace Quickstarts.MyOPCServer
         //un client potrebbe cambiare la sua user identity, questo metodo serve a gestire la cosa
         private void SessionManager_ImpersonateUser(Session session, ImpersonateEventArgs args)
         {
-
+            // check for a user name token.
             UserNameIdentityToken userNameToken = args.NewIdentity as UserNameIdentityToken;
-            //controlliamo che lo username token sia valido
+
             if (userNameToken != null)
             {
-                //il metodo verifypassword verifica che la password sia valida per lo usertoken corrente
                 args.Identity = VerifyPassword(userNameToken);
-                Utils.Trace("UserName Token Accepted: {0}", args.Identity.DisplayName);
-                
-
-                /*
 
                 // set AuthenticatedUser role for accepted user/password authentication
-                args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_AuthenticatedUser);
-                //se l'identità dell'utente è di tipo SystemConfigurationIdentity allora l'utente ha il permesso di configurare il server
+                //args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_AuthenticatedUser);
+
                 if (args.Identity is SystemConfigurationIdentity)
                 {
-
-                    args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_ConfigureAdmin);
-                    args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_SecurityAdmin);
+                    // set ConfigureAdmin role for user with permission to configure server
+                    //args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_ConfigureAdmin);
+                    //args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_SecurityAdmin);
                 }
-                */
 
                 return;
             }
 
-            // carichiamo il token
+            // check for x509 user token.
             X509IdentityToken x509Token = args.NewIdentity as X509IdentityToken;
 
             if (x509Token != null)
@@ -173,23 +167,20 @@ namespace Quickstarts.MyOPCServer
 
                 // set AuthenticatedUser role for accepted certificate authentication
                 //args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_AuthenticatedUser);
-                Utils.Trace("X509 Token Accepted: {0}", args.Identity.DisplayName);
 
                 return;
             }
 
-            // se il token è nullo allora come identità si setta quella anonima 
+            // allow anonymous authentication and set Anonymous role for this authentication
             args.Identity = new UserIdentity();
+            
             //args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_Anonymous);
         }
 
-
         private void VerifyUserTokenCertificate(X509Certificate2 certificate)
         {
-            //verifichiamo se un certificato è affidabile
             try
             {
-
                 if (m_userCertificateValidator != null)
                 {
                     m_userCertificateValidator.Validate(certificate);
@@ -198,9 +189,6 @@ namespace Quickstarts.MyOPCServer
                 {
                     CertificateValidator.Validate(certificate);
                 }
-
-
-
             }
             catch (Exception e)
             {
@@ -235,25 +223,17 @@ namespace Quickstarts.MyOPCServer
                     new LocalizedText(info)));
             }
         }
-
         private IUserIdentity VerifyPassword(UserNameIdentityToken userNameToken)
         {
-            //carichiamo le credenziali 
-            var password = userNameToken.Password.ToString();
-            var user = userNameToken.UserName;
-            if (String.IsNullOrEmpty(user))
+            var userName = userNameToken.UserName;
+            var password = userNameToken.DecryptedPassword;
+            if (String.IsNullOrEmpty(userName))
             {
-                //se lo user è nullo dobbiamo lanciare un'eccezione poichè questo campo non può essere vuoto
+                // an empty username is not accepted.
                 throw ServiceResultException.Create(StatusCodes.BadIdentityTokenInvalid,
-                   "Security token is not a valid username token. An empty username is not accepted.");
+                    "Security token is not a valid username token. An empty username is not accepted.");
             }
 
-            if (String.IsNullOrEmpty(password))
-            {
-                //se la password è nulla dobbiamo lanciare un'eccezione poichè questo campo non può essere vuoto
-                throw ServiceResultException.Create(StatusCodes.BadIdentityTokenInvalid,
-                   "Security token is not a valid username token. An empty password is not accepted.");
-            }
             if (String.IsNullOrEmpty(password))
             {
                 // an empty password is not accepted.
@@ -262,23 +242,21 @@ namespace Quickstarts.MyOPCServer
             }
 
             // User with permission to configure server
-            if (user == "sysadmin" && password == "demo")
+            if (userName == "sysadmin" && password == "demo")
             {
                 return new SystemConfigurationIdentity(new UserIdentity(userNameToken));
             }
 
             // standard users for CTT verification
-            if (!((user == "user1" && password == "password") ||
-                (user == "user2" && password == "password1")))
-
+            if (!((userName == "user1" && password == "password") ||
+                (userName == "user2" && password == "password1")))
             {
-                TranslationInfo info;
                 // construct translation object with default text.
-                info = new TranslationInfo(
+                TranslationInfo info = new TranslationInfo(
                     "InvalidPassword",
                     "en-US",
                     "Invalid username or password.",
-                    user);
+                    userName);
 
                 // create an exception with a vendor defined sub-code.
                 throw new ServiceResultException(new ServiceResult(
