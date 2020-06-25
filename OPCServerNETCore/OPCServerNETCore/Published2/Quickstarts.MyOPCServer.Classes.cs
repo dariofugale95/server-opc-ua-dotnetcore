@@ -99,9 +99,8 @@ namespace Quickstarts.MyOPCServer
            "dHVyZSBwcmV2aXNpb24gaW4ga2VsdmluAC8AP506AAAACv////8BAf////8AAAAANWCJCgIAAAABAAQA" +
            "AABDaXR5AQGeOgMAAAAAGQAAAENpdHkgb2Ygd2VhdGhlciBwcmV2aXNpb24ALwA/njoAAAAM/////wEB" +
            "/////wAAAAAEYYIKBAAAAAEAFAAAAE9wZW5XZWF0aGVyTWFwTWV0aG9kAQGfOgAvAQGfOp86AAABAQEA" +
-           "AAABAPkLAAEBozoBAAAAF2CpCgIAAAAAAA4AAABJbnB1dEFyZ3VtZW50cwEBoDoALgBEoDoAAJYDAAAA" +
-           "AQAqAQETAAAABAAAAENpdHkADP////8AAAAAAAEAKgEBEwAAAAQAAABkYXRlAA3/////AAAAAAABACoB" +
-           "ARMAAAAEAAAAVGVtcAAK/////wAAAAAAAQAoAQEAAAABAAAAAAAAAAEB/////wAAAAA=";
+           "AAABAPkLAAEBozoBAAAAF2CpCgIAAAAAAA4AAABJbnB1dEFyZ3VtZW50cwEBoDoALgBEoDoAAJYBAAAA" +
+           "AQAqAQETAAAABAAAAENpdHkADP////8AAAAAAAEAKAEBAAAAAQAAAAAAAAABAf////8AAAAA";
         #endregion
         #endif
         #endregion
@@ -499,9 +498,8 @@ namespace Quickstarts.MyOPCServer
         private const string InitializationString =
            "AQAAADkAAABodHRwczovL2dpdGh1Yi5jb20vZGFyaW9mdWdhbGU5NS9zZXJ2ZXItb3BjLXVhLWRvdG5l" +
            "dGNvcmX/////BGGCCgQAAAABABEAAABXZWF0aGVyTWV0aG9kVHlwZQEBoToALwEBoTqhOgAAAQEBAAAA" +
-           "AQD5CwABAaM6AQAAABdgqQoCAAAAAAAOAAAASW5wdXRBcmd1bWVudHMBAaI6AC4ARKI6AACWAwAAAAEA" +
-           "KgEBEwAAAAQAAABDaXR5AAz/////AAAAAAABACoBARMAAAAEAAAAZGF0ZQAN/////wAAAAAAAQAqAQET" +
-           "AAAABAAAAFRlbXAACv////8AAAAAAAEAKAEBAAAAAQAAAAAAAAABAf////8AAAAA";
+           "AQD5CwABAaM6AQAAABdgqQoCAAAAAAAOAAAASW5wdXRBcmd1bWVudHMBAaI6AC4ARKI6AACWAQAAAAEA" +
+           "KgEBEwAAAAQAAABDaXR5AAz/////AAAAAAABACgBAQAAAAEAAAAAAAAAAQH/////AAAAAA==";
         #endregion
         #endif
         #endregion
@@ -534,8 +532,6 @@ namespace Quickstarts.MyOPCServer
             ServiceResult result = null;
 
             string city = (string)_inputArguments[0];
-            DateTime date = (DateTime)_inputArguments[1];
-            float temp = (float)_inputArguments[2];
 
             if (OnCall != null)
             {
@@ -543,9 +539,7 @@ namespace Quickstarts.MyOPCServer
                     _context,
                     this,
                     _objectId,
-                    city,
-                    date,
-                    temp);
+                    city);
             }
 
             return result;
@@ -564,9 +558,7 @@ namespace Quickstarts.MyOPCServer
         ISystemContext context,
         MethodState method,
         NodeId objectId,
-        string city,
-        DateTime date,
-        float temp);
+        string city);
     #endif
     #endregion
 

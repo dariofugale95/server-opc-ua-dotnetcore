@@ -39,6 +39,7 @@ using Opc.Ua;
 using Opc.Ua.Server;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
+using Opc.Ua.Configuration;
 
 namespace Quickstarts.MyOPCServer
 {
@@ -154,7 +155,7 @@ namespace Quickstarts.MyOPCServer
                 }
 
 
-                //AddPredefinedNode(SystemContext, dataSourcesFolder);
+                AddPredefinedNode(SystemContext,null);
               
             }
         }
@@ -165,16 +166,28 @@ namespace Quickstarts.MyOPCServer
             Console.WriteLine("SetupNodes");
            
             weather_prova = FindPredefinedNode<OpenWeatherMapState>(Objects.OpenWeatherMap);
-       
+    
+            weather_prova.OpenWeatherMapMethod.OnCall = setup_input;
+            /*
             weather_prova.WeatherData.Temperature.Value = (float)23.3;
             weather_prova.WeatherData.City.Value = "Catania";
             weather_prova.WeatherData.Date.Value = DateTime.UtcNow.Date;
-
-
+            */
 
         }
 
-        
+        private ServiceResult setup_input(ISystemContext context, MethodState method, NodeId objectId, string city)
+        {
+            Console.WriteLine("Il metodo è stato invocato dal client con seguente input"+city);
+            OpenWeatherMapDataClass openWeatherData=apiRequests.GetWeatherDataByCity(city);
+            double temp=openWeatherData.Main.Temp-273.15;
+            weather_prova.WeatherData.Temperature.Value = (float)temp;
+            weather_prova.WeatherData.City.Value = openWeatherData.Name.ToString();
+            weather_prova.WeatherData.Date.Value = DateTime.UtcNow.Date;
+
+            return ServiceResult.Good;
+        }
+
         private TNodeState FindPredefinedNode<TNodeState>(uint id)
            where TNodeState : NodeState
         {
@@ -209,8 +222,7 @@ namespace Quickstarts.MyOPCServer
         protected override NodeStateCollection LoadPredefinedNodes(ISystemContext context)
         {
           
-          
-
+         
             NodeStateCollection predefinedNodes = new NodeStateCollection();
             
             //predefinedNodes.LoadFromBinaryResource(context, "Published2/" + "Quickstarts.MyOPCServer.PredefinedNodes.uanodes", this.GetType().GetTypeInfo().Assembly, true);
@@ -365,19 +377,16 @@ namespace Quickstarts.MyOPCServer
             return predefinedNode;
         }
 
-       
-        private ServiceResult OnWriteMyNode(ISystemContext context, NodeState node, ref object value)
+         
+        protected override void Write(ServerSystemContext context, IList<WriteValue> nodesToWrite, IList<ServiceResult> errors, List<NodeHandle> nodesToValidate, IDictionary<NodeId, NodeState> cache)
         {
-       
-        Console.WriteLine("Received '" + value.ToString() + "'.");
-
-            Utils.Trace("Received '" + value.ToString() + "'.");
-
-
-            return ServiceResult.Good;
+            base.Write(context, nodesToWrite, errors, nodesToValidate, cache);
+            Console.Write("sono qui");
         }
-        private OpenWeatherMapState weather_prova;
 
+
+        private OpenWeatherMapState weather_prova;
+        
  
         #region Private Fields
         private MyOPCServerConfiguration m_configuration;

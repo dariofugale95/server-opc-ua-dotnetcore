@@ -15,107 +15,197 @@ https://github.com/OPCFoundation/UA-.NETStandard/blob/master/Stack/Opc.Ua.Core/S
 	<ProductUri>https://github.com/dariofugale95/server-opc-ua-dotnetcore</ProductUri>
 	<ApplicationType>Server_0</ApplicationType>
 
-	<SecurityConfiguration>
+  <SecurityConfiguration>
 
-		<!-- Where the application instance certificate is stored (MachineDefault) -->
-		<ApplicationCertificate>
-			<StoreType>X509Store</StoreType>
-			<StorePath>CurrentUser\My</StorePath>
-			<SubjectName>CN=MyOPCServer, C=IT, O=castagnolofugale, DC=localhost</SubjectName>
-		</ApplicationCertificate>
+    <!-- Where the application instance certificate is stored-->
+    <ApplicationCertificate>
+      <StoreType>Directory</StoreType>
+      <StorePath>C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\cert\own</StorePath>
+      <SubjectName>CN=Server C#, C=US, S=Arizona, O=OPC Foundation, DC=localhost</SubjectName>
+    </ApplicationCertificate>
 
-		<!-- Where the issuer certificate are stored (certificate authorities) -->
-		<TrustedIssuerCertificates>
-			<StoreType>Directory</StoreType>
-			<StorePath>pki/issuer</StorePath>
-		</TrustedIssuerCertificates>
+    <!-- Where the issuer certificate are stored (certificate authorities) -->
+    <TrustedIssuerCertificates>
+      <StoreType>Directory</StoreType>
+      <StorePath>C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\cert\issuer</StorePath>
+    </TrustedIssuerCertificates>
 
-		<!-- Where the trust list is stored (UA Applications) -->
-		<TrustedPeerCertificates>
-			<StoreType>Directory</StoreType>
-			<StorePath>pki/trusted</StorePath>
-		</TrustedPeerCertificates>
+    <!-- Where the trust list is stored -->
+    <TrustedPeerCertificates>
+      <StoreType>Directory</StoreType>
+      <StorePath>C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\cert\trusted</StorePath>
+    </TrustedPeerCertificates>
 
-		<!-- The directory used to store invalid certficates for later review by the administrator. -->
-		<RejectedCertificateStore>
-			<StoreType>Directory</StoreType>
-			<StorePath>pki/rejected</StorePath>
-		</RejectedCertificateStore>
+    <!-- The directory used to store invalid certficates for later review by the administrator. -->
+    <RejectedCertificateStore>
+      <StoreType>Directory</StoreType>
+      <StorePath>C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\cert\rejected</StorePath>
+    </RejectedCertificateStore>
 
-		<!-- WARNING: The following setting (to automatically accept untrusted certificates) should be used
+    <!-- WARNING: The following setting (to automatically accept untrusted certificates) should be used
     for easy debugging purposes ONLY and turned off for production deployments! -->
-		<AutoAcceptUntrustedCertificates>true</AutoAcceptUntrustedCertificates>
+    <AutoAcceptUntrustedCertificates>true</AutoAcceptUntrustedCertificates>
 
-	</SecurityConfiguration>
+    <!-- WARNING: SHA1 signed certficates are by default rejected and should be phased out. 
+    The setting below to allow them is only required for UACTT (1.02.336.244) which uses SHA-1 signed certs. -->
+    <RejectSHA1SignedCertificates>false</RejectSHA1SignedCertificates>
+    <RejectUnknownRevocationStatus>true</RejectUnknownRevocationStatus>
+    <MinimumCertificateKeySize>2048</MinimumCertificateKeySize>
+    <AddAppCertToTrustedStore>false</AddAppCertToTrustedStore>
+    <SendCertificateChain>true</SendCertificateChain>
 
-	<TransportConfigurations/>
+    <!-- Where the User issuer certificates are stored -->
+    <UserIssuerCertificates>
+      <StoreType>Directory</StoreType>
+      <StorePath>C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\cert\issuerUser</StorePath>
+    </UserIssuerCertificates>
 
-	<TransportQuotas>
-		<OperationTimeout>600000</OperationTimeout>
-		<MaxStringLength>1048576</MaxStringLength>
-		<MaxByteStringLength>4194304</MaxByteStringLength>
-		<MaxArrayLength>65535</MaxArrayLength>
-		<MaxMessageSize>4194304</MaxMessageSize>
-		<MaxBufferSize>65535</MaxBufferSize>
-		<ChannelLifetime>300000</ChannelLifetime>
-		<SecurityTokenLifetime>3600000</SecurityTokenLifetime>
-	</TransportQuotas>
+    <!-- Where the User trust list is stored-->
+    <TrustedUserCertificates>
+      <StoreType>Directory</StoreType>
+      <StorePath>C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\cert\trustedUser</StorePath>
+    </TrustedUserCertificates>
+  </SecurityConfiguration>
 
+  <TransportConfigurations></TransportConfigurations>
+  <TransportQuotas>
+    <OperationTimeout>600000</OperationTimeout>
+    <MaxStringLength>1048576</MaxStringLength>
+    <MaxByteStringLength>1048576</MaxByteStringLength>
+    <MaxArrayLength>65535</MaxArrayLength>
+    <MaxMessageSize>4194304</MaxMessageSize>
+    <MaxBufferSize>65535</MaxBufferSize>
+    <ChannelLifetime>300000</ChannelLifetime>
+    <SecurityTokenLifetime>3600000</SecurityTokenLifetime>
+  </TransportQuotas>
+  
 	<ServerConfiguration>
 		<BaseAddresses>
 			<ua:String>opc.tcp://localhost:51210/UA/MyOPCServer</ua:String>
 		</BaseAddresses>
 
-		<SecurityPolicies>
-			<ServerSecurityPolicy>
-				<SecurityMode>SignAndEncrypt_3</SecurityMode>
-				<SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Basic256Sha256</SecurityPolicyUri>
-			</ServerSecurityPolicy>
+    <SecurityPolicies>
+      <ServerSecurityPolicy>
+        <SecurityMode>Sign_2</SecurityMode>
+        <SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Basic256Sha256</SecurityPolicyUri>
+      </ServerSecurityPolicy>
       <ServerSecurityPolicy>
         <SecurityMode>None_1</SecurityMode>
         <SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#None</SecurityPolicyUri>
       </ServerSecurityPolicy>
-		</SecurityPolicies>
-
+      <ServerSecurityPolicy>
+        <SecurityMode>SignAndEncrypt_3</SecurityMode>
+        <SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Basic256Sha256</SecurityPolicyUri>
+      </ServerSecurityPolicy>
+      <!-- deprecated security policies for reference only
+      <ServerSecurityPolicy>
+        <SecurityMode>Sign_2</SecurityMode>
+        <SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Basic256</SecurityPolicyUri>
+      </ServerSecurityPolicy>
+      <ServerSecurityPolicy>
+        <SecurityMode>SignAndEncrypt_3</SecurityMode>
+        <SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Basic256</SecurityPolicyUri>
+      </ServerSecurityPolicy>
+      <ServerSecurityPolicy>
+        <SecurityMode>Sign_2</SecurityMode>
+        <SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Basic128Rsa15</SecurityPolicyUri>
+      </ServerSecurityPolicy>
+      <ServerSecurityPolicy>
+        <SecurityMode>SignAndEncrypt_3</SecurityMode>
+        <SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Basic128Rsa15</SecurityPolicyUri>
+      </ServerSecurityPolicy>
+      -->
+      <ServerSecurityPolicy>
+        <SecurityMode>Sign_2</SecurityMode>
+        <SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Aes128_Sha256_RsaOaep</SecurityPolicyUri>
+      </ServerSecurityPolicy>
+      <ServerSecurityPolicy>
+        <SecurityMode>SignAndEncrypt_3</SecurityMode>
+        <SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Aes128_Sha256_RsaOaep</SecurityPolicyUri>
+      </ServerSecurityPolicy>
+      <ServerSecurityPolicy>
+        <SecurityMode>Sign_2</SecurityMode>
+        <SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Aes256_Sha256_RsaPss</SecurityPolicyUri>
+      </ServerSecurityPolicy>
+      <ServerSecurityPolicy>
+        <SecurityMode>SignAndEncrypt_3</SecurityMode>
+        <SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Aes256_Sha256_RsaPss</SecurityPolicyUri>
+      </ServerSecurityPolicy>
+      <ServerSecurityPolicy>
+        <SecurityMode>Sign_2</SecurityMode>
+        <SecurityPolicyUri></SecurityPolicyUri>
+      </ServerSecurityPolicy>
+      <ServerSecurityPolicy>
+        <SecurityMode>SignAndEncrypt_3</SecurityMode>
+        <SecurityPolicyUri></SecurityPolicyUri>
+      </ServerSecurityPolicy>
+    </SecurityPolicies>
 		<MinRequestThreadCount>5</MinRequestThreadCount>
 		<MaxRequestThreadCount>100</MaxRequestThreadCount>
 		<MaxQueuedRequestCount>2000</MaxQueuedRequestCount>
 
-		<UserTokenPolicies>
-			<ua:UserTokenPolicy>
-				<ua:TokenType>Anonymous_0</ua:TokenType>
-				<ua:SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#None</ua:SecurityPolicyUri>
-			</ua:UserTokenPolicy>
-			<ua:UserTokenPolicy>
-				<ua:TokenType>UserName_1</ua:TokenType>
-			</ua:UserTokenPolicy>
-			<ua:UserTokenPolicy>
-				<ua:TokenType>Certificate_2</ua:TokenType>
-			</ua:UserTokenPolicy>
-			<!--
+    <!-- The SDK expects the server to support the same set of user tokens for every endpoint. -->
+    <UserTokenPolicies>
+      <!-- Allows anonymous users -->
       <ua:UserTokenPolicy>
-        <ua:TokenType>IssuedToken_3</ua:TokenType>
-        <ua:IssuedTokenType>urn:oasis:names:tc:SAML:1.0:assertion:Assertion</ua:IssuedTokenType>
+        <ua:TokenType>Anonymous_0</ua:TokenType>
+        <ua:SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#None</ua:SecurityPolicyUri>
       </ua:UserTokenPolicy>
-      -->
-		</UserTokenPolicies>
-		<DiagnosticsEnabled>false</DiagnosticsEnabled>
-		<MaxSessionCount>100</MaxSessionCount>
-		<MinSessionTimeout>10000</MinSessionTimeout>
-		<MaxSessionTimeout>3600000</MaxSessionTimeout>
-		<MaxBrowseContinuationPoints>10</MaxBrowseContinuationPoints>
-		<MaxQueryContinuationPoints>10</MaxQueryContinuationPoints>
-		<MaxHistoryContinuationPoints>100</MaxHistoryContinuationPoints>
-		<MaxRequestAge>600000</MaxRequestAge>
-		<MinPublishingInterval>100</MinPublishingInterval>
-		<MaxPublishingInterval>3600000</MaxPublishingInterval>
-		<PublishingResolution>50</PublishingResolution>
-		<MaxSubscriptionLifetime>3600000</MaxSubscriptionLifetime>
-		<MaxMessageQueueSize>100</MaxMessageQueueSize>
-		<MaxNotificationQueueSize>100</MaxNotificationQueueSize>
-		<MaxNotificationsPerPublish>1000</MaxNotificationsPerPublish>
-		<MinMetadataSamplingInterval>1000</MinMetadataSamplingInterval>
-		<AvailableSamplingRates />
+
+      <!-- Allows username/password -->
+      <ua:UserTokenPolicy>
+        <ua:TokenType>UserName_1</ua:TokenType>
+        <!-- passwords must be encrypted - this specifies what algorithm to use -->
+        <ua:SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Basic256Sha256</ua:SecurityPolicyUri>
+      </ua:UserTokenPolicy>
+
+      <!-- Allows user certificates -->
+      <ua:UserTokenPolicy>
+        <ua:TokenType>Certificate_2</ua:TokenType>
+        <!-- certificate possession must be proven with a digital signature - this specifies what algorithm to use -->
+        <ua:SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Basic256Sha256</ua:SecurityPolicyUri>
+      </ua:UserTokenPolicy>
+    </UserTokenPolicies>
+
+
+    <DiagnosticsEnabled>true</DiagnosticsEnabled>
+    <MaxSessionCount>100</MaxSessionCount>
+    <MinSessionTimeout>10000</MinSessionTimeout>
+    <MaxSessionTimeout>3600000</MaxSessionTimeout>
+    <MaxBrowseContinuationPoints>10</MaxBrowseContinuationPoints>
+    <MaxQueryContinuationPoints>10</MaxQueryContinuationPoints>
+    <MaxHistoryContinuationPoints>100</MaxHistoryContinuationPoints>
+    <MaxRequestAge>600000</MaxRequestAge>
+    <MinPublishingInterval>100</MinPublishingInterval>
+    <MaxPublishingInterval>3600000</MaxPublishingInterval>
+    <PublishingResolution>50</PublishingResolution>
+    <MaxSubscriptionLifetime>3600000</MaxSubscriptionLifetime>
+    <MaxMessageQueueSize>100</MaxMessageQueueSize>
+    <MaxNotificationQueueSize>100</MaxNotificationQueueSize>
+    <MaxNotificationsPerPublish>1000</MaxNotificationsPerPublish>
+    <MinMetadataSamplingInterval>1000</MinMetadataSamplingInterval>
+    <AvailableSamplingRates>
+      <SamplingRateGroup>
+        <Start>5</Start>
+        <Increment>5</Increment>
+        <Count>20</Count>
+      </SamplingRateGroup>
+      <SamplingRateGroup>
+        <Start>100</Start>
+        <Increment>100</Increment>
+        <Count>4</Count>
+      </SamplingRateGroup>
+      <SamplingRateGroup>
+        <Start>500</Start>
+        <Increment>250</Increment>
+        <Count>2</Count>
+      </SamplingRateGroup>
+      <SamplingRateGroup>
+        <Start>1000</Start>
+        <Increment>500</Increment>
+        <Count>20</Count>
+      </SamplingRateGroup>
+    </AvailableSamplingRates>
 
 		<MaxRegistrationInterval>30000</MaxRegistrationInterval>
 		<NodeManagerSaveFile>Opc.Ua.Server.nodes.xml</NodeManagerSaveFile>

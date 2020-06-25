@@ -133,36 +133,6 @@
             </Argument>
           </Body>
         </ExtensionObject>
-        <ExtensionObject>
-          <TypeId>
-            <Identifier>i=297</Identifier>
-          </TypeId>
-          <Body>
-            <Argument>
-              <Name>date</Name>
-              <DataType>
-                <Identifier>i=13</Identifier>
-              </DataType>
-              <ValueRank>-1</ValueRank>
-              <ArrayDimensions />
-            </Argument>
-          </Body>
-        </ExtensionObject>
-        <ExtensionObject>
-          <TypeId>
-            <Identifier>i=297</Identifier>
-          </TypeId>
-          <Body>
-            <Argument>
-              <Name>Temp</Name>
-              <DataType>
-                <Identifier>i=10</Identifier>
-              </DataType>
-              <ValueRank>-1</ValueRank>
-              <ArrayDimensions />
-            </Argument>
-          </Body>
-        </ExtensionObject>
       </ListOfExtensionObject>
     </Value>
   </UAVariable>
@@ -352,36 +322,6 @@
               <Name>City</Name>
               <DataType>
                 <Identifier>i=12</Identifier>
-              </DataType>
-              <ValueRank>-1</ValueRank>
-              <ArrayDimensions />
-            </Argument>
-          </Body>
-        </ExtensionObject>
-        <ExtensionObject>
-          <TypeId>
-            <Identifier>i=297</Identifier>
-          </TypeId>
-          <Body>
-            <Argument>
-              <Name>date</Name>
-              <DataType>
-                <Identifier>i=13</Identifier>
-              </DataType>
-              <ValueRank>-1</ValueRank>
-              <ArrayDimensions />
-            </Argument>
-          </Body>
-        </ExtensionObject>
-        <ExtensionObject>
-          <TypeId>
-            <Identifier>i=297</Identifier>
-          </TypeId>
-          <Body>
-            <Argument>
-              <Name>Temp</Name>
-              <DataType>
-                <Identifier>i=10</Identifier>
               </DataType>
               <ValueRank>-1</ValueRank>
               <ArrayDimensions />
