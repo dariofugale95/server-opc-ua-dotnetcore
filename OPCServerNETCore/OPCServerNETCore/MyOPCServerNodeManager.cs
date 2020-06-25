@@ -122,14 +122,16 @@ namespace Quickstarts.MyOPCServer
                 base.CreateAddressSpace(externalReferences);
               
                 // ensure trigger can be found via the server object. 
-
-                //IList<IReference> references = null;
                 /*
+                IList<IReference> references = null;
+                ImportXml(externalReferences, "/Users/giuli/Documents/GitHub/server-opc-ua-dotnetcore/OPCServerNETCore/OPCServerNETCore/Published2/Quickstarts.MyOPCServer.PredefinedNodes.uanodes")
+
+
                 if (!externalReferences.TryGetValue(ObjectIds.ObjectsFolder, out references))
                 {
                     externalReferences[ObjectIds.ObjectsFolder] = references = new List<IReference>();
                 }
-                */
+                
                 /*
                 FolderState dataSourcesFolder = CreateFolder(null, "DataSourceFolder", "DataSourceFolder");
                 dataSourcesFolder.AddReference(ReferenceTypes.Organizes, true, ObjectIds.ObjectsFolder);
@@ -155,7 +157,8 @@ namespace Quickstarts.MyOPCServer
                 }
 
 
-                AddPredefinedNode(SystemContext,null);
+               
+               
               
             }
         }
@@ -227,6 +230,27 @@ namespace Quickstarts.MyOPCServer
             return predefinedNodes;
         }
 
+        private void ImportXml(IDictionary<NodeId, IList<IReference>> externalReferences, string resourcepath)
+        {
+            NodeStateCollection predefinedNodes = new NodeStateCollection();
+
+            Stream stream = new FileStream(resourcepath, FileMode.Open);
+            Opc.Ua.Export.UANodeSet nodeSet = Opc.Ua.Export.UANodeSet.Read(stream);
+
+            foreach (string namespaceUri in nodeSet.NamespaceUris)
+            {
+                SystemContext.NamespaceUris.GetIndexOrAppend(namespaceUri);
+            }
+
+            nodeSet.Import(SystemContext, predefinedNodes);
+
+            for (int ii = 0; ii < predefinedNodes.Count; ii++)
+            {
+                AddPredefinedNode(SystemContext, predefinedNodes[ii]);
+            }
+            // ensure the reverse refernces exist.
+            AddReverseReferences(externalReferences);
+        }
 
 
 
