@@ -52,3 +52,7 @@ MyOPCServer_XmlSchema_WeatherData,15051,Variable
 MyOPCServer_XmlSchema_WeatherData_DataTypeVersion,15052,Variable
 MyOPCServer_XmlSchema_WeatherData_DictionaryFragment,15053,Variable
 WeatherData_Encoding_DefaultJson,15054,Object
+InputClientType,15055,ObjectType
+InputClientType_InputCityClient,15056,Variable
+InputClient,15057,Object
+InputClient_InputCityClient,15058,Variable

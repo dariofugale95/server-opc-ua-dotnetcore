@@ -166,6 +166,21 @@
       </ListOfExtensionObject>
     </Value>
   </UAVariable>
+  <UAObjectType NodeId="ns=1;i=15055" BrowseName="1:InputClientType">
+    <DisplayName>InputClientType</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=15056</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+    </References>
+  </UAObjectType>
+  <UAVariable NodeId="ns=1;i=15056" BrowseName="1:InputCityClient" ParentNodeId="ns=1;i=15055" DataType="String" AccessLevel="3">
+    <DisplayName>InputCityClient</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15055</Reference>
+    </References>
+  </UAVariable>
   <UAObjectType NodeId="ns=1;i=15011" BrowseName="1:WeatherEventType">
     <DisplayName>WeatherEventType</DisplayName>
     <References>
@@ -375,6 +390,22 @@
         </ExtensionObject>
       </ListOfExtensionObject>
     </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=15057" BrowseName="1:InputClient" EventNotifier="1">
+    <DisplayName>InputClient</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=15058</Reference>
+      <Reference ReferenceType="Organizes" IsForward="false">i=85</Reference>
+      <Reference ReferenceType="HasNotifier" IsForward="false">i=2253</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15055</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=15058" BrowseName="1:InputCityClient" ParentNodeId="ns=1;i=15057" DataType="String" AccessLevel="3">
+    <DisplayName>InputCityClient</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15057</Reference>
+    </References>
   </UAVariable>
   <UAObject NodeId="ns=1;i=15038" BrowseName="Default Binary" SymbolicName="DefaultBinary">
     <DisplayName>Default Binary</DisplayName>

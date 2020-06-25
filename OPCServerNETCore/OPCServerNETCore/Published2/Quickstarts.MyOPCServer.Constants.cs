@@ -86,6 +86,11 @@ namespace Quickstarts.MyOPCServer
         public const uint OpenWeatherMap = 15030;
 
         /// <summary>
+        /// The identifier for the InputClient Object.
+        /// </summary>
+        public const uint InputClient = 15057;
+
+        /// <summary>
         /// The identifier for the WeatherData_Encoding_DefaultBinary Object.
         /// </summary>
         public const uint WeatherData_Encoding_DefaultBinary = 15038;
@@ -114,6 +119,11 @@ namespace Quickstarts.MyOPCServer
         /// The identifier for the OpenWeatherMapType ObjectType.
         /// </summary>
         public const uint OpenWeatherMapType = 15001;
+
+        /// <summary>
+        /// The identifier for the InputClientType ObjectType.
+        /// </summary>
+        public const uint InputClientType = 15055;
 
         /// <summary>
         /// The identifier for the WeatherEventType ObjectType.
@@ -159,6 +169,11 @@ namespace Quickstarts.MyOPCServer
         /// The identifier for the OpenWeatherMapType_OpenWeatherMapMethod_InputArguments Variable.
         /// </summary>
         public const uint OpenWeatherMapType_OpenWeatherMapMethod_InputArguments = 15008;
+
+        /// <summary>
+        /// The identifier for the InputClientType_InputCityClient Variable.
+        /// </summary>
+        public const uint InputClientType_InputCityClient = 15056;
 
         /// <summary>
         /// The identifier for the WeatherEventType_WeatherMap Variable.
@@ -224,6 +239,11 @@ namespace Quickstarts.MyOPCServer
         /// The identifier for the OpenWeatherMap_OpenWeatherMapMethod_InputArguments Variable.
         /// </summary>
         public const uint OpenWeatherMap_OpenWeatherMapMethod_InputArguments = 15037;
+
+        /// <summary>
+        /// The identifier for the InputClient_InputCityClient Variable.
+        /// </summary>
+        public const uint InputClient_InputCityClient = 15058;
 
         /// <summary>
         /// The identifier for the MyOPCServer_BinarySchema Variable.
@@ -331,6 +351,11 @@ namespace Quickstarts.MyOPCServer
         public static readonly ExpandedNodeId OpenWeatherMap = new ExpandedNodeId(Quickstarts.MyOPCServer.Objects.OpenWeatherMap, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
 
         /// <summary>
+        /// The identifier for the InputClient Object.
+        /// </summary>
+        public static readonly ExpandedNodeId InputClient = new ExpandedNodeId(Quickstarts.MyOPCServer.Objects.InputClient, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
+
+        /// <summary>
         /// The identifier for the WeatherData_Encoding_DefaultBinary Object.
         /// </summary>
         public static readonly ExpandedNodeId WeatherData_Encoding_DefaultBinary = new ExpandedNodeId(Quickstarts.MyOPCServer.Objects.WeatherData_Encoding_DefaultBinary, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
@@ -359,6 +384,11 @@ namespace Quickstarts.MyOPCServer
         /// The identifier for the OpenWeatherMapType ObjectType.
         /// </summary>
         public static readonly ExpandedNodeId OpenWeatherMapType = new ExpandedNodeId(Quickstarts.MyOPCServer.ObjectTypes.OpenWeatherMapType, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
+
+        /// <summary>
+        /// The identifier for the InputClientType ObjectType.
+        /// </summary>
+        public static readonly ExpandedNodeId InputClientType = new ExpandedNodeId(Quickstarts.MyOPCServer.ObjectTypes.InputClientType, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
 
         /// <summary>
         /// The identifier for the WeatherEventType ObjectType.
@@ -404,6 +434,11 @@ namespace Quickstarts.MyOPCServer
         /// The identifier for the OpenWeatherMapType_OpenWeatherMapMethod_InputArguments Variable.
         /// </summary>
         public static readonly ExpandedNodeId OpenWeatherMapType_OpenWeatherMapMethod_InputArguments = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.OpenWeatherMapType_OpenWeatherMapMethod_InputArguments, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
+
+        /// <summary>
+        /// The identifier for the InputClientType_InputCityClient Variable.
+        /// </summary>
+        public static readonly ExpandedNodeId InputClientType_InputCityClient = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.InputClientType_InputCityClient, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
 
         /// <summary>
         /// The identifier for the WeatherEventType_WeatherMap Variable.
@@ -469,6 +504,11 @@ namespace Quickstarts.MyOPCServer
         /// The identifier for the OpenWeatherMap_OpenWeatherMapMethod_InputArguments Variable.
         /// </summary>
         public static readonly ExpandedNodeId OpenWeatherMap_OpenWeatherMapMethod_InputArguments = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.OpenWeatherMap_OpenWeatherMapMethod_InputArguments, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
+
+        /// <summary>
+        /// The identifier for the InputClient_InputCityClient Variable.
+        /// </summary>
+        public static readonly ExpandedNodeId InputClient_InputCityClient = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.InputClient_InputCityClient, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
 
         /// <summary>
         /// The identifier for the MyOPCServer_BinarySchema Variable.
@@ -548,6 +588,21 @@ namespace Quickstarts.MyOPCServer
         /// The BrowseName for the Date component.
         /// </summary>
         public const string Date = "Date";
+
+        /// <summary>
+        /// The BrowseName for the InputCityClient component.
+        /// </summary>
+        public const string InputCityClient = "InputCityClient";
+
+        /// <summary>
+        /// The BrowseName for the InputClient component.
+        /// </summary>
+        public const string InputClient = "InputClient";
+
+        /// <summary>
+        /// The BrowseName for the InputClientType component.
+        /// </summary>
+        public const string InputClientType = "InputClientType";
 
         /// <summary>
         /// The BrowseName for the MyOPCServer_BinarySchema component.

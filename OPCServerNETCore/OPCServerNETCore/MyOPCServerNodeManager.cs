@@ -38,6 +38,7 @@ using System.Reflection;
 using Opc.Ua;
 using Opc.Ua.Server;
 using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 
 namespace Quickstarts.MyOPCServer
 {
@@ -46,6 +47,7 @@ namespace Quickstarts.MyOPCServer
     /// </summary>
     public class MyOPCServerNodeManager : CustomNodeManager2
     {
+        
         #region Constructors
         /// <summary>
         /// Initializes the node manager.
@@ -66,12 +68,13 @@ namespace Quickstarts.MyOPCServer
             }
 
             apiRequests = new OpenWeatherMapApiRequests();
+            
             List<string> namespaceUris = new List<string>();
             namespaceUris.Add(Namespaces.MyOPCServer);
             namespaceUris.Add(Namespaces.MyOPCServer + "/Instance");
-     
+        
             NamespaceUris = namespaceUris;
-
+             
             m_typeNamespaceIndex = Server.NamespaceUris.GetIndexOrAppend(namespaceUris[0]);
             Console.WriteLine(m_typeNamespaceIndex);
             m_namespaceIndex = Server.NamespaceUris.GetIndexOrAppend(namespaceUris[1]);
@@ -150,27 +153,28 @@ namespace Quickstarts.MyOPCServer
                     Utils.Trace(e, "Error creating the address space.");
                 }
 
-               // AddPredefinedNode(SystemContext, dataSourcesFolder);
+
+                //AddPredefinedNode(SystemContext, dataSourcesFolder);
+              
             }
         }
 
         private void SetupNodes()
         {
-  
-          
+         
             Console.WriteLine("SetupNodes");
+           
+            weather_prova = FindPredefinedNode<OpenWeatherMapState>(Objects.OpenWeatherMap);
        
-           weather_prova = FindPredefinedNode<OpenWeatherMapState>(Objects.OpenWeatherMap);
-      
-          
-            //Utils.Trace("Received '" + value.ToString() + "'.");
-    
-            weather_prova.WeatherData.Temperature.Value = (float)23.3 ;
+            weather_prova.WeatherData.Temperature.Value = (float)23.3;
             weather_prova.WeatherData.City.Value = "Catania";
             weather_prova.WeatherData.Date.Value = DateTime.UtcNow.Date;
-          
+
+
+
         }
 
+        
         private TNodeState FindPredefinedNode<TNodeState>(uint id)
            where TNodeState : NodeState
         {
@@ -205,22 +209,17 @@ namespace Quickstarts.MyOPCServer
         protected override NodeStateCollection LoadPredefinedNodes(ISystemContext context)
         {
           
-            // Set your .uanodes file to Build Action = Embedded Resource
-            // resourcePath parameter of LoadFromBinaryResource() is project name + directory + file name
+          
 
             NodeStateCollection predefinedNodes = new NodeStateCollection();
             
             //predefinedNodes.LoadFromBinaryResource(context, "Published2/" + "Quickstarts.MyOPCServer.PredefinedNodes.uanodes", this.GetType().GetTypeInfo().Assembly, true);
             predefinedNodes.LoadFromBinaryResource(context, "/Users/giuli/Documents/GitHub/server-opc-ua-dotnetcore/OPCServerNETCore/OPCServerNETCore/Published2/Quickstarts.MyOPCServer.PredefinedNodes.uanodes", this.GetType().GetTypeInfo().Assembly, true);
             Console.WriteLine(predefinedNodes.Count.ToString());
-            
+   
             return predefinedNodes;
         }
-        
-        /// <summary>
-        /// Creates a new variable.
-        /// </summary>
-        /// ObjectsType
+
 
 
 
@@ -262,11 +261,7 @@ namespace Quickstarts.MyOPCServer
 
         return variable;
     }
-    */
-        /// <summary>
-        /// Creates a new data type.
-        /// </summary>
-        /*
+
         private DataTypeState CreateDataType(NodeState parent, IDictionary<NodeId, IList<IReference>> externalReferences, string path, string name)
         {
             DataTypeState type = new DataTypeState();
@@ -298,22 +293,79 @@ namespace Quickstarts.MyOPCServer
             AddPredefinedNode(SystemContext, type);
             return type;
         }
-
-
-        /// <summary>
-        /// Frees any resources allocated for the address space.
-        /// </summary>
+ }*/
         public override void DeleteAddressSpace()
         {
             lock (Lock)
             {
                 base.DeleteAddressSpace();
             }
-        }*/
+
+        }
         #endregion
+        protected override NodeState AddBehaviourToPredefinedNode(ISystemContext context, NodeState predefinedNode)
+        {
+            BaseObjectState passiveNode = predefinedNode as BaseObjectState;
+
+            if (passiveNode == null)
+            {
+
+                return predefinedNode;
+            }
+
+            NodeId typeId = passiveNode.TypeDefinitionId;
+
+            if (!IsNodeIdInNamespace(typeId) || typeId.IdType != IdType.Numeric)
+            {
+                return predefinedNode;
+            }
+
+            switch ((uint)typeId.Identifier)
+            {
+                // Write cases in same way for all defined ObjectTypes
+
+                case ObjectTypes.OpenWeatherMapType:
+                    {
+                        if (passiveNode is OpenWeatherMapState)
+                        {
+                            break; 
+                        }
+
+                        OpenWeatherMapState activeNode = new OpenWeatherMapState(passiveNode.Parent);
+                        activeNode.Create(context, passiveNode);
+
+                        if (passiveNode.Parent != null)
+                        {
+                            passiveNode.Parent.ReplaceChild(context, activeNode);
+                        }
+
+                        return activeNode;
+                    }
+                    case ObjectTypes.WeatherEventType:
+                    {
+                        if (passiveNode is WeatherEventState)
+                        {
+                            break;
+                        }
+
+                        WeatherEventState activeNode = new WeatherEventState(passiveNode.Parent);
+                        activeNode.Create(context, passiveNode);
+
+                        if (passiveNode.Parent != null)
+                        {
+                            passiveNode.Parent.ReplaceChild(context, activeNode);
+                        }
+
+                        return activeNode;
+                    }
 
 
+            }
 
+            return predefinedNode;
+        }
+
+       
         private ServiceResult OnWriteMyNode(ISystemContext context, NodeState node, ref object value)
         {
        
@@ -325,13 +377,16 @@ namespace Quickstarts.MyOPCServer
             return ServiceResult.Good;
         }
         private OpenWeatherMapState weather_prova;
-        
-       
+
+ 
         #region Private Fields
         private MyOPCServerConfiguration m_configuration;
         private OpenWeatherMapApiRequests apiRequests;
+      
+        
         private ushort m_namespaceIndex;
         private ushort m_typeNamespaceIndex;
+        
         #endregion
     }
 }

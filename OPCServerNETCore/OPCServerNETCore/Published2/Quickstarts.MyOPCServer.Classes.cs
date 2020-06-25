@@ -293,6 +293,163 @@ namespace Quickstarts.MyOPCServer
     #endif
     #endregion
 
+    #region InputClientState Class
+    #if (!OPCUA_EXCLUDE_InputClientState)
+    /// <summary>
+    /// Stores an instance of the InputClientType ObjectType.
+    /// </summary>
+    /// <exclude />
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
+    public partial class InputClientState : BaseObjectState
+    {
+        #region Constructors
+        /// <summary>
+        /// Initializes the type with its default attribute values.
+        /// </summary>
+        public InputClientState(NodeState parent) : base(parent)
+        {
+        }
+
+        /// <summary>
+        /// Returns the id of the default type definition node for the instance.
+        /// </summary>
+        protected override NodeId GetDefaultTypeDefinitionId(NamespaceTable namespaceUris)
+        {
+            return Opc.Ua.NodeId.Create(Quickstarts.MyOPCServer.ObjectTypes.InputClientType, Quickstarts.MyOPCServer.Namespaces.MyOPCServer, namespaceUris);
+        }
+
+        #if (!OPCUA_EXCLUDE_InitializationStrings)
+        /// <summary>
+        /// Initializes the instance.
+        /// </summary>
+        protected override void Initialize(ISystemContext context)
+        {
+            Initialize(context, InitializationString);
+            InitializeOptionalChildren(context);
+        }
+
+        /// <summary>
+        /// Initializes the instance with a node.
+        /// </summary>
+        protected override void Initialize(ISystemContext context, NodeState source)
+        {
+            InitializeOptionalChildren(context);
+            base.Initialize(context, source);
+        }
+
+        /// <summary>
+        /// Initializes the any option children defined for the instance.
+        /// </summary>
+        protected override void InitializeOptionalChildren(ISystemContext context)
+        {
+            base.InitializeOptionalChildren(context);
+        }
+
+        #region Initialization String
+        private const string InitializationString =
+           "AQAAADkAAABodHRwczovL2dpdGh1Yi5jb20vZGFyaW9mdWdhbGU5NS9zZXJ2ZXItb3BjLXVhLWRvdG5l" +
+           "dGNvcmX/////hGCAAgEAAAABABcAAABJbnB1dENsaWVudFR5cGVJbnN0YW5jZQEBzzoBAc86zzoAAAH/" +
+           "////AQAAABVgiQoCAAAAAQAPAAAASW5wdXRDaXR5Q2xpZW50AQHQOgAvAD/QOgAAAAz/////AwP/////" +
+           "AAAAAA==";
+        #endregion
+        #endif
+        #endregion
+
+        #region Public Properties
+        /// <remarks />
+        public BaseDataVariableState<string> InputCityClient
+        {
+            get
+            {
+                return m_inputCityClient;
+            }
+
+            set
+            {
+                if (!Object.ReferenceEquals(m_inputCityClient, value))
+                {
+                    ChangeMasks |= NodeStateChangeMasks.Children;
+                }
+
+                m_inputCityClient = value;
+            }
+        }
+        #endregion
+
+        #region Overridden Methods
+        /// <summary>
+        /// Populates a list with the children that belong to the node.
+        /// </summary>
+        /// <param name="context">The context for the system being accessed.</param>
+        /// <param name="children">The list of children to populate.</param>
+        public override void GetChildren(
+            ISystemContext context,
+            IList<BaseInstanceState> children)
+        {
+            if (m_inputCityClient != null)
+            {
+                children.Add(m_inputCityClient);
+            }
+
+            base.GetChildren(context, children);
+        }
+
+        /// <summary>
+        /// Finds the child with the specified browse name.
+        /// </summary>
+        protected override BaseInstanceState FindChild(
+            ISystemContext context,
+            QualifiedName browseName,
+            bool createOrReplace,
+            BaseInstanceState replacement)
+        {
+            if (QualifiedName.IsNull(browseName))
+            {
+                return null;
+            }
+
+            BaseInstanceState instance = null;
+
+            switch (browseName.Name)
+            {
+                case Quickstarts.MyOPCServer.BrowseNames.InputCityClient:
+                {
+                    if (createOrReplace)
+                    {
+                        if (InputCityClient == null)
+                        {
+                            if (replacement == null)
+                            {
+                                InputCityClient = new BaseDataVariableState<string>(this);
+                            }
+                            else
+                            {
+                                InputCityClient = (BaseDataVariableState<string>)replacement;
+                            }
+                        }
+                    }
+
+                    instance = InputCityClient;
+                    break;
+                }
+            }
+
+            if (instance != null)
+            {
+                return instance;
+            }
+
+            return base.FindChild(context, browseName, createOrReplace, replacement);
+        }
+        #endregion
+
+        #region Private Fields
+        private BaseDataVariableState<string> m_inputCityClient;
+        #endregion
+    }
+    #endif
+    #endregion
+
     #region WeatherMethodState Class
     #if (!OPCUA_EXCLUDE_WeatherMethodState)
     /// <summary>

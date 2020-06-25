@@ -18,9 +18,15 @@
 
   <opc:ObjectType SymbolicName="OpenWeatherMapType" BaseType="ua:BaseObjectType" SupportsEvents="true">
     <opc:Children>
-    <opc:Property SymbolicName="ApiURL" DataType="ua:String" ValueRank="Scalar" ModellingRule="Mandatory" />
-		<opc:Variable SymbolicName="WeatherData" TypeDefinition="WeatherMapDataType" ModellingRule="Mandatory" />
+    <opc:Property SymbolicName="ApiURL" DataType="ua:String" ValueRank="Scalar" ModellingRule="Mandatory" AccessLevel="Read"/>
+		<opc:Variable SymbolicName="WeatherData" TypeDefinition="WeatherMapDataType" ModellingRule="Mandatory" AccessLevel="Read" />
     <opc:Method SymbolicName="OpenWeatherMapMethod" TypeDefinition="WeatherMethodType" ModellingRule="Mandatory" />
+    </opc:Children>
+  </opc:ObjectType>
+
+    <opc:ObjectType SymbolicName="InputClientType" BaseType="ua:BaseObjectType" SupportsEvents="true">
+    <opc:Children>
+		<opc:Variable SymbolicName="InputCityClient" TypeDefinition="ua:BaseDataVariableType" DataType="ua:String" ModellingRule="Mandatory" AccessLevel="ReadWrite" />
     </opc:Children>
   </opc:ObjectType>
 
@@ -89,6 +95,21 @@
                 </DefaultValue>
             </Property>
      </Children>
+  </opc:Object>
+
+  <opc:Object SymbolicName="InputClient" TypeDefinition="InputClientType">
+    <opc:References>
+      <opc:Reference IsInverse="true">
+        <opc:ReferenceType>ua:Organizes</opc:ReferenceType>
+        <opc:TargetId>ua:ObjectsFolder</opc:TargetId>
+        <opc:TargetId>OpenWeatherMap</opc:TargetId>
+      </opc:Reference>
+      <opc:Reference IsInverse="true">
+        <opc:ReferenceType>ua:HasNotifier</opc:ReferenceType>
+        <opc:TargetId>ua:Server</opc:TargetId>
+      </opc:Reference>
+    </opc:References>
+     
   </opc:Object>
 
 </opc:ModelDesign>
