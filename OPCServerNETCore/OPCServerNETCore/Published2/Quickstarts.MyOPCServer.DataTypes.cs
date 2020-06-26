@@ -71,6 +71,9 @@ namespace Quickstarts.MyOPCServer
         {
             m_date = DateTime.MinValue;
             m_temperature = (float)0;
+            m_maxTemperature = (float)0;
+            m_minTemperature = (float)0;
+            m_pressure = (float)0;
             m_city = null;
         }
         #endregion
@@ -93,7 +96,31 @@ namespace Quickstarts.MyOPCServer
         }
 
         /// <remarks />
-        [DataMember(Name = "City", IsRequired = false, Order = 3)]
+        [DataMember(Name = "MaxTemperature", IsRequired = false, Order = 3)]
+        public float MaxTemperature
+        {
+            get { return m_maxTemperature;  }
+            set { m_maxTemperature = value; }
+        }
+
+        /// <remarks />
+        [DataMember(Name = "MinTemperature", IsRequired = false, Order = 4)]
+        public float MinTemperature
+        {
+            get { return m_minTemperature;  }
+            set { m_minTemperature = value; }
+        }
+
+        /// <remarks />
+        [DataMember(Name = "Pressure", IsRequired = false, Order = 5)]
+        public float Pressure
+        {
+            get { return m_pressure;  }
+            set { m_pressure = value; }
+        }
+
+        /// <remarks />
+        [DataMember(Name = "City", IsRequired = false, Order = 6)]
         public string City
         {
             get { return m_city;  }
@@ -127,6 +154,9 @@ namespace Quickstarts.MyOPCServer
 
             encoder.WriteDateTime("Date", Date);
             encoder.WriteFloat("Temperature", Temperature);
+            encoder.WriteFloat("MaxTemperature", MaxTemperature);
+            encoder.WriteFloat("MinTemperature", MinTemperature);
+            encoder.WriteFloat("Pressure", Pressure);
             encoder.WriteString("City", City);
 
             encoder.PopNamespace();
@@ -139,6 +169,9 @@ namespace Quickstarts.MyOPCServer
 
             Date = decoder.ReadDateTime("Date");
             Temperature = decoder.ReadFloat("Temperature");
+            MaxTemperature = decoder.ReadFloat("MaxTemperature");
+            MinTemperature = decoder.ReadFloat("MinTemperature");
+            Pressure = decoder.ReadFloat("Pressure");
             City = decoder.ReadString("City");
 
             decoder.PopNamespace();
@@ -161,6 +194,9 @@ namespace Quickstarts.MyOPCServer
 
             if (!Utils.IsEqual(m_date, value.m_date)) return false;
             if (!Utils.IsEqual(m_temperature, value.m_temperature)) return false;
+            if (!Utils.IsEqual(m_maxTemperature, value.m_maxTemperature)) return false;
+            if (!Utils.IsEqual(m_minTemperature, value.m_minTemperature)) return false;
+            if (!Utils.IsEqual(m_pressure, value.m_pressure)) return false;
             if (!Utils.IsEqual(m_city, value.m_city)) return false;
 
             return true;
@@ -181,6 +217,9 @@ namespace Quickstarts.MyOPCServer
 
             clone.m_date = (DateTime)Utils.Clone(this.m_date);
             clone.m_temperature = (float)Utils.Clone(this.m_temperature);
+            clone.m_maxTemperature = (float)Utils.Clone(this.m_maxTemperature);
+            clone.m_minTemperature = (float)Utils.Clone(this.m_minTemperature);
+            clone.m_pressure = (float)Utils.Clone(this.m_pressure);
             clone.m_city = (string)Utils.Clone(this.m_city);
 
             return clone;
@@ -190,6 +229,9 @@ namespace Quickstarts.MyOPCServer
         #region Private Fields
         private DateTime m_date;
         private float m_temperature;
+        private float m_maxTemperature;
+        private float m_minTemperature;
+        private float m_pressure;
         private string m_city;
         #endregion
     }

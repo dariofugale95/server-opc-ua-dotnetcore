@@ -12,6 +12,9 @@
     <opc:Documentation>Information about waether in a specific city</opc:Documentation>
     <opc:Field Name="Date" TypeName="opc:DateTime" />
     <opc:Field Name="Temperature" TypeName="opc:Float" />
+    <opc:Field Name="MaxTemperature" TypeName="opc:Float" />
+    <opc:Field Name="MinTemperature" TypeName="opc:Float" />
+    <opc:Field Name="Pressure" TypeName="opc:Float" />
     <opc:Field Name="City" TypeName="opc:String" />
   </opc:StructuredType>
 

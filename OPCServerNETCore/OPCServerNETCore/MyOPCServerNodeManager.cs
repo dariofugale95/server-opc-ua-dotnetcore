@@ -40,6 +40,8 @@ using Opc.Ua.Server;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using Opc.Ua.Configuration;
+using Org.BouncyCastle.Security;
+using Org.BouncyCastle.Crypto.Modes.Gcm;
 
 namespace Quickstarts.MyOPCServer
 {
@@ -77,9 +79,11 @@ namespace Quickstarts.MyOPCServer
             NamespaceUris = namespaceUris;
              
             m_typeNamespaceIndex = Server.NamespaceUris.GetIndexOrAppend(namespaceUris[0]);
-            Console.WriteLine(m_typeNamespaceIndex);
             m_namespaceIndex = Server.NamespaceUris.GetIndexOrAppend(namespaceUris[1]);
-            Console.WriteLine(m_namespaceIndex);
+
+            Console.WriteLine("**************Welcome to MyOPCServer**************");
+       
+            
         }
         #endregion
 
@@ -120,50 +124,55 @@ namespace Quickstarts.MyOPCServer
             lock (Lock)
             {
                 base.CreateAddressSpace(externalReferences);
-              
-                // ensure trigger can be found via the server object. 
+                
 
-                //IList<IReference> references = null;
-                /*
-                if (!externalReferences.TryGetValue(ObjectIds.ObjectsFolder, out references))
+                // ensure trigger can be found via the server object. 
+               
+                IList<IReference> references = null;
+
+
+
+                if (!externalReferences.TryGetValue(Opc.Ua.ObjectIds.ObjectsFolder, out references))
                 {
-                    externalReferences[ObjectIds.ObjectsFolder] = references = new List<IReference>();
+                    externalReferences[Opc.Ua.ObjectIds.ObjectsFolder] = references = new List<IReference>();
                 }
-                */
-                /*
+                
+                
                 FolderState dataSourcesFolder = CreateFolder(null, "DataSourceFolder", "DataSourceFolder");
-                dataSourcesFolder.AddReference(ReferenceTypes.Organizes, true, ObjectIds.ObjectsFolder);
+                dataSourcesFolder.AddReference(ReferenceTypes.Organizes, true, Opc.Ua.ObjectIds.ObjectsFolder);
                 references.Add(new NodeStateReference(ReferenceTypes.Organizes, false, dataSourcesFolder.NodeId));
                 dataSourcesFolder.EventNotifier = EventNotifiers.SubscribeToEvents;
                 dataSourcesFolder.Description = "A folder containing data sources";
 
                 AddRootNotifier(dataSourcesFolder);
-                */
+               
 
                 try
                 {
 
                     SetupNodes();
-                    //BaseDataVariableState openWeatherMapData = CreateVariable(dataSourcesFolder, "/OpenWeatherMapData", "OpenWeatherMapData", DataTypeIds.Float, ValueRanks.Scalar);
+                    
 
 
                 }
 
                 catch (Exception e)
                 {
-                    Utils.Trace(e, "Error creating the address space.");
+                    Utils.Trace(e, "MyOPCServer: Error creating the address space.");
                 }
 
 
-                AddPredefinedNode(SystemContext,null);
-              
+                AddPredefinedNode(SystemContext, dataSourcesFolder);
+
+     
+                
             }
         }
 
         private void SetupNodes()
         {
 
-            Console.WriteLine("SetupNodes");
+            Console.WriteLine("***Give me a few seconds to setup MyOPCServer***");
             openWeatherObject = FindPredefinedNode<OpenWeatherMapState>(Objects.OpenWeatherMap);
 
             openWeatherObject.OpenWeatherMapMethod.OnCall = WeatherRequest;
@@ -171,16 +180,65 @@ namespace Quickstarts.MyOPCServer
 
         }
 
-        private ServiceResult WeatherRequest(ISystemContext context, MethodState method, NodeId objectId, string city)
+        private ServiceResult WeatherRequest(ISystemContext context, MethodState method, NodeId objectId, string city, string mesureOfTemperature)
         {
-            Console.WriteLine("Il metodo è stato invocato dal client con seguente input"+city);
-            OpenWeatherMapDataClass openWeatherData=apiRequests.GetWeatherDataByCity(city);
-            double temp=openWeatherData.Main.Temp-273.15;
-            openWeatherObject.WeatherData.Temperature.Value = (float)temp;
-            openWeatherObject.WeatherData.City.Value = openWeatherData.Name.ToString();
-            openWeatherObject.WeatherData.Date.Value = DateTime.UtcNow.Date;
+            Console.WriteLine("Client with SessionID: "+ context.SessionId+" called WeatherMethod the input is: "+city);
 
-            return ServiceResult.Good;
+            if (city != null) {
+                double conversionFactor=0;
+                switch (mesureOfTemperature) {
+
+                    case "Kelvin":
+                        Console.WriteLine("Unit of measure for Temperature choosed: " + "Kelvin");
+            
+                        break;
+                    case "Celsius":
+                        Console.WriteLine("Unit of measure for Temperature choosed: " + "Celsius");
+                        conversionFactor = 273.15;
+                        break;
+
+                    default:
+                        Console.WriteLine("WARNING: Unit of measure choosed is not available");
+                        Console.WriteLine("Automatic set Unit of Mesure for Temperature: KELVIN ");
+                        break;
+
+
+
+                }
+
+
+                Console.WriteLine("mesure " + mesureOfTemperature);
+                OpenWeatherMapDataClass openWeatherData=apiRequests.GetWeatherDataByCity(city.ToString());
+            if (openWeatherData != null) {
+
+                    //from kelvin to celsius
+   
+                openWeatherObject.WeatherData.Temperature.Value = (float)(openWeatherData.Main.Temp - conversionFactor);
+                openWeatherObject.WeatherData.City.Value = openWeatherData.Name.ToString();
+                openWeatherObject.WeatherData.Date.Value = DateTime.UtcNow.Date;
+                openWeatherObject.WeatherData.Timestamp = DateTime.UtcNow;
+                openWeatherObject.WeatherData.MaxTemperature.Value = (float)(openWeatherData.Main.TempMax - conversionFactor);
+                openWeatherObject.WeatherData.MinTemperature.Value = (float)(openWeatherData.Main.TempMin - conversionFactor);
+                openWeatherObject.WeatherData.Pressure.Value =openWeatherData.Main.Pressure;
+                 
+
+
+                    if (openWeatherObject.WeatherData.Date.Value != null && openWeatherObject.WeatherData.City.Value != null && openWeatherObject.WeatherData.Timestamp != null)
+                {
+                        openWeatherObject.WeatherData.StatusCode = StatusCodes.Good;
+                        return ServiceResult.Good;
+                }
+                else {
+                    return StatusCodes.BadUnknownResponse;
+                }
+
+            }
+            }
+
+            Console.WriteLine("INPUT ERROR: I can't get informations for this city or city is null: " + city);
+            return StatusCodes.BadAggregateInvalidInputs;
+            
+
         }
 
         private TNodeState FindPredefinedNode<TNodeState>(uint id)
@@ -191,14 +249,14 @@ namespace Quickstarts.MyOPCServer
         /// <summary>
         /// Creates a new folder.
         /// </summary>
-        /*
+       
         private FolderState CreateFolder(NodeState parent, string path, string name)
         {
             FolderState folder = new FolderState(parent);
 
             folder.SymbolicName = name;
             folder.ReferenceTypeId = ReferenceTypes.Organizes;
-            folder.TypeDefinitionId = ObjectTypeIds.FolderType;
+            folder.TypeDefinitionId = Opc.Ua.ObjectTypeIds.FolderType;
             folder.NodeId = new NodeId(path, NamespaceIndex);
             folder.BrowseName = new QualifiedName(path, NamespaceIndex);
             folder.DisplayName = new LocalizedText("en", name);
@@ -213,7 +271,7 @@ namespace Quickstarts.MyOPCServer
 
             return folder;
         }
-        */
+        
         protected override NodeStateCollection LoadPredefinedNodes(ISystemContext context)
         {
           
@@ -222,85 +280,13 @@ namespace Quickstarts.MyOPCServer
             
             //predefinedNodes.LoadFromBinaryResource(context, "Published2/" + "Quickstarts.MyOPCServer.PredefinedNodes.uanodes", this.GetType().GetTypeInfo().Assembly, true);
             predefinedNodes.LoadFromBinaryResource(context, "/Users/giuli/Documents/GitHub/server-opc-ua-dotnetcore/OPCServerNETCore/OPCServerNETCore/Published2/Quickstarts.MyOPCServer.PredefinedNodes.uanodes", this.GetType().GetTypeInfo().Assembly, true);
-            Console.WriteLine(predefinedNodes.Count.ToString());
-   
+            Console.WriteLine("***MyOPCServer: number of Node loaded from source "+predefinedNodes.Count.ToString()+"***");
+            
             return predefinedNodes;
         }
 
+      
 
-
-
-        /*
-    private BaseDataVariableState CreateVariable(NodeState parent, string path, string name, NodeId dataType, int valueRank)
-    {
-        BaseDataVariableState variable = new BaseDataVariableState(parent);
-
-        variable.SymbolicName = name;
-        variable.ReferenceTypeId = ReferenceTypes.Organizes;
-        variable.TypeDefinitionId = VariableTypeIds.BaseDataVariableType;
-        variable.NodeId = new NodeId(path, NamespaceIndex);
-        variable.BrowseName = new QualifiedName(path, NamespaceIndex);
-        variable.DisplayName = new LocalizedText("en", name);
-        variable.WriteMask = AttributeWriteMask.DisplayName | AttributeWriteMask.Description;
-        variable.UserWriteMask = AttributeWriteMask.DisplayName | AttributeWriteMask.Description;
-        variable.DataType = dataType;
-        variable.ValueRank = valueRank;
-        variable.AccessLevel = AccessLevels.CurrentReadOrWrite;
-        variable.UserAccessLevel = AccessLevels.CurrentReadOrWrite;
-        variable.Historizing = false;
-        variable.Value = apiRequests.GetWeatherDataByCity("Catania");
-        variable.StatusCode = StatusCodes.Good;
-        variable.Timestamp = DateTime.UtcNow;
-
-        if (valueRank == ValueRanks.OneDimension)
-        {
-            variable.ArrayDimensions = new ReadOnlyList<uint>(new List<uint> { 0 });
-        }
-        else if (valueRank == ValueRanks.TwoDimensions)
-        {
-            variable.ArrayDimensions = new ReadOnlyList<uint>(new List<uint> { 0, 0 });
-        }
-
-        if (parent != null)
-        {
-            parent.AddChild(variable);
-        }
-
-        return variable;
-    }
-
-        private DataTypeState CreateDataType(NodeState parent, IDictionary<NodeId, IList<IReference>> externalReferences, string path, string name)
-        {
-            DataTypeState type = new DataTypeState();
-
-            type.SymbolicName = name;
-            type.SuperTypeId = DataTypeIds.Structure;
-            type.NodeId = new NodeId(path, NamespaceIndex);
-            type.BrowseName = new QualifiedName(name, NamespaceIndex);
-            type.DisplayName = type.BrowseName.Name;
-            type.WriteMask = AttributeWriteMask.None;
-            type.UserWriteMask = AttributeWriteMask.None;
-            type.IsAbstract = false;
-
-            IList<IReference> references = null;
-
-            if (!externalReferences.TryGetValue(DataTypeIds.Structure, out references))
-            {
-                externalReferences[DataTypeIds.Structure] = references = new List<IReference>();
-            }
-
-            references.Add(new NodeStateReference(ReferenceTypeIds.HasSubtype, false, type.NodeId));
-
-            if (parent != null)
-            {
-                parent.AddReference(ReferenceTypes.Organizes, false, type.NodeId);
-                type.AddReference(ReferenceTypes.Organizes, true, parent.NodeId);
-            }
-
-            AddPredefinedNode(SystemContext, type);
-            return type;
-        }
- }*/
         public override void DeleteAddressSpace()
         {
             lock (Lock)
@@ -373,15 +359,7 @@ namespace Quickstarts.MyOPCServer
         }
 
          
-        protected override void Write(ServerSystemContext context, IList<WriteValue> nodesToWrite, IList<ServiceResult> errors, List<NodeHandle> nodesToValidate, IDictionary<NodeId, NodeState> cache)
-        {
-            base.Write(context, nodesToWrite, errors, nodesToValidate, cache);
-            Console.Write("sono qui");
-        }
-
-
-        
-        
+    
  
         #region Private Fields
         private MyOPCServerConfiguration m_configuration;
@@ -390,7 +368,9 @@ namespace Quickstarts.MyOPCServer
         private OpenWeatherMapState openWeatherObject;
         private ushort m_namespaceIndex;
         private ushort m_typeNamespaceIndex;
+
         
+
         #endregion
     }
 }

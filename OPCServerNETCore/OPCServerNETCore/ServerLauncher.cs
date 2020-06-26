@@ -58,26 +58,37 @@ namespace Quickstarts.MyOPCServer
             serverRunTime = _stopTimeout == 0 ? Timeout.Infinite : _stopTimeout * 1000;
         }
 
-        public async Task RunAsync()
+        public void Run()
         {
             try
             {
                 exitCode = ExitCode.ErrorServerNotStarted;
                 ConsoleSampleServer().Wait();
                 openWeatherApiRequest = new OpenWeatherMapApiRequests();
-                openWeatherData = openWeatherApiRequest.GetWeatherDataByCity("catania");
-                Console.WriteLine(openWeatherData.Base);
-                Console.WriteLine(openWeatherData.Clouds);
-                Console.WriteLine(openWeatherData.Cod);
-                Console.WriteLine(openWeatherData.Coord);
-                Console.WriteLine(openWeatherData.Dt);
-                Console.WriteLine(openWeatherData.Main);
-                Console.WriteLine(openWeatherData.Id);
-                Console.WriteLine(openWeatherData.Name);
-                Console.WriteLine(openWeatherData.Sys.Country);
-                Console.WriteLine(openWeatherData.Timezone);
-                Console.WriteLine(openWeatherData.Visibility);
-                Console.WriteLine(openWeatherData.Weather);
+                openWeatherData = openWeatherApiRequest.GetWeatherDataByCity("Catania");
+                Console.WriteLine("MyOPCServer: I'm trying to connect with OpenWeatherDataMap API");
+                if (openWeatherData != null)
+                {
+                  
+                    Console.WriteLine("     OpenweatherApi Response Cod: " + openWeatherData.Cod.ToString());
+                    Console.WriteLine("     OpenweatherApi Response Latitude: "+ openWeatherData.Coord.Latitude);
+                    Console.WriteLine("     OpenweatherApi Response Longitude: " + openWeatherData.Coord.Longitude);
+                    
+                    Console.WriteLine("     OpenweatherApi Response Temperature: "+ openWeatherData.Main.Temp);
+                    Console.WriteLine("     OpenweatherApi Response MaxTemperature: " + openWeatherData.Main.TempMax);
+                    Console.WriteLine("     OpenweatherApi Response MinTemperature: " + openWeatherData.Main.TempMin);
+                    Console.WriteLine("     OpenweatherApi Response Pressure: " + openWeatherData.Main.Pressure);
+                    Console.WriteLine("     OpenweatherApi Response Humidity: " + openWeatherData.Main.Humidity);
+                    Console.WriteLine("     OpenweatherApi Response ID: "+ openWeatherData.Id);
+                    Console.WriteLine("     OpenweatherApi Response City: " + openWeatherData.Name);
+                    Console.WriteLine("     OpenweatherApi Response Country: "+ openWeatherData.Sys.Country);
+                    Console.WriteLine("     OpenweatherApi Response Timezone: "+ openWeatherData.Timezone);
+                    
+               
+                Console.WriteLine("***MyOPCServer: I'm READY*** ");
+                }
+                
+
                 Console.WriteLine("Server started. Press Ctrl-C to exit...");
                 exitCode = ExitCode.ErrorServerRunning;
             }
@@ -92,7 +103,8 @@ namespace Quickstarts.MyOPCServer
             ManualResetEvent quitEvent = new ManualResetEvent(false);
             try
             {
-                Console.CancelKeyPress += (sender, eArgs) => {
+                Console.CancelKeyPress += (sender, eArgs) =>
+                {
                     quitEvent.Set();
                     eArgs.Cancel = true;
                 };

@@ -31,10 +31,8 @@ using Opc.Ua;
 using Opc.Ua.Server;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
+using System.IdentityModel.Selectors;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
 
 namespace Quickstarts.MyOPCServer
 {
@@ -56,9 +54,9 @@ namespace Quickstarts.MyOPCServer
             properties.ManufacturerName = "castagnolofugale";
             properties.ProductName = "MyOPCServer";
             properties.ProductUri = "https://github.com/dariofugale95/server-opc-ua-dotnetcore";
-            properties.SoftwareVersion = thisAssembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
-            properties.BuildNumber = thisAssembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
-            properties.BuildDate = File.GetLastWriteTimeUtc(thisAssembly.Location);
+            properties.SoftwareVersion = Utils.GetAssemblySoftwareVersion();
+            properties.BuildNumber = Utils.GetAssemblyBuildNumber();
+            properties.BuildDate = Utils.GetAssemblyTimestamp();
 
             return properties;
         }
@@ -82,8 +80,10 @@ namespace Quickstarts.MyOPCServer
 
         protected override void OnServerStarting(ApplicationConfiguration configuration)
         {
-            Utils.Trace("The server is starting");
+            Utils.Trace("The server is starting.");
+
             base.OnServerStarting(configuration);
+
             CreateUserIdentityValidators(configuration);
         }
 
@@ -103,21 +103,20 @@ namespace Quickstarts.MyOPCServer
 
         #endregion
 
-
-        #region User Validation
-
+        #region User Validation Functions
+        /// <summary>
+        /// Creates the objects used to validate the user identity tokens supported by the server.
+        /// </summary>
         private void CreateUserIdentityValidators(ApplicationConfiguration configuration)
         {
             for (int ii = 0; ii < configuration.ServerConfiguration.UserTokenPolicies.Count; ii++)
             {
                 UserTokenPolicy policy = configuration.ServerConfiguration.UserTokenPolicies[ii];
 
-                // creare un validator per token policy
+                // create a validator for a certificate token policy.
                 if (policy.TokenType == UserTokenType.Certificate)
                 {
-                    //se il certificato dell'utente è nella lista degli utenti affidabili 
-                    // nella configurazione potrebbe essere specificata la lista dei certificati di fiducia quindi effettuiamo un controllo. Nel caso in cui questo dovesse essere vero 
-                    //dopo aver creato il validatore di certficati settiamo le il certificaValidator con quanto presente nella configurazione. 
+                    // check if user certificate trust lists are specified in configuration.
                     if (configuration.SecurityConfiguration.TrustedUserCertificates != null &&
                         configuration.SecurityConfiguration.UserIssuerCertificates != null)
                     {
@@ -127,13 +126,13 @@ namespace Quickstarts.MyOPCServer
                             configuration.SecurityConfiguration.TrustedUserCertificates,
                             configuration.SecurityConfiguration.RejectedCertificateStore);
 
-                        // specifichiamo un validatore dei certificati
-                        m_userCertificateValidator = (CertificateValidator)certificateValidator.GetChannelValidator();
+                        // set custom validator for user certificates.
+                        m_userCertificateValidator = certificateValidator.GetChannelValidator();
+                       
                     }
                 }
             }
         }
-        //un client potrebbe cambiare la sua user identity, questo metodo serve a gestire la cosa
         private void SessionManager_ImpersonateUser(Session session, ImpersonateEventArgs args)
         {
             // check for a user name token.
@@ -144,13 +143,13 @@ namespace Quickstarts.MyOPCServer
                 args.Identity = VerifyPassword(userNameToken);
 
                 // set AuthenticatedUser role for accepted user/password authentication
-                //args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_AuthenticatedUser);
+                args.Identity.GrantedRoleIds.Add(Opc.Ua.ObjectIds.WellKnownRole_AuthenticatedUser);
 
                 if (args.Identity is SystemConfigurationIdentity)
                 {
                     // set ConfigureAdmin role for user with permission to configure server
-                    //args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_ConfigureAdmin);
-                    //args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_SecurityAdmin);
+                    args.Identity.GrantedRoleIds.Add(Opc.Ua.ObjectIds.WellKnownRole_ConfigureAdmin);
+                    args.Identity.GrantedRoleIds.Add(Opc.Ua.ObjectIds.WellKnownRole_SecurityAdmin);
                 }
 
                 return;
@@ -166,63 +165,19 @@ namespace Quickstarts.MyOPCServer
                 Utils.Trace("X509 Token Accepted: {0}", args.Identity.DisplayName);
 
                 // set AuthenticatedUser role for accepted certificate authentication
-                //args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_AuthenticatedUser);
+                args.Identity.GrantedRoleIds.Add(Opc.Ua.ObjectIds.WellKnownRole_AuthenticatedUser);
 
                 return;
             }
 
             // allow anonymous authentication and set Anonymous role for this authentication
             args.Identity = new UserIdentity();
-            
-            //args.Identity.GrantedRoleIds.Add(ObjectIds.WellKnownRole_Anonymous);
+            args.Identity.GrantedRoleIds.Add(Opc.Ua.ObjectIds.WellKnownRole_Anonymous);
         }
 
-        private void VerifyUserTokenCertificate(X509Certificate2 certificate)
-        {
-            try
-            {
-                if (m_userCertificateValidator != null)
-                {
-                    m_userCertificateValidator.Validate(certificate);
-                }
-                else
-                {
-                    CertificateValidator.Validate(certificate);
-                }
-            }
-            catch (Exception e)
-            {
-                TranslationInfo info;
-                StatusCode result = StatusCodes.BadIdentityTokenRejected;
-                ServiceResultException se = e as ServiceResultException;
-                if (se != null && se.StatusCode == StatusCodes.BadCertificateUseNotAllowed)
-                {
-                    info = new TranslationInfo(
-                        "InvalidCertificate",
-                        "en-US",
-                        "'{0}' is an invalid user certificate.",
-                        certificate.Subject);
-
-                    result = StatusCodes.BadIdentityTokenInvalid;
-                }
-                else
-                {
-                    // construct translation object with default text.
-                    info = new TranslationInfo(
-                        "UntrustedCertificate",
-                        "en-US",
-                        "'{0}' is not a trusted user certificate.",
-                        certificate.Subject);
-                }
-
-                // create an exception with a vendor defined sub-code.
-                throw new ServiceResultException(new ServiceResult(
-                    result,
-                    info.Key,
-                    LoadServerProperties().ProductUri,
-                    new LocalizedText(info)));
-            }
-        }
+        /// <summary>
+        /// Validates the password for a username token.
+        /// </summary>
         private IUserIdentity VerifyPassword(UserNameIdentityToken userNameToken)
         {
             var userName = userNameToken.UserName;
@@ -269,10 +224,59 @@ namespace Quickstarts.MyOPCServer
             return new UserIdentity(userNameToken);
         }
 
-        #endregion
+        /// <summary>
+        /// Verifies that a certificate user token is trusted.
+        /// </summary>
+        private void VerifyUserTokenCertificate(X509Certificate2 certificate)
+        {
+            try
+            {
+                if (m_userCertificateValidator != null)
+                {
+                    m_userCertificateValidator.Validate(certificate);
+                }
+                else
+                {
+                    CertificateValidator.Validate(certificate);
+                }
+            }
+            catch (Exception e)
+            {
+                TranslationInfo info;
+                StatusCode result = StatusCodes.BadIdentityTokenRejected;
+                ServiceResultException se = e as ServiceResultException;
+                if (se != null && se.StatusCode == StatusCodes.BadCertificateUseNotAllowed)
+                {
+                    info = new TranslationInfo(
+                        "InvalidCertificate",
+                        "en-US",
+                        "'{0}' is an invalid user certificate.",
+                        certificate.Subject);
+
+                    result = StatusCodes.BadIdentityTokenInvalid;
+                }
+                else
+                {
+                    // construct translation object with default text.
+                    info = new TranslationInfo(
+                        "UntrustedCertificate",
+                        "en-US",
+                        "'{0}' is not a trusted user certificate.",
+                        certificate.Subject);
+                }
+
+                // create an exception with a vendor defined sub-code.
+                throw new ServiceResultException(new ServiceResult(
+                    result,
+                    info.Key,
+                    LoadServerProperties().ProductUri,
+                    new LocalizedText(info)));
+            }
+        }
+#endregion
 
         #region Private Fields
-        private CertificateValidator m_userCertificateValidator;
+        private X509CertificateValidator m_userCertificateValidator;
         #endregion
 
     }

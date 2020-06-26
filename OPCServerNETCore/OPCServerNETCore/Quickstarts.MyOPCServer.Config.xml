@@ -1,45 +1,39 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-
-<!--
-Find document comments here
-https://github.com/OPCFoundation/UA-.NETStandard/blob/master/Stack/Opc.Ua.Core/Schema/ApplicationConfiguration.cs
--->
-
-<ApplicationConfiguration
+﻿<ApplicationConfiguration
   xmlns:ua="http://opcfoundation.org/UA/2008/02/Types.xsd"
   xmlns="http://opcfoundation.org/UA/SDK/Configuration.xsd"
   schemaLocation="./Schema/ApplicationConfiguration.xsd">
 
-	<ApplicationName>MyOPCServer</ApplicationName>
-	<ApplicationUri>urn:localhost:castagnolofugale:MyOPCServer</ApplicationUri>
-	<ProductUri>https://github.com/dariofugale95/server-opc-ua-dotnetcore</ProductUri>
-	<ApplicationType>Server_0</ApplicationType>
+  <ApplicationName>MyOPCServer</ApplicationName>
+  <ApplicationUri>urn:localhost:castagnolofugale:MyOPCServer</ApplicationUri>
+  <ProductUri>https://github.com/dariofugale95/server-opc-ua-dotnetcore</ProductUri>
+  <ApplicationType>Server_0</ApplicationType>
 
   <SecurityConfiguration>
 
     <!-- Where the application instance certificate is stored-->
     <ApplicationCertificate>
       <StoreType>Directory</StoreType>
-      <StorePath>C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\cert\own</StorePath>
-      <SubjectName>CN=Server C#, C=US, S=Arizona, O=OPC Foundation, DC=localhost</SubjectName>
+      <StorePath>%CommonApplicationData%\OPC Foundation\pki\own</StorePath>
+      <SubjectName>CN=MyOPCServer, C=IT, S=Sicily, O=OPC Foundation, DC=localhost</SubjectName>
     </ApplicationCertificate>
+
 
     <!-- Where the issuer certificate are stored (certificate authorities) -->
     <TrustedIssuerCertificates>
       <StoreType>Directory</StoreType>
-      <StorePath>C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\cert\issuer</StorePath>
+      <StorePath>%CommonApplicationData%\OPC Foundation\pki\issuer</StorePath>
     </TrustedIssuerCertificates>
 
     <!-- Where the trust list is stored -->
     <TrustedPeerCertificates>
       <StoreType>Directory</StoreType>
-      <StorePath>C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\cert\trusted</StorePath>
+      <StorePath>%CommonApplicationData%\OPC Foundation\pki\trusted</StorePath>
     </TrustedPeerCertificates>
 
     <!-- The directory used to store invalid certficates for later review by the administrator. -->
     <RejectedCertificateStore>
       <StoreType>Directory</StoreType>
-      <StorePath>C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\cert\rejected</StorePath>
+      <StorePath>%CommonApplicationData%\OPC Foundation\pki\rejected</StorePath>
     </RejectedCertificateStore>
 
     <!-- WARNING: The following setting (to automatically accept untrusted certificates) should be used
@@ -57,13 +51,13 @@ https://github.com/OPCFoundation/UA-.NETStandard/blob/master/Stack/Opc.Ua.Core/S
     <!-- Where the User issuer certificates are stored -->
     <UserIssuerCertificates>
       <StoreType>Directory</StoreType>
-      <StorePath>C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\cert\issuerUser</StorePath>
+      <StorePath>%CommonApplicationData%\OPC Foundation\pki\issuerUser</StorePath>
     </UserIssuerCertificates>
 
     <!-- Where the User trust list is stored-->
     <TrustedUserCertificates>
       <StoreType>Directory</StoreType>
-      <StorePath>C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\cert\trustedUser</StorePath>
+      <StorePath>%CommonApplicationData%\OPC Foundation\pki\trustedUser</StorePath>
     </TrustedUserCertificates>
   </SecurityConfiguration>
 
@@ -79,13 +73,14 @@ https://github.com/OPCFoundation/UA-.NETStandard/blob/master/Stack/Opc.Ua.Core/S
     <SecurityTokenLifetime>3600000</SecurityTokenLifetime>
   </TransportQuotas>
   
-	<ServerConfiguration>
-		<BaseAddresses>
-			<ua:String>opc.tcp://localhost:51210/UA/MyOPCServer</ua:String>
-		</BaseAddresses>
-
+  <ServerConfiguration>
+    <BaseAddresses xmlns:d2p1="http://opcfoundation.org/UA/2008/02/Types.xsd">
+      <d2p1:String>opc.tcp://localhost:51210/UA/MyOPCServer</d2p1:String>
+    </BaseAddresses>
+    <AlternateBaseAddresses xmlns:d2p1="http://opcfoundation.org/UA/2008/02/Types.xsd" />
     <SecurityPolicies>
       <ServerSecurityPolicy>
+        
         <SecurityMode>Sign_2</SecurityMode>
         <SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Basic256Sha256</SecurityPolicyUri>
       </ServerSecurityPolicy>
@@ -95,26 +90,10 @@ https://github.com/OPCFoundation/UA-.NETStandard/blob/master/Stack/Opc.Ua.Core/S
       </ServerSecurityPolicy>
       <ServerSecurityPolicy>
         <SecurityMode>SignAndEncrypt_3</SecurityMode>
-        <SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Basic256Sha256</SecurityPolicyUri>
-      </ServerSecurityPolicy>
-      <!-- deprecated security policies for reference only
-      <ServerSecurityPolicy>
-        <SecurityMode>Sign_2</SecurityMode>
         <SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Basic256</SecurityPolicyUri>
       </ServerSecurityPolicy>
-      <ServerSecurityPolicy>
-        <SecurityMode>SignAndEncrypt_3</SecurityMode>
-        <SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Basic256</SecurityPolicyUri>
-      </ServerSecurityPolicy>
-      <ServerSecurityPolicy>
-        <SecurityMode>Sign_2</SecurityMode>
-        <SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Basic128Rsa15</SecurityPolicyUri>
-      </ServerSecurityPolicy>
-      <ServerSecurityPolicy>
-        <SecurityMode>SignAndEncrypt_3</SecurityMode>
-        <SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Basic128Rsa15</SecurityPolicyUri>
-      </ServerSecurityPolicy>
-      -->
+
+      
       <ServerSecurityPolicy>
         <SecurityMode>Sign_2</SecurityMode>
         <SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Aes128_Sha256_RsaOaep</SecurityPolicyUri>
@@ -131,43 +110,55 @@ https://github.com/OPCFoundation/UA-.NETStandard/blob/master/Stack/Opc.Ua.Core/S
         <SecurityMode>SignAndEncrypt_3</SecurityMode>
         <SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Aes256_Sha256_RsaPss</SecurityPolicyUri>
       </ServerSecurityPolicy>
+      
+      
+      
+      <!-- The follow secure policies are deprecated, but SampleClient isn't configurate to recognize Basic256Sha256, for this reason we abilitate these secure policies -->
       <ServerSecurityPolicy>
         <SecurityMode>Sign_2</SecurityMode>
-        <SecurityPolicyUri></SecurityPolicyUri>
+        <SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Basic256</SecurityPolicyUri>
       </ServerSecurityPolicy>
       <ServerSecurityPolicy>
         <SecurityMode>SignAndEncrypt_3</SecurityMode>
-        <SecurityPolicyUri></SecurityPolicyUri>
+        <SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Basic256</SecurityPolicyUri>
       </ServerSecurityPolicy>
+      <ServerSecurityPolicy>
+        <SecurityMode>Sign_2</SecurityMode>
+        <SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Basic128Rsa15</SecurityPolicyUri>
+      </ServerSecurityPolicy>
+      <ServerSecurityPolicy>
+        <SecurityMode>SignAndEncrypt_3</SecurityMode>
+        <SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Basic128Rsa15</SecurityPolicyUri>
+      </ServerSecurityPolicy>
+   
     </SecurityPolicies>
-		<MinRequestThreadCount>5</MinRequestThreadCount>
-		<MaxRequestThreadCount>100</MaxRequestThreadCount>
-		<MaxQueuedRequestCount>2000</MaxQueuedRequestCount>
 
-    <!-- The SDK expects the server to support the same set of user tokens for every endpoint. -->
-    <UserTokenPolicies>
-      <!-- Allows anonymous users -->
-      <ua:UserTokenPolicy>
-        <ua:TokenType>Anonymous_0</ua:TokenType>
-        <ua:SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#None</ua:SecurityPolicyUri>
-      </ua:UserTokenPolicy>
-
-      <!-- Allows username/password -->
-      <ua:UserTokenPolicy>
-        <ua:TokenType>UserName_1</ua:TokenType>
-        <!-- passwords must be encrypted - this specifies what algorithm to use -->
-        <ua:SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Basic256Sha256</ua:SecurityPolicyUri>
-      </ua:UserTokenPolicy>
-
-      <!-- Allows user certificates -->
-      <ua:UserTokenPolicy>
-        <ua:TokenType>Certificate_2</ua:TokenType>
-        <!-- certificate possession must be proven with a digital signature - this specifies what algorithm to use -->
-        <ua:SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Basic256Sha256</ua:SecurityPolicyUri>
-      </ua:UserTokenPolicy>
+    <MinRequestThreadCount>5</MinRequestThreadCount>
+    <MaxRequestThreadCount>100</MaxRequestThreadCount>
+    <MaxQueuedRequestCount>2000</MaxQueuedRequestCount>
+    <UserTokenPolicies xmlns:d2p1="http://opcfoundation.org/UA/2008/02/Types.xsd">
+      <d2p1:UserTokenPolicy>
+        <d2p1:PolicyId i:nil="true" xmlns:i="http://www.w3.org/2001/XMLSchema-instance" />
+        <d2p1:TokenType>Anonymous_0</d2p1:TokenType>
+        <d2p1:IssuedTokenType i:nil="true" xmlns:i="http://www.w3.org/2001/XMLSchema-instance" />
+        <d2p1:IssuerEndpointUrl i:nil="true" xmlns:i="http://www.w3.org/2001/XMLSchema-instance" />
+        <d2p1:SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#None</d2p1:SecurityPolicyUri>
+      </d2p1:UserTokenPolicy>
+      <d2p1:UserTokenPolicy>
+        <d2p1:PolicyId i:nil="true" xmlns:i="http://www.w3.org/2001/XMLSchema-instance" />
+        <d2p1:TokenType>UserName_1</d2p1:TokenType>
+        <d2p1:IssuedTokenType i:nil="true" xmlns:i="http://www.w3.org/2001/XMLSchema-instance" />
+        <d2p1:IssuerEndpointUrl i:nil="true" xmlns:i="http://www.w3.org/2001/XMLSchema-instance" />
+        <d2p1:SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Basic256Sha256</d2p1:SecurityPolicyUri>
+      </d2p1:UserTokenPolicy>
+      <d2p1:UserTokenPolicy>
+        <d2p1:PolicyId i:nil="true" xmlns:i="http://www.w3.org/2001/XMLSchema-instance" />
+        <d2p1:TokenType>Certificate_2</d2p1:TokenType>
+        <d2p1:IssuedTokenType i:nil="true" xmlns:i="http://www.w3.org/2001/XMLSchema-instance" />
+        <d2p1:IssuerEndpointUrl i:nil="true" xmlns:i="http://www.w3.org/2001/XMLSchema-instance" />
+        <d2p1:SecurityPolicyUri>http://opcfoundation.org/UA/SecurityPolicy#Basic256Sha256</d2p1:SecurityPolicyUri>
+      </d2p1:UserTokenPolicy>
     </UserTokenPolicies>
-
-
     <DiagnosticsEnabled>true</DiagnosticsEnabled>
     <MaxSessionCount>100</MaxSessionCount>
     <MinSessionTimeout>10000</MinSessionTimeout>
@@ -206,54 +197,31 @@ https://github.com/OPCFoundation/UA-.NETStandard/blob/master/Stack/Opc.Ua.Core/S
         <Count>20</Count>
       </SamplingRateGroup>
     </AvailableSamplingRates>
-
-		<MaxRegistrationInterval>30000</MaxRegistrationInterval>
-		<NodeManagerSaveFile>Opc.Ua.Server.nodes.xml</NodeManagerSaveFile>
-
-		<MaxPublishRequestCount>20</MaxPublishRequestCount>
-		<MaxSubscriptionCount>100</MaxSubscriptionCount>
-		<MaxEventQueueSize>10000</MaxEventQueueSize>
-		<MinSubscriptionLifetime>10000</MinSubscriptionLifetime>
-
-		<!-- see https://opcfoundation-onlineapplications.org/profilereporting/ for list of available profiles -->
-		<ServerProfileArray>
-			<ua:String>Standard UA Server Profile</ua:String>
-			<ua:String>Data Access Server Facet</ua:String>
-			<ua:String>Method Server Facet</ua:String>
-		</ServerProfileArray>
-		<ShutdownDelay>5</ShutdownDelay>
-		<ServerCapabilities>
-			<ua:String>DA</ua:String>
-		</ServerCapabilities>
-		<SupportedPrivateKeyFormats>
-			<ua:String>PFX</ua:String>
-			<ua:String>PEM</ua:String>
-		</SupportedPrivateKeyFormats>
-		<MaxTrustListSize>0</MaxTrustListSize>
-		<MultiCastDnsEnabled>false</MultiCastDnsEnabled>
-
-	</ServerConfiguration>
-
-	<TraceConfiguration>
-		<OutputFilePath>%LocalApplicationData%/Logs/MyOPCServer.log.txt</OutputFilePath>
-		<DeleteOnLoad>true</DeleteOnLoad>
-		<!-- Show Only Security, Errors and StartStop-->
-		<TraceMasks>641</TraceMasks>
-		<!-- Show Only Errors -->
-		<!-- <TraceMasks>1</TraceMasks> -->
-		<!-- Show Only Security and Errors -->
-		<!-- <TraceMasks>513</TraceMasks> -->
-		<!-- Show Only Security, Errors and Trace -->
-		<!-- <TraceMasks>515</TraceMasks> -->
-		<!-- Show Only Security, COM Calls, Errors and Trace -->
-		<!-- <TraceMasks>771</TraceMasks> -->
-		<!-- Show Only Security, Service Calls, Errors and Trace -->
-		<!-- <TraceMasks>523</TraceMasks> -->
-		<!-- Show Only Security, ServiceResultExceptions, Errors and Trace -->
-		<!-- <TraceMasks>519</TraceMasks> -->
-	</TraceConfiguration>
-
-	<!-- Disables the hi-res clock if the QueryPerformanceCounter does work on a particular machine. -->
-	<DisableHiResClock>true</DisableHiResClock>
-
+    <MaxRegistrationInterval>30000</MaxRegistrationInterval>
+    <NodeManagerSaveFile>Opc.Ua.Server.nodes.xml</NodeManagerSaveFile>
+    <MinSubscriptionLifetime>10000</MinSubscriptionLifetime>
+    <MaxPublishRequestCount>20</MaxPublishRequestCount>
+    <MaxSubscriptionCount>100</MaxSubscriptionCount>
+    <MaxEventQueueSize>10000</MaxEventQueueSize>
+  </ServerConfiguration>
+  <TraceConfiguration>
+    <OutputFilePath>%LocalApplicationData%/Logs/MyOPCServer.log.txt</OutputFilePath>
+    <DeleteOnLoad>true</DeleteOnLoad>
+    <!-- Show Only Security, Errors and StartStop-->
+    <TraceMasks>641</TraceMasks>
+    <!-- Show Only Errors -->
+    <!-- <TraceMasks>1</TraceMasks> -->
+    <!-- Show Only Security and Errors -->
+    <!-- <TraceMasks>513</TraceMasks> -->
+    <!-- Show Only Security, Errors and Trace -->
+    <!-- <TraceMasks>515</TraceMasks> -->
+    <!-- Show Only Security, COM Calls, Errors and Trace -->
+    <!-- <TraceMasks>771</TraceMasks> -->
+    <!-- Show Only Security, Service Calls, Errors and Trace -->
+    <!-- <TraceMasks>523</TraceMasks> -->
+    <!-- Show Only Security, ServiceResultExceptions, Errors and Trace -->
+    <!-- <TraceMasks>519</TraceMasks> -->
+  </TraceConfiguration>
+  <!-- Disables the hi-res clock if the QueryPerformanceCounter does work on a particular machine. -->
+  <DisableHiResClock>true</DisableHiResClock>
 </ApplicationConfiguration>

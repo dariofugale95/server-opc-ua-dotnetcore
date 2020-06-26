@@ -46,7 +46,7 @@ namespace Quickstarts.MyOPCServer
             bool autoAccept = args.Contains("-a");
 
             ServerLauncher server = new ServerLauncher(autoAccept, stopTimeout);
-            await server.RunAsync();
+            server.Run();
 
             return (int)ServerLauncher.ExitCode;
         }
