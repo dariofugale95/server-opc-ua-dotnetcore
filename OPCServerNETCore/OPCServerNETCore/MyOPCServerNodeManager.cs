@@ -163,6 +163,7 @@ namespace Quickstarts.MyOPCServer
 
                 AddPredefinedNode(SystemContext, dataSourcesFolder);
 
+                Console.WriteLine("Siamo dentro address space");
                 
             }
         }
@@ -180,14 +181,33 @@ namespace Quickstarts.MyOPCServer
 
         private ServiceResult WeatherRequest(ISystemContext context, MethodState method, NodeId objectId, string city)
         {
-            Console.WriteLine("Il metodo è stato invocato dal client con seguente input"+city);
-            OpenWeatherMapDataClass openWeatherData=apiRequests.GetWeatherDataByCity(city);
-            double temp=openWeatherData.Main.Temp-273.15;
-            openWeatherObject.WeatherData.Temperature.Value = (float)temp;
-            openWeatherObject.WeatherData.City.Value = openWeatherData.Name.ToString();
-            openWeatherObject.WeatherData.Date.Value = DateTime.UtcNow.Date;
+            Console.WriteLine("Client with SessionID: "+ context.SessionId+" called WeatherMethod the input is: "+city);
+          
+            
+            OpenWeatherMapDataClass openWeatherData=apiRequests.GetWeatherDataByCity(city.ToString());
+            if (openWeatherData != null) {
 
-            return ServiceResult.Good;
+                //from kelvin to celsius
+                double temp = openWeatherData.Main.Temp - 273.15;
+                
+                openWeatherObject.WeatherData.Temperature.Value = (float)temp;
+                openWeatherObject.WeatherData.City.Value = openWeatherData.Name.ToString();
+                openWeatherObject.WeatherData.Date.Value = DateTime.UtcNow.Date;
+
+                if (openWeatherObject.WeatherData.Date.Value != null && openWeatherObject.WeatherData.City.Value != null && openWeatherObject.WeatherData.Temperature.Value != null)
+                {
+                    return ServiceResult.Good;
+                }
+                else {
+                    return StatusCodes.BadUnknownResponse;
+                }
+
+            }
+      
+            Console.WriteLine("ERROR: I can't obtain information for this city: " + city);
+            return StatusCodes.BadAggregateInvalidInputs;
+            
+
         }
 
         private TNodeState FindPredefinedNode<TNodeState>(uint id)
@@ -229,106 +249,13 @@ namespace Quickstarts.MyOPCServer
             
             //predefinedNodes.LoadFromBinaryResource(context, "Published2/" + "Quickstarts.MyOPCServer.PredefinedNodes.uanodes", this.GetType().GetTypeInfo().Assembly, true);
             predefinedNodes.LoadFromBinaryResource(context, "/Users/giuli/Documents/GitHub/server-opc-ua-dotnetcore/OPCServerNETCore/OPCServerNETCore/Published2/Quickstarts.MyOPCServer.PredefinedNodes.uanodes", this.GetType().GetTypeInfo().Assembly, true);
-            Console.WriteLine(predefinedNodes.Count.ToString());
+            Console.WriteLine("Node loaded from binary source "+predefinedNodes.Count.ToString());
             
             return predefinedNodes;
         }
 
-        private void ImportXml(IDictionary<NodeId, IList<IReference>> externalReferences, string resourcepath)
-        {
-            NodeStateCollection predefinedNodes = new NodeStateCollection();
+      
 
-            Stream stream = new FileStream(resourcepath, FileMode.Open);
-            Opc.Ua.Export.UANodeSet nodeSet = Opc.Ua.Export.UANodeSet.Read(stream);
-
-            foreach (string namespaceUri in nodeSet.NamespaceUris)
-            {
-                SystemContext.NamespaceUris.GetIndexOrAppend(namespaceUri);
-            }
-
-            nodeSet.Import(SystemContext, predefinedNodes);
-
-            for (int ii = 0; ii < predefinedNodes.Count; ii++)
-            {
-                AddPredefinedNode(SystemContext, predefinedNodes[ii]);
-            }
-            // ensure the reverse refernces exist.
-            AddReverseReferences(externalReferences);
-        }
-
-
-
-        /*
-    private BaseDataVariableState CreateVariable(NodeState parent, string path, string name, NodeId dataType, int valueRank)
-    {
-        BaseDataVariableState variable = new BaseDataVariableState(parent);
-
-        variable.SymbolicName = name;
-        variable.ReferenceTypeId = ReferenceTypes.Organizes;
-        variable.TypeDefinitionId = VariableTypeIds.BaseDataVariableType;
-        variable.NodeId = new NodeId(path, NamespaceIndex);
-        variable.BrowseName = new QualifiedName(path, NamespaceIndex);
-        variable.DisplayName = new LocalizedText("en", name);
-        variable.WriteMask = AttributeWriteMask.DisplayName | AttributeWriteMask.Description;
-        variable.UserWriteMask = AttributeWriteMask.DisplayName | AttributeWriteMask.Description;
-        variable.DataType = dataType;
-        variable.ValueRank = valueRank;
-        variable.AccessLevel = AccessLevels.CurrentReadOrWrite;
-        variable.UserAccessLevel = AccessLevels.CurrentReadOrWrite;
-        variable.Historizing = false;
-        variable.Value = apiRequests.GetWeatherDataByCity("Catania");
-        variable.StatusCode = StatusCodes.Good;
-        variable.Timestamp = DateTime.UtcNow;
-
-        if (valueRank == ValueRanks.OneDimension)
-        {
-            variable.ArrayDimensions = new ReadOnlyList<uint>(new List<uint> { 0 });
-        }
-        else if (valueRank == ValueRanks.TwoDimensions)
-        {
-            variable.ArrayDimensions = new ReadOnlyList<uint>(new List<uint> { 0, 0 });
-        }
-
-        if (parent != null)
-        {
-            parent.AddChild(variable);
-        }
-
-        return variable;
-    }
-
-        private DataTypeState CreateDataType(NodeState parent, IDictionary<NodeId, IList<IReference>> externalReferences, string path, string name)
-        {
-            DataTypeState type = new DataTypeState();
-
-            type.SymbolicName = name;
-            type.SuperTypeId = DataTypeIds.Structure;
-            type.NodeId = new NodeId(path, NamespaceIndex);
-            type.BrowseName = new QualifiedName(name, NamespaceIndex);
-            type.DisplayName = type.BrowseName.Name;
-            type.WriteMask = AttributeWriteMask.None;
-            type.UserWriteMask = AttributeWriteMask.None;
-            type.IsAbstract = false;
-
-            IList<IReference> references = null;
-
-            if (!externalReferences.TryGetValue(DataTypeIds.Structure, out references))
-            {
-                externalReferences[DataTypeIds.Structure] = references = new List<IReference>();
-            }
-
-            references.Add(new NodeStateReference(ReferenceTypeIds.HasSubtype, false, type.NodeId));
-
-            if (parent != null)
-            {
-                parent.AddReference(ReferenceTypes.Organizes, false, type.NodeId);
-                type.AddReference(ReferenceTypes.Organizes, true, parent.NodeId);
-            }
-
-            AddPredefinedNode(SystemContext, type);
-            return type;
-        }
- }*/
         public override void DeleteAddressSpace()
         {
             lock (Lock)
@@ -401,15 +328,7 @@ namespace Quickstarts.MyOPCServer
         }
 
          
-        protected override void Write(ServerSystemContext context, IList<WriteValue> nodesToWrite, IList<ServiceResult> errors, List<NodeHandle> nodesToValidate, IDictionary<NodeId, NodeState> cache)
-        {
-            base.Write(context, nodesToWrite, errors, nodesToValidate, cache);
-            Console.Write("sono qui");
-        }
-
-
-        
-        
+    
  
         #region Private Fields
         private MyOPCServerConfiguration m_configuration;
