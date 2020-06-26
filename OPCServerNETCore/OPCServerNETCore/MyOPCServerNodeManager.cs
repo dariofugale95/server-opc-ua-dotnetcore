@@ -72,7 +72,7 @@ namespace Quickstarts.MyOPCServer
             }
 
             apiRequests = new OpenWeatherMapApiRequests();
-            
+        
             List<string> namespaceUris = new List<string>();
             namespaceUris.Add(Namespaces.MyOPCServer);
             namespaceUris.Add(Namespaces.MyOPCServer + "/Instance");
@@ -84,7 +84,7 @@ namespace Quickstarts.MyOPCServer
 
             Console.WriteLine("**************Welcome to MyOPCServer**************");
 
-            
+           
 
         }
         #endregion
@@ -139,15 +139,20 @@ namespace Quickstarts.MyOPCServer
                     externalReferences[Opc.Ua.ObjectIds.ObjectsFolder] = references = new List<IReference>();
                 }
                 
-                
-                FolderState dataSourcesFolder = CreateFolder(null, "DataSourceFolder", "DataSourceFolder");
+
+
+               
+                FolderState dataSourcesFolder = CreateFolder(openWeatherObject, "DataSourceFolder", "DataSourceFolder");
                 dataSourcesFolder.AddReference(ReferenceTypes.Organizes, true, Opc.Ua.ObjectIds.ObjectsFolder);
+              
                 references.Add(new NodeStateReference(ReferenceTypes.Organizes, false, dataSourcesFolder.NodeId));
+               
                 dataSourcesFolder.EventNotifier = EventNotifiers.SubscribeToEvents;
                 dataSourcesFolder.Description = "A folder containing data sources";
 
                 AddRootNotifier(dataSourcesFolder);
-               
+       
+
 
                 try
                 { 
@@ -181,18 +186,22 @@ namespace Quickstarts.MyOPCServer
         private ServiceResult WeatherRequest(ISystemContext context, MethodState method, NodeId objectId, string city, string mesureOfTemperature)
         {
             Console.WriteLine("Client with SessionID: "+ context.SessionId+" called WeatherMethod the input is: "+city);
-
+            
             if (city != null) {
                 double conversionFactor=0;
                 switch (mesureOfTemperature) {
 
-                    case "Kelvin":
+                    case "K":
                         Console.WriteLine("Unit of measure for Temperature choosed: " + "Kelvin");
-            
+                        
                         break;
-                    case "Celsius":
+                    case "C":
                         Console.WriteLine("Unit of measure for Temperature choosed: " + "Celsius");
+                        openWeatherObject.WeatherData.Temperature.Description= "Temperature in Celsius";
+                        openWeatherObject.WeatherData.MaxTemperature.Description = "Max Temperature in Celsius";
+                        openWeatherObject.WeatherData.MinTemperature.Description = "Min Temperature in Celsius";
                         conversionFactor = 273.15;
+              
                         break;
 
                     default:
@@ -208,9 +217,9 @@ namespace Quickstarts.MyOPCServer
                 Console.WriteLine("mesure " + mesureOfTemperature);
                 OpenWeatherMapDataClass openWeatherData=apiRequests.GetWeatherDataByCity(city.ToString());
             if (openWeatherData != null) {
-
-                    //from kelvin to celsius
-   
+              
+                  
+  
                 openWeatherObject.WeatherData.Temperature.Value = (float)(openWeatherData.Main.Temp - conversionFactor);
                 openWeatherObject.WeatherData.City.Value = openWeatherData.Name.ToString();
                 openWeatherObject.WeatherData.Date.Value = DateTime.UtcNow.Date;
@@ -218,8 +227,6 @@ namespace Quickstarts.MyOPCServer
                 openWeatherObject.WeatherData.MaxTemperature.Value = (float)(openWeatherData.Main.TempMax - conversionFactor);
                 openWeatherObject.WeatherData.MinTemperature.Value = (float)(openWeatherData.Main.TempMin - conversionFactor);
                 openWeatherObject.WeatherData.Pressure.Value =openWeatherData.Main.Pressure;
-                 
-
 
                     if (openWeatherObject.WeatherData.Date.Value != null && openWeatherObject.WeatherData.City.Value != null && openWeatherObject.WeatherData.Timestamp != null)
                 {
@@ -232,7 +239,7 @@ namespace Quickstarts.MyOPCServer
 
             }
             }
-
+            
             Console.WriteLine("INPUT ERROR: I can't get informations for this city or city is null: " + city);
             return StatusCodes.BadAggregateInvalidInputs;
             
@@ -348,15 +355,13 @@ namespace Quickstarts.MyOPCServer
 
                         return activeNode;
                     }
-
+                
 
             }
 
             return predefinedNode;
         }
 
-         
-    
  
         #region Private Fields
         private MyOPCServerConfiguration m_configuration;
@@ -365,6 +370,7 @@ namespace Quickstarts.MyOPCServer
         private OpenWeatherMapState openWeatherObject;
         private ushort m_namespaceIndex;
         private ushort m_typeNamespaceIndex;
+       
 
         
 

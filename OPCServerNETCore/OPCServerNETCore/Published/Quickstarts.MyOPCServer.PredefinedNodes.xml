@@ -107,7 +107,7 @@
         </uax:BrowseName>
         <uax:Description>
           <uax:Locale></uax:Locale>
-          <uax:Text>Temperature prevision in kelvin</uax:Text>
+          <uax:Text>Temperature in Kelvin</uax:Text>
         </uax:Description>
         <uax:ReferenceTypeId>
           <uax:Identifier>i=47</uax:Identifier>
@@ -137,7 +137,7 @@
         </uax:BrowseName>
         <uax:Description>
           <uax:Locale></uax:Locale>
-          <uax:Text>Max Temperature prevision in kelvin</uax:Text>
+          <uax:Text>Max Temperature in Kelvin</uax:Text>
         </uax:Description>
         <uax:ReferenceTypeId>
           <uax:Identifier>i=47</uax:Identifier>
@@ -167,7 +167,7 @@
         </uax:BrowseName>
         <uax:Description>
           <uax:Locale></uax:Locale>
-          <uax:Text>Min Temperature prevision in kelvin</uax:Text>
+          <uax:Text>Min Temperature in Kelvin</uax:Text>
         </uax:Description>
         <uax:ReferenceTypeId>
           <uax:Identifier>i=47</uax:Identifier>
@@ -197,7 +197,7 @@
         </uax:BrowseName>
         <uax:Description>
           <uax:Locale></uax:Locale>
-          <uax:Text>Pressure prevision</uax:Text>
+          <uax:Text>Pressure in Pascal</uax:Text>
         </uax:Description>
         <uax:ReferenceTypeId>
           <uax:Identifier>i=47</uax:Identifier>
@@ -312,6 +312,10 @@
                     </uax:DataType>
                     <uax:ValueRank>-1</uax:ValueRank>
                     <uax:ArrayDimensions />
+                    <uax:Description>
+                      <uax:Locale></uax:Locale>
+                      <uax:Text>City to get Weather Prevision</uax:Text>
+                    </uax:Description>
                   </uax:Argument>
                 </uax:Body>
               </uax:ExtensionObject>
@@ -327,6 +331,10 @@
                     </uax:DataType>
                     <uax:ValueRank>-1</uax:ValueRank>
                     <uax:ArrayDimensions />
+                    <uax:Description>
+                      <uax:Locale></uax:Locale>
+                      <uax:Text>C=Celsius,K=Kelvin. Default: K</uax:Text>
+                    </uax:Description>
                   </uax:Argument>
                 </uax:Body>
               </uax:ExtensionObject>
@@ -421,7 +429,7 @@
         </uax:BrowseName>
         <uax:Description>
           <uax:Locale></uax:Locale>
-          <uax:Text>Temperature prevision in kelvin</uax:Text>
+          <uax:Text>Temperature in Kelvin</uax:Text>
         </uax:Description>
         <uax:ReferenceTypeId>
           <uax:Identifier>i=47</uax:Identifier>
@@ -451,7 +459,7 @@
         </uax:BrowseName>
         <uax:Description>
           <uax:Locale></uax:Locale>
-          <uax:Text>Max Temperature prevision in kelvin</uax:Text>
+          <uax:Text>Max Temperature in Kelvin</uax:Text>
         </uax:Description>
         <uax:ReferenceTypeId>
           <uax:Identifier>i=47</uax:Identifier>
@@ -481,7 +489,7 @@
         </uax:BrowseName>
         <uax:Description>
           <uax:Locale></uax:Locale>
-          <uax:Text>Min Temperature prevision in kelvin</uax:Text>
+          <uax:Text>Min Temperature in Kelvin</uax:Text>
         </uax:Description>
         <uax:ReferenceTypeId>
           <uax:Identifier>i=47</uax:Identifier>
@@ -511,7 +519,7 @@
         </uax:BrowseName>
         <uax:Description>
           <uax:Locale></uax:Locale>
-          <uax:Text>Pressure prevision</uax:Text>
+          <uax:Text>Pressure in Pascal</uax:Text>
         </uax:Description>
         <uax:ReferenceTypeId>
           <uax:Identifier>i=47</uax:Identifier>
@@ -623,7 +631,7 @@
       </uax:BrowseName>
       <uax:Description>
         <uax:Locale></uax:Locale>
-        <uax:Text>Temperature prevision in kelvin</uax:Text>
+        <uax:Text>Temperature in Kelvin</uax:Text>
       </uax:Description>
       <uax:ReferenceTypeId>
         <uax:Identifier>i=47</uax:Identifier>
@@ -653,7 +661,7 @@
       </uax:BrowseName>
       <uax:Description>
         <uax:Locale></uax:Locale>
-        <uax:Text>Max Temperature prevision in kelvin</uax:Text>
+        <uax:Text>Max Temperature in Kelvin</uax:Text>
       </uax:Description>
       <uax:ReferenceTypeId>
         <uax:Identifier>i=47</uax:Identifier>
@@ -683,7 +691,7 @@
       </uax:BrowseName>
       <uax:Description>
         <uax:Locale></uax:Locale>
-        <uax:Text>Min Temperature prevision in kelvin</uax:Text>
+        <uax:Text>Min Temperature in Kelvin</uax:Text>
       </uax:Description>
       <uax:ReferenceTypeId>
         <uax:Identifier>i=47</uax:Identifier>
@@ -713,7 +721,7 @@
       </uax:BrowseName>
       <uax:Description>
         <uax:Locale></uax:Locale>
-        <uax:Text>Pressure prevision</uax:Text>
+        <uax:Text>Pressure in Pascal</uax:Text>
       </uax:Description>
       <uax:ReferenceTypeId>
         <uax:Identifier>i=47</uax:Identifier>
@@ -855,6 +863,38 @@
       </uax:Body>
     </uax:DataTypeDefinition>
   </WeatherData>
+  <WeatherAPISet xmlns="https://github.com/dariofugale95/server-opc-ua-dotnetcore">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=15067</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>1</uax:NamespaceIndex>
+      <uax:Name>WeatherAPISet</uax:Name>
+    </uax:BrowseName>
+    <uax:Description>
+      <uax:Locale></uax:Locale>
+      <uax:Text>Contains all instances of WeatherAPIObject</uax:Text>
+    </uax:Description>
+    <uax:ReferenceTypeId>
+      <uax:Identifier>i=47</uax:Identifier>
+    </uax:ReferenceTypeId>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=58</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>15067</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=35</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>i=85</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </WeatherAPISet>
   <OpenWeatherMap xmlns="https://github.com/dariofugale95/server-opc-ua-dotnetcore">
     <uax:NodeClass>Object_1</uax:NodeClass>
     <uax:NodeId>
@@ -879,7 +919,7 @@
         </uax:ReferenceTypeId>
         <uax:IsInverse>true</uax:IsInverse>
         <uax:TargetId>
-          <uax:Identifier>i=85</uax:Identifier>
+          <uax:Identifier>ns=1;i=15067</uax:Identifier>
         </uax:TargetId>
       </uax:Reference>
       <uax:Reference>
@@ -908,6 +948,11 @@
         <uax:Identifier>i=68</uax:Identifier>
       </uax:TypeDefinitionId>
       <uax:NumericId>15040</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:String>openweather.com</uax:String>
+        </uax:Value>
+      </uax:Value>
       <uax:DataType>
         <uax:Identifier>i=12</uax:Identifier>
       </uax:DataType>
@@ -975,7 +1020,7 @@
         </uax:BrowseName>
         <uax:Description>
           <uax:Locale></uax:Locale>
-          <uax:Text>Temperature prevision in kelvin</uax:Text>
+          <uax:Text>Temperature in Kelvin</uax:Text>
         </uax:Description>
         <uax:ReferenceTypeId>
           <uax:Identifier>i=47</uax:Identifier>
@@ -1002,7 +1047,7 @@
         </uax:BrowseName>
         <uax:Description>
           <uax:Locale></uax:Locale>
-          <uax:Text>Max Temperature prevision in kelvin</uax:Text>
+          <uax:Text>Max Temperature in Kelvin</uax:Text>
         </uax:Description>
         <uax:ReferenceTypeId>
           <uax:Identifier>i=47</uax:Identifier>
@@ -1029,7 +1074,7 @@
         </uax:BrowseName>
         <uax:Description>
           <uax:Locale></uax:Locale>
-          <uax:Text>Min Temperature prevision in kelvin</uax:Text>
+          <uax:Text>Min Temperature in Kelvin</uax:Text>
         </uax:Description>
         <uax:ReferenceTypeId>
           <uax:Identifier>i=47</uax:Identifier>
@@ -1056,7 +1101,7 @@
         </uax:BrowseName>
         <uax:Description>
           <uax:Locale></uax:Locale>
-          <uax:Text>Pressure prevision</uax:Text>
+          <uax:Text>Pressure in Pascal</uax:Text>
         </uax:Description>
         <uax:ReferenceTypeId>
           <uax:Identifier>i=47</uax:Identifier>
@@ -1159,6 +1204,10 @@
                     </uax:DataType>
                     <uax:ValueRank>-1</uax:ValueRank>
                     <uax:ArrayDimensions />
+                    <uax:Description>
+                      <uax:Locale></uax:Locale>
+                      <uax:Text>City to get Weather Prevision</uax:Text>
+                    </uax:Description>
                   </uax:Argument>
                 </uax:Body>
               </uax:ExtensionObject>
@@ -1174,6 +1223,10 @@
                     </uax:DataType>
                     <uax:ValueRank>-1</uax:ValueRank>
                     <uax:ArrayDimensions />
+                    <uax:Description>
+                      <uax:Locale></uax:Locale>
+                      <uax:Text>C=Celsius,K=Kelvin. Default: K</uax:Text>
+                    </uax:Description>
                   </uax:Argument>
                 </uax:Body>
               </uax:ExtensionObject>

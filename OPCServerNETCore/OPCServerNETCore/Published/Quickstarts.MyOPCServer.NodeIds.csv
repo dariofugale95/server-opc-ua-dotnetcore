@@ -2,6 +2,7 @@ MyOPCServer_BinarySchema,15051,Variable
 MyOPCServer_XmlSchema,15059,Variable
 OpenWeatherMap,15039,Object
 OpenWeatherMapType,15001,ObjectType
+WeatherAPISet,15067,Object
 WeatherData,15038,DataType
 WeatherData_Encoding_DefaultBinary,15050,Object
 WeatherData_Encoding_DefaultJson,15066,Object

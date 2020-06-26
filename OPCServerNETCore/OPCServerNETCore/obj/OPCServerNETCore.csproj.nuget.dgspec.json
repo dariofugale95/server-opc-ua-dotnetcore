@@ -49,6 +49,10 @@
             "RestSharp": {
               "target": "Package",
               "version": "[106.11.4, )"
+            },
+            "System.Management": {
+              "target": "Package",
+              "version": "[4.7.0, )"
             }
           },
           "imports": [

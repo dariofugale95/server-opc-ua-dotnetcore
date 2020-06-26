@@ -64,3 +64,4 @@ MyOPCServer_XmlSchema_WeatherData,15063,Variable
 MyOPCServer_XmlSchema_WeatherData_DataTypeVersion,15064,Variable
 MyOPCServer_XmlSchema_WeatherData_DictionaryFragment,15065,Variable
 WeatherData_Encoding_DefaultJson,15066,Object
+WeatherAPISet,15067,Object

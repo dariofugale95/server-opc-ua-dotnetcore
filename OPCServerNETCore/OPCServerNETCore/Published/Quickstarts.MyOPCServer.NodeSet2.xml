@@ -87,7 +87,7 @@
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15005" BrowseName="1:Temperature" ParentNodeId="ns=1;i=15003" DataType="Float">
     <DisplayName>Temperature</DisplayName>
-    <Description>Temperature prevision in kelvin</Description>
+    <Description>Temperature in Kelvin</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
@@ -96,7 +96,7 @@
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15006" BrowseName="1:MaxTemperature" ParentNodeId="ns=1;i=15003" DataType="Float">
     <DisplayName>MaxTemperature</DisplayName>
-    <Description>Max Temperature prevision in kelvin</Description>
+    <Description>Max Temperature in Kelvin</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
@@ -105,7 +105,7 @@
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15007" BrowseName="1:MinTemperature" ParentNodeId="ns=1;i=15003" DataType="Float">
     <DisplayName>MinTemperature</DisplayName>
-    <Description>Min Temperature prevision in kelvin</Description>
+    <Description>Min Temperature in Kelvin</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
@@ -114,7 +114,7 @@
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15008" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15003" DataType="Float">
     <DisplayName>Pressure</DisplayName>
-    <Description>Pressure prevision</Description>
+    <Description>Pressure in Pascal</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
@@ -160,6 +160,11 @@
               </DataType>
               <ValueRank>-1</ValueRank>
               <ArrayDimensions />
+              <Description>
+                <Locale>
+                </Locale>
+                <Text>City to get Weather Prevision</Text>
+              </Description>
             </Argument>
           </Body>
         </ExtensionObject>
@@ -175,6 +180,11 @@
               </DataType>
               <ValueRank>-1</ValueRank>
               <ArrayDimensions />
+              <Description>
+                <Locale>
+                </Locale>
+                <Text>C=Celsius,K=Kelvin. Default: K</Text>
+              </Description>
             </Argument>
           </Body>
         </ExtensionObject>
@@ -213,7 +223,7 @@
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15026" BrowseName="1:Temperature" ParentNodeId="ns=1;i=15024" DataType="Float">
     <DisplayName>Temperature</DisplayName>
-    <Description>Temperature prevision in kelvin</Description>
+    <Description>Temperature in Kelvin</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
@@ -222,7 +232,7 @@
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15027" BrowseName="1:MaxTemperature" ParentNodeId="ns=1;i=15024" DataType="Float">
     <DisplayName>MaxTemperature</DisplayName>
-    <Description>Max Temperature prevision in kelvin</Description>
+    <Description>Max Temperature in Kelvin</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
@@ -231,7 +241,7 @@
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15028" BrowseName="1:MinTemperature" ParentNodeId="ns=1;i=15024" DataType="Float">
     <DisplayName>MinTemperature</DisplayName>
-    <Description>Min Temperature prevision in kelvin</Description>
+    <Description>Min Temperature in Kelvin</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
@@ -240,7 +250,7 @@
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15029" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15024" DataType="Float">
     <DisplayName>Pressure</DisplayName>
-    <Description>Pressure prevision</Description>
+    <Description>Pressure in Pascal</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
@@ -280,7 +290,7 @@
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15033" BrowseName="1:Temperature" ParentNodeId="ns=1;i=15031" DataType="Float">
     <DisplayName>Temperature</DisplayName>
-    <Description>Temperature prevision in kelvin</Description>
+    <Description>Temperature in Kelvin</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
@@ -289,7 +299,7 @@
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15034" BrowseName="1:MaxTemperature" ParentNodeId="ns=1;i=15031" DataType="Float">
     <DisplayName>MaxTemperature</DisplayName>
-    <Description>Max Temperature prevision in kelvin</Description>
+    <Description>Max Temperature in Kelvin</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
@@ -298,7 +308,7 @@
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15035" BrowseName="1:MinTemperature" ParentNodeId="ns=1;i=15031" DataType="Float">
     <DisplayName>MinTemperature</DisplayName>
-    <Description>Min Temperature prevision in kelvin</Description>
+    <Description>Min Temperature in Kelvin</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
@@ -307,7 +317,7 @@
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15036" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15031" DataType="Float">
     <DisplayName>Pressure</DisplayName>
-    <Description>Pressure prevision</Description>
+    <Description>Pressure in Pascal</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
@@ -338,13 +348,21 @@
       <Field Name="City" DataType="i=12" />
     </Definition>
   </UADataType>
+  <UAObject NodeId="ns=1;i=15067" BrowseName="1:WeatherAPISet">
+    <DisplayName>WeatherAPISet</DisplayName>
+    <Description>Contains all instances of WeatherAPIObject</Description>
+    <References>
+      <Reference ReferenceType="Organizes" IsForward="false">i=85</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+    </References>
+  </UAObject>
   <UAObject NodeId="ns=1;i=15039" BrowseName="1:OpenWeatherMap" EventNotifier="1">
     <DisplayName>OpenWeatherMap</DisplayName>
     <References>
       <Reference ReferenceType="HasProperty">ns=1;i=15040</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=15041</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=15048</Reference>
-      <Reference ReferenceType="Organizes" IsForward="false">i=85</Reference>
+      <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=15067</Reference>
       <Reference ReferenceType="HasNotifier" IsForward="false">i=2253</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=15001</Reference>
     </References>
@@ -355,6 +373,9 @@
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15039</Reference>
     </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">openweather.com</String>
+    </Value>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15041" BrowseName="1:WeatherData" ParentNodeId="ns=1;i=15039" DataType="ns=1;i=15038">
     <DisplayName>WeatherData</DisplayName>
@@ -379,7 +400,7 @@
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15043" BrowseName="1:Temperature" ParentNodeId="ns=1;i=15041" DataType="Float">
     <DisplayName>Temperature</DisplayName>
-    <Description>Temperature prevision in kelvin</Description>
+    <Description>Temperature in Kelvin</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15041</Reference>
@@ -387,7 +408,7 @@
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15044" BrowseName="1:MaxTemperature" ParentNodeId="ns=1;i=15041" DataType="Float">
     <DisplayName>MaxTemperature</DisplayName>
-    <Description>Max Temperature prevision in kelvin</Description>
+    <Description>Max Temperature in Kelvin</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15041</Reference>
@@ -395,7 +416,7 @@
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15045" BrowseName="1:MinTemperature" ParentNodeId="ns=1;i=15041" DataType="Float">
     <DisplayName>MinTemperature</DisplayName>
-    <Description>Min Temperature prevision in kelvin</Description>
+    <Description>Min Temperature in Kelvin</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15041</Reference>
@@ -403,7 +424,7 @@
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15046" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15041" DataType="Float">
     <DisplayName>Pressure</DisplayName>
-    <Description>Pressure prevision</Description>
+    <Description>Pressure in Pascal</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15041</Reference>
@@ -445,6 +466,11 @@
               </DataType>
               <ValueRank>-1</ValueRank>
               <ArrayDimensions />
+              <Description>
+                <Locale>
+                </Locale>
+                <Text>City to get Weather Prevision</Text>
+              </Description>
             </Argument>
           </Body>
         </ExtensionObject>
@@ -460,6 +486,11 @@
               </DataType>
               <ValueRank>-1</ValueRank>
               <ArrayDimensions />
+              <Description>
+                <Locale>
+                </Locale>
+                <Text>C=Celsius,K=Kelvin. Default: K</Text>
+              </Description>
             </Argument>
           </Body>
         </ExtensionObject>

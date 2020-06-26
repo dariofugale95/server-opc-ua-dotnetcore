@@ -81,6 +81,11 @@ namespace Quickstarts.MyOPCServer
     public static partial class Objects
     {
         /// <summary>
+        /// The identifier for the WeatherAPISet Object.
+        /// </summary>
+        public const uint WeatherAPISet = 15067;
+
+        /// <summary>
         /// The identifier for the OpenWeatherMap Object.
         /// </summary>
         public const uint OpenWeatherMap = 15039;
@@ -385,6 +390,11 @@ namespace Quickstarts.MyOPCServer
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
     public static partial class ObjectIds
     {
+        /// <summary>
+        /// The identifier for the WeatherAPISet Object.
+        /// </summary>
+        public static readonly ExpandedNodeId WeatherAPISet = new ExpandedNodeId(Quickstarts.MyOPCServer.Objects.WeatherAPISet, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
+
         /// <summary>
         /// The identifier for the OpenWeatherMap Object.
         /// </summary>
@@ -713,6 +723,11 @@ namespace Quickstarts.MyOPCServer
         /// The BrowseName for the Temperature component.
         /// </summary>
         public const string Temperature = "Temperature";
+
+        /// <summary>
+        /// The BrowseName for the WeatherAPISet component.
+        /// </summary>
+        public const string WeatherAPISet = "WeatherAPISet";
 
         /// <summary>
         /// The BrowseName for the WeatherData component.
