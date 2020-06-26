@@ -42,6 +42,7 @@ using System.Threading.Tasks;
 using Opc.Ua.Configuration;
 using Org.BouncyCastle.Security;
 using Org.BouncyCastle.Crypto.Modes.Gcm;
+using Quickstarts.MyOPCServer.Properties;
 
 namespace Quickstarts.MyOPCServer
 {
@@ -82,8 +83,9 @@ namespace Quickstarts.MyOPCServer
             m_namespaceIndex = Server.NamespaceUris.GetIndexOrAppend(namespaceUris[1]);
 
             Console.WriteLine("**************Welcome to MyOPCServer**************");
-       
+
             
+
         }
         #endregion
 
@@ -148,12 +150,8 @@ namespace Quickstarts.MyOPCServer
                
 
                 try
-                {
-
+                { 
                     SetupNodes();
-                    
-
-
                 }
 
                 catch (Exception e)
@@ -274,14 +272,13 @@ namespace Quickstarts.MyOPCServer
         
         protected override NodeStateCollection LoadPredefinedNodes(ISystemContext context)
         {
-          
-         
+
             NodeStateCollection predefinedNodes = new NodeStateCollection();
-            
-            //predefinedNodes.LoadFromBinaryResource(context, "Published2/" + "Quickstarts.MyOPCServer.PredefinedNodes.uanodes", this.GetType().GetTypeInfo().Assembly, true);
-            predefinedNodes.LoadFromBinaryResource(context, "/Users/giuli/Documents/GitHub/server-opc-ua-dotnetcore/OPCServerNETCore/OPCServerNETCore/Published2/Quickstarts.MyOPCServer.PredefinedNodes.uanodes", this.GetType().GetTypeInfo().Assembly, true);
+        
+          
+            predefinedNodes.LoadFromBinaryResource(context,Resources.BinaryNodePath.ToString(), this.GetType().GetTypeInfo().Assembly, true);
             Console.WriteLine("***MyOPCServer: number of Node loaded from source "+predefinedNodes.Count.ToString()+"***");
-            
+          
             return predefinedNodes;
         }
 

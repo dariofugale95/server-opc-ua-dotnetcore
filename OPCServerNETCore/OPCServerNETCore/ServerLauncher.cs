@@ -33,6 +33,7 @@
 using Opc.Ua;
 using Opc.Ua.Configuration;
 using Opc.Ua.Server;
+using Quickstarts.MyOPCServer.Properties;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -160,7 +161,7 @@ namespace Quickstarts.MyOPCServer
             application.ConfigSectionName = "QuickstartsMyOPCServer";
 
             // load the application configuration.
-            ApplicationConfiguration config = await application.LoadApplicationConfiguration("C:/Users/giuli/Documents/GitHub/server-opc-ua-dotnetcore/OPCServerNETCore/OPCServerNETCore/Quickstarts.MyOPCServer.Config.xml", false);
+            ApplicationConfiguration config = await application.LoadApplicationConfiguration(Resources.ConfigurationPath.ToString(), false);
 
             // check the application certificate and create if not available.
             bool haveAppCertificate = await application.CheckApplicationInstanceCertificate(false, 0, ushort.MaxValue); // almost unlimited
