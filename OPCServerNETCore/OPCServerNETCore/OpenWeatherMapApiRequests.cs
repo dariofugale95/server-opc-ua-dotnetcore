@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Opc.Ua;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,11 @@ namespace Quickstarts.MyOPCServer
             request.AddHeader("x-rapidapi-host", "community-open-weather-map.p.rapidapi.com");
             request.AddHeader("x-rapidapi-key", "f4d458d83cmshf1ccd0cc1563d40p12950djsn0c85cecdac60");
             IRestResponse response = client.Execute(request);
+            Console.WriteLine("Response of ApiRequest to OpenWeatherMapData: "+response.StatusCode);
+            if (response.StatusCode != System.Net.HttpStatusCode.OK) {
+                Console.WriteLine("Api Request to OpenWeatherMapData is failed");
+                return null;
+            }
             OpenWeatherMapDataClass openWeatherMapData = JsonConvert.DeserializeObject<OpenWeatherMapDataClass>(response.Content);
             return openWeatherMapData;
         }

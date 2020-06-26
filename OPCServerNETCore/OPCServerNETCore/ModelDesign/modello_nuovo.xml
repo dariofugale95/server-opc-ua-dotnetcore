@@ -36,8 +36,10 @@
     </opc:References>
     <opc:InputArguments>
       <opc:Argument Name="City" DataType="ua:String" />
-
-
+      <opc:Argument Name="MesureOfTemperature" DataType="ua:String" ModellingRule="Optional" />
+      <DefaultValue>
+  <uax:String>Kelvin</uax:String>
+  </DefaultValue>
     </opc:InputArguments>
   </opc:Method>
 
@@ -56,6 +58,12 @@
       <opc:Description>Date of weather prevision </opc:Description> </opc:Variable>
        <opc:Variable SymbolicName="Temperature" TypeDefinition="ua:BaseDataVariableType" DataType="ua:Float" ModellingRule="Mandatory">
        <opc:Description>Temperature prevision in kelvin </opc:Description>  </opc:Variable>
+       <opc:Variable SymbolicName="MaxTemperature" TypeDefinition="ua:BaseDataVariableType" DataType="ua:Float" ModellingRule="Mandatory">
+       <opc:Description>Max Temperature prevision in kelvin </opc:Description>  </opc:Variable>
+        <opc:Variable SymbolicName="MinTemperature" TypeDefinition="ua:BaseDataVariableType" DataType="ua:Float" ModellingRule="Mandatory">
+       <opc:Description>Min Temperature prevision in kelvin </opc:Description>  </opc:Variable>
+        <opc:Variable SymbolicName="Pressure" TypeDefinition="ua:BaseDataVariableType" DataType="ua:Float" ModellingRule="Mandatory">
+       <opc:Description>Pressure prevision </opc:Description>  </opc:Variable>
         <opc:Variable SymbolicName="City" TypeDefinition="ua:BaseDataVariableType" DataType="ua:String" ModellingRule="Mandatory">
         <opc:Description>City of weather prevision </opc:Description> </opc:Variable>
     </opc:Children>
@@ -66,6 +74,9 @@
     <opc:Fields>
       <opc:Field Name="Date" DataType="ua:DateTime" />
       <opc:Field Name="Temperature" DataType="ua:Float" />
+      <opc:Field Name="MaxTemperature" DataType="ua:Float" />
+      <opc:Field Name="MinTemperature" DataType="ua:Float" />
+      <opc:Field Name="Pressure" DataType="ua:Float" />
       <opc:Field Name="City" DataType="ua:String" />
     </opc:Fields>
   </opc:DataType>

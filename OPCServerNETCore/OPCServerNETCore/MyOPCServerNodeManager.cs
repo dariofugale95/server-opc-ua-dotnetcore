@@ -41,6 +41,7 @@ using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using Opc.Ua.Configuration;
 using Org.BouncyCastle.Security;
+using Org.BouncyCastle.Crypto.Modes.Gcm;
 
 namespace Quickstarts.MyOPCServer
 {
@@ -78,10 +79,10 @@ namespace Quickstarts.MyOPCServer
             NamespaceUris = namespaceUris;
              
             m_typeNamespaceIndex = Server.NamespaceUris.GetIndexOrAppend(namespaceUris[0]);
-            Console.WriteLine(m_typeNamespaceIndex);
             m_namespaceIndex = Server.NamespaceUris.GetIndexOrAppend(namespaceUris[1]);
-            Console.WriteLine(m_namespaceIndex);
-            
+
+            Console.WriteLine("**************Welcome to MyOPCServer**************");
+       
             
         }
         #endregion
@@ -157,13 +158,13 @@ namespace Quickstarts.MyOPCServer
 
                 catch (Exception e)
                 {
-                    Utils.Trace(e, "Error creating the address space.");
+                    Utils.Trace(e, "MyOPCServer: Error creating the address space.");
                 }
 
 
                 AddPredefinedNode(SystemContext, dataSourcesFolder);
 
-                Console.WriteLine("Siamo dentro address space");
+     
                 
             }
         }
@@ -171,7 +172,7 @@ namespace Quickstarts.MyOPCServer
         private void SetupNodes()
         {
 
-            Console.WriteLine("SetupNodes");
+            Console.WriteLine("***Give me a few seconds to setup MyOPCServer***");
             openWeatherObject = FindPredefinedNode<OpenWeatherMapState>(Objects.OpenWeatherMap);
 
             openWeatherObject.OpenWeatherMapMethod.OnCall = WeatherRequest;
@@ -179,32 +180,62 @@ namespace Quickstarts.MyOPCServer
 
         }
 
-        private ServiceResult WeatherRequest(ISystemContext context, MethodState method, NodeId objectId, string city)
+        private ServiceResult WeatherRequest(ISystemContext context, MethodState method, NodeId objectId, string city, string mesureOfTemperature)
         {
             Console.WriteLine("Client with SessionID: "+ context.SessionId+" called WeatherMethod the input is: "+city);
-          
+
+            if (city != null) {
+                double conversionFactor=0;
+                switch (mesureOfTemperature) {
+
+                    case "Kelvin":
+                        Console.WriteLine("Unit of measure for Temperature choosed: " + "Kelvin");
             
-            OpenWeatherMapDataClass openWeatherData=apiRequests.GetWeatherDataByCity(city.ToString());
+                        break;
+                    case "Celsius":
+                        Console.WriteLine("Unit of measure for Temperature choosed: " + "Celsius");
+                        conversionFactor = 273.15;
+                        break;
+
+                    default:
+                        Console.WriteLine("WARNING: Unit of measure choosed is not available");
+                        Console.WriteLine("Automatic set Unit of Mesure for Temperature: KELVIN ");
+                        break;
+
+
+
+                }
+
+
+                Console.WriteLine("mesure " + mesureOfTemperature);
+                OpenWeatherMapDataClass openWeatherData=apiRequests.GetWeatherDataByCity(city.ToString());
             if (openWeatherData != null) {
 
-                //from kelvin to celsius
-                double temp = openWeatherData.Main.Temp - 273.15;
-                
-                openWeatherObject.WeatherData.Temperature.Value = (float)temp;
+                    //from kelvin to celsius
+   
+                openWeatherObject.WeatherData.Temperature.Value = (float)(openWeatherData.Main.Temp - conversionFactor);
                 openWeatherObject.WeatherData.City.Value = openWeatherData.Name.ToString();
                 openWeatherObject.WeatherData.Date.Value = DateTime.UtcNow.Date;
+                openWeatherObject.WeatherData.Timestamp = DateTime.UtcNow;
+                openWeatherObject.WeatherData.MaxTemperature.Value = (float)(openWeatherData.Main.TempMax - conversionFactor);
+                openWeatherObject.WeatherData.MinTemperature.Value = (float)(openWeatherData.Main.TempMin - conversionFactor);
+                openWeatherObject.WeatherData.Pressure.Value =openWeatherData.Main.Pressure;
+                 
 
-                if (openWeatherObject.WeatherData.Date.Value != null && openWeatherObject.WeatherData.City.Value != null && openWeatherObject.WeatherData.Temperature.Value != null)
+
+                    if (openWeatherObject.WeatherData.Date.Value != null && openWeatherObject.WeatherData.City.Value != null && openWeatherObject.WeatherData.Timestamp != null)
                 {
-                    return ServiceResult.Good;
+                        openWeatherObject.WeatherData.StatusCode = StatusCodes.Good;
+                        return ServiceResult.Good;
                 }
                 else {
                     return StatusCodes.BadUnknownResponse;
                 }
 
             }
-      
-            Console.WriteLine("ERROR: I can't obtain information for this city: " + city);
+            }
+
+            Console.WriteLine("INPUT ERROR: I can't get informations for this city or city is null: " + city);
             return StatusCodes.BadAggregateInvalidInputs;
             
 
@@ -249,7 +280,7 @@ namespace Quickstarts.MyOPCServer
             
             //predefinedNodes.LoadFromBinaryResource(context, "Published2/" + "Quickstarts.MyOPCServer.PredefinedNodes.uanodes", this.GetType().GetTypeInfo().Assembly, true);
             predefinedNodes.LoadFromBinaryResource(context, "/Users/giuli/Documents/GitHub/server-opc-ua-dotnetcore/OPCServerNETCore/OPCServerNETCore/Published2/Quickstarts.MyOPCServer.PredefinedNodes.uanodes", this.GetType().GetTypeInfo().Assembly, true);
-            Console.WriteLine("Node loaded from binary source "+predefinedNodes.Count.ToString());
+            Console.WriteLine("***MyOPCServer: number of Node loaded from source "+predefinedNodes.Count.ToString()+"***");
             
             return predefinedNodes;
         }

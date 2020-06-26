@@ -14,6 +14,9 @@
     <xs:sequence>
       <xs:element name="Date" type="xs:dateTime" minOccurs="0" />
       <xs:element name="Temperature" type="xs:float" minOccurs="0" />
+      <xs:element name="MaxTemperature" type="xs:float" minOccurs="0" />
+      <xs:element name="MinTemperature" type="xs:float" minOccurs="0" />
+      <xs:element name="Pressure" type="xs:float" minOccurs="0" />
       <xs:element name="City" type="xs:string" minOccurs="0" nillable="true" />
     </xs:sequence>
   </xs:complexType>
