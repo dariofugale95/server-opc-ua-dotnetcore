@@ -17,16 +17,15 @@
   <!-- Types -->
 
   <opc:ObjectType SymbolicName="OpenWeatherMapType" BaseType="ua:BaseObjectType" SupportsEvents="true">
+    <opc:Description>This ObjectType exspose information about weather</opc:Description>
     <opc:Children>
-    <opc:Property SymbolicName="ApiURL" DataType="ua:String" ValueRank="Scalar" ModellingRule="Mandatory" AccessLevel="Read"/>
-		<opc:Variable SymbolicName="WeatherData" TypeDefinition="WeatherMapDataType" ModellingRule="Mandatory" AccessLevel="Read" />
-    <opc:Method SymbolicName="OpenWeatherMapMethod" TypeDefinition="WeatherMethodType" ModellingRule="Mandatory" />
+      <opc:Property SymbolicName="ApiURL" DataType="ua:String" ValueRank="Scalar" ModellingRule="Mandatory" AccessLevel="Read"/>
+		  <opc:Variable SymbolicName="WeatherData" TypeDefinition="WeatherMapDataType" ModellingRule="Mandatory" AccessLevel="Read" />
+      <opc:Method SymbolicName="OpenWeatherMapMethod" TypeDefinition="WeatherMethodType" ModellingRule="Mandatory" />
     </opc:Children>
   </opc:ObjectType>
 
-
-
-
+<!--Method type to get information about weather by client-->
  <opc:Method SymbolicName="WeatherMethodType">
     <opc:References>
       <opc:Reference>
@@ -35,11 +34,13 @@
       </opc:Reference>
     </opc:References>
     <opc:InputArguments>
-      <opc:Argument Name="City" DataType="ua:String" />
-      <opc:Argument Name="MesureOfTemperature" DataType="ua:String" ModellingRule="Optional" />
-      <DefaultValue>
-  <uax:String>Kelvin</uax:String>
-  </DefaultValue>
+    <opc:Description>Method to choose City, for weather prevision, and the unit of measurement for temperature. Unit of measurement unit is default Kelvin</opc:Description>
+      <opc:Argument Name="City" DataType="ua:String">
+       <opc:Description>City to get Weather Prevision</opc:Description>
+      </opc:Argument>
+      <opc:Argument Name="MeasureOfTemperature" DataType="ua:String" ModellingRule="Optional">
+      <opc:Description>C=Celsius,K=Kelvin. Default: K</opc:Description>
+      </opc:Argument>
     </opc:InputArguments>
   </opc:Method>
 
@@ -50,57 +51,142 @@
     </opc:Children>
   </opc:ObjectType>
 
-
+<!--Variable Type for weatherData-->
   <opc:VariableType SymbolicName="WeatherMapDataType" DataType="WeatherData" BaseType="ua:BaseDataVariableType" ValueRank="Scalar" ExposesItsChildren="true">
     <opc:Description>Represents a WeatherMapData</opc:Description>
     <opc:Children>
       <opc:Variable SymbolicName="Date" TypeDefinition="ua:BaseDataVariableType" DataType="ua:DateTime" ModellingRule="Mandatory"> 
-      <opc:Description>Date of weather prevision </opc:Description> </opc:Variable>
-       <opc:Variable SymbolicName="Temperature" TypeDefinition="ua:BaseDataVariableType" DataType="ua:Float" ModellingRule="Mandatory">
-       <opc:Description>Temperature prevision in kelvin </opc:Description>  </opc:Variable>
-       <opc:Variable SymbolicName="MaxTemperature" TypeDefinition="ua:BaseDataVariableType" DataType="ua:Float" ModellingRule="Mandatory">
-       <opc:Description>Max Temperature prevision in kelvin </opc:Description>  </opc:Variable>
-        <opc:Variable SymbolicName="MinTemperature" TypeDefinition="ua:BaseDataVariableType" DataType="ua:Float" ModellingRule="Mandatory">
-       <opc:Description>Min Temperature prevision in kelvin </opc:Description>  </opc:Variable>
-        <opc:Variable SymbolicName="Pressure" TypeDefinition="ua:BaseDataVariableType" DataType="ua:Float" ModellingRule="Mandatory">
-       <opc:Description>Pressure prevision </opc:Description>  </opc:Variable>
-        <opc:Variable SymbolicName="City" TypeDefinition="ua:BaseDataVariableType" DataType="ua:String" ModellingRule="Mandatory">
+        <opc:Description>Datetime of weather prevision </opc:Description> </opc:Variable>
+      <opc:Variable SymbolicName="Temperature" TypeDefinition="AnalogTempDataType" ModellingRule="Mandatory" ExposesItsChildren="true">
+        <opc:Description>Temperature in Kelvin </opc:Description></opc:Variable>
+      <opc:Variable SymbolicName="MaxTemperature" TypeDefinition="AnalogTempDataType" ModellingRule="Mandatory" ExposesItsChildren="true">
+        <opc:Description>Max Temperature in Kelvin </opc:Description>  </opc:Variable>
+      <opc:Variable SymbolicName="MinTemperature" TypeDefinition="AnalogTempDataType" ModellingRule="Mandatory" ExposesItsChildren="true">
+        <opc:Description>Min Temperature in Kelvin </opc:Description>  </opc:Variable>
+      <opc:Variable SymbolicName="Pressure" TypeDefinition="AnalogPressDataType" ModellingRule="Mandatory" ExposesItsChildren="true">
+        <opc:Description>Pressure in Pascal </opc:Description>  </opc:Variable>
+      <opc:Variable SymbolicName="City" TypeDefinition="ua:BaseDataVariableType" DataType="ua:String" ModellingRule="Mandatory">
         <opc:Description>City of weather prevision </opc:Description> </opc:Variable>
     </opc:Children>
   </opc:VariableType>
 
+<!--Variable Type for analogic data-->
+ <opc:VariableType SymbolicName="AnalogTempDataType" DataType="AnalogData" BaseType="ua:BaseDataVariableType" ValueRank="Scalar" ExposesItsChildren="true">
+  <opc:Children>
+     <opc:Variable SymbolicName="Temp" TypeDefinition="ua:BaseDataVariableType" DataType="ua:Float" ModellingRule="Mandatory">
+     <opc:Description>Value of Variable</opc:Description> </opc:Variable>
+     <opc:Property SymbolicName="Info" DataType="ua:EUInformation" ModellingRule="Mandatory">
+     <opc:Description>Information like unit of measurement</opc:Description> 
+     
+     <opc:DefaultValue>
+            <uax:ExtensionObject>
+            <uax:TypeId>
+                    <uax:Identifier>i=888</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                    <uax:EUInformation>
+                    <uax:NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</uax:NamespaceUri>
+                        <uax:UnitId>5259596</uax:UnitId>
+                        <uax:DisplayName>
+                            <uax:Text>K</uax:Text>
+                        </uax:DisplayName>
+                        <uax:Description>
+                            <uax:Locale>Kelvin</uax:Locale>
+                            <uax:Text>Kelvin</uax:Text>
+                        </uax:Description>
+                    </uax:EUInformation>
+                </uax:Body>
+            </uax:ExtensionObject>
+        </opc:DefaultValue>
+     
+     
+     </opc:Property>
+  </opc:Children>
+</opc:VariableType>
+
+<opc:VariableType SymbolicName="AnalogPressDataType" DataType="AnalogData" BaseType="ua:BaseDataVariableType" ValueRank="Scalar" ExposesItsChildren="true">
+  <opc:Children>
+     <opc:Variable SymbolicName="Pressure" TypeDefinition="ua:BaseDataVariableType" DataType="ua:Float" ModellingRule="Mandatory">
+     <opc:Description>Value of Variable</opc:Description> </opc:Variable>
+     <opc:Property SymbolicName="Info"  DataType="ua:EUInformation" ModellingRule="Mandatory">
+     <opc:Description>Information like unit of measurement,range</opc:Description>
+     <opc:DefaultValue>
+            <uax:ExtensionObject>
+              <uax:TypeId>
+                    <uax:Identifier>i=888</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                    <uax:EUInformation><uax:NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</uax:NamespaceUri>
+                        <uax:UnitId>4932940</uax:UnitId>
+                        <uax:DisplayName>
+                            <uax:Text>Pa</uax:Text>
+                        </uax:DisplayName>
+                        <uax:Description>
+                            <uax:Locale>Pascal</uax:Locale>
+                            <uax:Text>Pascal</uax:Text>
+                        </uax:Description>
+                    </uax:EUInformation>
+                </uax:Body>
+            </uax:ExtensionObject>
+        </opc:DefaultValue>
+     
+      </opc:Property>
+  </opc:Children>
+</opc:VariableType>
+
+<!--Specific DataType for Weather-->
   <opc:DataType SymbolicName="WeatherData" BaseType="ua:Structure">
     <opc:Description>Information about waether in a specific city</opc:Description>
     <opc:Fields>
       <opc:Field Name="Date" DataType="ua:DateTime" />
-      <opc:Field Name="Temperature" DataType="ua:Float" />
-      <opc:Field Name="MaxTemperature" DataType="ua:Float" />
-      <opc:Field Name="MinTemperature" DataType="ua:Float" />
-      <opc:Field Name="Pressure" DataType="ua:Float" />
+      <opc:Field Name="Temperature" DataType="AnalogData" />
+      <opc:Field Name="MaxTemperature" DataType="AnalogData" />
+      <opc:Field Name="MinTemperature" DataType="AnalogData" />
+      <opc:Field Name="Pressure" DataType="AnalogData" />
       <opc:Field Name="City" DataType="ua:String" />
     </opc:Fields>
   </opc:DataType>
-  
+<!--Specific Datatype for Analogic Data-->
+   <opc:DataType SymbolicName="AnalogData" BaseType="ua:Structure">
+    <opc:Description>Data type for Analogic Data</opc:Description>
+    <opc:Fields>
+      <opc:Field Name="Data" DataType="ua:Float" />
+      <opc:Field Name="Info" DataType="ua:EUInformation" />
+    </opc:Fields>
+  </opc:DataType>
+
+   
+
   <!--  Objects -->
+
+    <opc:Object SymbolicName="WeatherAPISet" TypeDefinition="ua:BaseObjectType">
+        <opc:Description>Contains all instances of WeatherAPIObject</opc:Description>
+        <opc:References>
+            <opc:Reference IsInverse="true">
+                <opc:ReferenceType>ua:Organizes</opc:ReferenceType>
+                <opc:TargetId>ua:ObjectsFolder</opc:TargetId>
+            </opc:Reference>
+        </opc:References>
+    </opc:Object>
   
   <opc:Object SymbolicName="OpenWeatherMap" TypeDefinition="OpenWeatherMapType">
     <opc:References>
       <opc:Reference IsInverse="true">
         <opc:ReferenceType>ua:Organizes</opc:ReferenceType>
-        <opc:TargetId>ua:ObjectsFolder</opc:TargetId>
+        <opc:TargetId>WeatherAPISet</opc:TargetId>
       </opc:Reference>
       <opc:Reference IsInverse="true">
         <opc:ReferenceType>ua:HasNotifier</opc:ReferenceType>
         <opc:TargetId>ua:Server</opc:TargetId>
       </opc:Reference>
     </opc:References>
-     <Children>
-            <Property SymbolicName="ApiURL" DataType="ua:String" AccessLevel="Read">
-                <DefaultValue>
-                    <uax:String>https://openweathermap.org/</uax:String>
-                </DefaultValue>
-            </Property>
-     </Children>
+     <opc:Children>
+            <opc:Property SymbolicName="ApiURL" DataType="ua:String">
+                <opc:DefaultValue>
+                    <uax:String>openweather.com</uax:String>
+                </opc:DefaultValue>
+            </opc:Property>
+     </opc:Children>
   </opc:Object>
 
   

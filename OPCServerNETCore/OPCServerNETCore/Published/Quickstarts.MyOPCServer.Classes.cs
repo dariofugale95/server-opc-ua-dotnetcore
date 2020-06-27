@@ -94,19 +94,37 @@ namespace Quickstarts.MyOPCServer
            "dGNvcmX/////hGCAAgEAAAABABoAAABPcGVuV2VhdGhlck1hcFR5cGVJbnN0YW5jZQEBmToBAZk6mToA" +
            "AAH/////AwAAABVgiQoCAAAAAQAGAAAAQXBpVVJMAQGaOgAuAESaOgAAAAz/////AQH/////AAAAABVg" +
            "iQoCAAAAAQALAAAAV2VhdGhlckRhdGEBAZs6AC8BAbc6mzoAAAEBvjr/////AQH/////BgAAADVgiQoC" +
-           "AAAAAQAEAAAARGF0ZQEBnDoDAAAAABkAAABEYXRlIG9mIHdlYXRoZXIgcHJldmlzaW9uAC8AP5w6AAAA" +
-           "Df////8BAf////8AAAAANWCJCgIAAAABAAsAAABUZW1wZXJhdHVyZQEBnToDAAAAAB8AAABUZW1wZXJh" +
-           "dHVyZSBwcmV2aXNpb24gaW4ga2VsdmluAC8AP506AAAACv////8BAf////8AAAAANWCJCgIAAAABAA4A" +
-           "AABNYXhUZW1wZXJhdHVyZQEBnjoDAAAAACMAAABNYXggVGVtcGVyYXR1cmUgcHJldmlzaW9uIGluIGtl" +
-           "bHZpbgAvAD+eOgAAAAr/////AQH/////AAAAADVgiQoCAAAAAQAOAAAATWluVGVtcGVyYXR1cmUBAZ86" +
-           "AwAAAAAjAAAATWluIFRlbXBlcmF0dXJlIHByZXZpc2lvbiBpbiBrZWx2aW4ALwA/nzoAAAAK/////wEB" +
-           "/////wAAAAA1YIkKAgAAAAEACAAAAFByZXNzdXJlAQGgOgMAAAAAEgAAAFByZXNzdXJlIHByZXZpc2lv" +
-           "bgAvAD+gOgAAAAr/////AQH/////AAAAADVgiQoCAAAAAQAEAAAAQ2l0eQEBoToDAAAAABkAAABDaXR5" +
-           "IG9mIHdlYXRoZXIgcHJldmlzaW9uAC8AP6E6AAAADP////8BAf////8AAAAABGGCCgQAAAABABQAAABP" +
-           "cGVuV2VhdGhlck1hcE1ldGhvZAEBojoALwEBojqiOgAAAQEBAAAAAQD5CwABAaY6AQAAABdgqQoCAAAA" +
-           "AAAOAAAASW5wdXRBcmd1bWVudHMBAaM6AC4ARKM6AACWAgAAAAEAKgEBEwAAAAQAAABDaXR5AAz/////" +
-           "AAAAAAABACoBASIAAAATAAAATWVzdXJlT2ZUZW1wZXJhdHVyZQAM/////wAAAAAAAQAoAQEAAAABAAAA" +
-           "AAAAAAEB/////wAAAAA=";
+           "AAAAAQAEAAAARGF0ZQEBnDoDAAAAAB0AAABEYXRldGltZSBvZiB3ZWF0aGVyIHByZXZpc2lvbgAvAD+c" +
+           "OgAAAA3/////AQH/////AAAAADVgiQoCAAAAAQALAAAAVGVtcGVyYXR1cmUBAZ06AwAAAAAVAAAAVGVt" +
+           "cGVyYXR1cmUgaW4gS2VsdmluAC8BARg7nToAAAEB5Dr/////AQH/////AgAAADVgiQoCAAAAAQAEAAAA" +
+           "VGVtcAEB3DoDAAAAABEAAABWYWx1ZSBvZiBWYXJpYWJsZQAvAD/cOgAAAAr/////AQH/////AAAAADVg" +
+           "qQoCAAAAAQAEAAAASW5mbwEB3zoDAAAAACQAAABJbmZvcm1hdGlvbiBsaWtlIHVuaXQgb2YgbWVhc3Vy" +
+           "ZW1lbnQALgBE3zoAABYBAHkDAVIAAAAvAAAAaHR0cDovL3d3dy5vcGNmb3VuZGF0aW9uLm9yZy9VQS91" +
+           "bml0cy91bi9jZWZhY3RMQVAAAgEAAABLAwYAAABLZWx2aW4GAAAAS2VsdmluAQB3A/////8BAf////8A" +
+           "AAAANWCJCgIAAAABAA4AAABNYXhUZW1wZXJhdHVyZQEBnjoDAAAAABkAAABNYXggVGVtcGVyYXR1cmUg" +
+           "aW4gS2VsdmluAC8BARg7njoAAAEB5Dr/////AQH/////AgAAADVgiQoCAAAAAQAEAAAAVGVtcAEB3ToD" +
+           "AAAAABEAAABWYWx1ZSBvZiBWYXJpYWJsZQAvAD/dOgAAAAr/////AQH/////AAAAADVgqQoCAAAAAQAE" +
+           "AAAASW5mbwEB9DoDAAAAACQAAABJbmZvcm1hdGlvbiBsaWtlIHVuaXQgb2YgbWVhc3VyZW1lbnQALgBE" +
+           "9DoAABYBAHkDAVIAAAAvAAAAaHR0cDovL3d3dy5vcGNmb3VuZGF0aW9uLm9yZy9VQS91bml0cy91bi9j" +
+           "ZWZhY3RMQVAAAgEAAABLAwYAAABLZWx2aW4GAAAAS2VsdmluAQB3A/////8BAf////8AAAAANWCJCgIA" +
+           "AAABAA4AAABNaW5UZW1wZXJhdHVyZQEBnzoDAAAAABkAAABNaW4gVGVtcGVyYXR1cmUgaW4gS2Vsdmlu" +
+           "AC8BARg7nzoAAAEB5Dr/////AQH/////AgAAADVgiQoCAAAAAQAEAAAAVGVtcAEBCzsDAAAAABEAAABW" +
+           "YWx1ZSBvZiBWYXJpYWJsZQAvAD8LOwAAAAr/////AQH/////AAAAADVgqQoCAAAAAQAEAAAASW5mbwEB" +
+           "9joDAAAAACQAAABJbmZvcm1hdGlvbiBsaWtlIHVuaXQgb2YgbWVhc3VyZW1lbnQALgBE9joAABYBAHkD" +
+           "AVIAAAAvAAAAaHR0cDovL3d3dy5vcGNmb3VuZGF0aW9uLm9yZy9VQS91bml0cy91bi9jZWZhY3RMQVAA" +
+           "AgEAAABLAwYAAABLZWx2aW4GAAAAS2VsdmluAQB3A/////8BAf////8AAAAANWCJCgIAAAABAAgAAABQ" +
+           "cmVzc3VyZQEBoDoDAAAAABIAAABQcmVzc3VyZSBpbiBQYXNjYWwALwEBFTugOgAAAQHkOv////8BAf//" +
+           "//8CAAAANWCJCgIAAAABAAgAAABQcmVzc3VyZQEBDDsDAAAAABEAAABWYWx1ZSBvZiBWYXJpYWJsZQAv" +
+           "AD8MOwAAAAr/////AQH/////AAAAADVgqQoCAAAAAQAEAAAASW5mbwEB+DoDAAAAACoAAABJbmZvcm1h" +
+           "dGlvbiBsaWtlIHVuaXQgb2YgbWVhc3VyZW1lbnQscmFuZ2UALgBE+DoAABYBAHkDAVMAAAAvAAAAaHR0" +
+           "cDovL3d3dy5vcGNmb3VuZGF0aW9uLm9yZy9VQS91bml0cy91bi9jZWZhY3RMRUsAAgIAAABQYQMGAAAA" +
+           "UGFzY2FsBgAAAFBhc2NhbAEAdwP/////AQH/////AAAAADVgiQoCAAAAAQAEAAAAQ2l0eQEBoToDAAAA" +
+           "ABkAAABDaXR5IG9mIHdlYXRoZXIgcHJldmlzaW9uAC8AP6E6AAAADP////8BAf////8AAAAABGGCCgQA" +
+           "AAABABQAAABPcGVuV2VhdGhlck1hcE1ldGhvZAEBojoALwEBojqiOgAAAQEBAAAAAQD5CwABAaY6AQAA" +
+           "ABdgqQoCAAAAAAAOAAAASW5wdXRBcmd1bWVudHMBAaM6AC4ARKM6AACWAgAAAAEAKgEBOAAAAAQAAABD" +
+           "aXR5AAz/////AAAAAAMAAAAAHQAAAENpdHkgdG8gZ2V0IFdlYXRoZXIgUHJldmlzaW9uAQAqAQFJAAAA" +
+           "FAAAAE1lYXN1cmVPZlRlbXBlcmF0dXJlAAz/////AAAAAAMAAAAAHgAAAEM9Q2Vsc2l1cyxLPUtlbHZp" +
+           "bi4gRGVmYXVsdDogSwEAKAEBAAAAAQAAAAAAAAABAf////8AAAAA";
         #endregion
         #endif
         #endregion
@@ -348,8 +366,9 @@ namespace Quickstarts.MyOPCServer
            "AQAAADkAAABodHRwczovL2dpdGh1Yi5jb20vZGFyaW9mdWdhbGU5NS9zZXJ2ZXItb3BjLXVhLWRvdG5l" +
            "dGNvcmX/////BGGCCgQAAAABABEAAABXZWF0aGVyTWV0aG9kVHlwZQEBpDoALwEBpDqkOgAAAQEBAAAA" +
            "AQD5CwABAaY6AQAAABdgqQoCAAAAAAAOAAAASW5wdXRBcmd1bWVudHMBAaU6AC4ARKU6AACWAgAAAAEA" +
-           "KgEBEwAAAAQAAABDaXR5AAz/////AAAAAAABACoBASIAAAATAAAATWVzdXJlT2ZUZW1wZXJhdHVyZQAM" +
-           "/////wAAAAAAAQAoAQEAAAABAAAAAAAAAAEB/////wAAAAA=";
+           "KgEBOAAAAAQAAABDaXR5AAz/////AAAAAAMAAAAAHQAAAENpdHkgdG8gZ2V0IFdlYXRoZXIgUHJldmlz" +
+           "aW9uAQAqAQFJAAAAFAAAAE1lYXN1cmVPZlRlbXBlcmF0dXJlAAz/////AAAAAAMAAAAAHgAAAEM9Q2Vs" +
+           "c2l1cyxLPUtlbHZpbi4gRGVmYXVsdDogSwEAKAEBAAAAAQAAAAAAAAABAf////8AAAAA";
         #endregion
         #endif
         #endregion
@@ -382,7 +401,7 @@ namespace Quickstarts.MyOPCServer
             ServiceResult result = null;
 
             string city = (string)_inputArguments[0];
-            string mesureOfTemperature = (string)_inputArguments[1];
+            string measureOfTemperature = (string)_inputArguments[1];
 
             if (OnCall != null)
             {
@@ -391,7 +410,7 @@ namespace Quickstarts.MyOPCServer
                     this,
                     _objectId,
                     city,
-                    mesureOfTemperature);
+                    measureOfTemperature);
             }
 
             return result;
@@ -411,7 +430,7 @@ namespace Quickstarts.MyOPCServer
         MethodState method,
         NodeId objectId,
         string city,
-        string mesureOfTemperature);
+        string measureOfTemperature);
     #endif
     #endregion
 
@@ -480,15 +499,32 @@ namespace Quickstarts.MyOPCServer
            "////AAAAABVgiQoCAAAAAAAHAAAATWVzc2FnZQEBrjoALgBErjoAAAAV/////wEB/////wAAAAAVYIkK" +
            "AgAAAAAACAAAAFNldmVyaXR5AQGvOgAuAESvOgAAAAX/////AQH/////AAAAABVgiQoCAAAAAQAKAAAA" +
            "V2VhdGhlck1hcAEBsDoALgEBtzqwOgAAAQG+Ov////8BAf////8GAAAANWCJCgIAAAABAAQAAABEYXRl" +
-           "AQGxOgMAAAAAGQAAAERhdGUgb2Ygd2VhdGhlciBwcmV2aXNpb24ALwA/sToAAAAN/////wEB/////wAA" +
-           "AAA1YIkKAgAAAAEACwAAAFRlbXBlcmF0dXJlAQGyOgMAAAAAHwAAAFRlbXBlcmF0dXJlIHByZXZpc2lv" +
-           "biBpbiBrZWx2aW4ALwA/sjoAAAAK/////wEB/////wAAAAA1YIkKAgAAAAEADgAAAE1heFRlbXBlcmF0" +
-           "dXJlAQGzOgMAAAAAIwAAAE1heCBUZW1wZXJhdHVyZSBwcmV2aXNpb24gaW4ga2VsdmluAC8AP7M6AAAA" +
-           "Cv////8BAf////8AAAAANWCJCgIAAAABAA4AAABNaW5UZW1wZXJhdHVyZQEBtDoDAAAAACMAAABNaW4g" +
-           "VGVtcGVyYXR1cmUgcHJldmlzaW9uIGluIGtlbHZpbgAvAD+0OgAAAAr/////AQH/////AAAAADVgiQoC" +
-           "AAAAAQAIAAAAUHJlc3N1cmUBAbU6AwAAAAASAAAAUHJlc3N1cmUgcHJldmlzaW9uAC8AP7U6AAAACv//" +
-           "//8BAf////8AAAAANWCJCgIAAAABAAQAAABDaXR5AQG2OgMAAAAAGQAAAENpdHkgb2Ygd2VhdGhlciBw" +
-           "cmV2aXNpb24ALwA/tjoAAAAM/////wEB/////wAAAAA=";
+           "AQGxOgMAAAAAHQAAAERhdGV0aW1lIG9mIHdlYXRoZXIgcHJldmlzaW9uAC8AP7E6AAAADf////8BAf//" +
+           "//8AAAAANWCJCgIAAAABAAsAAABUZW1wZXJhdHVyZQEBsjoDAAAAABUAAABUZW1wZXJhdHVyZSBpbiBL" +
+           "ZWx2aW4ALwEBGDuyOgAAAQHkOv////8BAf////8CAAAANWCJCgIAAAABAAQAAABUZW1wAQENOwMAAAAA" +
+           "EQAAAFZhbHVlIG9mIFZhcmlhYmxlAC8APw07AAAACv////8BAf////8AAAAANWCpCgIAAAABAAQAAABJ" +
+           "bmZvAQHhOgMAAAAAJAAAAEluZm9ybWF0aW9uIGxpa2UgdW5pdCBvZiBtZWFzdXJlbWVudAAuAEThOgAA" +
+           "FgEAeQMBUgAAAC8AAABodHRwOi8vd3d3Lm9wY2ZvdW5kYXRpb24ub3JnL1VBL3VuaXRzL3VuL2NlZmFj" +
+           "dExBUAACAQAAAEsDBgAAAEtlbHZpbgYAAABLZWx2aW4BAHcD/////wEB/////wAAAAA1YIkKAgAAAAEA" +
+           "DgAAAE1heFRlbXBlcmF0dXJlAQGzOgMAAAAAGQAAAE1heCBUZW1wZXJhdHVyZSBpbiBLZWx2aW4ALwEB" +
+           "GDuzOgAAAQHkOv////8BAf////8CAAAANWCJCgIAAAABAAQAAABUZW1wAQEOOwMAAAAAEQAAAFZhbHVl" +
+           "IG9mIFZhcmlhYmxlAC8APw47AAAACv////8BAf////8AAAAANWCpCgIAAAABAAQAAABJbmZvAQH6OgMA" +
+           "AAAAJAAAAEluZm9ybWF0aW9uIGxpa2UgdW5pdCBvZiBtZWFzdXJlbWVudAAuAET6OgAAFgEAeQMBUgAA" +
+           "AC8AAABodHRwOi8vd3d3Lm9wY2ZvdW5kYXRpb24ub3JnL1VBL3VuaXRzL3VuL2NlZmFjdExBUAACAQAA" +
+           "AEsDBgAAAEtlbHZpbgYAAABLZWx2aW4BAHcD/////wEB/////wAAAAA1YIkKAgAAAAEADgAAAE1pblRl" +
+           "bXBlcmF0dXJlAQG0OgMAAAAAGQAAAE1pbiBUZW1wZXJhdHVyZSBpbiBLZWx2aW4ALwEBGDu0OgAAAQHk" +
+           "Ov////8BAf////8CAAAANWCJCgIAAAABAAQAAABUZW1wAQEPOwMAAAAAEQAAAFZhbHVlIG9mIFZhcmlh" +
+           "YmxlAC8APw87AAAACv////8BAf////8AAAAANWCpCgIAAAABAAQAAABJbmZvAQH8OgMAAAAAJAAAAElu" +
+           "Zm9ybWF0aW9uIGxpa2UgdW5pdCBvZiBtZWFzdXJlbWVudAAuAET8OgAAFgEAeQMBUgAAAC8AAABodHRw" +
+           "Oi8vd3d3Lm9wY2ZvdW5kYXRpb24ub3JnL1VBL3VuaXRzL3VuL2NlZmFjdExBUAACAQAAAEsDBgAAAEtl" +
+           "bHZpbgYAAABLZWx2aW4BAHcD/////wEB/////wAAAAA1YIkKAgAAAAEACAAAAFByZXNzdXJlAQG1OgMA" +
+           "AAAAEgAAAFByZXNzdXJlIGluIFBhc2NhbAAvAQEVO7U6AAABAeQ6/////wEB/////wIAAAA1YIkKAgAA" +
+           "AAEACAAAAFByZXNzdXJlAQEQOwMAAAAAEQAAAFZhbHVlIG9mIFZhcmlhYmxlAC8APxA7AAAACv////8B" +
+           "Af////8AAAAANWCpCgIAAAABAAQAAABJbmZvAQH+OgMAAAAAKgAAAEluZm9ybWF0aW9uIGxpa2UgdW5p" +
+           "dCBvZiBtZWFzdXJlbWVudCxyYW5nZQAuAET+OgAAFgEAeQMBUwAAAC8AAABodHRwOi8vd3d3Lm9wY2Zv" +
+           "dW5kYXRpb24ub3JnL1VBL3VuaXRzL3VuL2NlZmFjdExFSwACAgAAAFBhAwYAAABQYXNjYWwGAAAAUGFz" +
+           "Y2FsAQB3A/////8BAf////8AAAAANWCJCgIAAAABAAQAAABDaXR5AQG2OgMAAAAAGQAAAENpdHkgb2Yg" +
+           "d2VhdGhlciBwcmV2aXNpb24ALwA/tjoAAAAM/////wEB/////wAAAAA=";
         #endregion
         #endif
         #endregion
@@ -660,16 +696,33 @@ namespace Quickstarts.MyOPCServer
         private const string InitializationString =
            "AQAAADkAAABodHRwczovL2dpdGh1Yi5jb20vZGFyaW9mdWdhbGU5NS9zZXJ2ZXItb3BjLXVhLWRvdG5l" +
            "dGNvcmX/////FWCJAgIAAAABABoAAABXZWF0aGVyTWFwRGF0YVR5cGVJbnN0YW5jZQEBtzoBAbc6tzoA" +
-           "AAEBvjr/////AQH/////BgAAADVgiQoCAAAAAQAEAAAARGF0ZQEBuDoDAAAAABkAAABEYXRlIG9mIHdl" +
-           "YXRoZXIgcHJldmlzaW9uAC8AP7g6AAAADf////8BAf////8AAAAANWCJCgIAAAABAAsAAABUZW1wZXJh" +
-           "dHVyZQEBuToDAAAAAB8AAABUZW1wZXJhdHVyZSBwcmV2aXNpb24gaW4ga2VsdmluAC8AP7k6AAAACv//" +
-           "//8BAf////8AAAAANWCJCgIAAAABAA4AAABNYXhUZW1wZXJhdHVyZQEBujoDAAAAACMAAABNYXggVGVt" +
-           "cGVyYXR1cmUgcHJldmlzaW9uIGluIGtlbHZpbgAvAD+6OgAAAAr/////AQH/////AAAAADVgiQoCAAAA" +
-           "AQAOAAAATWluVGVtcGVyYXR1cmUBAbs6AwAAAAAjAAAATWluIFRlbXBlcmF0dXJlIHByZXZpc2lvbiBp" +
-           "biBrZWx2aW4ALwA/uzoAAAAK/////wEB/////wAAAAA1YIkKAgAAAAEACAAAAFByZXNzdXJlAQG8OgMA" +
-           "AAAAEgAAAFByZXNzdXJlIHByZXZpc2lvbgAvAD+8OgAAAAr/////AQH/////AAAAADVgiQoCAAAAAQAE" +
-           "AAAAQ2l0eQEBvToDAAAAABkAAABDaXR5IG9mIHdlYXRoZXIgcHJldmlzaW9uAC8AP706AAAADP////8B" +
-           "Af////8AAAAA";
+           "AAEBvjr/////AQH/////BgAAADVgiQoCAAAAAQAEAAAARGF0ZQEBuDoDAAAAAB0AAABEYXRldGltZSBv" +
+           "ZiB3ZWF0aGVyIHByZXZpc2lvbgAvAD+4OgAAAA3/////AQH/////AAAAADVgiQoCAAAAAQALAAAAVGVt" +
+           "cGVyYXR1cmUBAbk6AwAAAAAVAAAAVGVtcGVyYXR1cmUgaW4gS2VsdmluAC8BARg7uToAAAEB5Dr/////" +
+           "AQH/////AgAAADVgiQoCAAAAAQAEAAAAVGVtcAEBETsDAAAAABEAAABWYWx1ZSBvZiBWYXJpYWJsZQAv" +
+           "AD8ROwAAAAr/////AQH/////AAAAADVgqQoCAAAAAQAEAAAASW5mbwEB4zoDAAAAACQAAABJbmZvcm1h" +
+           "dGlvbiBsaWtlIHVuaXQgb2YgbWVhc3VyZW1lbnQALgBE4zoAABYBAHkDAVIAAAAvAAAAaHR0cDovL3d3" +
+           "dy5vcGNmb3VuZGF0aW9uLm9yZy9VQS91bml0cy91bi9jZWZhY3RMQVAAAgEAAABLAwYAAABLZWx2aW4G" +
+           "AAAAS2VsdmluAQB3A/////8BAf////8AAAAANWCJCgIAAAABAA4AAABNYXhUZW1wZXJhdHVyZQEBujoD" +
+           "AAAAABkAAABNYXggVGVtcGVyYXR1cmUgaW4gS2VsdmluAC8BARg7ujoAAAEB5Dr/////AQH/////AgAA" +
+           "ADVgiQoCAAAAAQAEAAAAVGVtcAEBEjsDAAAAABEAAABWYWx1ZSBvZiBWYXJpYWJsZQAvAD8SOwAAAAr/" +
+           "////AQH/////AAAAADVgqQoCAAAAAQAEAAAASW5mbwEBADsDAAAAACQAAABJbmZvcm1hdGlvbiBsaWtl" +
+           "IHVuaXQgb2YgbWVhc3VyZW1lbnQALgBEADsAABYBAHkDAVIAAAAvAAAAaHR0cDovL3d3dy5vcGNmb3Vu" +
+           "ZGF0aW9uLm9yZy9VQS91bml0cy91bi9jZWZhY3RMQVAAAgEAAABLAwYAAABLZWx2aW4GAAAAS2Vsdmlu" +
+           "AQB3A/////8BAf////8AAAAANWCJCgIAAAABAA4AAABNaW5UZW1wZXJhdHVyZQEBuzoDAAAAABkAAABN" +
+           "aW4gVGVtcGVyYXR1cmUgaW4gS2VsdmluAC8BARg7uzoAAAEB5Dr/////AQH/////AgAAADVgiQoCAAAA" +
+           "AQAEAAAAVGVtcAEBEzsDAAAAABEAAABWYWx1ZSBvZiBWYXJpYWJsZQAvAD8TOwAAAAr/////AQH/////" +
+           "AAAAADVgqQoCAAAAAQAEAAAASW5mbwEBAjsDAAAAACQAAABJbmZvcm1hdGlvbiBsaWtlIHVuaXQgb2Yg" +
+           "bWVhc3VyZW1lbnQALgBEAjsAABYBAHkDAVIAAAAvAAAAaHR0cDovL3d3dy5vcGNmb3VuZGF0aW9uLm9y" +
+           "Zy9VQS91bml0cy91bi9jZWZhY3RMQVAAAgEAAABLAwYAAABLZWx2aW4GAAAAS2VsdmluAQB3A/////8B" +
+           "Af////8AAAAANWCJCgIAAAABAAgAAABQcmVzc3VyZQEBvDoDAAAAABIAAABQcmVzc3VyZSBpbiBQYXNj" +
+           "YWwALwEBFTu8OgAAAQHkOv////8BAf////8CAAAANWCJCgIAAAABAAgAAABQcmVzc3VyZQEBFDsDAAAA" +
+           "ABEAAABWYWx1ZSBvZiBWYXJpYWJsZQAvAD8UOwAAAAr/////AQH/////AAAAADVgqQoCAAAAAQAEAAAA" +
+           "SW5mbwEBBDsDAAAAACoAAABJbmZvcm1hdGlvbiBsaWtlIHVuaXQgb2YgbWVhc3VyZW1lbnQscmFuZ2UA" +
+           "LgBEBDsAABYBAHkDAVMAAAAvAAAAaHR0cDovL3d3dy5vcGNmb3VuZGF0aW9uLm9yZy9VQS91bml0cy91" +
+           "bi9jZWZhY3RMRUsAAgIAAABQYQMGAAAAUGFzY2FsBgAAAFBhc2NhbAEAdwP/////AQH/////AAAAADVg" +
+           "iQoCAAAAAQAEAAAAQ2l0eQEBvToDAAAAABkAAABDaXR5IG9mIHdlYXRoZXIgcHJldmlzaW9uAC8AP706" +
+           "AAAADP////8BAf////8AAAAA";
         #endregion
         #endif
         #endregion
@@ -695,7 +748,7 @@ namespace Quickstarts.MyOPCServer
         }
 
         /// <remarks />
-        public BaseDataVariableState<float> Temperature
+        public AnalogTempDataState Temperature
         {
             get
             {
@@ -714,7 +767,7 @@ namespace Quickstarts.MyOPCServer
         }
 
         /// <remarks />
-        public BaseDataVariableState<float> MaxTemperature
+        public AnalogTempDataState MaxTemperature
         {
             get
             {
@@ -733,7 +786,7 @@ namespace Quickstarts.MyOPCServer
         }
 
         /// <remarks />
-        public BaseDataVariableState<float> MinTemperature
+        public AnalogTempDataState MinTemperature
         {
             get
             {
@@ -752,7 +805,7 @@ namespace Quickstarts.MyOPCServer
         }
 
         /// <remarks />
-        public BaseDataVariableState<float> Pressure
+        public AnalogPressDataState Pressure
         {
             get
             {
@@ -880,11 +933,11 @@ namespace Quickstarts.MyOPCServer
                         {
                             if (replacement == null)
                             {
-                                Temperature = new BaseDataVariableState<float>(this);
+                                Temperature = new AnalogTempDataState(this);
                             }
                             else
                             {
-                                Temperature = (BaseDataVariableState<float>)replacement;
+                                Temperature = (AnalogTempDataState)replacement;
                             }
                         }
                     }
@@ -901,11 +954,11 @@ namespace Quickstarts.MyOPCServer
                         {
                             if (replacement == null)
                             {
-                                MaxTemperature = new BaseDataVariableState<float>(this);
+                                MaxTemperature = new AnalogTempDataState(this);
                             }
                             else
                             {
-                                MaxTemperature = (BaseDataVariableState<float>)replacement;
+                                MaxTemperature = (AnalogTempDataState)replacement;
                             }
                         }
                     }
@@ -922,11 +975,11 @@ namespace Quickstarts.MyOPCServer
                         {
                             if (replacement == null)
                             {
-                                MinTemperature = new BaseDataVariableState<float>(this);
+                                MinTemperature = new AnalogTempDataState(this);
                             }
                             else
                             {
-                                MinTemperature = (BaseDataVariableState<float>)replacement;
+                                MinTemperature = (AnalogTempDataState)replacement;
                             }
                         }
                     }
@@ -943,11 +996,11 @@ namespace Quickstarts.MyOPCServer
                         {
                             if (replacement == null)
                             {
-                                Pressure = new BaseDataVariableState<float>(this);
+                                Pressure = new AnalogPressDataState(this);
                             }
                             else
                             {
-                                Pressure = (BaseDataVariableState<float>)replacement;
+                                Pressure = (AnalogPressDataState)replacement;
                             }
                         }
                     }
@@ -989,10 +1042,10 @@ namespace Quickstarts.MyOPCServer
 
         #region Private Fields
         private BaseDataVariableState<DateTime> m_date;
-        private BaseDataVariableState<float> m_temperature;
-        private BaseDataVariableState<float> m_maxTemperature;
-        private BaseDataVariableState<float> m_minTemperature;
-        private BaseDataVariableState<float> m_pressure;
+        private AnalogTempDataState m_temperature;
+        private AnalogTempDataState m_maxTemperature;
+        private AnalogTempDataState m_minTemperature;
+        private AnalogPressDataState m_pressure;
         private BaseDataVariableState<string> m_city;
         #endregion
     }
@@ -1068,17 +1121,33 @@ namespace Quickstarts.MyOPCServer
                 instance.OnReadValue = OnRead_Temperature;
                 instance.OnSimpleWriteValue = OnWrite_Temperature;
                 updateList.Add(instance);
+                instance = m_variable.Temperature.Info;
+                instance.OnReadValue = OnRead_Temperature_Info;
+                instance.OnSimpleWriteValue = OnWrite_Temperature_Info;
+                updateList.Add(instance);
                 instance = m_variable.MaxTemperature;
                 instance.OnReadValue = OnRead_MaxTemperature;
                 instance.OnSimpleWriteValue = OnWrite_MaxTemperature;
+                updateList.Add(instance);
+                instance = m_variable.MaxTemperature.Info;
+                instance.OnReadValue = OnRead_MaxTemperature_Info;
+                instance.OnSimpleWriteValue = OnWrite_MaxTemperature_Info;
                 updateList.Add(instance);
                 instance = m_variable.MinTemperature;
                 instance.OnReadValue = OnRead_MinTemperature;
                 instance.OnSimpleWriteValue = OnWrite_MinTemperature;
                 updateList.Add(instance);
+                instance = m_variable.MinTemperature.Info;
+                instance.OnReadValue = OnRead_MinTemperature_Info;
+                instance.OnSimpleWriteValue = OnWrite_MinTemperature_Info;
+                updateList.Add(instance);
                 instance = m_variable.Pressure;
                 instance.OnReadValue = OnRead_Pressure;
                 instance.OnSimpleWriteValue = OnWrite_Pressure;
+                updateList.Add(instance);
+                instance = m_variable.Pressure.Info;
+                instance.OnReadValue = OnRead_Pressure_Info;
+                instance.OnSimpleWriteValue = OnWrite_Pressure_Info;
                 updateList.Add(instance);
                 instance = m_variable.City;
                 instance.OnReadValue = OnRead_City;
@@ -1200,7 +1269,47 @@ namespace Quickstarts.MyOPCServer
         {
             lock (Lock)
             {
-                m_value.Temperature = (float)Write(value);
+                m_value.Temperature = (AnalogData)Write(value);
+            }
+
+            return ServiceResult.Good;
+        }
+        #endregion
+
+        #region Temperature_Info Access Methods
+        /// <summary>
+        /// Reads the value of the variable child.
+        /// </summary>
+        private ServiceResult OnRead_Temperature_Info(
+            ISystemContext context,
+            NodeState node,
+            NumericRange indexRange,
+            QualifiedName dataEncoding,
+            ref object value,
+            ref StatusCode statusCode,
+            ref DateTime timestamp)
+        {
+            lock (Lock)
+            {
+                DoBeforeReadProcessing(context, node);
+
+                if (m_value != null)
+                {
+                    value = m_value.Temperature.Info;
+                }
+
+                return Read(context, node, indexRange, dataEncoding, ref value, ref statusCode, ref timestamp);
+            }
+        }
+
+        /// <summary>
+        /// Writes the value of the variable child.
+        /// </summary>
+        private ServiceResult OnWrite_Temperature_Info(ISystemContext context, NodeState node, ref object value)
+        {
+            lock (Lock)
+            {
+                m_value.Temperature.Info = (EUInformation)Write(value);
             }
 
             return ServiceResult.Good;
@@ -1240,7 +1349,47 @@ namespace Quickstarts.MyOPCServer
         {
             lock (Lock)
             {
-                m_value.MaxTemperature = (float)Write(value);
+                m_value.MaxTemperature = (AnalogData)Write(value);
+            }
+
+            return ServiceResult.Good;
+        }
+        #endregion
+
+        #region MaxTemperature_Info Access Methods
+        /// <summary>
+        /// Reads the value of the variable child.
+        /// </summary>
+        private ServiceResult OnRead_MaxTemperature_Info(
+            ISystemContext context,
+            NodeState node,
+            NumericRange indexRange,
+            QualifiedName dataEncoding,
+            ref object value,
+            ref StatusCode statusCode,
+            ref DateTime timestamp)
+        {
+            lock (Lock)
+            {
+                DoBeforeReadProcessing(context, node);
+
+                if (m_value != null)
+                {
+                    value = m_value.MaxTemperature.Info;
+                }
+
+                return Read(context, node, indexRange, dataEncoding, ref value, ref statusCode, ref timestamp);
+            }
+        }
+
+        /// <summary>
+        /// Writes the value of the variable child.
+        /// </summary>
+        private ServiceResult OnWrite_MaxTemperature_Info(ISystemContext context, NodeState node, ref object value)
+        {
+            lock (Lock)
+            {
+                m_value.MaxTemperature.Info = (EUInformation)Write(value);
             }
 
             return ServiceResult.Good;
@@ -1280,7 +1429,47 @@ namespace Quickstarts.MyOPCServer
         {
             lock (Lock)
             {
-                m_value.MinTemperature = (float)Write(value);
+                m_value.MinTemperature = (AnalogData)Write(value);
+            }
+
+            return ServiceResult.Good;
+        }
+        #endregion
+
+        #region MinTemperature_Info Access Methods
+        /// <summary>
+        /// Reads the value of the variable child.
+        /// </summary>
+        private ServiceResult OnRead_MinTemperature_Info(
+            ISystemContext context,
+            NodeState node,
+            NumericRange indexRange,
+            QualifiedName dataEncoding,
+            ref object value,
+            ref StatusCode statusCode,
+            ref DateTime timestamp)
+        {
+            lock (Lock)
+            {
+                DoBeforeReadProcessing(context, node);
+
+                if (m_value != null)
+                {
+                    value = m_value.MinTemperature.Info;
+                }
+
+                return Read(context, node, indexRange, dataEncoding, ref value, ref statusCode, ref timestamp);
+            }
+        }
+
+        /// <summary>
+        /// Writes the value of the variable child.
+        /// </summary>
+        private ServiceResult OnWrite_MinTemperature_Info(ISystemContext context, NodeState node, ref object value)
+        {
+            lock (Lock)
+            {
+                m_value.MinTemperature.Info = (EUInformation)Write(value);
             }
 
             return ServiceResult.Good;
@@ -1320,7 +1509,47 @@ namespace Quickstarts.MyOPCServer
         {
             lock (Lock)
             {
-                m_value.Pressure = (float)Write(value);
+                m_value.Pressure = (AnalogData)Write(value);
+            }
+
+            return ServiceResult.Good;
+        }
+        #endregion
+
+        #region Pressure_Info Access Methods
+        /// <summary>
+        /// Reads the value of the variable child.
+        /// </summary>
+        private ServiceResult OnRead_Pressure_Info(
+            ISystemContext context,
+            NodeState node,
+            NumericRange indexRange,
+            QualifiedName dataEncoding,
+            ref object value,
+            ref StatusCode statusCode,
+            ref DateTime timestamp)
+        {
+            lock (Lock)
+            {
+                DoBeforeReadProcessing(context, node);
+
+                if (m_value != null)
+                {
+                    value = m_value.Pressure.Info;
+                }
+
+                return Read(context, node, indexRange, dataEncoding, ref value, ref statusCode, ref timestamp);
+            }
+        }
+
+        /// <summary>
+        /// Writes the value of the variable child.
+        /// </summary>
+        private ServiceResult OnWrite_Pressure_Info(ISystemContext context, NodeState node, ref object value)
+        {
+            lock (Lock)
+            {
+                m_value.Pressure.Info = (EUInformation)Write(value);
             }
 
             return ServiceResult.Good;
@@ -1371,6 +1600,766 @@ namespace Quickstarts.MyOPCServer
         #region Private Fields
         private WeatherData m_value;
         private WeatherMapDataState m_variable;
+        #endregion
+    }
+    #endregion
+    #endif
+    #endregion
+
+    #region AnalogTempDataState Class
+    #if (!OPCUA_EXCLUDE_AnalogTempDataState)
+    /// <summary>
+    /// Stores an instance of the AnalogTempDataType VariableType.
+    /// </summary>
+    /// <exclude />
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
+    public partial class AnalogTempDataState : BaseDataVariableState<AnalogData>
+    {
+        #region Constructors
+        /// <summary>
+        /// Initializes the type with its default attribute values.
+        /// </summary>
+        public AnalogTempDataState(NodeState parent) : base(parent)
+        {
+        }
+
+        /// <summary>
+        /// Returns the id of the default type definition node for the instance.
+        /// </summary>
+        protected override NodeId GetDefaultTypeDefinitionId(NamespaceTable namespaceUris)
+        {
+            return Opc.Ua.NodeId.Create(Quickstarts.MyOPCServer.VariableTypes.AnalogTempDataType, Quickstarts.MyOPCServer.Namespaces.MyOPCServer, namespaceUris);
+        }
+
+        /// <summary>
+        /// Returns the id of the default data type node for the instance.
+        /// </summary>
+        protected override NodeId GetDefaultDataTypeId(NamespaceTable namespaceUris)
+        {
+            return Opc.Ua.NodeId.Create(Quickstarts.MyOPCServer.DataTypes.AnalogData, Quickstarts.MyOPCServer.Namespaces.MyOPCServer, namespaceUris);
+        }
+
+        /// <summary>
+        /// Returns the id of the default value rank for the instance.
+        /// </summary>
+        protected override int GetDefaultValueRank()
+        {
+            return ValueRanks.Scalar;
+        }
+
+        #if (!OPCUA_EXCLUDE_InitializationStrings)
+        /// <summary>
+        /// Initializes the instance.
+        /// </summary>
+        protected override void Initialize(ISystemContext context)
+        {
+            Initialize(context, InitializationString);
+            InitializeOptionalChildren(context);
+        }
+
+        /// <summary>
+        /// Initializes the instance with a node.
+        /// </summary>
+        protected override void Initialize(ISystemContext context, NodeState source)
+        {
+            InitializeOptionalChildren(context);
+            base.Initialize(context, source);
+        }
+
+        /// <summary>
+        /// Initializes the any option children defined for the instance.
+        /// </summary>
+        protected override void InitializeOptionalChildren(ISystemContext context)
+        {
+            base.InitializeOptionalChildren(context);
+        }
+
+        #region Initialization String
+        private const string InitializationString =
+           "AQAAADkAAABodHRwczovL2dpdGh1Yi5jb20vZGFyaW9mdWdhbGU5NS9zZXJ2ZXItb3BjLXVhLWRvdG5l" +
+           "dGNvcmX/////FWCJAgIAAAABABoAAABBbmFsb2dUZW1wRGF0YVR5cGVJbnN0YW5jZQEBGDsBARg7GDsA" +
+           "AAEB5Dr/////AQH/////AgAAADVgiQoCAAAAAQAEAAAAVGVtcAEBGTsDAAAAABEAAABWYWx1ZSBvZiBW" +
+           "YXJpYWJsZQAvAD8ZOwAAAAr/////AQH/////AAAAADVgqQoCAAAAAQAEAAAASW5mbwEBGjsDAAAAACQA" +
+           "AABJbmZvcm1hdGlvbiBsaWtlIHVuaXQgb2YgbWVhc3VyZW1lbnQALgBEGjsAABYBAHkDAVIAAAAvAAAA" +
+           "aHR0cDovL3d3dy5vcGNmb3VuZGF0aW9uLm9yZy9VQS91bml0cy91bi9jZWZhY3RMQVAAAgEAAABLAwYA" +
+           "AABLZWx2aW4GAAAAS2VsdmluAQB3A/////8BAf////8AAAAA";
+        #endregion
+        #endif
+        #endregion
+
+        #region Public Properties
+        /// <remarks />
+        public BaseDataVariableState<float> Temp
+        {
+            get
+            {
+                return m_temp;
+            }
+
+            set
+            {
+                if (!Object.ReferenceEquals(m_temp, value))
+                {
+                    ChangeMasks |= NodeStateChangeMasks.Children;
+                }
+
+                m_temp = value;
+            }
+        }
+
+        /// <remarks />
+        public PropertyState<EUInformation> Info
+        {
+            get
+            {
+                return m_info;
+            }
+
+            set
+            {
+                if (!Object.ReferenceEquals(m_info, value))
+                {
+                    ChangeMasks |= NodeStateChangeMasks.Children;
+                }
+
+                m_info = value;
+            }
+        }
+        #endregion
+
+        #region Overridden Methods
+        /// <summary>
+        /// Populates a list with the children that belong to the node.
+        /// </summary>
+        /// <param name="context">The context for the system being accessed.</param>
+        /// <param name="children">The list of children to populate.</param>
+        public override void GetChildren(
+            ISystemContext context,
+            IList<BaseInstanceState> children)
+        {
+            if (m_temp != null)
+            {
+                children.Add(m_temp);
+            }
+
+            if (m_info != null)
+            {
+                children.Add(m_info);
+            }
+
+            base.GetChildren(context, children);
+        }
+
+        /// <summary>
+        /// Finds the child with the specified browse name.
+        /// </summary>
+        protected override BaseInstanceState FindChild(
+            ISystemContext context,
+            QualifiedName browseName,
+            bool createOrReplace,
+            BaseInstanceState replacement)
+        {
+            if (QualifiedName.IsNull(browseName))
+            {
+                return null;
+            }
+
+            BaseInstanceState instance = null;
+
+            switch (browseName.Name)
+            {
+                case Quickstarts.MyOPCServer.BrowseNames.Temp:
+                {
+                    if (createOrReplace)
+                    {
+                        if (Temp == null)
+                        {
+                            if (replacement == null)
+                            {
+                                Temp = new BaseDataVariableState<float>(this);
+                            }
+                            else
+                            {
+                                Temp = (BaseDataVariableState<float>)replacement;
+                            }
+                        }
+                    }
+
+                    instance = Temp;
+                    break;
+                }
+
+                case Quickstarts.MyOPCServer.BrowseNames.Info:
+                {
+                    if (createOrReplace)
+                    {
+                        if (Info == null)
+                        {
+                            if (replacement == null)
+                            {
+                                Info = new PropertyState<EUInformation>(this);
+                            }
+                            else
+                            {
+                                Info = (PropertyState<EUInformation>)replacement;
+                            }
+                        }
+                    }
+
+                    instance = Info;
+                    break;
+                }
+            }
+
+            if (instance != null)
+            {
+                return instance;
+            }
+
+            return base.FindChild(context, browseName, createOrReplace, replacement);
+        }
+        #endregion
+
+        #region Private Fields
+        private BaseDataVariableState<float> m_temp;
+        private PropertyState<EUInformation> m_info;
+        #endregion
+    }
+
+    #region AnalogTempDataValue Class
+    /// <summary>
+    /// A typed version of the _BrowseName_ variable.
+    /// </summary>
+    /// <exclude />
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
+    public class AnalogTempDataValue : BaseVariableValue
+    {
+        #region Constructors
+        /// <summary>
+        /// Initializes the instance with its defalt attribute values.
+        /// </summary>
+        public AnalogTempDataValue(AnalogTempDataState variable, AnalogData value, object dataLock) : base(dataLock)
+        {
+            m_value = value;
+
+            if (m_value == null)
+            {
+                m_value = new AnalogData();
+            }
+
+            Initialize(variable);
+        }
+        #endregion
+
+        #region Public Members
+        /// <summary>
+        /// The variable that the value belongs to.
+        /// </summary>
+        public AnalogTempDataState Variable
+        {
+            get { return m_variable; }
+        }
+
+        /// <summary>
+        /// The value of the variable.
+        /// </summary>
+        public AnalogData Value
+        {
+            get { return m_value;  }
+            set { m_value = value; }
+        }
+        #endregion
+
+        #region Private Methods
+        /// <summary>
+        /// Initializes the object.
+        /// </summary>
+        private void Initialize(AnalogTempDataState variable)
+        {
+            lock (Lock)
+            {
+                m_variable = variable;
+
+                variable.Value = m_value;
+
+                variable.OnReadValue = OnReadValue;
+                variable.OnSimpleWriteValue = OnWriteValue;
+
+                BaseVariableState instance = null;
+                List<BaseInstanceState> updateList = new List<BaseInstanceState>();
+                updateList.Add(variable);
+
+                instance = m_variable.Info;
+                instance.OnReadValue = OnRead_Info;
+                instance.OnSimpleWriteValue = OnWrite_Info;
+                updateList.Add(instance);
+
+                SetUpdateList(updateList);
+            }
+        }
+
+        /// <summary>
+        /// Reads the value of the variable.
+        /// </summary>
+        protected ServiceResult OnReadValue(
+            ISystemContext context,
+            NodeState node,
+            NumericRange indexRange,
+            QualifiedName dataEncoding,
+            ref object value,
+            ref StatusCode statusCode,
+            ref DateTime timestamp)
+        {
+            lock (Lock)
+            {
+                DoBeforeReadProcessing(context, node);
+
+                if (m_value != null)
+                {
+                    value = m_value;
+                }
+
+                return Read(context, node, indexRange, dataEncoding, ref value, ref statusCode, ref timestamp);
+            }
+        }
+
+        /// <summary>
+        /// Writes the value of the variable.
+        /// </summary>
+        private ServiceResult OnWriteValue(ISystemContext context, NodeState node, ref object value)
+        {
+            lock (Lock)
+            {
+                m_value = (AnalogData)Write(value);
+            }
+
+            return ServiceResult.Good;
+        }
+
+        #region Info Access Methods
+        /// <summary>
+        /// Reads the value of the variable child.
+        /// </summary>
+        private ServiceResult OnRead_Info(
+            ISystemContext context,
+            NodeState node,
+            NumericRange indexRange,
+            QualifiedName dataEncoding,
+            ref object value,
+            ref StatusCode statusCode,
+            ref DateTime timestamp)
+        {
+            lock (Lock)
+            {
+                DoBeforeReadProcessing(context, node);
+
+                if (m_value != null)
+                {
+                    value = m_value.Info;
+                }
+
+                return Read(context, node, indexRange, dataEncoding, ref value, ref statusCode, ref timestamp);
+            }
+        }
+
+        /// <summary>
+        /// Writes the value of the variable child.
+        /// </summary>
+        private ServiceResult OnWrite_Info(ISystemContext context, NodeState node, ref object value)
+        {
+            lock (Lock)
+            {
+                m_value.Info = (EUInformation)Write(value);
+            }
+
+            return ServiceResult.Good;
+        }
+        #endregion
+        #endregion
+
+        #region Private Fields
+        private AnalogData m_value;
+        private AnalogTempDataState m_variable;
+        #endregion
+    }
+    #endregion
+    #endif
+    #endregion
+
+    #region AnalogPressDataState Class
+    #if (!OPCUA_EXCLUDE_AnalogPressDataState)
+    /// <summary>
+    /// Stores an instance of the AnalogPressDataType VariableType.
+    /// </summary>
+    /// <exclude />
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
+    public partial class AnalogPressDataState : BaseDataVariableState<AnalogData>
+    {
+        #region Constructors
+        /// <summary>
+        /// Initializes the type with its default attribute values.
+        /// </summary>
+        public AnalogPressDataState(NodeState parent) : base(parent)
+        {
+        }
+
+        /// <summary>
+        /// Returns the id of the default type definition node for the instance.
+        /// </summary>
+        protected override NodeId GetDefaultTypeDefinitionId(NamespaceTable namespaceUris)
+        {
+            return Opc.Ua.NodeId.Create(Quickstarts.MyOPCServer.VariableTypes.AnalogPressDataType, Quickstarts.MyOPCServer.Namespaces.MyOPCServer, namespaceUris);
+        }
+
+        /// <summary>
+        /// Returns the id of the default data type node for the instance.
+        /// </summary>
+        protected override NodeId GetDefaultDataTypeId(NamespaceTable namespaceUris)
+        {
+            return Opc.Ua.NodeId.Create(Quickstarts.MyOPCServer.DataTypes.AnalogData, Quickstarts.MyOPCServer.Namespaces.MyOPCServer, namespaceUris);
+        }
+
+        /// <summary>
+        /// Returns the id of the default value rank for the instance.
+        /// </summary>
+        protected override int GetDefaultValueRank()
+        {
+            return ValueRanks.Scalar;
+        }
+
+        #if (!OPCUA_EXCLUDE_InitializationStrings)
+        /// <summary>
+        /// Initializes the instance.
+        /// </summary>
+        protected override void Initialize(ISystemContext context)
+        {
+            Initialize(context, InitializationString);
+            InitializeOptionalChildren(context);
+        }
+
+        /// <summary>
+        /// Initializes the instance with a node.
+        /// </summary>
+        protected override void Initialize(ISystemContext context, NodeState source)
+        {
+            InitializeOptionalChildren(context);
+            base.Initialize(context, source);
+        }
+
+        /// <summary>
+        /// Initializes the any option children defined for the instance.
+        /// </summary>
+        protected override void InitializeOptionalChildren(ISystemContext context)
+        {
+            base.InitializeOptionalChildren(context);
+        }
+
+        #region Initialization String
+        private const string InitializationString =
+           "AQAAADkAAABodHRwczovL2dpdGh1Yi5jb20vZGFyaW9mdWdhbGU5NS9zZXJ2ZXItb3BjLXVhLWRvdG5l" +
+           "dGNvcmX/////FWCJAgIAAAABABsAAABBbmFsb2dQcmVzc0RhdGFUeXBlSW5zdGFuY2UBARU7AQEVOxU7" +
+           "AAABAeQ6/////wEB/////wIAAAA1YIkKAgAAAAEACAAAAFByZXNzdXJlAQEWOwMAAAAAEQAAAFZhbHVl" +
+           "IG9mIFZhcmlhYmxlAC8APxY7AAAACv////8BAf////8AAAAANWCpCgIAAAABAAQAAABJbmZvAQEXOwMA" +
+           "AAAAKgAAAEluZm9ybWF0aW9uIGxpa2UgdW5pdCBvZiBtZWFzdXJlbWVudCxyYW5nZQAuAEQXOwAAFgEA" +
+           "eQMBUwAAAC8AAABodHRwOi8vd3d3Lm9wY2ZvdW5kYXRpb24ub3JnL1VBL3VuaXRzL3VuL2NlZmFjdExF" +
+           "SwACAgAAAFBhAwYAAABQYXNjYWwGAAAAUGFzY2FsAQB3A/////8BAf////8AAAAA";
+        #endregion
+        #endif
+        #endregion
+
+        #region Public Properties
+        /// <remarks />
+        public BaseDataVariableState<float> Pressure
+        {
+            get
+            {
+                return m_pressure;
+            }
+
+            set
+            {
+                if (!Object.ReferenceEquals(m_pressure, value))
+                {
+                    ChangeMasks |= NodeStateChangeMasks.Children;
+                }
+
+                m_pressure = value;
+            }
+        }
+
+        /// <remarks />
+        public PropertyState<EUInformation> Info
+        {
+            get
+            {
+                return m_info;
+            }
+
+            set
+            {
+                if (!Object.ReferenceEquals(m_info, value))
+                {
+                    ChangeMasks |= NodeStateChangeMasks.Children;
+                }
+
+                m_info = value;
+            }
+        }
+        #endregion
+
+        #region Overridden Methods
+        /// <summary>
+        /// Populates a list with the children that belong to the node.
+        /// </summary>
+        /// <param name="context">The context for the system being accessed.</param>
+        /// <param name="children">The list of children to populate.</param>
+        public override void GetChildren(
+            ISystemContext context,
+            IList<BaseInstanceState> children)
+        {
+            if (m_pressure != null)
+            {
+                children.Add(m_pressure);
+            }
+
+            if (m_info != null)
+            {
+                children.Add(m_info);
+            }
+
+            base.GetChildren(context, children);
+        }
+
+        /// <summary>
+        /// Finds the child with the specified browse name.
+        /// </summary>
+        protected override BaseInstanceState FindChild(
+            ISystemContext context,
+            QualifiedName browseName,
+            bool createOrReplace,
+            BaseInstanceState replacement)
+        {
+            if (QualifiedName.IsNull(browseName))
+            {
+                return null;
+            }
+
+            BaseInstanceState instance = null;
+
+            switch (browseName.Name)
+            {
+                case Quickstarts.MyOPCServer.BrowseNames.Pressure:
+                {
+                    if (createOrReplace)
+                    {
+                        if (Pressure == null)
+                        {
+                            if (replacement == null)
+                            {
+                                Pressure = new BaseDataVariableState<float>(this);
+                            }
+                            else
+                            {
+                                Pressure = (BaseDataVariableState<float>)replacement;
+                            }
+                        }
+                    }
+
+                    instance = Pressure;
+                    break;
+                }
+
+                case Quickstarts.MyOPCServer.BrowseNames.Info:
+                {
+                    if (createOrReplace)
+                    {
+                        if (Info == null)
+                        {
+                            if (replacement == null)
+                            {
+                                Info = new PropertyState<EUInformation>(this);
+                            }
+                            else
+                            {
+                                Info = (PropertyState<EUInformation>)replacement;
+                            }
+                        }
+                    }
+
+                    instance = Info;
+                    break;
+                }
+            }
+
+            if (instance != null)
+            {
+                return instance;
+            }
+
+            return base.FindChild(context, browseName, createOrReplace, replacement);
+        }
+        #endregion
+
+        #region Private Fields
+        private BaseDataVariableState<float> m_pressure;
+        private PropertyState<EUInformation> m_info;
+        #endregion
+    }
+
+    #region AnalogPressDataValue Class
+    /// <summary>
+    /// A typed version of the _BrowseName_ variable.
+    /// </summary>
+    /// <exclude />
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
+    public class AnalogPressDataValue : BaseVariableValue
+    {
+        #region Constructors
+        /// <summary>
+        /// Initializes the instance with its defalt attribute values.
+        /// </summary>
+        public AnalogPressDataValue(AnalogPressDataState variable, AnalogData value, object dataLock) : base(dataLock)
+        {
+            m_value = value;
+
+            if (m_value == null)
+            {
+                m_value = new AnalogData();
+            }
+
+            Initialize(variable);
+        }
+        #endregion
+
+        #region Public Members
+        /// <summary>
+        /// The variable that the value belongs to.
+        /// </summary>
+        public AnalogPressDataState Variable
+        {
+            get { return m_variable; }
+        }
+
+        /// <summary>
+        /// The value of the variable.
+        /// </summary>
+        public AnalogData Value
+        {
+            get { return m_value;  }
+            set { m_value = value; }
+        }
+        #endregion
+
+        #region Private Methods
+        /// <summary>
+        /// Initializes the object.
+        /// </summary>
+        private void Initialize(AnalogPressDataState variable)
+        {
+            lock (Lock)
+            {
+                m_variable = variable;
+
+                variable.Value = m_value;
+
+                variable.OnReadValue = OnReadValue;
+                variable.OnSimpleWriteValue = OnWriteValue;
+
+                BaseVariableState instance = null;
+                List<BaseInstanceState> updateList = new List<BaseInstanceState>();
+                updateList.Add(variable);
+
+                instance = m_variable.Info;
+                instance.OnReadValue = OnRead_Info;
+                instance.OnSimpleWriteValue = OnWrite_Info;
+                updateList.Add(instance);
+
+                SetUpdateList(updateList);
+            }
+        }
+
+        /// <summary>
+        /// Reads the value of the variable.
+        /// </summary>
+        protected ServiceResult OnReadValue(
+            ISystemContext context,
+            NodeState node,
+            NumericRange indexRange,
+            QualifiedName dataEncoding,
+            ref object value,
+            ref StatusCode statusCode,
+            ref DateTime timestamp)
+        {
+            lock (Lock)
+            {
+                DoBeforeReadProcessing(context, node);
+
+                if (m_value != null)
+                {
+                    value = m_value;
+                }
+
+                return Read(context, node, indexRange, dataEncoding, ref value, ref statusCode, ref timestamp);
+            }
+        }
+
+        /// <summary>
+        /// Writes the value of the variable.
+        /// </summary>
+        private ServiceResult OnWriteValue(ISystemContext context, NodeState node, ref object value)
+        {
+            lock (Lock)
+            {
+                m_value = (AnalogData)Write(value);
+            }
+
+            return ServiceResult.Good;
+        }
+
+        #region Info Access Methods
+        /// <summary>
+        /// Reads the value of the variable child.
+        /// </summary>
+        private ServiceResult OnRead_Info(
+            ISystemContext context,
+            NodeState node,
+            NumericRange indexRange,
+            QualifiedName dataEncoding,
+            ref object value,
+            ref StatusCode statusCode,
+            ref DateTime timestamp)
+        {
+            lock (Lock)
+            {
+                DoBeforeReadProcessing(context, node);
+
+                if (m_value != null)
+                {
+                    value = m_value.Info;
+                }
+
+                return Read(context, node, indexRange, dataEncoding, ref value, ref statusCode, ref timestamp);
+            }
+        }
+
+        /// <summary>
+        /// Writes the value of the variable child.
+        /// </summary>
+        private ServiceResult OnWrite_Info(ISystemContext context, NodeState node, ref object value)
+        {
+            lock (Lock)
+            {
+                m_value.Info = (EUInformation)Write(value);
+            }
+
+            return ServiceResult.Good;
+        }
+        #endregion
+        #endregion
+
+        #region Private Fields
+        private AnalogData m_value;
+        private AnalogPressDataState m_variable;
         #endregion
     }
     #endregion

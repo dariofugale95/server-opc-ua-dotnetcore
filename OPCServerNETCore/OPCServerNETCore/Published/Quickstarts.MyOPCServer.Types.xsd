@@ -13,10 +13,10 @@
     </xs:annotation>
     <xs:sequence>
       <xs:element name="Date" type="xs:dateTime" minOccurs="0" />
-      <xs:element name="Temperature" type="xs:float" minOccurs="0" />
-      <xs:element name="MaxTemperature" type="xs:float" minOccurs="0" />
-      <xs:element name="MinTemperature" type="xs:float" minOccurs="0" />
-      <xs:element name="Pressure" type="xs:float" minOccurs="0" />
+      <xs:element name="Temperature" type="tns:AnalogData" minOccurs="0" nillable="true" />
+      <xs:element name="MaxTemperature" type="tns:AnalogData" minOccurs="0" nillable="true" />
+      <xs:element name="MinTemperature" type="tns:AnalogData" minOccurs="0" nillable="true" />
+      <xs:element name="Pressure" type="tns:AnalogData" minOccurs="0" nillable="true" />
       <xs:element name="City" type="xs:string" minOccurs="0" nillable="true" />
     </xs:sequence>
   </xs:complexType>
@@ -28,5 +28,23 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ListOfWeatherData" type="tns:ListOfWeatherData" nillable="true"></xs:element>
+
+  <xs:complexType name="AnalogData">
+    <xs:annotation>
+      <xs:documentation>Data type for Analogic Data</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Data" type="xs:float" minOccurs="0" />
+      <xs:element name="Info" type="ua:EUInformation" minOccurs="0" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AnalogData" type="tns:AnalogData" />
+
+  <xs:complexType name="ListOfAnalogData">
+    <xs:sequence>
+      <xs:element name="AnalogData" type="tns:AnalogData" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfAnalogData" type="tns:ListOfAnalogData" nillable="true"></xs:element>
 
 </xs:schema>

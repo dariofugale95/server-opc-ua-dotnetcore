@@ -117,4 +117,11 @@ C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCSer
 C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\Quickstarts.MyOPCServer.pdb
 C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\OPCServerNETCore.genruntimeconfig.cache
 C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\OPCServerNETCore.csprojAssemblyReference.cache
+C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\bin\Debug\netcoreapp3.1\Published\Quickstarts.MyOPCServer.PredefinedNodes.uanodes
+C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\bin\Debug\netcoreapp3.1\Quickstarts.MyOPCServer.Config.xml
+C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\Quickstarts.MyOPCServer.Properties.Resources.resources
+C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\OPCServerNETCore.csproj.GenerateResource.cache
+C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\bin\Debug\netcoreapp3.1\System.CodeDom.dll
+C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\bin\Debug\netcoreapp3.1\System.Management.dll
+C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Management.dll
 C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\OPCServerNETCore.csproj.CoreCompileInputs.cache
