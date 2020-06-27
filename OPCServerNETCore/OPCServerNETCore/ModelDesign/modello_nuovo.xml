@@ -38,7 +38,7 @@
       <opc:Argument Name="City" DataType="ua:String">
        <opc:Description>City to get Weather Prevision</opc:Description>
       </opc:Argument>
-      <opc:Argument Name="MesureOfTemperature" DataType="ua:String" ModellingRule="Optional">
+      <opc:Argument Name="MeasureOfTemperature" DataType="ua:String" ModellingRule="Optional">
       <opc:Description>C=Celsius,K=Kelvin. Default: K</opc:Description>
       </opc:Argument>
     </opc:InputArguments>
