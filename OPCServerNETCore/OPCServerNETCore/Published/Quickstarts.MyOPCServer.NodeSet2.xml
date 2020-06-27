@@ -47,6 +47,7 @@
   </Aliases>
   <UAObjectType NodeId="ns=1;i=15001" BrowseName="1:OpenWeatherMapType">
     <DisplayName>OpenWeatherMapType</DisplayName>
+    <Description>This ObjectType exspose information about weather</Description>
     <References>
       <Reference ReferenceType="HasProperty">ns=1;i=15002</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=15003</Reference>
@@ -78,48 +79,208 @@
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15004" BrowseName="1:Date" ParentNodeId="ns=1;i=15003" DataType="DateTime">
     <DisplayName>Date</DisplayName>
-    <Description>Date of weather prevision</Description>
+    <Description>Datetime of weather prevision</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15003</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15005" BrowseName="1:Temperature" ParentNodeId="ns=1;i=15003" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15005" BrowseName="1:Temperature" ParentNodeId="ns=1;i=15003" DataType="ns=1;i=15076">
     <DisplayName>Temperature</DisplayName>
     <Description>Temperature in Kelvin</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15068</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15071</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15128</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15003</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15006" BrowseName="1:MaxTemperature" ParentNodeId="ns=1;i=15003" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15068" BrowseName="1:Temp" ParentNodeId="ns=1;i=15005" DataType="Float">
+    <DisplayName>Temp</DisplayName>
+    <Description>Value of Variable</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15005</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15071" BrowseName="1:Info" ParentNodeId="ns=1;i=15005" DataType="i=887">
+    <DisplayName>Info</DisplayName>
+    <Description>Information like unit of measurement</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15005</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>5259596</UnitId>
+            <DisplayName>
+              <Text>K</Text>
+            </DisplayName>
+            <Description>
+              <Locale>Kelvin</Locale>
+              <Text>Kelvin</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15006" BrowseName="1:MaxTemperature" ParentNodeId="ns=1;i=15003" DataType="ns=1;i=15076">
     <DisplayName>MaxTemperature</DisplayName>
     <Description>Max Temperature in Kelvin</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15069</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15092</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15128</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15003</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15007" BrowseName="1:MinTemperature" ParentNodeId="ns=1;i=15003" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15069" BrowseName="1:Temp" ParentNodeId="ns=1;i=15006" DataType="Float">
+    <DisplayName>Temp</DisplayName>
+    <Description>Value of Variable</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15006</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15092" BrowseName="1:Info" ParentNodeId="ns=1;i=15006" DataType="i=887">
+    <DisplayName>Info</DisplayName>
+    <Description>Information like unit of measurement</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15006</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>5259596</UnitId>
+            <DisplayName>
+              <Text>K</Text>
+            </DisplayName>
+            <Description>
+              <Locale>Kelvin</Locale>
+              <Text>Kelvin</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15007" BrowseName="1:MinTemperature" ParentNodeId="ns=1;i=15003" DataType="ns=1;i=15076">
     <DisplayName>MinTemperature</DisplayName>
     <Description>Min Temperature in Kelvin</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15115</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15094</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15128</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15003</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15008" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15003" DataType="Float">
-    <DisplayName>Pressure</DisplayName>
-    <Description>Pressure in Pascal</Description>
+  <UAVariable NodeId="ns=1;i=15115" BrowseName="1:Temp" ParentNodeId="ns=1;i=15007" DataType="Float">
+    <DisplayName>Temp</DisplayName>
+    <Description>Value of Variable</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15007</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15094" BrowseName="1:Info" ParentNodeId="ns=1;i=15007" DataType="i=887">
+    <DisplayName>Info</DisplayName>
+    <Description>Information like unit of measurement</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15007</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>5259596</UnitId>
+            <DisplayName>
+              <Text>K</Text>
+            </DisplayName>
+            <Description>
+              <Locale>Kelvin</Locale>
+              <Text>Kelvin</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15008" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15003" DataType="ns=1;i=15076">
+    <DisplayName>Pressure</DisplayName>
+    <Description>Pressure in Pascal</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=15116</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15096</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15125</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15003</Reference>
     </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15116" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15008" DataType="Float">
+    <DisplayName>Pressure</DisplayName>
+    <Description>Value of Variable</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15008</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15096" BrowseName="1:Info" ParentNodeId="ns=1;i=15008" DataType="i=887">
+    <DisplayName>Info</DisplayName>
+    <Description>Information like unit of measurement,range</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15008</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>4932940</UnitId>
+            <DisplayName>
+              <Text>Pa</Text>
+            </DisplayName>
+            <Description>
+              <Locale>Pascal</Locale>
+              <Text>Pascal</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15009" BrowseName="1:City" ParentNodeId="ns=1;i=15003" DataType="String">
     <DisplayName>City</DisplayName>
@@ -174,7 +335,7 @@
           </TypeId>
           <Body>
             <Argument>
-              <Name>MesureOfTemperature</Name>
+              <Name>MeasureOfTemperature</Name>
               <DataType>
                 <Identifier>i=12</Identifier>
               </DataType>
@@ -214,48 +375,208 @@
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15025" BrowseName="1:Date" ParentNodeId="ns=1;i=15024" DataType="DateTime">
     <DisplayName>Date</DisplayName>
-    <Description>Date of weather prevision</Description>
+    <Description>Datetime of weather prevision</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15024</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15026" BrowseName="1:Temperature" ParentNodeId="ns=1;i=15024" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15026" BrowseName="1:Temperature" ParentNodeId="ns=1;i=15024" DataType="ns=1;i=15076">
     <DisplayName>Temperature</DisplayName>
     <Description>Temperature in Kelvin</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15117</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15073</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15128</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15024</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15027" BrowseName="1:MaxTemperature" ParentNodeId="ns=1;i=15024" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15117" BrowseName="1:Temp" ParentNodeId="ns=1;i=15026" DataType="Float">
+    <DisplayName>Temp</DisplayName>
+    <Description>Value of Variable</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15026</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15073" BrowseName="1:Info" ParentNodeId="ns=1;i=15026" DataType="i=887">
+    <DisplayName>Info</DisplayName>
+    <Description>Information like unit of measurement</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15026</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>5259596</UnitId>
+            <DisplayName>
+              <Text>K</Text>
+            </DisplayName>
+            <Description>
+              <Locale>Kelvin</Locale>
+              <Text>Kelvin</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15027" BrowseName="1:MaxTemperature" ParentNodeId="ns=1;i=15024" DataType="ns=1;i=15076">
     <DisplayName>MaxTemperature</DisplayName>
     <Description>Max Temperature in Kelvin</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15118</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15098</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15128</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15024</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15028" BrowseName="1:MinTemperature" ParentNodeId="ns=1;i=15024" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15118" BrowseName="1:Temp" ParentNodeId="ns=1;i=15027" DataType="Float">
+    <DisplayName>Temp</DisplayName>
+    <Description>Value of Variable</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15027</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15098" BrowseName="1:Info" ParentNodeId="ns=1;i=15027" DataType="i=887">
+    <DisplayName>Info</DisplayName>
+    <Description>Information like unit of measurement</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15027</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>5259596</UnitId>
+            <DisplayName>
+              <Text>K</Text>
+            </DisplayName>
+            <Description>
+              <Locale>Kelvin</Locale>
+              <Text>Kelvin</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15028" BrowseName="1:MinTemperature" ParentNodeId="ns=1;i=15024" DataType="ns=1;i=15076">
     <DisplayName>MinTemperature</DisplayName>
     <Description>Min Temperature in Kelvin</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15119</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15100</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15128</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15024</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15029" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15024" DataType="Float">
-    <DisplayName>Pressure</DisplayName>
-    <Description>Pressure in Pascal</Description>
+  <UAVariable NodeId="ns=1;i=15119" BrowseName="1:Temp" ParentNodeId="ns=1;i=15028" DataType="Float">
+    <DisplayName>Temp</DisplayName>
+    <Description>Value of Variable</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15028</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15100" BrowseName="1:Info" ParentNodeId="ns=1;i=15028" DataType="i=887">
+    <DisplayName>Info</DisplayName>
+    <Description>Information like unit of measurement</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15028</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>5259596</UnitId>
+            <DisplayName>
+              <Text>K</Text>
+            </DisplayName>
+            <Description>
+              <Locale>Kelvin</Locale>
+              <Text>Kelvin</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15029" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15024" DataType="ns=1;i=15076">
+    <DisplayName>Pressure</DisplayName>
+    <Description>Pressure in Pascal</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=15120</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15102</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15125</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15024</Reference>
     </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15120" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15029" DataType="Float">
+    <DisplayName>Pressure</DisplayName>
+    <Description>Value of Variable</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15029</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15102" BrowseName="1:Info" ParentNodeId="ns=1;i=15029" DataType="i=887">
+    <DisplayName>Info</DisplayName>
+    <Description>Information like unit of measurement,range</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15029</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>4932940</UnitId>
+            <DisplayName>
+              <Text>Pa</Text>
+            </DisplayName>
+            <Description>
+              <Locale>Pascal</Locale>
+              <Text>Pascal</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15030" BrowseName="1:City" ParentNodeId="ns=1;i=15024" DataType="String">
     <DisplayName>City</DisplayName>
@@ -281,48 +602,208 @@
   </UAVariableType>
   <UAVariable NodeId="ns=1;i=15032" BrowseName="1:Date" ParentNodeId="ns=1;i=15031" DataType="DateTime">
     <DisplayName>Date</DisplayName>
-    <Description>Date of weather prevision</Description>
+    <Description>Datetime of weather prevision</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15031</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15033" BrowseName="1:Temperature" ParentNodeId="ns=1;i=15031" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15033" BrowseName="1:Temperature" ParentNodeId="ns=1;i=15031" DataType="ns=1;i=15076">
     <DisplayName>Temperature</DisplayName>
     <Description>Temperature in Kelvin</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15121</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15075</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15128</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15031</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15034" BrowseName="1:MaxTemperature" ParentNodeId="ns=1;i=15031" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15121" BrowseName="1:Temp" ParentNodeId="ns=1;i=15033" DataType="Float">
+    <DisplayName>Temp</DisplayName>
+    <Description>Value of Variable</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15033</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15075" BrowseName="1:Info" ParentNodeId="ns=1;i=15033" DataType="i=887">
+    <DisplayName>Info</DisplayName>
+    <Description>Information like unit of measurement</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15033</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>5259596</UnitId>
+            <DisplayName>
+              <Text>K</Text>
+            </DisplayName>
+            <Description>
+              <Locale>Kelvin</Locale>
+              <Text>Kelvin</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15034" BrowseName="1:MaxTemperature" ParentNodeId="ns=1;i=15031" DataType="ns=1;i=15076">
     <DisplayName>MaxTemperature</DisplayName>
     <Description>Max Temperature in Kelvin</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15122</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15104</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15128</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15031</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15035" BrowseName="1:MinTemperature" ParentNodeId="ns=1;i=15031" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15122" BrowseName="1:Temp" ParentNodeId="ns=1;i=15034" DataType="Float">
+    <DisplayName>Temp</DisplayName>
+    <Description>Value of Variable</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15034</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15104" BrowseName="1:Info" ParentNodeId="ns=1;i=15034" DataType="i=887">
+    <DisplayName>Info</DisplayName>
+    <Description>Information like unit of measurement</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15034</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>5259596</UnitId>
+            <DisplayName>
+              <Text>K</Text>
+            </DisplayName>
+            <Description>
+              <Locale>Kelvin</Locale>
+              <Text>Kelvin</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15035" BrowseName="1:MinTemperature" ParentNodeId="ns=1;i=15031" DataType="ns=1;i=15076">
     <DisplayName>MinTemperature</DisplayName>
     <Description>Min Temperature in Kelvin</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15123</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15106</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15128</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15031</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15036" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15031" DataType="Float">
-    <DisplayName>Pressure</DisplayName>
-    <Description>Pressure in Pascal</Description>
+  <UAVariable NodeId="ns=1;i=15123" BrowseName="1:Temp" ParentNodeId="ns=1;i=15035" DataType="Float">
+    <DisplayName>Temp</DisplayName>
+    <Description>Value of Variable</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15035</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15106" BrowseName="1:Info" ParentNodeId="ns=1;i=15035" DataType="i=887">
+    <DisplayName>Info</DisplayName>
+    <Description>Information like unit of measurement</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15035</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>5259596</UnitId>
+            <DisplayName>
+              <Text>K</Text>
+            </DisplayName>
+            <Description>
+              <Locale>Kelvin</Locale>
+              <Text>Kelvin</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15036" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15031" DataType="ns=1;i=15076">
+    <DisplayName>Pressure</DisplayName>
+    <Description>Pressure in Pascal</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=15124</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15108</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15125</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15031</Reference>
     </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15124" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15036" DataType="Float">
+    <DisplayName>Pressure</DisplayName>
+    <Description>Value of Variable</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15036</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15108" BrowseName="1:Info" ParentNodeId="ns=1;i=15036" DataType="i=887">
+    <DisplayName>Info</DisplayName>
+    <Description>Information like unit of measurement,range</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15036</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>4932940</UnitId>
+            <DisplayName>
+              <Text>Pa</Text>
+            </DisplayName>
+            <Description>
+              <Locale>Pascal</Locale>
+              <Text>Pascal</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15037" BrowseName="1:City" ParentNodeId="ns=1;i=15031" DataType="String">
     <DisplayName>City</DisplayName>
@@ -333,6 +814,98 @@
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15031</Reference>
     </References>
   </UAVariable>
+  <UAVariableType NodeId="ns=1;i=15128" BrowseName="1:AnalogTempDataType" DataType="ns=1;i=15076">
+    <DisplayName>AnalogTempDataType</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=15129</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15130</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=63</Reference>
+    </References>
+  </UAVariableType>
+  <UAVariable NodeId="ns=1;i=15129" BrowseName="1:Temp" ParentNodeId="ns=1;i=15128" DataType="Float">
+    <DisplayName>Temp</DisplayName>
+    <Description>Value of Variable</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15128</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15130" BrowseName="1:Info" ParentNodeId="ns=1;i=15128" DataType="i=887">
+    <DisplayName>Info</DisplayName>
+    <Description>Information like unit of measurement</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15128</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>5259596</UnitId>
+            <DisplayName>
+              <Text>K</Text>
+            </DisplayName>
+            <Description>
+              <Locale>Kelvin</Locale>
+              <Text>Kelvin</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariableType NodeId="ns=1;i=15125" BrowseName="1:AnalogPressDataType" DataType="ns=1;i=15076">
+    <DisplayName>AnalogPressDataType</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=15126</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15127</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=63</Reference>
+    </References>
+  </UAVariableType>
+  <UAVariable NodeId="ns=1;i=15126" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15125" DataType="Float">
+    <DisplayName>Pressure</DisplayName>
+    <Description>Value of Variable</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15125</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15127" BrowseName="1:Info" ParentNodeId="ns=1;i=15125" DataType="i=887">
+    <DisplayName>Info</DisplayName>
+    <Description>Information like unit of measurement,range</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15125</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>4932940</UnitId>
+            <DisplayName>
+              <Text>Pa</Text>
+            </DisplayName>
+            <Description>
+              <Locale>Pascal</Locale>
+              <Text>Pascal</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
   <UADataType NodeId="ns=1;i=15038" BrowseName="1:WeatherData">
     <DisplayName>WeatherData</DisplayName>
     <Description>Information about waether in a specific city</Description>
@@ -341,11 +914,22 @@
     </References>
     <Definition Name="1:WeatherData">
       <Field Name="Date" DataType="i=13" />
-      <Field Name="Temperature" DataType="i=10" />
-      <Field Name="MaxTemperature" DataType="i=10" />
-      <Field Name="MinTemperature" DataType="i=10" />
-      <Field Name="Pressure" DataType="i=10" />
+      <Field Name="Temperature" DataType="ns=1;i=15076" />
+      <Field Name="MaxTemperature" DataType="ns=1;i=15076" />
+      <Field Name="MinTemperature" DataType="ns=1;i=15076" />
+      <Field Name="Pressure" DataType="ns=1;i=15076" />
       <Field Name="City" DataType="i=12" />
+    </Definition>
+  </UADataType>
+  <UADataType NodeId="ns=1;i=15076" BrowseName="1:AnalogData">
+    <DisplayName>AnalogData</DisplayName>
+    <Description>Data type for Analogic Data</Description>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=22</Reference>
+    </References>
+    <Definition Name="1:AnalogData">
+      <Field Name="Data" DataType="i=10" />
+      <Field Name="Info" DataType="i=887" />
     </Definition>
   </UADataType>
   <UAObject NodeId="ns=1;i=15067" BrowseName="1:WeatherAPISet">
@@ -392,43 +976,195 @@
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15042" BrowseName="1:Date" ParentNodeId="ns=1;i=15041" DataType="DateTime">
     <DisplayName>Date</DisplayName>
-    <Description>Date of weather prevision</Description>
+    <Description>Datetime of weather prevision</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15041</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15043" BrowseName="1:Temperature" ParentNodeId="ns=1;i=15041" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15043" BrowseName="1:Temperature" ParentNodeId="ns=1;i=15041" DataType="ns=1;i=15076">
     <DisplayName>Temperature</DisplayName>
     <Description>Temperature in Kelvin</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15131</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15078</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15128</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15041</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15044" BrowseName="1:MaxTemperature" ParentNodeId="ns=1;i=15041" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15131" BrowseName="1:Temp" ParentNodeId="ns=1;i=15043" DataType="Float">
+    <DisplayName>Temp</DisplayName>
+    <Description>Value of Variable</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15043</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15078" BrowseName="1:Info" ParentNodeId="ns=1;i=15043" DataType="i=887">
+    <DisplayName>Info</DisplayName>
+    <Description>Information like unit of measurement</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15043</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>5259596</UnitId>
+            <DisplayName>
+              <Text>K</Text>
+            </DisplayName>
+            <Description>
+              <Locale>Kelvin</Locale>
+              <Text>Kelvin</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15044" BrowseName="1:MaxTemperature" ParentNodeId="ns=1;i=15041" DataType="ns=1;i=15076">
     <DisplayName>MaxTemperature</DisplayName>
     <Description>Max Temperature in Kelvin</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15132</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15110</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15128</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15041</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15045" BrowseName="1:MinTemperature" ParentNodeId="ns=1;i=15041" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15132" BrowseName="1:Temp" ParentNodeId="ns=1;i=15044" DataType="Float">
+    <DisplayName>Temp</DisplayName>
+    <Description>Value of Variable</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15044</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15110" BrowseName="1:Info" ParentNodeId="ns=1;i=15044" DataType="i=887">
+    <DisplayName>Info</DisplayName>
+    <Description>Information like unit of measurement</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15044</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>5259596</UnitId>
+            <DisplayName>
+              <Text>K</Text>
+            </DisplayName>
+            <Description>
+              <Locale>Kelvin</Locale>
+              <Text>Kelvin</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15045" BrowseName="1:MinTemperature" ParentNodeId="ns=1;i=15041" DataType="ns=1;i=15076">
     <DisplayName>MinTemperature</DisplayName>
     <Description>Min Temperature in Kelvin</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15133</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15112</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15128</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15041</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15046" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15041" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15133" BrowseName="1:Temp" ParentNodeId="ns=1;i=15045" DataType="Float">
+    <DisplayName>Temp</DisplayName>
+    <Description>Value of Variable</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15045</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15112" BrowseName="1:Info" ParentNodeId="ns=1;i=15045" DataType="i=887">
+    <DisplayName>Info</DisplayName>
+    <Description>Information like unit of measurement</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15045</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>5259596</UnitId>
+            <DisplayName>
+              <Text>K</Text>
+            </DisplayName>
+            <Description>
+              <Locale>Kelvin</Locale>
+              <Text>Kelvin</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15046" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15041" DataType="ns=1;i=15076">
     <DisplayName>Pressure</DisplayName>
     <Description>Pressure in Pascal</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15134</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15114</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15125</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15041</Reference>
     </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15134" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15046" DataType="Float">
+    <DisplayName>Pressure</DisplayName>
+    <Description>Value of Variable</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15046</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15114" BrowseName="1:Info" ParentNodeId="ns=1;i=15046" DataType="i=887">
+    <DisplayName>Info</DisplayName>
+    <Description>Information like unit of measurement,range</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15046</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>4932940</UnitId>
+            <DisplayName>
+              <Text>Pa</Text>
+            </DisplayName>
+            <Description>
+              <Locale>Pascal</Locale>
+              <Text>Pascal</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15047" BrowseName="1:City" ParentNodeId="ns=1;i=15041" DataType="String">
     <DisplayName>City</DisplayName>
@@ -480,7 +1216,7 @@
           </TypeId>
           <Body>
             <Argument>
-              <Name>MesureOfTemperature</Name>
+              <Name>MeasureOfTemperature</Name>
               <DataType>
                 <Identifier>i=12</Identifier>
               </DataType>
@@ -505,12 +1241,21 @@
       <Reference ReferenceType="HasTypeDefinition">i=76</Reference>
     </References>
   </UAObject>
+  <UAObject NodeId="ns=1;i=15079" BrowseName="Default Binary" SymbolicName="DefaultBinary">
+    <DisplayName>Default Binary</DisplayName>
+    <References>
+      <Reference ReferenceType="HasEncoding" IsForward="false">ns=1;i=15076</Reference>
+      <Reference ReferenceType="HasDescription">ns=1;i=15080</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=76</Reference>
+    </References>
+  </UAObject>
   <UAVariable NodeId="ns=1;i=15051" BrowseName="1:Quickstarts.MyOPCServer" SymbolicName="MyOPCServer_BinarySchema" DataType="ByteString">
     <DisplayName>Quickstarts.MyOPCServer</DisplayName>
     <References>
       <Reference ReferenceType="HasProperty">ns=1;i=15053</Reference>
       <Reference ReferenceType="HasProperty">ns=1;i=15054</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=15055</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15080</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">i=93</Reference>
       <Reference ReferenceType="HasTypeDefinition">i=72</Reference>
     </References>
@@ -527,12 +1272,18 @@ DQoNCiAgPG9wYzpTdHJ1Y3R1cmVkVHlwZSBOYW1lPSJXZWF0aGVyRGF0YSIgQmFzZVR5cGU9InVh
 OkV4dGVuc2lvbk9iamVjdCI+DQogICAgPG9wYzpEb2N1bWVudGF0aW9uPkluZm9ybWF0aW9uIGFi
 b3V0IHdhZXRoZXIgaW4gYSBzcGVjaWZpYyBjaXR5PC9vcGM6RG9jdW1lbnRhdGlvbj4NCiAgICA8
 b3BjOkZpZWxkIE5hbWU9IkRhdGUiIFR5cGVOYW1lPSJvcGM6RGF0ZVRpbWUiIC8+DQogICAgPG9w
-YzpGaWVsZCBOYW1lPSJUZW1wZXJhdHVyZSIgVHlwZU5hbWU9Im9wYzpGbG9hdCIgLz4NCiAgICA8
-b3BjOkZpZWxkIE5hbWU9Ik1heFRlbXBlcmF0dXJlIiBUeXBlTmFtZT0ib3BjOkZsb2F0IiAvPg0K
-ICAgIDxvcGM6RmllbGQgTmFtZT0iTWluVGVtcGVyYXR1cmUiIFR5cGVOYW1lPSJvcGM6RmxvYXQi
-IC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJQcmVzc3VyZSIgVHlwZU5hbWU9Im9wYzpGbG9hdCIg
-Lz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9IkNpdHkiIFR5cGVOYW1lPSJvcGM6U3RyaW5nIiAvPg0K
-ICA8L29wYzpTdHJ1Y3R1cmVkVHlwZT4NCg0KPC9vcGM6VHlwZURpY3Rpb25hcnk+</ByteString>
+YzpGaWVsZCBOYW1lPSJUZW1wZXJhdHVyZSIgVHlwZU5hbWU9InRuczpBbmFsb2dEYXRhIiAvPg0K
+ICAgIDxvcGM6RmllbGQgTmFtZT0iTWF4VGVtcGVyYXR1cmUiIFR5cGVOYW1lPSJ0bnM6QW5hbG9n
+RGF0YSIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9Ik1pblRlbXBlcmF0dXJlIiBUeXBlTmFtZT0i
+dG5zOkFuYWxvZ0RhdGEiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJQcmVzc3VyZSIgVHlwZU5h
+bWU9InRuczpBbmFsb2dEYXRhIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iQ2l0eSIgVHlwZU5h
+bWU9Im9wYzpTdHJpbmciIC8+DQogIDwvb3BjOlN0cnVjdHVyZWRUeXBlPg0KDQogIDxvcGM6U3Ry
+dWN0dXJlZFR5cGUgTmFtZT0iQW5hbG9nRGF0YSIgQmFzZVR5cGU9InVhOkV4dGVuc2lvbk9iamVj
+dCI+DQogICAgPG9wYzpEb2N1bWVudGF0aW9uPkRhdGEgdHlwZSBmb3IgQW5hbG9naWMgRGF0YTwv
+b3BjOkRvY3VtZW50YXRpb24+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJEYXRhIiBUeXBlTmFtZT0i
+b3BjOkZsb2F0IiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iSW5mbyIgVHlwZU5hbWU9InVhOkVV
+SW5mb3JtYXRpb24iIC8+DQogIDwvb3BjOlN0cnVjdHVyZWRUeXBlPg0KDQo8L29wYzpUeXBlRGlj
+dGlvbmFyeT4=</ByteString>
     </Value>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15053" BrowseName="NamespaceUri" ParentNodeId="ns=1;i=15051" DataType="String">
@@ -565,11 +1316,29 @@ ICA8L29wYzpTdHJ1Y3R1cmVkVHlwZT4NCg0KPC9vcGM6VHlwZURpY3Rpb25hcnk+</ByteString>
       <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">WeatherData</String>
     </Value>
   </UAVariable>
+  <UAVariable NodeId="ns=1;i=15080" BrowseName="1:AnalogData" ParentNodeId="ns=1;i=15051" DataType="String">
+    <DisplayName>AnalogData</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=69</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15051</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">AnalogData</String>
+    </Value>
+  </UAVariable>
   <UAObject NodeId="ns=1;i=15058" BrowseName="Default XML" SymbolicName="DefaultXml">
     <DisplayName>Default XML</DisplayName>
     <References>
       <Reference ReferenceType="HasEncoding" IsForward="false">ns=1;i=15038</Reference>
       <Reference ReferenceType="HasDescription">ns=1;i=15063</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=76</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=15083" BrowseName="Default XML" SymbolicName="DefaultXml">
+    <DisplayName>Default XML</DisplayName>
+    <References>
+      <Reference ReferenceType="HasEncoding" IsForward="false">ns=1;i=15076</Reference>
+      <Reference ReferenceType="HasDescription">ns=1;i=15084</Reference>
       <Reference ReferenceType="HasTypeDefinition">i=76</Reference>
     </References>
   </UAObject>
@@ -579,6 +1348,7 @@ ICA8L29wYzpTdHJ1Y3R1cmVkVHlwZT4NCg0KPC9vcGM6VHlwZURpY3Rpb25hcnk+</ByteString>
       <Reference ReferenceType="HasProperty">ns=1;i=15061</Reference>
       <Reference ReferenceType="HasProperty">ns=1;i=15062</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=15063</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15084</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">i=92</Reference>
       <Reference ReferenceType="HasTypeDefinition">i=72</Reference>
     </References>
@@ -595,20 +1365,34 @@ b2N1bWVudGF0aW9uPkluZm9ybWF0aW9uIGFib3V0IHdhZXRoZXIgaW4gYSBzcGVjaWZpYyBjaXR5
 PC94czpkb2N1bWVudGF0aW9uPg0KICAgIDwveHM6YW5ub3RhdGlvbj4NCiAgICA8eHM6c2VxdWVu
 Y2U+DQogICAgICA8eHM6ZWxlbWVudCBuYW1lPSJEYXRlIiB0eXBlPSJ4czpkYXRlVGltZSIgbWlu
 T2NjdXJzPSIwIiAvPg0KICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iVGVtcGVyYXR1cmUiIHR5cGU9
-InhzOmZsb2F0IiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICA8eHM6ZWxlbWVudCBuYW1lPSJNYXhU
-ZW1wZXJhdHVyZSIgdHlwZT0ieHM6ZmxvYXQiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgIDx4czpl
-bGVtZW50IG5hbWU9Ik1pblRlbXBlcmF0dXJlIiB0eXBlPSJ4czpmbG9hdCIgbWluT2NjdXJzPSIw
-IiAvPg0KICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iUHJlc3N1cmUiIHR5cGU9InhzOmZsb2F0IiBt
-aW5PY2N1cnM9IjAiIC8+DQogICAgICA8eHM6ZWxlbWVudCBuYW1lPSJDaXR5IiB0eXBlPSJ4czpz
-dHJpbmciIG1pbk9jY3Vycz0iMCIgbmlsbGFibGU9InRydWUiIC8+DQogICAgPC94czpzZXF1ZW5j
-ZT4NCiAgPC94czpjb21wbGV4VHlwZT4NCiAgPHhzOmVsZW1lbnQgbmFtZT0iV2VhdGhlckRhdGEi
-IHR5cGU9InRuczpXZWF0aGVyRGF0YSIgLz4NCg0KICA8eHM6Y29tcGxleFR5cGUgbmFtZT0iTGlz
-dE9mV2VhdGhlckRhdGEiPg0KICAgIDx4czpzZXF1ZW5jZT4NCiAgICAgIDx4czplbGVtZW50IG5h
-bWU9IldlYXRoZXJEYXRhIiB0eXBlPSJ0bnM6V2VhdGhlckRhdGEiIG1pbk9jY3Vycz0iMCIgbWF4
-T2NjdXJzPSJ1bmJvdW5kZWQiIG5pbGxhYmxlPSJ0cnVlIiAvPg0KICAgIDwveHM6c2VxdWVuY2U+
-DQogIDwveHM6Y29tcGxleFR5cGU+DQogIDx4czplbGVtZW50IG5hbWU9Ikxpc3RPZldlYXRoZXJE
-YXRhIiB0eXBlPSJ0bnM6TGlzdE9mV2VhdGhlckRhdGEiIG5pbGxhYmxlPSJ0cnVlIj48L3hzOmVs
-ZW1lbnQ+DQoNCjwveHM6c2NoZW1hPg==</ByteString>
+InRuczpBbmFsb2dEYXRhIiBtaW5PY2N1cnM9IjAiIG5pbGxhYmxlPSJ0cnVlIiAvPg0KICAgICAg
+PHhzOmVsZW1lbnQgbmFtZT0iTWF4VGVtcGVyYXR1cmUiIHR5cGU9InRuczpBbmFsb2dEYXRhIiBt
+aW5PY2N1cnM9IjAiIG5pbGxhYmxlPSJ0cnVlIiAvPg0KICAgICAgPHhzOmVsZW1lbnQgbmFtZT0i
+TWluVGVtcGVyYXR1cmUiIHR5cGU9InRuczpBbmFsb2dEYXRhIiBtaW5PY2N1cnM9IjAiIG5pbGxh
+YmxlPSJ0cnVlIiAvPg0KICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iUHJlc3N1cmUiIHR5cGU9InRu
+czpBbmFsb2dEYXRhIiBtaW5PY2N1cnM9IjAiIG5pbGxhYmxlPSJ0cnVlIiAvPg0KICAgICAgPHhz
+OmVsZW1lbnQgbmFtZT0iQ2l0eSIgdHlwZT0ieHM6c3RyaW5nIiBtaW5PY2N1cnM9IjAiIG5pbGxh
+YmxlPSJ0cnVlIiAvPg0KICAgIDwveHM6c2VxdWVuY2U+DQogIDwveHM6Y29tcGxleFR5cGU+DQog
+IDx4czplbGVtZW50IG5hbWU9IldlYXRoZXJEYXRhIiB0eXBlPSJ0bnM6V2VhdGhlckRhdGEiIC8+
+DQoNCiAgPHhzOmNvbXBsZXhUeXBlIG5hbWU9Ikxpc3RPZldlYXRoZXJEYXRhIj4NCiAgICA8eHM6
+c2VxdWVuY2U+DQogICAgICA8eHM6ZWxlbWVudCBuYW1lPSJXZWF0aGVyRGF0YSIgdHlwZT0idG5z
+OldlYXRoZXJEYXRhIiBtaW5PY2N1cnM9IjAiIG1heE9jY3Vycz0idW5ib3VuZGVkIiBuaWxsYWJs
+ZT0idHJ1ZSIgLz4NCiAgICA8L3hzOnNlcXVlbmNlPg0KICA8L3hzOmNvbXBsZXhUeXBlPg0KICA8
+eHM6ZWxlbWVudCBuYW1lPSJMaXN0T2ZXZWF0aGVyRGF0YSIgdHlwZT0idG5zOkxpc3RPZldlYXRo
+ZXJEYXRhIiBuaWxsYWJsZT0idHJ1ZSI+PC94czplbGVtZW50Pg0KDQogIDx4czpjb21wbGV4VHlw
+ZSBuYW1lPSJBbmFsb2dEYXRhIj4NCiAgICA8eHM6YW5ub3RhdGlvbj4NCiAgICAgIDx4czpkb2N1
+bWVudGF0aW9uPkRhdGEgdHlwZSBmb3IgQW5hbG9naWMgRGF0YTwveHM6ZG9jdW1lbnRhdGlvbj4N
+CiAgICA8L3hzOmFubm90YXRpb24+DQogICAgPHhzOnNlcXVlbmNlPg0KICAgICAgPHhzOmVsZW1l
+bnQgbmFtZT0iRGF0YSIgdHlwZT0ieHM6ZmxvYXQiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgIDx4
+czplbGVtZW50IG5hbWU9IkluZm8iIHR5cGU9InVhOkVVSW5mb3JtYXRpb24iIG1pbk9jY3Vycz0i
+MCIgbmlsbGFibGU9InRydWUiIC8+DQogICAgPC94czpzZXF1ZW5jZT4NCiAgPC94czpjb21wbGV4
+VHlwZT4NCiAgPHhzOmVsZW1lbnQgbmFtZT0iQW5hbG9nRGF0YSIgdHlwZT0idG5zOkFuYWxvZ0Rh
+dGEiIC8+DQoNCiAgPHhzOmNvbXBsZXhUeXBlIG5hbWU9Ikxpc3RPZkFuYWxvZ0RhdGEiPg0KICAg
+IDx4czpzZXF1ZW5jZT4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9IkFuYWxvZ0RhdGEiIHR5cGU9
+InRuczpBbmFsb2dEYXRhIiBtaW5PY2N1cnM9IjAiIG1heE9jY3Vycz0idW5ib3VuZGVkIiBuaWxs
+YWJsZT0idHJ1ZSIgLz4NCiAgICA8L3hzOnNlcXVlbmNlPg0KICA8L3hzOmNvbXBsZXhUeXBlPg0K
+ICA8eHM6ZWxlbWVudCBuYW1lPSJMaXN0T2ZBbmFsb2dEYXRhIiB0eXBlPSJ0bnM6TGlzdE9mQW5h
+bG9nRGF0YSIgbmlsbGFibGU9InRydWUiPjwveHM6ZWxlbWVudD4NCg0KPC94czpzY2hlbWE+</ByteString>
     </Value>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15061" BrowseName="NamespaceUri" ParentNodeId="ns=1;i=15059" DataType="String">
@@ -641,10 +1425,27 @@ ZW1lbnQ+DQoNCjwveHM6c2NoZW1hPg==</ByteString>
       <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">//xs:element[@name='WeatherData']</String>
     </Value>
   </UAVariable>
+  <UAVariable NodeId="ns=1;i=15084" BrowseName="1:AnalogData" ParentNodeId="ns=1;i=15059" DataType="String">
+    <DisplayName>AnalogData</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=69</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15059</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">//xs:element[@name='AnalogData']</String>
+    </Value>
+  </UAVariable>
   <UAObject NodeId="ns=1;i=15066" BrowseName="Default JSON" SymbolicName="DefaultJson">
     <DisplayName>Default JSON</DisplayName>
     <References>
       <Reference ReferenceType="HasEncoding" IsForward="false">ns=1;i=15038</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=76</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=15087" BrowseName="Default JSON" SymbolicName="DefaultJson">
+    <DisplayName>Default JSON</DisplayName>
+    <References>
+      <Reference ReferenceType="HasEncoding" IsForward="false">ns=1;i=15076</Reference>
       <Reference ReferenceType="HasTypeDefinition">i=76</Reference>
     </References>
   </UAObject>

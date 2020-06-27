@@ -70,10 +70,10 @@ namespace Quickstarts.MyOPCServer
         private void Initialize()
         {
             m_date = DateTime.MinValue;
-            m_temperature = (float)0;
-            m_maxTemperature = (float)0;
-            m_minTemperature = (float)0;
-            m_pressure = (float)0;
+            m_temperature = new AnalogData();
+            m_maxTemperature = new AnalogData();
+            m_minTemperature = new AnalogData();
+            m_pressure = new AnalogData();
             m_city = null;
         }
         #endregion
@@ -87,36 +87,92 @@ namespace Quickstarts.MyOPCServer
             set { m_date = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// 
+        /// </summary>
         [DataMember(Name = "Temperature", IsRequired = false, Order = 2)]
-        public float Temperature
+        public AnalogData Temperature
         {
-            get { return m_temperature;  }
-            set { m_temperature = value; }
+            get
+            {
+                return m_temperature;
+            }
+
+            set
+            {
+                m_temperature = value;
+
+                if (value == null)
+                {
+                    m_temperature = new AnalogData();
+                }
+            }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// 
+        /// </summary>
         [DataMember(Name = "MaxTemperature", IsRequired = false, Order = 3)]
-        public float MaxTemperature
+        public AnalogData MaxTemperature
         {
-            get { return m_maxTemperature;  }
-            set { m_maxTemperature = value; }
+            get
+            {
+                return m_maxTemperature;
+            }
+
+            set
+            {
+                m_maxTemperature = value;
+
+                if (value == null)
+                {
+                    m_maxTemperature = new AnalogData();
+                }
+            }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// 
+        /// </summary>
         [DataMember(Name = "MinTemperature", IsRequired = false, Order = 4)]
-        public float MinTemperature
+        public AnalogData MinTemperature
         {
-            get { return m_minTemperature;  }
-            set { m_minTemperature = value; }
+            get
+            {
+                return m_minTemperature;
+            }
+
+            set
+            {
+                m_minTemperature = value;
+
+                if (value == null)
+                {
+                    m_minTemperature = new AnalogData();
+                }
+            }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// 
+        /// </summary>
         [DataMember(Name = "Pressure", IsRequired = false, Order = 5)]
-        public float Pressure
+        public AnalogData Pressure
         {
-            get { return m_pressure;  }
-            set { m_pressure = value; }
+            get
+            {
+                return m_pressure;
+            }
+
+            set
+            {
+                m_pressure = value;
+
+                if (value == null)
+                {
+                    m_pressure = new AnalogData();
+                }
+            }
         }
 
         /// <remarks />
@@ -153,10 +209,10 @@ namespace Quickstarts.MyOPCServer
             encoder.PushNamespace(Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
 
             encoder.WriteDateTime("Date", Date);
-            encoder.WriteFloat("Temperature", Temperature);
-            encoder.WriteFloat("MaxTemperature", MaxTemperature);
-            encoder.WriteFloat("MinTemperature", MinTemperature);
-            encoder.WriteFloat("Pressure", Pressure);
+            encoder.WriteEncodeable("Temperature", Temperature, typeof(AnalogData));
+            encoder.WriteEncodeable("MaxTemperature", MaxTemperature, typeof(AnalogData));
+            encoder.WriteEncodeable("MinTemperature", MinTemperature, typeof(AnalogData));
+            encoder.WriteEncodeable("Pressure", Pressure, typeof(AnalogData));
             encoder.WriteString("City", City);
 
             encoder.PopNamespace();
@@ -168,10 +224,10 @@ namespace Quickstarts.MyOPCServer
             decoder.PushNamespace(Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
 
             Date = decoder.ReadDateTime("Date");
-            Temperature = decoder.ReadFloat("Temperature");
-            MaxTemperature = decoder.ReadFloat("MaxTemperature");
-            MinTemperature = decoder.ReadFloat("MinTemperature");
-            Pressure = decoder.ReadFloat("Pressure");
+            Temperature = (AnalogData)decoder.ReadEncodeable("Temperature", typeof(AnalogData));
+            MaxTemperature = (AnalogData)decoder.ReadEncodeable("MaxTemperature", typeof(AnalogData));
+            MinTemperature = (AnalogData)decoder.ReadEncodeable("MinTemperature", typeof(AnalogData));
+            Pressure = (AnalogData)decoder.ReadEncodeable("Pressure", typeof(AnalogData));
             City = decoder.ReadString("City");
 
             decoder.PopNamespace();
@@ -216,10 +272,10 @@ namespace Quickstarts.MyOPCServer
             WeatherData clone = (WeatherData)base.MemberwiseClone();
 
             clone.m_date = (DateTime)Utils.Clone(this.m_date);
-            clone.m_temperature = (float)Utils.Clone(this.m_temperature);
-            clone.m_maxTemperature = (float)Utils.Clone(this.m_maxTemperature);
-            clone.m_minTemperature = (float)Utils.Clone(this.m_minTemperature);
-            clone.m_pressure = (float)Utils.Clone(this.m_pressure);
+            clone.m_temperature = (AnalogData)Utils.Clone(this.m_temperature);
+            clone.m_maxTemperature = (AnalogData)Utils.Clone(this.m_maxTemperature);
+            clone.m_minTemperature = (AnalogData)Utils.Clone(this.m_minTemperature);
+            clone.m_pressure = (AnalogData)Utils.Clone(this.m_pressure);
             clone.m_city = (string)Utils.Clone(this.m_city);
 
             return clone;
@@ -228,10 +284,10 @@ namespace Quickstarts.MyOPCServer
 
         #region Private Fields
         private DateTime m_date;
-        private float m_temperature;
-        private float m_maxTemperature;
-        private float m_minTemperature;
-        private float m_pressure;
+        private AnalogData m_temperature;
+        private AnalogData m_maxTemperature;
+        private AnalogData m_minTemperature;
+        private AnalogData m_pressure;
         private string m_city;
         #endregion
     }
@@ -314,6 +370,251 @@ namespace Quickstarts.MyOPCServer
             for (int ii = 0; ii < this.Count; ii++)
             {
                 clone.Add((WeatherData)Utils.Clone(this[ii]));
+            }
+
+            return clone;
+        }
+    }
+    #endregion
+    #endif
+    #endregion
+
+    #region AnalogData Class
+    #if (!OPCUA_EXCLUDE_AnalogData)
+    /// <summary>
+    /// Data type for Analogic Data
+    /// </summary>
+    /// <exclude />
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
+    [DataContract(Namespace = Quickstarts.MyOPCServer.Namespaces.MyOPCServer)]
+    public partial class AnalogData : IEncodeable
+    {
+        #region Constructors
+        /// <summary>
+        /// The default constructor.
+        /// </summary>
+        public AnalogData()
+        {
+            Initialize();
+        }
+
+        /// <summary>
+        /// Called by the .NET framework during deserialization.
+        /// </summary>
+        [OnDeserializing]
+        private void Initialize(StreamingContext context)
+        {
+            Initialize();
+        }
+
+        /// <summary>
+        /// Sets private members to default values.
+        /// </summary>
+        private void Initialize()
+        {
+            m_data = (float)0;
+            m_info = new EUInformation();
+        }
+        #endregion
+
+        #region Public Properties
+        /// <remarks />
+        [DataMember(Name = "Data", IsRequired = false, Order = 1)]
+        public float Data
+        {
+            get { return m_data;  }
+            set { m_data = value; }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember(Name = "Info", IsRequired = false, Order = 2)]
+        public EUInformation Info
+        {
+            get
+            {
+                return m_info;
+            }
+
+            set
+            {
+                m_info = value;
+
+                if (value == null)
+                {
+                    m_info = new EUInformation();
+                }
+            }
+        }
+        #endregion
+
+        #region IEncodeable Members
+        /// <summary cref="IEncodeable.TypeId" />
+        public virtual ExpandedNodeId TypeId
+        {
+            get { return DataTypeIds.AnalogData; }
+        }
+
+        /// <summary cref="IEncodeable.BinaryEncodingId" />
+        public virtual ExpandedNodeId BinaryEncodingId
+        {
+            get { return ObjectIds.AnalogData_Encoding_DefaultBinary; }
+        }
+
+        /// <summary cref="IEncodeable.XmlEncodingId" />
+        public virtual ExpandedNodeId XmlEncodingId
+        {
+            get { return ObjectIds.AnalogData_Encoding_DefaultXml; }
+        }
+
+        /// <summary cref="IEncodeable.Encode(IEncoder)" />
+        public virtual void Encode(IEncoder encoder)
+        {
+            encoder.PushNamespace(Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
+
+            encoder.WriteFloat("Data", Data);
+            encoder.WriteEncodeable("Info", Info, typeof(EUInformation));
+
+            encoder.PopNamespace();
+        }
+
+        /// <summary cref="IEncodeable.Decode(IDecoder)" />
+        public virtual void Decode(IDecoder decoder)
+        {
+            decoder.PushNamespace(Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
+
+            Data = decoder.ReadFloat("Data");
+            Info = (EUInformation)decoder.ReadEncodeable("Info", typeof(EUInformation));
+
+            decoder.PopNamespace();
+        }
+
+        /// <summary cref="IEncodeable.IsEqual(IEncodeable)" />
+        public virtual bool IsEqual(IEncodeable encodeable)
+        {
+            if (Object.ReferenceEquals(this, encodeable))
+            {
+                return true;
+            }
+
+            AnalogData value = encodeable as AnalogData;
+
+            if (value == null)
+            {
+                return false;
+            }
+
+            if (!Utils.IsEqual(m_data, value.m_data)) return false;
+            if (!Utils.IsEqual(m_info, value.m_info)) return false;
+
+            return true;
+        }
+
+        #if !NET_STANDARD
+        /// <summary cref="ICloneable.Clone" />
+        public virtual object Clone()
+        {
+            return (AnalogData)this.MemberwiseClone();
+        }
+        #endif
+
+        /// <summary cref="Object.MemberwiseClone" />
+        public new object MemberwiseClone()
+        {
+            AnalogData clone = (AnalogData)base.MemberwiseClone();
+
+            clone.m_data = (float)Utils.Clone(this.m_data);
+            clone.m_info = (EUInformation)Utils.Clone(this.m_info);
+
+            return clone;
+        }
+        #endregion
+
+        #region Private Fields
+        private float m_data;
+        private EUInformation m_info;
+        #endregion
+    }
+
+    #region AnalogDataCollection Class
+    /// <summary>
+    /// A collection of AnalogData objects.
+    /// </summary>
+    /// <exclude />
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
+    [CollectionDataContract(Name = "ListOfAnalogData", Namespace = Quickstarts.MyOPCServer.Namespaces.MyOPCServer, ItemName = "AnalogData")]
+    #if !NET_STANDARD
+    public partial class AnalogDataCollection : List<AnalogData>, ICloneable
+    #else
+    public partial class AnalogDataCollection : List<AnalogData>
+    #endif
+    {
+        #region Constructors
+        /// <summary>
+        /// Initializes the collection with default values.
+        /// </summary>
+        public AnalogDataCollection() {}
+
+        /// <summary>
+        /// Initializes the collection with an initial capacity.
+        /// </summary>
+        public AnalogDataCollection(int capacity) : base(capacity) {}
+
+        /// <summary>
+        /// Initializes the collection with another collection.
+        /// </summary>
+        public AnalogDataCollection(IEnumerable<AnalogData> collection) : base(collection) {}
+        #endregion
+
+        #region Static Operators
+        /// <summary>
+        /// Converts an array to a collection.
+        /// </summary>
+        public static implicit operator AnalogDataCollection(AnalogData[] values)
+        {
+            if (values != null)
+            {
+                return new AnalogDataCollection(values);
+            }
+
+            return new AnalogDataCollection();
+        }
+
+        /// <summary>
+        /// Converts a collection to an array.
+        /// </summary>
+        public static explicit operator AnalogData[](AnalogDataCollection values)
+        {
+            if (values != null)
+            {
+                return values.ToArray();
+            }
+
+            return null;
+        }
+        #endregion
+
+        #if !NET_STANDARD
+        #region ICloneable Methods
+        /// <summary>
+        /// Creates a deep copy of the collection.
+        /// </summary>
+        public object Clone()
+        {
+            return (AnalogDataCollection)this.MemberwiseClone();
+        }
+        #endregion
+        #endif
+
+        /// <summary cref="Object.MemberwiseClone" />
+        public new object MemberwiseClone()
+        {
+            AnalogDataCollection clone = new AnalogDataCollection(this.Count);
+
+            for (int ii = 0; ii < this.Count; ii++)
+            {
+                clone.Add((AnalogData)Utils.Clone(this[ii]));
             }
 
             return clone;

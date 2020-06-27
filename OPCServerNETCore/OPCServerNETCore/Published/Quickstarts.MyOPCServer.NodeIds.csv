@@ -1,3 +1,9 @@
+AnalogData,15076,DataType
+AnalogData_Encoding_DefaultBinary,15079,Object
+AnalogData_Encoding_DefaultJson,15087,Object
+AnalogData_Encoding_DefaultXml,15083,Object
+AnalogPressDataType,15125,VariableType
+AnalogTempDataType,15128,VariableType
 MyOPCServer_BinarySchema,15051,Variable
 MyOPCServer_XmlSchema,15059,Variable
 OpenWeatherMap,15039,Object
