@@ -10,6 +10,6 @@ The Weather Data are exposed in nodes readable by the client.  In this server ar
 https://github.com/OPCFoundation/UA-ModelCompiler. 
 
 The Server has been tested with UA Sample Client developed by OPC Foundation: http://opcfoundation.github.io/UA-.NETStandard/help/ua_sample_client.htm. 
-To test the server with Sample Client it is possible to use, as authentication policy, only sha256 and Basic128Rsa15, because Sample Client does not support basic256sha256, even if the server has this security policy. 
+To test the server with Sample Client it is possible to use, as authentication policy, only basic256 and Basic128Rsa15, because Sample Client does not support basic256sha256, even if the server has this security policy. 
 
 
