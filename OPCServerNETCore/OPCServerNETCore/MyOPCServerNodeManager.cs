@@ -71,9 +71,6 @@ namespace Quickstarts.MyOPCServer
                 m_configuration = new MyOPCServerConfiguration();
             }
 
-            // start the simulation.
-            m_simulationTimer = new Timer(OnRaiseSystemEvents, null, 20000, 20000);
-
             apiRequests = new OpenWeatherMapApiRequests();
 
             List<string> namespaceUris = new List<string>();
@@ -146,9 +143,6 @@ namespace Quickstarts.MyOPCServer
                 {
                     externalReferences[Opc.Ua.ObjectIds.ObjectsFolder] = references = new List<IReference>();
                 }
-
-
-
 
                 FolderState dataSourcesFolder = CreateFolder(openWeatherObject, "DataSourceFolder", "DataSourceFolder");
                 dataSourcesFolder.AddReference(ReferenceTypes.Organizes, true, Opc.Ua.ObjectIds.ObjectsFolder);
@@ -267,7 +261,10 @@ namespace Quickstarts.MyOPCServer
             tempMeasureOfTemperature = measureOfTemperature;
             tempCity = city;
 
-            return WriteWeatherData(tempMeasureOfTemperature, tempCity);
+            // start the simulation.
+            m_simulationTimer = new Timer(OnRaiseSystemEvents, null, 20000, 20000);
+
+            return WriteWeatherData(tempCity, tempMeasureOfTemperature);
         }
 
         private TNodeState FindPredefinedNode<TNodeState>(uint id)
