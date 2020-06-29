@@ -14,9 +14,9 @@ To test the server with Sample Client it is possible to use, as authentication p
 
 Run MyOPCServer 
 
->  > cd OPCServerNETCore\OPCServerNETCore\bin\Debug\netcoreapp3.1\
+> cd OPCServerNETCore\OPCServerNETCore\bin\Debug\netcoreapp3.1\
 
->  > Quickstarts.MyOPCServer.exe
+> Quickstarts.MyOPCServer.exe
 
 Or
 
