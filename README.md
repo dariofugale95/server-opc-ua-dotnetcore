@@ -1,5 +1,5 @@
 # server-opc-ua-dotnetcore
-Server OPC UA in .net Core
+Server OPC UA in .Net Core
 
 This repository contains Server OPC UA developed in  .Net Core, the stack used is OPC Foundation UA-.NETStandard: https://github.com/OPCFoundation/UA-.NETStandard
 
