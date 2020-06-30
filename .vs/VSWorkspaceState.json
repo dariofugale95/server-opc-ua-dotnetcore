@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\OPCServerNETCore"
+    "\\OPCServerNETCore",
+    "\\OPCServerNETCore\\OPCServerNETCore"
   ],
-  "SelectedNode": "\\OPCServerNETCore\\OPCServerNETCore.sln",
+  "SelectedNode": "\\OPCServerNETCore\\OPCServerNETCore\\ServerLauncher.cs",
   "PreviewInSolutionExplorer": false
 }

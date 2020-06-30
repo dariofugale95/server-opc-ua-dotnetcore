@@ -2,6 +2,7 @@ AnalogData,15054,DataType
 AnalogData_Encoding_DefaultBinary,15061,Object
 AnalogData_Encoding_DefaultJson,15085,Object
 AnalogData_Encoding_DefaultXml,15073,Object
+AnalogVariableType,15097,VariableType
 MyOPCServer_BinarySchema,15062,Variable
 MyOPCServer_XmlSchema,15074,Variable
 OpenWeatherMap,15022,Object
@@ -12,4 +13,4 @@ WeatherData_Encoding_DefaultBinary,15060,Object
 WeatherData_Encoding_DefaultJson,15084,Object
 WeatherData_Encoding_DefaultXml,15072,Object
 WeatherEventType,15007,ObjectType
-WeatherMapDataType,15032,VariableType
+WeatherMapVariableType,15055,VariableType

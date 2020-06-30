@@ -55,6 +55,7 @@
   <opc:VariableType SymbolicName="WeatherMapDataType" DataType="WeatherData" BaseType="ua:BaseDataVariableType" ValueRank="Scalar" ExposesItsChildren="true">
     <opc:Description>Represents a WeatherMapData</opc:Description>
     <opc:Children>
+      
     </opc:Children>
   </opc:VariableType>
 
