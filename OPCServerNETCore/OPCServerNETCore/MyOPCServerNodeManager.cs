@@ -44,6 +44,7 @@ using Org.BouncyCastle.Security;
 using Org.BouncyCastle.Crypto.Modes.Gcm;
 using Quickstarts.MyOPCServer.Properties;
 using RestSharp.Extensions;
+using Opc.Ua.Client;
 
 namespace Quickstarts.MyOPCServer
 {
@@ -165,15 +166,15 @@ namespace Quickstarts.MyOPCServer
                 {
                     SetupNodes();
                      FolderState citiesNodes = CreateFolder(root, "Cities", "Cities");
-                    citiesNodes.Description = "This folder contains nodes of the city stations";
+                     citiesNodes.Description = "This folder contains nodes of the city stations";
                      WeatherMapVariableState catania = CreateVariable(citiesNodes, "Catania", "Catania",new NodeId(DataTypeIds.WeatherData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar);
-                     WeatherMapVariableState palermo = CreateVariable(citiesNodes, "Palermo", "Palermo", new NodeId(DataTypeIds.WeatherData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar);
-                    WeatherMapVariableState messina = CreateVariable(citiesNodes, "Messina", "Messina", new NodeId(DataTypeIds.WeatherData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar);
+                     //WeatherMapVariableState palermo = CreateVariable(citiesNodes, "Palermo", "Palermo", new NodeId(DataTypeIds.WeatherData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar);
+                     //WeatherMapVariableState messina = CreateVariable(citiesNodes, "Messina", "Messina", new NodeId(DataTypeIds.WeatherData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar);
                      variables.Add(catania);
-                    variables.Add(palermo);
-                    variables.Add(messina);
-
-
+                    //variables.Add(palermo);
+                    //variables.Add(messina);
+                    BaseDataVariableState temperatura_catania = CreateVariableStandard(catania, "MAxTemperature", "MaxTemperature", Opc.Ua.DataTypeIds.Float, ValueRanks.Scalar);
+                    temperatura_catania.Value = catania.Value.MaxTemperature.Data;
                 }
 
                 catch (Exception e)
@@ -183,9 +184,6 @@ namespace Quickstarts.MyOPCServer
 
 
                 AddPredefinedNode(SystemContext, root);
-
-
-
             }
         }
 
@@ -434,8 +432,47 @@ namespace Quickstarts.MyOPCServer
                 parent.AddChild(variable);
             }
           
-            
-                
+            return variable;
+        }
+
+        /// <summary>
+        /// Creates a new variable.
+        /// </summary>
+        private BaseDataVariableState CreateVariableStandard(NodeState parent, string path, string name, NodeId dataType, int valueRank)
+        {
+            BaseDataVariableState variable = new BaseDataVariableState(parent);
+
+            variable.SymbolicName = name;
+            variable.ReferenceTypeId = ReferenceTypes.Organizes;
+            variable.TypeDefinitionId = Opc.Ua.VariableTypeIds.BaseDataVariableType;
+            variable.NodeId = new NodeId(path, NamespaceIndex);
+            variable.BrowseName = new QualifiedName(path, NamespaceIndex);
+            variable.DisplayName = new LocalizedText("en", name);
+            variable.WriteMask = AttributeWriteMask.DisplayName | AttributeWriteMask.Description;
+            variable.UserWriteMask = AttributeWriteMask.DisplayName | AttributeWriteMask.Description;
+            variable.DataType = dataType;
+            variable.ValueRank = valueRank;
+            variable.AccessLevel = AccessLevels.CurrentReadOrWrite;
+            variable.UserAccessLevel = AccessLevels.CurrentReadOrWrite;
+            variable.Historizing = false;
+            //variable.Value = GetNewValue(variable);
+            variable.StatusCode = StatusCodes.Good;
+            variable.Timestamp = DateTime.UtcNow;
+
+            if (valueRank == ValueRanks.OneDimension)
+            {
+                variable.ArrayDimensions = new ReadOnlyList<uint>(new List<uint> { 0 });
+            }
+            else if (valueRank == ValueRanks.TwoDimensions)
+            {
+                variable.ArrayDimensions = new ReadOnlyList<uint>(new List<uint> { 0, 0 });
+            }
+
+            if (parent != null)
+            {
+                parent.AddChild(variable);
+            }
+
             return variable;
         }
 
@@ -488,8 +525,6 @@ namespace Quickstarts.MyOPCServer
                 pressure.Data = openWeatherData.Main.Pressure;
                 pressure.Info = info_press;
                 weatherInfo.Pressure = pressure;
-
-              
 
             }
 
