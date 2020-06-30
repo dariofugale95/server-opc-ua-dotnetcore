@@ -19,7 +19,7 @@ namespace Quickstarts.MyOPCServer
             var client = new RestClient("https://community-open-weather-map.p.rapidapi.com/weather?q=" + "" + city);
             var request = new RestRequest(Method.GET);
             request.AddHeader("x-rapidapi-host", "community-open-weather-map.p.rapidapi.com");
-            request.AddHeader("x-rapidapi-key", "f4d458d83cmshf1ccd0cc1563d40p12950djsn0c85cecdac60");
+            request.AddHeader("x-rapidapi-key", Properties.Resources.apiKey2);
             IRestResponse response = client.Execute(request);
             Console.WriteLine("Response of ApiRequest to OpenWeatherMapData: "+response.StatusCode);
             if (response.StatusCode != System.Net.HttpStatusCode.OK) {

@@ -10,12 +10,11 @@
 
   <opc:StructuredType Name="WeatherData" BaseType="ua:ExtensionObject">
     <opc:Documentation>Information about waether in a specific city</opc:Documentation>
-    <opc:Field Name="Date" TypeName="opc:DateTime" />
     <opc:Field Name="Temperature" TypeName="tns:AnalogData" />
     <opc:Field Name="MaxTemperature" TypeName="tns:AnalogData" />
     <opc:Field Name="MinTemperature" TypeName="tns:AnalogData" />
     <opc:Field Name="Pressure" TypeName="tns:AnalogData" />
-    <opc:Field Name="City" TypeName="opc:String" />
+    <opc:Field Name="CityName" TypeName="opc:String" />
   </opc:StructuredType>
 
   <opc:StructuredType Name="AnalogData" BaseType="ua:ExtensionObject">

@@ -12,12 +12,11 @@
       <xs:documentation>Information about waether in a specific city</xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="Date" type="xs:dateTime" minOccurs="0" />
       <xs:element name="Temperature" type="tns:AnalogData" minOccurs="0" nillable="true" />
       <xs:element name="MaxTemperature" type="tns:AnalogData" minOccurs="0" nillable="true" />
       <xs:element name="MinTemperature" type="tns:AnalogData" minOccurs="0" nillable="true" />
       <xs:element name="Pressure" type="tns:AnalogData" minOccurs="0" nillable="true" />
-      <xs:element name="City" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="CityName" type="xs:string" minOccurs="0" nillable="true" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="WeatherData" type="tns:WeatherData" />
