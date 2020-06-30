@@ -20,7 +20,7 @@
     <opc:Description>This ObjectType exspose information about weather</opc:Description>
     <opc:Children>
       <opc:Property SymbolicName="CityName" DataType="ua:String" ValueRank="Scalar" ModellingRule="Mandatory" AccessLevel="Read"/>
-	    <opc:Variable SymbolicName="WeatherData" TypeDefinition="WeatherMapDataType" ModellingRule="Mandatory" AccessLevel="Read" /> 
+	    <opc:Variable SymbolicName="WeatherData" TypeDefinition="WeatherMapVariableType" ModellingRule="Mandatory" AccessLevel="Read" /> 
       <opc:Method SymbolicName="OpenWeatherMapMethod" TypeDefinition="WeatherMethodType" ModellingRule="Mandatory" />
     </opc:Children>
   </opc:ObjectType>
@@ -47,19 +47,41 @@
 
 <opc:ObjectType SymbolicName="WeatherEventType" BaseType="ua:BaseEventType">
     <opc:Children>
-      <opc:Property SymbolicName="WeatherMap" TypeDefinition="WeatherMapDataType" ModellingRule="Mandatory" />
+      <opc:Property SymbolicName="WeatherMap" TypeDefinition="WeatherMapVariableType" ModellingRule="Mandatory" />
     </opc:Children>
   </opc:ObjectType>
+  
 
 <!--Variable Type for weatherData-->
-  <opc:VariableType SymbolicName="WeatherMapDataType" DataType="WeatherData" BaseType="ua:BaseDataVariableType" ValueRank="Scalar" ExposesItsChildren="true">
+  <opc:VariableType SymbolicName="WeatherMapVariableType" DataType="WeatherData" BaseType="ua:BaseDataVariableType" ValueRank="Scalar" ExposesItsChildren="true">
     <opc:Description>Represents a WeatherMapData</opc:Description>
     <opc:Children>
-      
+        
+      <opc:Variable SymbolicName="Date" TypeDefinition="ua:BaseDataVariableType" DataType="ua:DateTime" ModellingRule="Mandatory"> 
+        <opc:Description>Datetime of weather prevision </opc:Description> </opc:Variable>
+      <opc:Variable SymbolicName="Temperature" TypeDefinition="AnalogVariableType" ModellingRule="Mandatory" ExposesItsChildren="true">
+        <opc:Description>Temperature in Kelvin </opc:Description></opc:Variable>
+      <opc:Variable SymbolicName="MaxTemperature" TypeDefinition="AnalogVariableType" ModellingRule="Mandatory" ExposesItsChildren="true">
+        <opc:Description>Max Temperature in Kelvin </opc:Description>  </opc:Variable>
+      <opc:Variable SymbolicName="MinTemperature" TypeDefinition="AnalogVariableType" ModellingRule="Mandatory" ExposesItsChildren="true">
+        <opc:Description>Min Temperature in Kelvin </opc:Description>  </opc:Variable>
+      <opc:Variable SymbolicName="Pressure" TypeDefinition="AnalogVariableType" ModellingRule="Mandatory" ExposesItsChildren="true">
+        <opc:Description>Pressure in Pascal </opc:Description>  </opc:Variable>
+      <opc:Variable SymbolicName="City" TypeDefinition="ua:BaseDataVariableType" DataType="ua:String" ModellingRule="Mandatory">
+        <opc:Description>City of weather prevision </opc:Description> </opc:Variable>
+    
     </opc:Children>
   </opc:VariableType>
 
-
+<opc:VariableType SymbolicName="AnalogVariableType" DataType="AnalogData" BaseType="ua:BaseDataVariableType" ValueRank="Scalar" ExposesItsChildren="true">
+  <opc:Children>
+     <opc:Variable SymbolicName="Data" TypeDefinition="ua:BaseDataVariableType" DataType="ua:Float" ModellingRule="Mandatory">
+      <opc:Description>Value of Variable</opc:Description> </opc:Variable>
+     <opc:Property SymbolicName="Info" DataType="ua:EUInformation" ModellingRule="Mandatory">
+      <opc:Description>Information like unit of measurement</opc:Description>
+     </opc:Property>
+  </opc:Children>
+</opc:VariableType>
 <!--Specific DataType for Weather-->
   <opc:DataType SymbolicName="WeatherData" BaseType="ua:Structure">
     <opc:Description>Information about waether in a specific city</opc:Description>
