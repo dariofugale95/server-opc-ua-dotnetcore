@@ -117,6 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="apiKey1" xml:space="preserve">
+    <value>f4d458d83cmshf1ccd0cc1563d40p12950djsn0c85cecdac60</value>
+    <comment>api key for openweather map dario </comment>
+  </data>
+  <data name="apiKey2" xml:space="preserve">
+    <value>4d3cead10emsh22c88221fbfa4c8p1a1f26jsnd25259491041</value>
+    <comment>api key for openweather map giulia</comment>
+  </data>
   <data name="BinaryNodePath" xml:space="preserve">
     <value>Published/Quickstarts.MyOPCServer.PredefinedNodes.uanodes</value>
     <comment>path of binary file where are stored nodes</comment>

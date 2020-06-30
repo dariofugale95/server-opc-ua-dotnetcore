@@ -43,6 +43,7 @@ using Opc.Ua.Configuration;
 using Org.BouncyCastle.Security;
 using Org.BouncyCastle.Crypto.Modes.Gcm;
 using Quickstarts.MyOPCServer.Properties;
+using RestSharp.Extensions;
 
 namespace Quickstarts.MyOPCServer
 {
@@ -85,12 +86,13 @@ namespace Quickstarts.MyOPCServer
             Console.WriteLine("**************Welcome to MyOPCServer**************");
         }
 
+        
         private void OnRaiseSystemEvents(object state)
         {
             Console.WriteLine("Data refresh!\n");
             WriteWeatherData(tempCity, tempMeasureOfTemperature);
         }
-
+        
 
         #endregion
 
@@ -111,10 +113,7 @@ namespace Quickstarts.MyOPCServer
         /// <summary>
         /// Creates the NodeId for the specified node.
         /// </summary>
-        public override NodeId New(ISystemContext context, NodeState node)
-        {
-            return node.NodeId;
-        }
+        
         #endregion
 
         #region INodeManager Members
@@ -144,21 +143,29 @@ namespace Quickstarts.MyOPCServer
                     externalReferences[Opc.Ua.ObjectIds.ObjectsFolder] = references = new List<IReference>();
                 }
 
-                FolderState dataSourcesFolder = CreateFolder(openWeatherObject, "DataSourceFolder", "DataSourceFolder");
-                dataSourcesFolder.AddReference(ReferenceTypes.Organizes, true, Opc.Ua.ObjectIds.ObjectsFolder);
+                FolderState root = CreateFolder(null, "CitiesNodes", "CitiesNodes");
+                root.AddReference(ReferenceTypes.Organizes, true, Opc.Ua.ObjectIds.ObjectsFolder);
 
-                references.Add(new NodeStateReference(ReferenceTypes.Organizes, false, dataSourcesFolder.NodeId));
+                references.Add(new NodeStateReference(ReferenceTypes.Organizes, false, root.NodeId));
 
-                dataSourcesFolder.EventNotifier = EventNotifiers.SubscribeToEvents;
-                dataSourcesFolder.Description = "A folder containing data sources";
+                root.EventNotifier = EventNotifiers.SubscribeToEvents;
+                root.Description = "A folder containing data sources";
 
-                AddRootNotifier(dataSourcesFolder);
+                AddRootNotifier(root);
+                List<BaseDataVariableState> variables = new List<BaseDataVariableState>();
 
 
 
                 try
                 {
                     SetupNodes();
+                     FolderState citiesNodes = CreateFolder(root, "Cities", "Cities");
+                     WeatherMapDataState catania = CreateVariable(citiesNodes, "Catania", "Catania",new NodeId(DataTypeIds.WeatherData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar);
+                     WeatherMapDataState palermo = CreateVariable(citiesNodes, "Palermo", "Palermo", new NodeId(DataTypeIds.WeatherData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar);
+                    WeatherMapDataState messina = CreateVariable(citiesNodes, "Messina", "Messina", new NodeId(DataTypeIds.WeatherData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar);
+                    //  variables.Add(catania);
+
+
                 }
 
                 catch (Exception e)
@@ -167,7 +174,7 @@ namespace Quickstarts.MyOPCServer
                 }
 
 
-                AddPredefinedNode(SystemContext, dataSourcesFolder);
+                AddPredefinedNode(SystemContext, root);
 
 
 
@@ -180,73 +187,111 @@ namespace Quickstarts.MyOPCServer
             Console.WriteLine("***Give me a few seconds to setup MyOPCServer***");
             openWeatherObject = FindPredefinedNode<OpenWeatherMapState>(Objects.OpenWeatherMap);
 
+            
             openWeatherObject.OpenWeatherMapMethod.OnCall = WeatherRequest;
 
 
         }
+
         private ServiceResult WriteWeatherData(string city, string measureOfTemperature)
         {
+            WeatherData insideData = new WeatherData();
+            AnalogData insideTempData = new AnalogData();
+            AnalogData insideMaxTempData = new AnalogData();
+            AnalogData insideMinTempData = new AnalogData();
+            AnalogData insidePressureData = new AnalogData();
+            EUInformation info_press = new EUInformation();
+            EUInformation info_temp = new EUInformation();
+
+            lock (Lock) { 
             if (city != null)
             {
                 double conversionFactor = 0;
+                info_press.DisplayName = new String("Pa");
+                info_press.Description = new String("Pascal");
+                info_press.NamespaceUri = new string("http://www.opcfoundation.org/UA/units/un/cefact");
+                info_press.UnitId = 4932940;
+
+
+            
                 switch (measureOfTemperature)
                 {
 
                     case "K":
                         Console.WriteLine("Unit of measurement for Temperature choosed: " + "Kelvin");
+                        info_temp.DisplayName = new String("K");
+                        info_temp.Description = new String("Kelvin");
+                        info_temp.NamespaceUri = new string("http://www.opcfoundation.org/UA/units/un/cefact");
+                        info_temp.UnitId = 5259596;
                         break;
                     case "C":
                         Console.WriteLine("Unit of measurement for Temperature choosed: " + "Celsius");
-                        openWeatherObject.WeatherData.Temperature.Description = "Temperature in Celsius";
-                        openWeatherObject.WeatherData.MaxTemperature.Description = "Max Temperature in Celsius";
-                        openWeatherObject.WeatherData.MinTemperature.Description = "Min Temperature in Celsius";
 
-                        openWeatherObject.WeatherData.Temperature.Info.Value.DisplayName = "°C";
-                        openWeatherObject.WeatherData.Temperature.Info.Value.Description = "degree Celsius";
-                        openWeatherObject.WeatherData.Temperature.Info.Value.NamespaceUri = "https://reference.opcfoundation.org/v104/Core/docs/Part8/5.6.3/";
-                        openWeatherObject.WeatherData.Temperature.Info.Value.UnitId = 4408652;
-                        openWeatherObject.WeatherData.MaxTemperature.Info.Value.DisplayName = "°C";
-                        openWeatherObject.WeatherData.MaxTemperature.Info.Value.Description = "degree Celsius";
-                        openWeatherObject.WeatherData.MaxTemperature.Info.Value.NamespaceUri = "https://reference.opcfoundation.org/v104/Core/docs/Part8/5.6.3/";
-                        openWeatherObject.WeatherData.MaxTemperature.Info.Value.UnitId = 4408652;
-                        openWeatherObject.WeatherData.MinTemperature.Info.Value.DisplayName = "°C";
-                        openWeatherObject.WeatherData.MinTemperature.Info.Value.Description = "degree Celsius";
-                        openWeatherObject.WeatherData.MinTemperature.Info.Value.NamespaceUri = "https://reference.opcfoundation.org/v104/Core/docs/Part8/5.6.3/";
-                        openWeatherObject.WeatherData.MinTemperature.Info.Value.UnitId = 4408652;
+                        info_temp.DisplayName = new String("°C");
+                        info_temp.Description = new String("degree Celsius");
+                        info_temp.NamespaceUri = new string("http://www.opcfoundation.org/UA/units/un/cefact");
+                        info_temp.UnitId = 4408652;
+
+                        
 
                         conversionFactor = 273.15;
+                        
 
                         break;
 
                     default:
-                        Console.WriteLine("WARNING: Unit of measure choosed is not available");
-                        Console.WriteLine("Automatic set Unit of Mesure for Temperature: KELVIN ");
+                        Console.WriteLine("Unit of measurement for Temperature choosed: " + "Kelvin");
+                        info_temp.DisplayName = new String("K");
+                        info_temp.Description = new String("Kelvin");
+                        info_temp.NamespaceUri = new string("http://www.opcfoundation.org/UA/units/un/cefact");
+                        info_temp.UnitId = 5259596;
                         break;
                 }
 
                 Console.WriteLine("mesure " + measureOfTemperature);
                 OpenWeatherMapDataClass openWeatherData = apiRequests.GetWeatherDataByCity(city.ToString());
 
-                if (openWeatherData != null)
-                {
-                    openWeatherObject.WeatherData.Temperature.Temp.Value = (float)(openWeatherData.Main.Temp - conversionFactor);
-                    openWeatherObject.WeatherData.City.Value = openWeatherData.Name.ToString();
-                    openWeatherObject.WeatherData.Date.Value = DateTime.UtcNow.Date;
-                    openWeatherObject.WeatherData.Timestamp = DateTime.UtcNow;
-                    openWeatherObject.WeatherData.MaxTemperature.Temp.Value = (float)(openWeatherData.Main.TempMax - conversionFactor);
-                    openWeatherObject.WeatherData.MinTemperature.Temp.Value = (float)(openWeatherData.Main.TempMin - conversionFactor);
-                    openWeatherObject.WeatherData.Pressure.Pressure.Value = openWeatherData.Main.Pressure;
-
-                    if (openWeatherObject.WeatherData.Date.Value != null && openWeatherObject.WeatherData.City.Value != null && openWeatherObject.WeatherData.Timestamp != null)
+                    if (openWeatherData != null)
                     {
-                        openWeatherObject.WeatherData.StatusCode = StatusCodes.Good;
-                        return ServiceResult.Good;
-                    }
-                    else
-                    {
-                        return StatusCodes.BadUnknownResponse;
-                    }
+                        insideMaxTempData.Data = (float)(openWeatherData.Main.TempMax - conversionFactor);
+                        insideMaxTempData.Info = info_temp;
+                        insideData.MaxTemperature = insideMaxTempData;
 
+
+
+
+                        insideMinTempData.Data = (float)(openWeatherData.Main.TempMin - conversionFactor);
+                        insideMinTempData.Info = info_temp;
+                        insideData.MinTemperature = insideMinTempData;
+
+
+                        insideTempData.Data = (float)(openWeatherData.Main.Temp - conversionFactor);
+                        insideTempData.Info = info_temp;
+                        insideData.Temperature = insideTempData;
+
+                        insidePressureData.Data = openWeatherData.Main.Pressure;
+                        insidePressureData.Info = info_press;
+                        insideData.Pressure = insidePressureData;
+
+                        insideData.CityName = new string(city);
+
+
+
+
+
+                        if (insideData != null)
+                        {
+                            openWeatherObject.CityName.Value = new String(insideData.CityName);
+                            openWeatherObject.WeatherData.Value = insideData;
+                            openWeatherObject.WeatherData.StatusCode = StatusCodes.Good;
+                            openWeatherObject.WeatherData.Timestamp = DateTime.UtcNow;
+                            return ServiceResult.Good;
+                        }
+                        else
+                        {
+                            return StatusCodes.BadUnknownResponse;
+                        }
+                    }
                 }
             }
 
@@ -254,8 +299,10 @@ namespace Quickstarts.MyOPCServer
             return StatusCodes.BadAggregateInvalidInputs;
         }
 
+
         private ServiceResult WeatherRequest(ISystemContext context, MethodState method, NodeId objectId, string city, string measureOfTemperature)
         {
+        
             Console.WriteLine("Client with SessionID: "+ context.SessionId+" called WeatherMethod the input is: "+city);
 
             tempMeasureOfTemperature = measureOfTemperature;
@@ -266,7 +313,7 @@ namespace Quickstarts.MyOPCServer
 
             return WriteWeatherData(tempCity, tempMeasureOfTemperature);
         }
-
+       
         private TNodeState FindPredefinedNode<TNodeState>(uint id)
            where TNodeState : NodeState
         {
@@ -297,6 +344,149 @@ namespace Quickstarts.MyOPCServer
 
             return folder;
         }
+        /// Creates a new variable.
+        /// </summary>
+       
+
+        /// <summary>
+        /// Creates a new variable.
+        /// </summary>
+        /// 
+        private WeatherMapDataState CreateVariable(NodeState parent, string path, string name, NodeId dataType, int valueRank)
+        {
+            WeatherMapDataState variable = new WeatherMapDataState(parent);
+
+            //variable.CityName.Value = "i";
+       
+            variable.SymbolicName = name;
+            variable.ReferenceTypeId = ReferenceTypes.Organizes;
+            variable.TypeDefinitionId = new NodeId(VariableTypeIds.WeatherMapDataType.Identifier,VariableTypeIds.WeatherMapDataType.NamespaceIndex);
+            variable.NodeId = new NodeId(path, NamespaceIndex);
+            variable.BrowseName = new QualifiedName(path, NamespaceIndex);
+            variable.DisplayName = new LocalizedText("en", name);
+            variable.WriteMask = AttributeWriteMask.DisplayName | AttributeWriteMask.Description;
+            variable.UserWriteMask = AttributeWriteMask.DisplayName | AttributeWriteMask.Description;
+            Console.WriteLine(dataType);
+            variable.DataType = dataType;
+            variable.ValueRank = valueRank;
+            variable.AccessLevel = AccessLevels.CurrentReadOrWrite;
+            variable.UserAccessLevel = AccessLevels.CurrentReadOrWrite;
+            variable.Historizing = false;
+            
+            //variable.Temperature.Temp.Value = (float)10.0;
+            variable.Value = GetNewValue(variable);
+            if (variable.Value != null)
+            {
+                variable.StatusCode = StatusCodes.Good;
+                //print of console 
+                Console.WriteLine("******************************");
+                Console.WriteLine(variable.Value.CityName.ToString());
+                Console.WriteLine("Temperature Now "+ variable.Value.Temperature.Data.ToString());
+                
+                Console.WriteLine("Information about units of mesurement: ");
+                Console.Write(variable.Value.Temperature.Info.DisplayName.ToString()+ "|"+ variable.Value.Temperature.Info.Description.ToString()+"|"+ variable.Value.Temperature.Info.NamespaceUri.ToString()+"|"+ variable.Value.Temperature.Info.UnitId.ToString());
+
+
+                Console.WriteLine("");
+                Console.WriteLine("Max Temperature of Day: "+ variable.Value.MaxTemperature.Data.ToString());
+
+                Console.WriteLine("Information about units of mesurement: ");
+                Console.Write(variable.Value.MaxTemperature.Info.DisplayName.ToString() + "|" + variable.Value.MaxTemperature.Info.Description.ToString() + "|" + variable.Value.MaxTemperature.Info.NamespaceUri.ToString() + "|" + variable.Value.MaxTemperature.Info.UnitId.ToString());
+                Console.WriteLine("");
+
+                Console.WriteLine("Min Temperatura of Day: "+variable.Value.MinTemperature.Data.ToString()) ;
+                Console.WriteLine("Information about units of mesurement: ");
+                Console.Write(variable.Value.MinTemperature.Info.DisplayName.ToString() + "|" + variable.Value.MinTemperature.Info.Description.ToString() + "|" + variable.Value.MinTemperature.Info.NamespaceUri.ToString() + "|" + variable.Value.MinTemperature.Info.UnitId.ToString());
+
+                Console.WriteLine("");
+                Console.WriteLine("Pressure of day: " + variable.Value.Pressure.Data.ToString());
+                Console.WriteLine("Information about units of mesurement: ");
+                Console.Write(variable.Value.Pressure.Info.DisplayName.ToString() + "|" + variable.Value.Pressure.Info.Description.ToString() + "|" + variable.Value.Pressure.Info.NamespaceUri.ToString() + "|" + variable.Value.Pressure.Info.UnitId.ToString());
+
+                
+
+            }
+            else {
+                variable.StatusCode = StatusCodes.Bad;
+            }
+            variable.Timestamp = DateTime.UtcNow;
+
+            if (valueRank == ValueRanks.OneDimension)
+            {
+                variable.ArrayDimensions = new ReadOnlyList<uint>(new List<uint> { 0 });
+            }
+            else if (valueRank == ValueRanks.TwoDimensions)
+            {
+                variable.ArrayDimensions = new ReadOnlyList<uint>(new List<uint> { 0, 0 });
+            }
+
+            if (parent != null)
+            {
+                parent.AddChild(variable);
+            }
+          
+            
+                
+            return variable;
+        }
+
+        private WeatherData GetNewValue(WeatherMapDataState variable)
+
+        {
+            WeatherData weatherInfo = new WeatherData();
+                OpenWeatherMapDataClass openWeatherData = apiRequests.GetWeatherDataByCity(variable.SymbolicName.ToString());
+            if (openWeatherData != null)
+            {
+
+                EUInformation info_temp = new EUInformation();
+                EUInformation info_press = new EUInformation();
+
+
+                info_press.DisplayName = new String("Pa");
+                info_press.Description = new String("Pascal");
+                info_press.NamespaceUri = new string("http://www.opcfoundation.org/UA/units/un/cefact");
+                info_press.UnitId = 4932940;
+
+
+                info_temp.DisplayName = new String("K");
+                info_temp.Description = new String("Kelvin");
+                info_temp.NamespaceUri = new string("http://www.opcfoundation.org/UA/units/un/cefact");
+                info_temp.UnitId = 5259596;
+
+                weatherInfo.CityName = new string(variable.SymbolicName.ToString());
+                AnalogData temperature = new AnalogData();
+                AnalogData maxTemperature = new AnalogData();
+                AnalogData minTemperature = new AnalogData();
+                AnalogData pressure = new AnalogData();
+
+                maxTemperature.Data = openWeatherData.Main.TempMax;
+                maxTemperature.Info = info_temp;
+                weatherInfo.MaxTemperature = maxTemperature;
+         
+                
+
+
+                minTemperature.Data = openWeatherData.Main.TempMin;
+                minTemperature.Info = info_temp;
+                weatherInfo.MinTemperature = minTemperature;
+
+                
+                temperature.Data = openWeatherData.Main.Temp;
+                temperature.Info = info_temp;
+                weatherInfo.Temperature = temperature;
+
+               
+                pressure.Data = openWeatherData.Main.Pressure;
+                pressure.Info = info_press;
+                weatherInfo.Pressure = pressure;
+
+              
+
+            }
+
+            return weatherInfo;
+            
+        }
         
         protected override NodeStateCollection LoadPredefinedNodes(ISystemContext context)
         {
@@ -316,7 +506,7 @@ namespace Quickstarts.MyOPCServer
         {
             lock (Lock)
             {
-                m_simulationTimer.Dispose();
+                //m_simulationTimer.Dispose();
             }
 
         }
@@ -359,23 +549,7 @@ namespace Quickstarts.MyOPCServer
 
                         return activeNode;
                     }
-                    case ObjectTypes.WeatherEventType:
-                    {
-                        if (passiveNode is WeatherEventState)
-                        {
-                            break;
-                        }
-
-                        WeatherEventState activeNode = new WeatherEventState(passiveNode.Parent);
-                        activeNode.Create(context, passiveNode);
-
-                        if (passiveNode.Parent != null)
-                        {
-                            passiveNode.Parent.ReplaceChild(context, activeNode);
-                        }
-
-                        return activeNode;
-                    }
+                    
                 
 
             }
@@ -387,14 +561,17 @@ namespace Quickstarts.MyOPCServer
         #region Private Fields
         private MyOPCServerConfiguration m_configuration;
         private OpenWeatherMapApiRequests apiRequests;
-      
-        private OpenWeatherMapState openWeatherObject;
+        private WeatherData weather_prova;
+        
         private ushort m_namespaceIndex;
         private ushort m_typeNamespaceIndex;
-
+        
+        private OpenWeatherMapState openWeatherObject;
         private Timer m_simulationTimer;
+
         private string tempMeasureOfTemperature { get; set; }
         private string tempCity { get; set; }
+        List<BaseDataVariableState> variables = new List<BaseDataVariableState>();
         #endregion
     }
 }

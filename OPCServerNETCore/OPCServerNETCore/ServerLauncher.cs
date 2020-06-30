@@ -65,6 +65,7 @@ namespace Quickstarts.MyOPCServer
             {
                 exitCode = ExitCode.ErrorServerNotStarted;
                 ConsoleSampleServer().Wait();
+                /*
                 openWeatherApiRequest = new OpenWeatherMapApiRequests();
                 openWeatherData = openWeatherApiRequest.GetWeatherDataByCity("Catania");
                 Console.WriteLine("MyOPCServer: I'm trying to connect with OpenWeatherDataMap API");
@@ -87,7 +88,7 @@ namespace Quickstarts.MyOPCServer
                     
                
                 Console.WriteLine("***MyOPCServer: I'm READY*** ");
-                }
+                }*/
                 
 
                 Console.WriteLine("Server started. Press Ctrl-C to exit...");

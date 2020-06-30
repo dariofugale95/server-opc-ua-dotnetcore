@@ -69,28 +69,19 @@ namespace Quickstarts.MyOPCServer
         /// </summary>
         private void Initialize()
         {
-            m_date = DateTime.MinValue;
             m_temperature = new AnalogData();
             m_maxTemperature = new AnalogData();
             m_minTemperature = new AnalogData();
             m_pressure = new AnalogData();
-            m_city = null;
+            m_cityName = null;
         }
         #endregion
 
         #region Public Properties
-        /// <remarks />
-        [DataMember(Name = "Date", IsRequired = false, Order = 1)]
-        public DateTime Date
-        {
-            get { return m_date;  }
-            set { m_date = value; }
-        }
-
         /// <summary>
         /// 
         /// </summary>
-        [DataMember(Name = "Temperature", IsRequired = false, Order = 2)]
+        [DataMember(Name = "Temperature", IsRequired = false, Order = 1)]
         public AnalogData Temperature
         {
             get
@@ -112,7 +103,7 @@ namespace Quickstarts.MyOPCServer
         /// <summary>
         /// 
         /// </summary>
-        [DataMember(Name = "MaxTemperature", IsRequired = false, Order = 3)]
+        [DataMember(Name = "MaxTemperature", IsRequired = false, Order = 2)]
         public AnalogData MaxTemperature
         {
             get
@@ -134,7 +125,7 @@ namespace Quickstarts.MyOPCServer
         /// <summary>
         /// 
         /// </summary>
-        [DataMember(Name = "MinTemperature", IsRequired = false, Order = 4)]
+        [DataMember(Name = "MinTemperature", IsRequired = false, Order = 3)]
         public AnalogData MinTemperature
         {
             get
@@ -156,7 +147,7 @@ namespace Quickstarts.MyOPCServer
         /// <summary>
         /// 
         /// </summary>
-        [DataMember(Name = "Pressure", IsRequired = false, Order = 5)]
+        [DataMember(Name = "Pressure", IsRequired = false, Order = 4)]
         public AnalogData Pressure
         {
             get
@@ -176,11 +167,11 @@ namespace Quickstarts.MyOPCServer
         }
 
         /// <remarks />
-        [DataMember(Name = "City", IsRequired = false, Order = 6)]
-        public string City
+        [DataMember(Name = "CityName", IsRequired = false, Order = 5)]
+        public string CityName
         {
-            get { return m_city;  }
-            set { m_city = value; }
+            get { return m_cityName;  }
+            set { m_cityName = value; }
         }
         #endregion
 
@@ -208,12 +199,11 @@ namespace Quickstarts.MyOPCServer
         {
             encoder.PushNamespace(Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
 
-            encoder.WriteDateTime("Date", Date);
             encoder.WriteEncodeable("Temperature", Temperature, typeof(AnalogData));
             encoder.WriteEncodeable("MaxTemperature", MaxTemperature, typeof(AnalogData));
             encoder.WriteEncodeable("MinTemperature", MinTemperature, typeof(AnalogData));
             encoder.WriteEncodeable("Pressure", Pressure, typeof(AnalogData));
-            encoder.WriteString("City", City);
+            encoder.WriteString("CityName", CityName);
 
             encoder.PopNamespace();
         }
@@ -223,12 +213,11 @@ namespace Quickstarts.MyOPCServer
         {
             decoder.PushNamespace(Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
 
-            Date = decoder.ReadDateTime("Date");
             Temperature = (AnalogData)decoder.ReadEncodeable("Temperature", typeof(AnalogData));
             MaxTemperature = (AnalogData)decoder.ReadEncodeable("MaxTemperature", typeof(AnalogData));
             MinTemperature = (AnalogData)decoder.ReadEncodeable("MinTemperature", typeof(AnalogData));
             Pressure = (AnalogData)decoder.ReadEncodeable("Pressure", typeof(AnalogData));
-            City = decoder.ReadString("City");
+            CityName = decoder.ReadString("CityName");
 
             decoder.PopNamespace();
         }
@@ -248,12 +237,11 @@ namespace Quickstarts.MyOPCServer
                 return false;
             }
 
-            if (!Utils.IsEqual(m_date, value.m_date)) return false;
             if (!Utils.IsEqual(m_temperature, value.m_temperature)) return false;
             if (!Utils.IsEqual(m_maxTemperature, value.m_maxTemperature)) return false;
             if (!Utils.IsEqual(m_minTemperature, value.m_minTemperature)) return false;
             if (!Utils.IsEqual(m_pressure, value.m_pressure)) return false;
-            if (!Utils.IsEqual(m_city, value.m_city)) return false;
+            if (!Utils.IsEqual(m_cityName, value.m_cityName)) return false;
 
             return true;
         }
@@ -271,24 +259,22 @@ namespace Quickstarts.MyOPCServer
         {
             WeatherData clone = (WeatherData)base.MemberwiseClone();
 
-            clone.m_date = (DateTime)Utils.Clone(this.m_date);
             clone.m_temperature = (AnalogData)Utils.Clone(this.m_temperature);
             clone.m_maxTemperature = (AnalogData)Utils.Clone(this.m_maxTemperature);
             clone.m_minTemperature = (AnalogData)Utils.Clone(this.m_minTemperature);
             clone.m_pressure = (AnalogData)Utils.Clone(this.m_pressure);
-            clone.m_city = (string)Utils.Clone(this.m_city);
+            clone.m_cityName = (string)Utils.Clone(this.m_cityName);
 
             return clone;
         }
         #endregion
 
         #region Private Fields
-        private DateTime m_date;
         private AnalogData m_temperature;
         private AnalogData m_maxTemperature;
         private AnalogData m_minTemperature;
         private AnalogData m_pressure;
-        private string m_city;
+        private string m_cityName;
         #endregion
     }
 
