@@ -96,24 +96,29 @@ namespace Quickstarts.MyOPCServer
 
         #endregion
 
-        #region IDisposable Members
-        /// <summary>
-        /// An overrideable version of the Dispose.
-        /// </summary>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                // TBD
-            }
-        }
-        #endregion
-
+       
         #region INodeIdFactory Members
         /// <summary>
         /// Creates the NodeId for the specified node.
         /// </summary>
-        
+          /// <summary>
+       
+        public override NodeId New(ISystemContext context, NodeState node)
+        {
+            BaseInstanceState instance = node as BaseInstanceState;
+
+            if (instance != null && instance.Parent != null)
+            {
+                string id = instance.Parent.NodeId.Identifier as string;
+
+                if (id != null)
+                {
+                    return new NodeId(id + "_" + instance.SymbolicName, instance.Parent.NodeId.NamespaceIndex);
+                }
+            }
+
+            return node.NodeId;
+        }
         #endregion
 
         #region INodeManager Members
@@ -160,10 +165,13 @@ namespace Quickstarts.MyOPCServer
                 {
                     SetupNodes();
                      FolderState citiesNodes = CreateFolder(root, "Cities", "Cities");
-                     WeatherMapDataState catania = CreateVariable(citiesNodes, "Catania", "Catania",new NodeId(DataTypeIds.WeatherData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar);
-                     WeatherMapDataState palermo = CreateVariable(citiesNodes, "Palermo", "Palermo", new NodeId(DataTypeIds.WeatherData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar);
-                    WeatherMapDataState messina = CreateVariable(citiesNodes, "Messina", "Messina", new NodeId(DataTypeIds.WeatherData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar);
-                    //  variables.Add(catania);
+                    citiesNodes.Description = "This folder contains nodes of the city stations";
+                     WeatherMapVariableState catania = CreateVariable(citiesNodes, "Catania", "Catania",new NodeId(DataTypeIds.WeatherData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar);
+                     WeatherMapVariableState palermo = CreateVariable(citiesNodes, "Palermo", "Palermo", new NodeId(DataTypeIds.WeatherData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar);
+                    WeatherMapVariableState messina = CreateVariable(citiesNodes, "Messina", "Messina", new NodeId(DataTypeIds.WeatherData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar);
+                     variables.Add(catania);
+                    variables.Add(palermo);
+                    variables.Add(messina);
 
 
                 }
@@ -352,25 +360,26 @@ namespace Quickstarts.MyOPCServer
         /// Creates a new variable.
         /// </summary>
         /// 
-        private WeatherMapDataState CreateVariable(NodeState parent, string path, string name, NodeId dataType, int valueRank)
+        private WeatherMapVariableState CreateVariable(NodeState parent, string path, string name, NodeId dataType, int valueRank)
         {
-            WeatherMapDataState variable = new WeatherMapDataState(parent);
+            WeatherMapVariableState variable = new WeatherMapVariableState(parent);
 
             //variable.CityName.Value = "i";
        
             variable.SymbolicName = name;
             variable.ReferenceTypeId = ReferenceTypes.Organizes;
-            variable.TypeDefinitionId = new NodeId(VariableTypeIds.WeatherMapDataType.Identifier,VariableTypeIds.WeatherMapDataType.NamespaceIndex);
+            variable.TypeDefinitionId = new NodeId(VariableTypeIds.WeatherMapVariableType.Identifier,VariableTypeIds.WeatherMapVariableType.NamespaceIndex);
             variable.NodeId = new NodeId(path, NamespaceIndex);
             variable.BrowseName = new QualifiedName(path, NamespaceIndex);
             variable.DisplayName = new LocalizedText("en", name);
             variable.WriteMask = AttributeWriteMask.DisplayName | AttributeWriteMask.Description;
             variable.UserWriteMask = AttributeWriteMask.DisplayName | AttributeWriteMask.Description;
-            Console.WriteLine(dataType);
+            variable.Description = new String("Information about weather for" + variable.SymbolicName.ToString());
+            
             variable.DataType = dataType;
             variable.ValueRank = valueRank;
             variable.AccessLevel = AccessLevels.CurrentReadOrWrite;
-            variable.UserAccessLevel = AccessLevels.CurrentReadOrWrite;
+            variable.UserAccessLevel = AccessLevels.CurrentRead;
             variable.Historizing = false;
             
             //variable.Temperature.Temp.Value = (float)10.0;
@@ -430,7 +439,7 @@ namespace Quickstarts.MyOPCServer
             return variable;
         }
 
-        private WeatherData GetNewValue(WeatherMapDataState variable)
+        private WeatherData GetNewValue(WeatherMapVariableState variable)
 
         {
             WeatherData weatherInfo = new WeatherData();
@@ -561,7 +570,7 @@ namespace Quickstarts.MyOPCServer
         #region Private Fields
         private MyOPCServerConfiguration m_configuration;
         private OpenWeatherMapApiRequests apiRequests;
-        private WeatherData weather_prova;
+        
         
         private ushort m_namespaceIndex;
         private ushort m_typeNamespaceIndex;
@@ -571,7 +580,7 @@ namespace Quickstarts.MyOPCServer
 
         private string tempMeasureOfTemperature { get; set; }
         private string tempCity { get; set; }
-        List<BaseDataVariableState> variables = new List<BaseDataVariableState>();
+        
         #endregion
     }
 }
