@@ -67,139 +67,129 @@
     <DisplayName>WeatherData</DisplayName>
     <References>
       <Reference ReferenceType="HasComponent">ns=1;i=15020</Reference>
-      <Reference ReferenceType="HasComponent">ns=1;i=15021</Reference>
-      <Reference ReferenceType="HasComponent">ns=1;i=15028</Reference>
-      <Reference ReferenceType="HasComponent">ns=1;i=15031</Reference>
-      <Reference ReferenceType="HasComponent">ns=1;i=15035</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15027</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15030</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15033</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=15038</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=15055</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15001</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15020" BrowseName="1:Date" ParentNodeId="ns=1;i=15018" DataType="DateTime">
-    <DisplayName>Date</DisplayName>
-    <Description>Datetime of weather prevision</Description>
-    <References>
-      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
-      <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15018</Reference>
-    </References>
-  </UAVariable>
-  <UAVariable NodeId="ns=1;i=15021" BrowseName="1:Temperature" ParentNodeId="ns=1;i=15018" DataType="ns=1;i=15054">
+  <UAVariable NodeId="ns=1;i=15020" BrowseName="1:Temperature" ParentNodeId="ns=1;i=15018" DataType="ns=1;i=15054">
     <DisplayName>Temperature</DisplayName>
     <Description>Temperature in Kelvin</Description>
     <References>
-      <Reference ReferenceType="HasComponent">ns=1;i=15032</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=15027</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15021</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15026</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=15097</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15018</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15032" BrowseName="1:Data" ParentNodeId="ns=1;i=15021" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15021" BrowseName="1:Data" ParentNodeId="ns=1;i=15020" DataType="Float">
     <DisplayName>Data</DisplayName>
     <Description>Value of Variable</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15021</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15020</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15027" BrowseName="1:Info" ParentNodeId="ns=1;i=15021" DataType="i=887">
+  <UAVariable NodeId="ns=1;i=15026" BrowseName="1:Info" ParentNodeId="ns=1;i=15020" DataType="i=887">
     <DisplayName>Info</DisplayName>
     <Description>Information like unit of measurement</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15021</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15020</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15028" BrowseName="1:MaxTemperature" ParentNodeId="ns=1;i=15018" DataType="ns=1;i=15054">
+  <UAVariable NodeId="ns=1;i=15027" BrowseName="1:MaxTemperature" ParentNodeId="ns=1;i=15018" DataType="ns=1;i=15054">
     <DisplayName>MaxTemperature</DisplayName>
     <Description>Max Temperature in Kelvin</Description>
     <References>
-      <Reference ReferenceType="HasComponent">ns=1;i=15114</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=15030</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15028</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15029</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=15097</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15018</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15114" BrowseName="1:Data" ParentNodeId="ns=1;i=15028" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15028" BrowseName="1:Data" ParentNodeId="ns=1;i=15027" DataType="Float">
     <DisplayName>Data</DisplayName>
     <Description>Value of Variable</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15028</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15027</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15030" BrowseName="1:Info" ParentNodeId="ns=1;i=15028" DataType="i=887">
+  <UAVariable NodeId="ns=1;i=15029" BrowseName="1:Info" ParentNodeId="ns=1;i=15027" DataType="i=887">
     <DisplayName>Info</DisplayName>
     <Description>Information like unit of measurement</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15028</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15027</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15031" BrowseName="1:MinTemperature" ParentNodeId="ns=1;i=15018" DataType="ns=1;i=15054">
+  <UAVariable NodeId="ns=1;i=15030" BrowseName="1:MinTemperature" ParentNodeId="ns=1;i=15018" DataType="ns=1;i=15054">
     <DisplayName>MinTemperature</DisplayName>
     <Description>Min Temperature in Kelvin</Description>
     <References>
-      <Reference ReferenceType="HasComponent">ns=1;i=15115</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=15034</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15031</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15032</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=15097</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15018</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15115" BrowseName="1:Data" ParentNodeId="ns=1;i=15031" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15031" BrowseName="1:Data" ParentNodeId="ns=1;i=15030" DataType="Float">
     <DisplayName>Data</DisplayName>
     <Description>Value of Variable</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15031</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15030</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15034" BrowseName="1:Info" ParentNodeId="ns=1;i=15031" DataType="i=887">
+  <UAVariable NodeId="ns=1;i=15032" BrowseName="1:Info" ParentNodeId="ns=1;i=15030" DataType="i=887">
     <DisplayName>Info</DisplayName>
     <Description>Information like unit of measurement</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15031</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15030</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15035" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15018" DataType="ns=1;i=15054">
+  <UAVariable NodeId="ns=1;i=15033" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15018" DataType="ns=1;i=15054">
     <DisplayName>Pressure</DisplayName>
     <Description>Pressure in Pascal</Description>
     <References>
-      <Reference ReferenceType="HasComponent">ns=1;i=15116</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=15037</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15034</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15035</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=15097</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15018</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15116" BrowseName="1:Data" ParentNodeId="ns=1;i=15035" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15034" BrowseName="1:Data" ParentNodeId="ns=1;i=15033" DataType="Float">
     <DisplayName>Data</DisplayName>
     <Description>Value of Variable</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15035</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15033</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15037" BrowseName="1:Info" ParentNodeId="ns=1;i=15035" DataType="i=887">
+  <UAVariable NodeId="ns=1;i=15035" BrowseName="1:Info" ParentNodeId="ns=1;i=15033" DataType="i=887">
     <DisplayName>Info</DisplayName>
     <Description>Information like unit of measurement</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15035</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15033</Reference>
     </References>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15038" BrowseName="1:City" ParentNodeId="ns=1;i=15018" DataType="String">
@@ -282,38 +272,57 @@
   <UAVariable NodeId="ns=1;i=15017" BrowseName="1:WeatherMap" ParentNodeId="ns=1;i=15007" DataType="ns=1;i=15053">
     <DisplayName>WeatherMap</DisplayName>
     <References>
-      <Reference ReferenceType="HasComponent">ns=1;i=15039</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15036</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=15040</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=15043</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=15046</Reference>
-      <Reference ReferenceType="HasComponent">ns=1;i=15049</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=15052</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=15055</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15007</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15039" BrowseName="1:Date" ParentNodeId="ns=1;i=15017" DataType="DateTime">
-    <DisplayName>Date</DisplayName>
-    <Description>Datetime of weather prevision</Description>
+  <UAVariable NodeId="ns=1;i=15036" BrowseName="1:Temperature" ParentNodeId="ns=1;i=15017" DataType="ns=1;i=15054">
+    <DisplayName>Temperature</DisplayName>
+    <Description>Temperature in Kelvin</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15037</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15039</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15097</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15017</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15040" BrowseName="1:Temperature" ParentNodeId="ns=1;i=15017" DataType="ns=1;i=15054">
-    <DisplayName>Temperature</DisplayName>
-    <Description>Temperature in Kelvin</Description>
+  <UAVariable NodeId="ns=1;i=15037" BrowseName="1:Data" ParentNodeId="ns=1;i=15036" DataType="Float">
+    <DisplayName>Data</DisplayName>
+    <Description>Value of Variable</Description>
     <References>
-      <Reference ReferenceType="HasComponent">ns=1;i=15117</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15036</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15039" BrowseName="1:Info" ParentNodeId="ns=1;i=15036" DataType="i=887">
+    <DisplayName>Info</DisplayName>
+    <Description>Information like unit of measurement</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15036</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15040" BrowseName="1:MaxTemperature" ParentNodeId="ns=1;i=15017" DataType="ns=1;i=15054">
+    <DisplayName>MaxTemperature</DisplayName>
+    <Description>Max Temperature in Kelvin</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=15041</Reference>
       <Reference ReferenceType="HasProperty">ns=1;i=15042</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=15097</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15017</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15117" BrowseName="1:Data" ParentNodeId="ns=1;i=15040" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15041" BrowseName="1:Data" ParentNodeId="ns=1;i=15040" DataType="Float">
     <DisplayName>Data</DisplayName>
     <Description>Value of Variable</Description>
     <References>
@@ -331,18 +340,18 @@
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15040</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15043" BrowseName="1:MaxTemperature" ParentNodeId="ns=1;i=15017" DataType="ns=1;i=15054">
-    <DisplayName>MaxTemperature</DisplayName>
-    <Description>Max Temperature in Kelvin</Description>
+  <UAVariable NodeId="ns=1;i=15043" BrowseName="1:MinTemperature" ParentNodeId="ns=1;i=15017" DataType="ns=1;i=15054">
+    <DisplayName>MinTemperature</DisplayName>
+    <Description>Min Temperature in Kelvin</Description>
     <References>
-      <Reference ReferenceType="HasComponent">ns=1;i=15118</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15044</Reference>
       <Reference ReferenceType="HasProperty">ns=1;i=15045</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=15097</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15017</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15118" BrowseName="1:Data" ParentNodeId="ns=1;i=15043" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15044" BrowseName="1:Data" ParentNodeId="ns=1;i=15043" DataType="Float">
     <DisplayName>Data</DisplayName>
     <Description>Value of Variable</Description>
     <References>
@@ -360,18 +369,18 @@
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15043</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15046" BrowseName="1:MinTemperature" ParentNodeId="ns=1;i=15017" DataType="ns=1;i=15054">
-    <DisplayName>MinTemperature</DisplayName>
-    <Description>Min Temperature in Kelvin</Description>
+  <UAVariable NodeId="ns=1;i=15046" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15017" DataType="ns=1;i=15054">
+    <DisplayName>Pressure</DisplayName>
+    <Description>Pressure in Pascal</Description>
     <References>
-      <Reference ReferenceType="HasComponent">ns=1;i=15119</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15047</Reference>
       <Reference ReferenceType="HasProperty">ns=1;i=15048</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=15097</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15017</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15119" BrowseName="1:Data" ParentNodeId="ns=1;i=15046" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15047" BrowseName="1:Data" ParentNodeId="ns=1;i=15046" DataType="Float">
     <DisplayName>Data</DisplayName>
     <Description>Value of Variable</Description>
     <References>
@@ -389,18 +398,39 @@
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15046</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15049" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15017" DataType="ns=1;i=15054">
-    <DisplayName>Pressure</DisplayName>
-    <Description>Pressure in Pascal</Description>
+  <UAVariable NodeId="ns=1;i=15052" BrowseName="1:City" ParentNodeId="ns=1;i=15017" DataType="String">
+    <DisplayName>City</DisplayName>
+    <Description>City of weather prevision</Description>
     <References>
-      <Reference ReferenceType="HasComponent">ns=1;i=15120</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=15051</Reference>
-      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15097</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15017</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15120" BrowseName="1:Data" ParentNodeId="ns=1;i=15049" DataType="Float">
+  <UAVariableType NodeId="ns=1;i=15055" BrowseName="1:WeatherMapVariableType" DataType="ns=1;i=15053">
+    <DisplayName>WeatherMapVariableType</DisplayName>
+    <Description>Represents a WeatherMapData</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=15049</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15056</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15059</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15089</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15096</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=63</Reference>
+    </References>
+  </UAVariableType>
+  <UAVariable NodeId="ns=1;i=15049" BrowseName="1:Temperature" ParentNodeId="ns=1;i=15055" DataType="ns=1;i=15054">
+    <DisplayName>Temperature</DisplayName>
+    <Description>Temperature in Kelvin</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=15050</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15051</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15097</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15055</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15050" BrowseName="1:Data" ParentNodeId="ns=1;i=15049" DataType="Float">
     <DisplayName>Data</DisplayName>
     <Description>Value of Variable</Description>
     <References>
@@ -418,151 +448,91 @@
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15049</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15052" BrowseName="1:City" ParentNodeId="ns=1;i=15017" DataType="String">
-    <DisplayName>City</DisplayName>
-    <Description>City of weather prevision</Description>
-    <References>
-      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
-      <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15017</Reference>
-    </References>
-  </UAVariable>
-  <UAVariableType NodeId="ns=1;i=15055" BrowseName="1:WeatherMapVariableType" DataType="ns=1;i=15053">
-    <DisplayName>WeatherMapVariableType</DisplayName>
-    <Description>Represents a WeatherMapData</Description>
-    <References>
-      <Reference ReferenceType="HasComponent">ns=1;i=15056</Reference>
-      <Reference ReferenceType="HasComponent">ns=1;i=15057</Reference>
-      <Reference ReferenceType="HasComponent">ns=1;i=15087</Reference>
-      <Reference ReferenceType="HasComponent">ns=1;i=15090</Reference>
-      <Reference ReferenceType="HasComponent">ns=1;i=15093</Reference>
-      <Reference ReferenceType="HasComponent">ns=1;i=15096</Reference>
-      <Reference ReferenceType="HasSubtype" IsForward="false">i=63</Reference>
-    </References>
-  </UAVariableType>
-  <UAVariable NodeId="ns=1;i=15056" BrowseName="1:Date" ParentNodeId="ns=1;i=15055" DataType="DateTime">
-    <DisplayName>Date</DisplayName>
-    <Description>Datetime of weather prevision</Description>
-    <References>
-      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
-      <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15055</Reference>
-    </References>
-  </UAVariable>
-  <UAVariable NodeId="ns=1;i=15057" BrowseName="1:Temperature" ParentNodeId="ns=1;i=15055" DataType="ns=1;i=15054">
-    <DisplayName>Temperature</DisplayName>
-    <Description>Temperature in Kelvin</Description>
-    <References>
-      <Reference ReferenceType="HasComponent">ns=1;i=15121</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=15059</Reference>
-      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15097</Reference>
-      <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15055</Reference>
-    </References>
-  </UAVariable>
-  <UAVariable NodeId="ns=1;i=15121" BrowseName="1:Data" ParentNodeId="ns=1;i=15057" DataType="Float">
-    <DisplayName>Data</DisplayName>
-    <Description>Value of Variable</Description>
-    <References>
-      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
-      <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15057</Reference>
-    </References>
-  </UAVariable>
-  <UAVariable NodeId="ns=1;i=15059" BrowseName="1:Info" ParentNodeId="ns=1;i=15057" DataType="i=887">
-    <DisplayName>Info</DisplayName>
-    <Description>Information like unit of measurement</Description>
-    <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15057</Reference>
-    </References>
-  </UAVariable>
-  <UAVariable NodeId="ns=1;i=15087" BrowseName="1:MaxTemperature" ParentNodeId="ns=1;i=15055" DataType="ns=1;i=15054">
+  <UAVariable NodeId="ns=1;i=15056" BrowseName="1:MaxTemperature" ParentNodeId="ns=1;i=15055" DataType="ns=1;i=15054">
     <DisplayName>MaxTemperature</DisplayName>
     <Description>Max Temperature in Kelvin</Description>
     <References>
-      <Reference ReferenceType="HasComponent">ns=1;i=15122</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=15089</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15057</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15058</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=15097</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15055</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15122" BrowseName="1:Data" ParentNodeId="ns=1;i=15087" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15057" BrowseName="1:Data" ParentNodeId="ns=1;i=15056" DataType="Float">
     <DisplayName>Data</DisplayName>
     <Description>Value of Variable</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15087</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15056</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15089" BrowseName="1:Info" ParentNodeId="ns=1;i=15087" DataType="i=887">
+  <UAVariable NodeId="ns=1;i=15058" BrowseName="1:Info" ParentNodeId="ns=1;i=15056" DataType="i=887">
     <DisplayName>Info</DisplayName>
     <Description>Information like unit of measurement</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15087</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15056</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15090" BrowseName="1:MinTemperature" ParentNodeId="ns=1;i=15055" DataType="ns=1;i=15054">
+  <UAVariable NodeId="ns=1;i=15059" BrowseName="1:MinTemperature" ParentNodeId="ns=1;i=15055" DataType="ns=1;i=15054">
     <DisplayName>MinTemperature</DisplayName>
     <Description>Min Temperature in Kelvin</Description>
     <References>
-      <Reference ReferenceType="HasComponent">ns=1;i=15123</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=15092</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15087</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15088</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=15097</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15055</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15123" BrowseName="1:Data" ParentNodeId="ns=1;i=15090" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15087" BrowseName="1:Data" ParentNodeId="ns=1;i=15059" DataType="Float">
     <DisplayName>Data</DisplayName>
     <Description>Value of Variable</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15090</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15059</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15092" BrowseName="1:Info" ParentNodeId="ns=1;i=15090" DataType="i=887">
+  <UAVariable NodeId="ns=1;i=15088" BrowseName="1:Info" ParentNodeId="ns=1;i=15059" DataType="i=887">
     <DisplayName>Info</DisplayName>
     <Description>Information like unit of measurement</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15090</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15059</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15093" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15055" DataType="ns=1;i=15054">
+  <UAVariable NodeId="ns=1;i=15089" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15055" DataType="ns=1;i=15054">
     <DisplayName>Pressure</DisplayName>
     <Description>Pressure in Pascal</Description>
     <References>
-      <Reference ReferenceType="HasComponent">ns=1;i=15124</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=15095</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15090</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15091</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=15097</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15055</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15124" BrowseName="1:Data" ParentNodeId="ns=1;i=15093" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15090" BrowseName="1:Data" ParentNodeId="ns=1;i=15089" DataType="Float">
     <DisplayName>Data</DisplayName>
     <Description>Value of Variable</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15093</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15089</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15095" BrowseName="1:Info" ParentNodeId="ns=1;i=15093" DataType="i=887">
+  <UAVariable NodeId="ns=1;i=15091" BrowseName="1:Info" ParentNodeId="ns=1;i=15089" DataType="i=887">
     <DisplayName>Info</DisplayName>
     <Description>Information like unit of measurement</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15093</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15089</Reference>
     </References>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15096" BrowseName="1:City" ParentNodeId="ns=1;i=15055" DataType="String">
@@ -654,35 +624,78 @@
   <UAVariable NodeId="ns=1;i=15019" BrowseName="1:WeatherData" ParentNodeId="ns=1;i=15022" DataType="ns=1;i=15053">
     <DisplayName>WeatherData</DisplayName>
     <References>
-      <Reference ReferenceType="HasComponent">ns=1;i=15100</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15092</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15095</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=15101</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=15104</Reference>
-      <Reference ReferenceType="HasComponent">ns=1;i=15107</Reference>
-      <Reference ReferenceType="HasComponent">ns=1;i=15110</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=15113</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=15055</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15022</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15100" BrowseName="1:Date" ParentNodeId="ns=1;i=15019" DataType="DateTime">
-    <DisplayName>Date</DisplayName>
-    <Description>Datetime of weather prevision</Description>
-    <References>
-      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
-      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15019</Reference>
-    </References>
-  </UAVariable>
-  <UAVariable NodeId="ns=1;i=15101" BrowseName="1:Temperature" ParentNodeId="ns=1;i=15019" DataType="ns=1;i=15054">
+  <UAVariable NodeId="ns=1;i=15092" BrowseName="1:Temperature" ParentNodeId="ns=1;i=15019" DataType="ns=1;i=15054">
     <DisplayName>Temperature</DisplayName>
     <Description>Temperature in Kelvin</Description>
     <References>
-      <Reference ReferenceType="HasComponent">ns=1;i=15126</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15093</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15094</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15097</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15019</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15093" BrowseName="1:Data" ParentNodeId="ns=1;i=15092" DataType="Float">
+    <DisplayName>Data</DisplayName>
+    <Description>Value of Variable</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15092</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15094" BrowseName="1:Info" ParentNodeId="ns=1;i=15092" DataType="i=887">
+    <DisplayName>Info</DisplayName>
+    <Description>Information like unit of measurement</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15092</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15095" BrowseName="1:MaxTemperature" ParentNodeId="ns=1;i=15019" DataType="ns=1;i=15054">
+    <DisplayName>MaxTemperature</DisplayName>
+    <Description>Max Temperature in Kelvin</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=15098</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15100</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15097</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15019</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15098" BrowseName="1:Data" ParentNodeId="ns=1;i=15095" DataType="Float">
+    <DisplayName>Data</DisplayName>
+    <Description>Value of Variable</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15095</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15100" BrowseName="1:Info" ParentNodeId="ns=1;i=15095" DataType="i=887">
+    <DisplayName>Info</DisplayName>
+    <Description>Information like unit of measurement</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15095</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15101" BrowseName="1:MinTemperature" ParentNodeId="ns=1;i=15019" DataType="ns=1;i=15054">
+    <DisplayName>MinTemperature</DisplayName>
+    <Description>Min Temperature in Kelvin</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=15102</Reference>
       <Reference ReferenceType="HasProperty">ns=1;i=15103</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=15097</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15019</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15126" BrowseName="1:Data" ParentNodeId="ns=1;i=15101" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15102" BrowseName="1:Data" ParentNodeId="ns=1;i=15101" DataType="Float">
     <DisplayName>Data</DisplayName>
     <Description>Value of Variable</Description>
     <References>
@@ -698,17 +711,17 @@
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15101</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15104" BrowseName="1:MaxTemperature" ParentNodeId="ns=1;i=15019" DataType="ns=1;i=15054">
-    <DisplayName>MaxTemperature</DisplayName>
-    <Description>Max Temperature in Kelvin</Description>
+  <UAVariable NodeId="ns=1;i=15104" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15019" DataType="ns=1;i=15054">
+    <DisplayName>Pressure</DisplayName>
+    <Description>Pressure in Pascal</Description>
     <References>
-      <Reference ReferenceType="HasComponent">ns=1;i=15127</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=15105</Reference>
       <Reference ReferenceType="HasProperty">ns=1;i=15106</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=15097</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15019</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=15127" BrowseName="1:Data" ParentNodeId="ns=1;i=15104" DataType="Float">
+  <UAVariable NodeId="ns=1;i=15105" BrowseName="1:Data" ParentNodeId="ns=1;i=15104" DataType="Float">
     <DisplayName>Data</DisplayName>
     <Description>Value of Variable</Description>
     <References>
@@ -722,58 +735,6 @@
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15104</Reference>
-    </References>
-  </UAVariable>
-  <UAVariable NodeId="ns=1;i=15107" BrowseName="1:MinTemperature" ParentNodeId="ns=1;i=15019" DataType="ns=1;i=15054">
-    <DisplayName>MinTemperature</DisplayName>
-    <Description>Min Temperature in Kelvin</Description>
-    <References>
-      <Reference ReferenceType="HasComponent">ns=1;i=15128</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=15109</Reference>
-      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15097</Reference>
-      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15019</Reference>
-    </References>
-  </UAVariable>
-  <UAVariable NodeId="ns=1;i=15128" BrowseName="1:Data" ParentNodeId="ns=1;i=15107" DataType="Float">
-    <DisplayName>Data</DisplayName>
-    <Description>Value of Variable</Description>
-    <References>
-      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
-      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15107</Reference>
-    </References>
-  </UAVariable>
-  <UAVariable NodeId="ns=1;i=15109" BrowseName="1:Info" ParentNodeId="ns=1;i=15107" DataType="i=887">
-    <DisplayName>Info</DisplayName>
-    <Description>Information like unit of measurement</Description>
-    <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15107</Reference>
-    </References>
-  </UAVariable>
-  <UAVariable NodeId="ns=1;i=15110" BrowseName="1:Pressure" ParentNodeId="ns=1;i=15019" DataType="ns=1;i=15054">
-    <DisplayName>Pressure</DisplayName>
-    <Description>Pressure in Pascal</Description>
-    <References>
-      <Reference ReferenceType="HasComponent">ns=1;i=15129</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=15112</Reference>
-      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15097</Reference>
-      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15019</Reference>
-    </References>
-  </UAVariable>
-  <UAVariable NodeId="ns=1;i=15129" BrowseName="1:Data" ParentNodeId="ns=1;i=15110" DataType="Float">
-    <DisplayName>Data</DisplayName>
-    <Description>Value of Variable</Description>
-    <References>
-      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
-      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15110</Reference>
-    </References>
-  </UAVariable>
-  <UAVariable NodeId="ns=1;i=15112" BrowseName="1:Info" ParentNodeId="ns=1;i=15110" DataType="i=887">
-    <DisplayName>Info</DisplayName>
-    <Description>Information like unit of measurement</Description>
-    <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15110</Reference>
     </References>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=15113" BrowseName="1:City" ParentNodeId="ns=1;i=15019" DataType="String">

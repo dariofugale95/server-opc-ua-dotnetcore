@@ -33,7 +33,6 @@ using System.Text;
 using System.Xml;
 using System.Runtime.Serialization;
 using Opc.Ua;
-using Opc.Ua.Server;
 
 namespace Quickstarts.MyOPCServer
 {
@@ -94,32 +93,30 @@ namespace Quickstarts.MyOPCServer
            "AQAAADkAAABodHRwczovL2dpdGh1Yi5jb20vZGFyaW9mdWdhbGU5NS9zZXJ2ZXItb3BjLXVhLWRvdG5l" +
            "dGNvcmX/////hGCAAgEAAAABABoAAABPcGVuV2VhdGhlck1hcFR5cGVJbnN0YW5jZQEBmToBAZk6mToA" +
            "AAH/////AwAAABVgiQoCAAAAAQAIAAAAQ2l0eU5hbWUBAe46AC4ARO46AAAADP////8BAf////8AAAAA" +
-           "FWCJCgIAAAABAAsAAABXZWF0aGVyRGF0YQEBqjoALwEBzzqqOgAAAQHNOv////8BAf////8GAAAANWCJ" +
-           "CgIAAAABAAQAAABEYXRlAQGsOgMAAAAAHQAAAERhdGV0aW1lIG9mIHdlYXRoZXIgcHJldmlzaW9uAC8A" +
-           "P6w6AAAADf////8BAf////8AAAAANWCJCgIAAAABAAsAAABUZW1wZXJhdHVyZQEBrToDAAAAABUAAABU" +
-           "ZW1wZXJhdHVyZSBpbiBLZWx2aW4ALwEB+TqtOgAAAQHOOv////8BAf////8CAAAANWCJCgIAAAABAAQA" +
-           "AABEYXRhAQG4OgMAAAAAEQAAAFZhbHVlIG9mIFZhcmlhYmxlAC8AP7g6AAAACv////8BAf////8AAAAA" +
-           "NWCJCgIAAAABAAQAAABJbmZvAQGzOgMAAAAAJAAAAEluZm9ybWF0aW9uIGxpa2UgdW5pdCBvZiBtZWFz" +
-           "dXJlbWVudAAuAESzOgAAAQB3A/////8BAf////8AAAAANWCJCgIAAAABAA4AAABNYXhUZW1wZXJhdHVy" +
-           "ZQEBtDoDAAAAABkAAABNYXggVGVtcGVyYXR1cmUgaW4gS2VsdmluAC8BAfk6tDoAAAEBzjr/////AQH/" +
-           "////AgAAADVgiQoCAAAAAQAEAAAARGF0YQEBCjsDAAAAABEAAABWYWx1ZSBvZiBWYXJpYWJsZQAvAD8K" +
-           "OwAAAAr/////AQH/////AAAAADVgiQoCAAAAAQAEAAAASW5mbwEBtjoDAAAAACQAAABJbmZvcm1hdGlv" +
-           "biBsaWtlIHVuaXQgb2YgbWVhc3VyZW1lbnQALgBEtjoAAAEAdwP/////AQH/////AAAAADVgiQoCAAAA" +
-           "AQAOAAAATWluVGVtcGVyYXR1cmUBAbc6AwAAAAAZAAAATWluIFRlbXBlcmF0dXJlIGluIEtlbHZpbgAv" +
-           "AQH5Orc6AAABAc46/////wEB/////wIAAAA1YIkKAgAAAAEABAAAAERhdGEBAQs7AwAAAAARAAAAVmFs" +
-           "dWUgb2YgVmFyaWFibGUALwA/CzsAAAAK/////wEB/////wAAAAA1YIkKAgAAAAEABAAAAEluZm8BAbo6" +
-           "AwAAAAAkAAAASW5mb3JtYXRpb24gbGlrZSB1bml0IG9mIG1lYXN1cmVtZW50AC4ARLo6AAABAHcD////" +
-           "/wEB/////wAAAAA1YIkKAgAAAAEACAAAAFByZXNzdXJlAQG7OgMAAAAAEgAAAFByZXNzdXJlIGluIFBh" +
-           "c2NhbAAvAQH5Ors6AAABAc46/////wEB/////wIAAAA1YIkKAgAAAAEABAAAAERhdGEBAQw7AwAAAAAR" +
-           "AAAAVmFsdWUgb2YgVmFyaWFibGUALwA/DDsAAAAK/////wEB/////wAAAAA1YIkKAgAAAAEABAAAAElu" +
-           "Zm8BAb06AwAAAAAkAAAASW5mb3JtYXRpb24gbGlrZSB1bml0IG9mIG1lYXN1cmVtZW50AC4ARL06AAAB" +
-           "AHcD/////wEB/////wAAAAA1YIkKAgAAAAEABAAAAENpdHkBAb46AwAAAAAZAAAAQ2l0eSBvZiB3ZWF0" +
-           "aGVyIHByZXZpc2lvbgAvAD++OgAAAAz/////AQH/////AAAAAARhggoEAAAAAQAUAAAAT3BlbldlYXRo" +
-           "ZXJNYXBNZXRob2QBAZs6AC8BAZs6mzoAAAEBAQAAAAEA+QsAAQGfOgEAAAAXYKkKAgAAAAAADgAAAElu" +
-           "cHV0QXJndW1lbnRzAQGcOgAuAEScOgAAlgIAAAABACoBATgAAAAEAAAAQ2l0eQAM/////wAAAAADAAAA" +
-           "AB0AAABDaXR5IHRvIGdldCBXZWF0aGVyIFByZXZpc2lvbgEAKgEBSQAAABQAAABNZWFzdXJlT2ZUZW1w" +
-           "ZXJhdHVyZQAM/////wAAAAADAAAAAB4AAABDPUNlbHNpdXMsSz1LZWx2aW4uIERlZmF1bHQ6IEsBACgB" +
-           "AQAAAAEAAAAAAAAAAQH/////AAAAAA==";
+           "FWCJCgIAAAABAAsAAABXZWF0aGVyRGF0YQEBqjoALwEBzzqqOgAAAQHNOv////8BAf////8FAAAANWCJ" +
+           "CgIAAAABAAsAAABUZW1wZXJhdHVyZQEBrDoDAAAAABUAAABUZW1wZXJhdHVyZSBpbiBLZWx2aW4ALwEB" +
+           "+TqsOgAAAQHOOv////8BAf////8CAAAANWCJCgIAAAABAAQAAABEYXRhAQGtOgMAAAAAEQAAAFZhbHVl" +
+           "IG9mIFZhcmlhYmxlAC8AP606AAAACv////8BAf////8AAAAANWCJCgIAAAABAAQAAABJbmZvAQGyOgMA" +
+           "AAAAJAAAAEluZm9ybWF0aW9uIGxpa2UgdW5pdCBvZiBtZWFzdXJlbWVudAAuAESyOgAAAQB3A/////8B" +
+           "Af////8AAAAANWCJCgIAAAABAA4AAABNYXhUZW1wZXJhdHVyZQEBszoDAAAAABkAAABNYXggVGVtcGVy" +
+           "YXR1cmUgaW4gS2VsdmluAC8BAfk6szoAAAEBzjr/////AQH/////AgAAADVgiQoCAAAAAQAEAAAARGF0" +
+           "YQEBtDoDAAAAABEAAABWYWx1ZSBvZiBWYXJpYWJsZQAvAD+0OgAAAAr/////AQH/////AAAAADVgiQoC" +
+           "AAAAAQAEAAAASW5mbwEBtToDAAAAACQAAABJbmZvcm1hdGlvbiBsaWtlIHVuaXQgb2YgbWVhc3VyZW1l" +
+           "bnQALgBEtToAAAEAdwP/////AQH/////AAAAADVgiQoCAAAAAQAOAAAATWluVGVtcGVyYXR1cmUBAbY6" +
+           "AwAAAAAZAAAATWluIFRlbXBlcmF0dXJlIGluIEtlbHZpbgAvAQH5OrY6AAABAc46/////wEB/////wIA" +
+           "AAA1YIkKAgAAAAEABAAAAERhdGEBAbc6AwAAAAARAAAAVmFsdWUgb2YgVmFyaWFibGUALwA/tzoAAAAK" +
+           "/////wEB/////wAAAAA1YIkKAgAAAAEABAAAAEluZm8BAbg6AwAAAAAkAAAASW5mb3JtYXRpb24gbGlr" +
+           "ZSB1bml0IG9mIG1lYXN1cmVtZW50AC4ARLg6AAABAHcD/////wEB/////wAAAAA1YIkKAgAAAAEACAAA" +
+           "AFByZXNzdXJlAQG5OgMAAAAAEgAAAFByZXNzdXJlIGluIFBhc2NhbAAvAQH5Ork6AAABAc46/////wEB" +
+           "/////wIAAAA1YIkKAgAAAAEABAAAAERhdGEBAbo6AwAAAAARAAAAVmFsdWUgb2YgVmFyaWFibGUALwA/" +
+           "ujoAAAAK/////wEB/////wAAAAA1YIkKAgAAAAEABAAAAEluZm8BAbs6AwAAAAAkAAAASW5mb3JtYXRp" +
+           "b24gbGlrZSB1bml0IG9mIG1lYXN1cmVtZW50AC4ARLs6AAABAHcD/////wEB/////wAAAAA1YIkKAgAA" +
+           "AAEABAAAAENpdHkBAb46AwAAAAAZAAAAQ2l0eSBvZiB3ZWF0aGVyIHByZXZpc2lvbgAvAD++OgAAAAz/" +
+           "////AQH/////AAAAAARhggoEAAAAAQAUAAAAT3BlbldlYXRoZXJNYXBNZXRob2QBAZs6AC8BAZs6mzoA" +
+           "AAEBAQAAAAEA+QsAAQGfOgEAAAAXYKkKAgAAAAAADgAAAElucHV0QXJndW1lbnRzAQGcOgAuAEScOgAA" +
+           "lgIAAAABACoBATgAAAAEAAAAQ2l0eQAM/////wAAAAADAAAAAB0AAABDaXR5IHRvIGdldCBXZWF0aGVy" +
+           "IFByZXZpc2lvbgEAKgEBSQAAABQAAABNZWFzdXJlT2ZUZW1wZXJhdHVyZQAM/////wAAAAADAAAAAB4A" +
+           "AABDPUNlbHNpdXMsSz1LZWx2aW4uIERlZmF1bHQ6IEsBACgBAQAAAAEAAAAAAAAAAQH/////AAAAAA==";
         #endregion
         #endif
         #endregion
@@ -493,27 +490,25 @@ namespace Quickstarts.MyOPCServer
            "/////wEB/////wAAAAAVYIkKAgAAAAAACQAAAExvY2FsVGltZQEBpjoALgBEpjoAAAEA0CL/////AQH/" +
            "////AAAAABVgiQoCAAAAAAAHAAAATWVzc2FnZQEBpzoALgBEpzoAAAAV/////wEB/////wAAAAAVYIkK" +
            "AgAAAAAACAAAAFNldmVyaXR5AQGoOgAuAESoOgAAAAX/////AQH/////AAAAABVgiQoCAAAAAQAKAAAA" +
-           "V2VhdGhlck1hcAEBqToALgEBzzqpOgAAAQHNOv////8BAf////8GAAAANWCJCgIAAAABAAQAAABEYXRl" +
-           "AQG/OgMAAAAAHQAAAERhdGV0aW1lIG9mIHdlYXRoZXIgcHJldmlzaW9uAC8AP786AAAADf////8BAf//" +
-           "//8AAAAANWCJCgIAAAABAAsAAABUZW1wZXJhdHVyZQEBwDoDAAAAABUAAABUZW1wZXJhdHVyZSBpbiBL" +
-           "ZWx2aW4ALwEB+TrAOgAAAQHOOv////8BAf////8CAAAANWCJCgIAAAABAAQAAABEYXRhAQENOwMAAAAA" +
-           "EQAAAFZhbHVlIG9mIFZhcmlhYmxlAC8APw07AAAACv////8BAf////8AAAAANWCJCgIAAAABAAQAAABJ" +
-           "bmZvAQHCOgMAAAAAJAAAAEluZm9ybWF0aW9uIGxpa2UgdW5pdCBvZiBtZWFzdXJlbWVudAAuAETCOgAA" +
-           "AQB3A/////8BAf////8AAAAANWCJCgIAAAABAA4AAABNYXhUZW1wZXJhdHVyZQEBwzoDAAAAABkAAABN" +
-           "YXggVGVtcGVyYXR1cmUgaW4gS2VsdmluAC8BAfk6wzoAAAEBzjr/////AQH/////AgAAADVgiQoCAAAA" +
-           "AQAEAAAARGF0YQEBDjsDAAAAABEAAABWYWx1ZSBvZiBWYXJpYWJsZQAvAD8OOwAAAAr/////AQH/////" +
-           "AAAAADVgiQoCAAAAAQAEAAAASW5mbwEBxToDAAAAACQAAABJbmZvcm1hdGlvbiBsaWtlIHVuaXQgb2Yg" +
-           "bWVhc3VyZW1lbnQALgBExToAAAEAdwP/////AQH/////AAAAADVgiQoCAAAAAQAOAAAATWluVGVtcGVy" +
-           "YXR1cmUBAcY6AwAAAAAZAAAATWluIFRlbXBlcmF0dXJlIGluIEtlbHZpbgAvAQH5OsY6AAABAc46////" +
-           "/wEB/////wIAAAA1YIkKAgAAAAEABAAAAERhdGEBAQ87AwAAAAARAAAAVmFsdWUgb2YgVmFyaWFibGUA" +
-           "LwA/DzsAAAAK/////wEB/////wAAAAA1YIkKAgAAAAEABAAAAEluZm8BAcg6AwAAAAAkAAAASW5mb3Jt" +
-           "YXRpb24gbGlrZSB1bml0IG9mIG1lYXN1cmVtZW50AC4ARMg6AAABAHcD/////wEB/////wAAAAA1YIkK" +
-           "AgAAAAEACAAAAFByZXNzdXJlAQHJOgMAAAAAEgAAAFByZXNzdXJlIGluIFBhc2NhbAAvAQH5Osk6AAAB" +
-           "Ac46/////wEB/////wIAAAA1YIkKAgAAAAEABAAAAERhdGEBARA7AwAAAAARAAAAVmFsdWUgb2YgVmFy" +
-           "aWFibGUALwA/EDsAAAAK/////wEB/////wAAAAA1YIkKAgAAAAEABAAAAEluZm8BAcs6AwAAAAAkAAAA" +
-           "SW5mb3JtYXRpb24gbGlrZSB1bml0IG9mIG1lYXN1cmVtZW50AC4ARMs6AAABAHcD/////wEB/////wAA" +
-           "AAA1YIkKAgAAAAEABAAAAENpdHkBAcw6AwAAAAAZAAAAQ2l0eSBvZiB3ZWF0aGVyIHByZXZpc2lvbgAv" +
-           "AD/MOgAAAAz/////AQH/////AAAAAA==";
+           "V2VhdGhlck1hcAEBqToALgEBzzqpOgAAAQHNOv////8BAf////8FAAAANWCJCgIAAAABAAsAAABUZW1w" +
+           "ZXJhdHVyZQEBvDoDAAAAABUAAABUZW1wZXJhdHVyZSBpbiBLZWx2aW4ALwEB+Tq8OgAAAQHOOv////8B" +
+           "Af////8CAAAANWCJCgIAAAABAAQAAABEYXRhAQG9OgMAAAAAEQAAAFZhbHVlIG9mIFZhcmlhYmxlAC8A" +
+           "P706AAAACv////8BAf////8AAAAANWCJCgIAAAABAAQAAABJbmZvAQG/OgMAAAAAJAAAAEluZm9ybWF0" +
+           "aW9uIGxpa2UgdW5pdCBvZiBtZWFzdXJlbWVudAAuAES/OgAAAQB3A/////8BAf////8AAAAANWCJCgIA" +
+           "AAABAA4AAABNYXhUZW1wZXJhdHVyZQEBwDoDAAAAABkAAABNYXggVGVtcGVyYXR1cmUgaW4gS2Vsdmlu" +
+           "AC8BAfk6wDoAAAEBzjr/////AQH/////AgAAADVgiQoCAAAAAQAEAAAARGF0YQEBwToDAAAAABEAAABW" +
+           "YWx1ZSBvZiBWYXJpYWJsZQAvAD/BOgAAAAr/////AQH/////AAAAADVgiQoCAAAAAQAEAAAASW5mbwEB" +
+           "wjoDAAAAACQAAABJbmZvcm1hdGlvbiBsaWtlIHVuaXQgb2YgbWVhc3VyZW1lbnQALgBEwjoAAAEAdwP/" +
+           "////AQH/////AAAAADVgiQoCAAAAAQAOAAAATWluVGVtcGVyYXR1cmUBAcM6AwAAAAAZAAAATWluIFRl" +
+           "bXBlcmF0dXJlIGluIEtlbHZpbgAvAQH5OsM6AAABAc46/////wEB/////wIAAAA1YIkKAgAAAAEABAAA" +
+           "AERhdGEBAcQ6AwAAAAARAAAAVmFsdWUgb2YgVmFyaWFibGUALwA/xDoAAAAK/////wEB/////wAAAAA1" +
+           "YIkKAgAAAAEABAAAAEluZm8BAcU6AwAAAAAkAAAASW5mb3JtYXRpb24gbGlrZSB1bml0IG9mIG1lYXN1" +
+           "cmVtZW50AC4ARMU6AAABAHcD/////wEB/////wAAAAA1YIkKAgAAAAEACAAAAFByZXNzdXJlAQHGOgMA" +
+           "AAAAEgAAAFByZXNzdXJlIGluIFBhc2NhbAAvAQH5OsY6AAABAc46/////wEB/////wIAAAA1YIkKAgAA" +
+           "AAEABAAAAERhdGEBAcc6AwAAAAARAAAAVmFsdWUgb2YgVmFyaWFibGUALwA/xzoAAAAK/////wEB////" +
+           "/wAAAAA1YIkKAgAAAAEABAAAAEluZm8BAcg6AwAAAAAkAAAASW5mb3JtYXRpb24gbGlrZSB1bml0IG9m" +
+           "IG1lYXN1cmVtZW50AC4ARMg6AAABAHcD/////wEB/////wAAAAA1YIkKAgAAAAEABAAAAENpdHkBAcw6" +
+           "AwAAAAAZAAAAQ2l0eSBvZiB3ZWF0aGVyIHByZXZpc2lvbgAvAD/MOgAAAAz/////AQH/////AAAAAA==";
         #endregion
         #endif
         #endregion
@@ -685,51 +680,30 @@ namespace Quickstarts.MyOPCServer
         private const string InitializationString =
            "AQAAADkAAABodHRwczovL2dpdGh1Yi5jb20vZGFyaW9mdWdhbGU5NS9zZXJ2ZXItb3BjLXVhLWRvdG5l" +
            "dGNvcmX/////FWCJAgIAAAABAB4AAABXZWF0aGVyTWFwVmFyaWFibGVUeXBlSW5zdGFuY2UBAc86AQHP" +
-           "Os86AAABAc06/////wEB/////wYAAAA1YIkKAgAAAAEABAAAAERhdGUBAdA6AwAAAAAdAAAARGF0ZXRp" +
-           "bWUgb2Ygd2VhdGhlciBwcmV2aXNpb24ALwA/0DoAAAAN/////wEB/////wAAAAA1YIkKAgAAAAEACwAA" +
-           "AFRlbXBlcmF0dXJlAQHROgMAAAAAFQAAAFRlbXBlcmF0dXJlIGluIEtlbHZpbgAvAQH5OtE6AAABAc46" +
-           "/////wEB/////wIAAAA1YIkKAgAAAAEABAAAAERhdGEBARE7AwAAAAARAAAAVmFsdWUgb2YgVmFyaWFi" +
-           "bGUALwA/ETsAAAAK/////wEB/////wAAAAA1YIkKAgAAAAEABAAAAEluZm8BAdM6AwAAAAAkAAAASW5m" +
-           "b3JtYXRpb24gbGlrZSB1bml0IG9mIG1lYXN1cmVtZW50AC4ARNM6AAABAHcD/////wEB/////wAAAAA1" +
-           "YIkKAgAAAAEADgAAAE1heFRlbXBlcmF0dXJlAQHvOgMAAAAAGQAAAE1heCBUZW1wZXJhdHVyZSBpbiBL" +
-           "ZWx2aW4ALwEB+TrvOgAAAQHOOv////8BAf////8CAAAANWCJCgIAAAABAAQAAABEYXRhAQESOwMAAAAA" +
-           "EQAAAFZhbHVlIG9mIFZhcmlhYmxlAC8APxI7AAAACv////8BAf////8AAAAANWCJCgIAAAABAAQAAABJ" +
-           "bmZvAQHxOgMAAAAAJAAAAEluZm9ybWF0aW9uIGxpa2UgdW5pdCBvZiBtZWFzdXJlbWVudAAuAETxOgAA" +
-           "AQB3A/////8BAf////8AAAAANWCJCgIAAAABAA4AAABNaW5UZW1wZXJhdHVyZQEB8joDAAAAABkAAABN" +
-           "aW4gVGVtcGVyYXR1cmUgaW4gS2VsdmluAC8BAfk68joAAAEBzjr/////AQH/////AgAAADVgiQoCAAAA" +
-           "AQAEAAAARGF0YQEBEzsDAAAAABEAAABWYWx1ZSBvZiBWYXJpYWJsZQAvAD8TOwAAAAr/////AQH/////" +
-           "AAAAADVgiQoCAAAAAQAEAAAASW5mbwEB9DoDAAAAACQAAABJbmZvcm1hdGlvbiBsaWtlIHVuaXQgb2Yg" +
-           "bWVhc3VyZW1lbnQALgBE9DoAAAEAdwP/////AQH/////AAAAADVgiQoCAAAAAQAIAAAAUHJlc3N1cmUB" +
-           "AfU6AwAAAAASAAAAUHJlc3N1cmUgaW4gUGFzY2FsAC8BAfk69ToAAAEBzjr/////AQH/////AgAAADVg" +
-           "iQoCAAAAAQAEAAAARGF0YQEBFDsDAAAAABEAAABWYWx1ZSBvZiBWYXJpYWJsZQAvAD8UOwAAAAr/////" +
-           "AQH/////AAAAADVgiQoCAAAAAQAEAAAASW5mbwEB9zoDAAAAACQAAABJbmZvcm1hdGlvbiBsaWtlIHVu" +
-           "aXQgb2YgbWVhc3VyZW1lbnQALgBE9zoAAAEAdwP/////AQH/////AAAAADVgiQoCAAAAAQAEAAAAQ2l0" +
-           "eQEB+DoDAAAAABkAAABDaXR5IG9mIHdlYXRoZXIgcHJldmlzaW9uAC8AP/g6AAAADP////8BAf////8A" +
-           "AAAA";
+           "Os86AAABAc06/////wEB/////wUAAAA1YIkKAgAAAAEACwAAAFRlbXBlcmF0dXJlAQHJOgMAAAAAFQAA" +
+           "AFRlbXBlcmF0dXJlIGluIEtlbHZpbgAvAQH5Osk6AAABAc46/////wEB/////wIAAAA1YIkKAgAAAAEA" +
+           "BAAAAERhdGEBAco6AwAAAAARAAAAVmFsdWUgb2YgVmFyaWFibGUALwA/yjoAAAAK/////wEB/////wAA" +
+           "AAA1YIkKAgAAAAEABAAAAEluZm8BAcs6AwAAAAAkAAAASW5mb3JtYXRpb24gbGlrZSB1bml0IG9mIG1l" +
+           "YXN1cmVtZW50AC4ARMs6AAABAHcD/////wEB/////wAAAAA1YIkKAgAAAAEADgAAAE1heFRlbXBlcmF0" +
+           "dXJlAQHQOgMAAAAAGQAAAE1heCBUZW1wZXJhdHVyZSBpbiBLZWx2aW4ALwEB+TrQOgAAAQHOOv////8B" +
+           "Af////8CAAAANWCJCgIAAAABAAQAAABEYXRhAQHROgMAAAAAEQAAAFZhbHVlIG9mIFZhcmlhYmxlAC8A" +
+           "P9E6AAAACv////8BAf////8AAAAANWCJCgIAAAABAAQAAABJbmZvAQHSOgMAAAAAJAAAAEluZm9ybWF0" +
+           "aW9uIGxpa2UgdW5pdCBvZiBtZWFzdXJlbWVudAAuAETSOgAAAQB3A/////8BAf////8AAAAANWCJCgIA" +
+           "AAABAA4AAABNaW5UZW1wZXJhdHVyZQEB0zoDAAAAABkAAABNaW4gVGVtcGVyYXR1cmUgaW4gS2Vsdmlu" +
+           "AC8BAfk60zoAAAEBzjr/////AQH/////AgAAADVgiQoCAAAAAQAEAAAARGF0YQEB7zoDAAAAABEAAABW" +
+           "YWx1ZSBvZiBWYXJpYWJsZQAvAD/vOgAAAAr/////AQH/////AAAAADVgiQoCAAAAAQAEAAAASW5mbwEB" +
+           "8DoDAAAAACQAAABJbmZvcm1hdGlvbiBsaWtlIHVuaXQgb2YgbWVhc3VyZW1lbnQALgBE8DoAAAEAdwP/" +
+           "////AQH/////AAAAADVgiQoCAAAAAQAIAAAAUHJlc3N1cmUBAfE6AwAAAAASAAAAUHJlc3N1cmUgaW4g" +
+           "UGFzY2FsAC8BAfk68ToAAAEBzjr/////AQH/////AgAAADVgiQoCAAAAAQAEAAAARGF0YQEB8joDAAAA" +
+           "ABEAAABWYWx1ZSBvZiBWYXJpYWJsZQAvAD/yOgAAAAr/////AQH/////AAAAADVgiQoCAAAAAQAEAAAA" +
+           "SW5mbwEB8zoDAAAAACQAAABJbmZvcm1hdGlvbiBsaWtlIHVuaXQgb2YgbWVhc3VyZW1lbnQALgBE8zoA" +
+           "AAEAdwP/////AQH/////AAAAADVgiQoCAAAAAQAEAAAAQ2l0eQEB+DoDAAAAABkAAABDaXR5IG9mIHdl" +
+           "YXRoZXIgcHJldmlzaW9uAC8AP/g6AAAADP////8BAf////8AAAAA";
         #endregion
         #endif
         #endregion
 
         #region Public Properties
-        /// <remarks />
-        public BaseDataVariableState<DateTime> Date
-        {
-            get
-            {
-                return m_date;
-            }
-
-            set
-            {
-                if (!Object.ReferenceEquals(m_date, value))
-                {
-                    ChangeMasks |= NodeStateChangeMasks.Children;
-                }
-
-                m_date = value;
-            }
-        }
-
         /// <remarks />
         public AnalogVariableState Temperature
         {
@@ -836,11 +810,6 @@ namespace Quickstarts.MyOPCServer
             ISystemContext context,
             IList<BaseInstanceState> children)
         {
-            if (m_date != null)
-            {
-                children.Add(m_date);
-            }
-
             if (m_temperature != null)
             {
                 children.Add(m_temperature);
@@ -887,27 +856,6 @@ namespace Quickstarts.MyOPCServer
 
             switch (browseName.Name)
             {
-                case Quickstarts.MyOPCServer.BrowseNames.Date:
-                {
-                    if (createOrReplace)
-                    {
-                        if (Date == null)
-                        {
-                            if (replacement == null)
-                            {
-                                Date = new BaseDataVariableState<DateTime>(this);
-                            }
-                            else
-                            {
-                                Date = (BaseDataVariableState<DateTime>)replacement;
-                            }
-                        }
-                    }
-
-                    instance = Date;
-                    break;
-                }
-
                 case Quickstarts.MyOPCServer.BrowseNames.Temperature:
                 {
                     if (createOrReplace)
@@ -1021,12 +969,9 @@ namespace Quickstarts.MyOPCServer
 
             return base.FindChild(context, browseName, createOrReplace, replacement);
         }
-
-        
         #endregion
 
         #region Private Fields
-        private BaseDataVariableState<DateTime> m_date;
         private AnalogVariableState m_temperature;
         private AnalogVariableState m_maxTemperature;
         private AnalogVariableState m_minTemperature;

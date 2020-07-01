@@ -166,69 +166,64 @@ namespace Quickstarts.MyOPCServer
         public const uint OpenWeatherMapType_WeatherData = 15018;
 
         /// <summary>
-        /// The identifier for the OpenWeatherMapType_WeatherData_Date Variable.
-        /// </summary>
-        public const uint OpenWeatherMapType_WeatherData_Date = 15020;
-
-        /// <summary>
         /// The identifier for the OpenWeatherMapType_WeatherData_Temperature Variable.
         /// </summary>
-        public const uint OpenWeatherMapType_WeatherData_Temperature = 15021;
+        public const uint OpenWeatherMapType_WeatherData_Temperature = 15020;
 
         /// <summary>
         /// The identifier for the OpenWeatherMapType_WeatherData_Temperature_Data Variable.
         /// </summary>
-        public const uint OpenWeatherMapType_WeatherData_Temperature_Data = 15032;
+        public const uint OpenWeatherMapType_WeatherData_Temperature_Data = 15021;
 
         /// <summary>
         /// The identifier for the OpenWeatherMapType_WeatherData_Temperature_Info Variable.
         /// </summary>
-        public const uint OpenWeatherMapType_WeatherData_Temperature_Info = 15027;
+        public const uint OpenWeatherMapType_WeatherData_Temperature_Info = 15026;
 
         /// <summary>
         /// The identifier for the OpenWeatherMapType_WeatherData_MaxTemperature Variable.
         /// </summary>
-        public const uint OpenWeatherMapType_WeatherData_MaxTemperature = 15028;
+        public const uint OpenWeatherMapType_WeatherData_MaxTemperature = 15027;
 
         /// <summary>
         /// The identifier for the OpenWeatherMapType_WeatherData_MaxTemperature_Data Variable.
         /// </summary>
-        public const uint OpenWeatherMapType_WeatherData_MaxTemperature_Data = 15114;
+        public const uint OpenWeatherMapType_WeatherData_MaxTemperature_Data = 15028;
 
         /// <summary>
         /// The identifier for the OpenWeatherMapType_WeatherData_MaxTemperature_Info Variable.
         /// </summary>
-        public const uint OpenWeatherMapType_WeatherData_MaxTemperature_Info = 15030;
+        public const uint OpenWeatherMapType_WeatherData_MaxTemperature_Info = 15029;
 
         /// <summary>
         /// The identifier for the OpenWeatherMapType_WeatherData_MinTemperature Variable.
         /// </summary>
-        public const uint OpenWeatherMapType_WeatherData_MinTemperature = 15031;
+        public const uint OpenWeatherMapType_WeatherData_MinTemperature = 15030;
 
         /// <summary>
         /// The identifier for the OpenWeatherMapType_WeatherData_MinTemperature_Data Variable.
         /// </summary>
-        public const uint OpenWeatherMapType_WeatherData_MinTemperature_Data = 15115;
+        public const uint OpenWeatherMapType_WeatherData_MinTemperature_Data = 15031;
 
         /// <summary>
         /// The identifier for the OpenWeatherMapType_WeatherData_MinTemperature_Info Variable.
         /// </summary>
-        public const uint OpenWeatherMapType_WeatherData_MinTemperature_Info = 15034;
+        public const uint OpenWeatherMapType_WeatherData_MinTemperature_Info = 15032;
 
         /// <summary>
         /// The identifier for the OpenWeatherMapType_WeatherData_Pressure Variable.
         /// </summary>
-        public const uint OpenWeatherMapType_WeatherData_Pressure = 15035;
+        public const uint OpenWeatherMapType_WeatherData_Pressure = 15033;
 
         /// <summary>
         /// The identifier for the OpenWeatherMapType_WeatherData_Pressure_Data Variable.
         /// </summary>
-        public const uint OpenWeatherMapType_WeatherData_Pressure_Data = 15116;
+        public const uint OpenWeatherMapType_WeatherData_Pressure_Data = 15034;
 
         /// <summary>
         /// The identifier for the OpenWeatherMapType_WeatherData_Pressure_Info Variable.
         /// </summary>
-        public const uint OpenWeatherMapType_WeatherData_Pressure_Info = 15037;
+        public const uint OpenWeatherMapType_WeatherData_Pressure_Info = 15035;
 
         /// <summary>
         /// The identifier for the OpenWeatherMapType_WeatherData_City Variable.
@@ -246,69 +241,64 @@ namespace Quickstarts.MyOPCServer
         public const uint WeatherEventType_WeatherMap = 15017;
 
         /// <summary>
-        /// The identifier for the WeatherEventType_WeatherMap_Date Variable.
-        /// </summary>
-        public const uint WeatherEventType_WeatherMap_Date = 15039;
-
-        /// <summary>
         /// The identifier for the WeatherEventType_WeatherMap_Temperature Variable.
         /// </summary>
-        public const uint WeatherEventType_WeatherMap_Temperature = 15040;
+        public const uint WeatherEventType_WeatherMap_Temperature = 15036;
 
         /// <summary>
         /// The identifier for the WeatherEventType_WeatherMap_Temperature_Data Variable.
         /// </summary>
-        public const uint WeatherEventType_WeatherMap_Temperature_Data = 15117;
+        public const uint WeatherEventType_WeatherMap_Temperature_Data = 15037;
 
         /// <summary>
         /// The identifier for the WeatherEventType_WeatherMap_Temperature_Info Variable.
         /// </summary>
-        public const uint WeatherEventType_WeatherMap_Temperature_Info = 15042;
+        public const uint WeatherEventType_WeatherMap_Temperature_Info = 15039;
 
         /// <summary>
         /// The identifier for the WeatherEventType_WeatherMap_MaxTemperature Variable.
         /// </summary>
-        public const uint WeatherEventType_WeatherMap_MaxTemperature = 15043;
+        public const uint WeatherEventType_WeatherMap_MaxTemperature = 15040;
 
         /// <summary>
         /// The identifier for the WeatherEventType_WeatherMap_MaxTemperature_Data Variable.
         /// </summary>
-        public const uint WeatherEventType_WeatherMap_MaxTemperature_Data = 15118;
+        public const uint WeatherEventType_WeatherMap_MaxTemperature_Data = 15041;
 
         /// <summary>
         /// The identifier for the WeatherEventType_WeatherMap_MaxTemperature_Info Variable.
         /// </summary>
-        public const uint WeatherEventType_WeatherMap_MaxTemperature_Info = 15045;
+        public const uint WeatherEventType_WeatherMap_MaxTemperature_Info = 15042;
 
         /// <summary>
         /// The identifier for the WeatherEventType_WeatherMap_MinTemperature Variable.
         /// </summary>
-        public const uint WeatherEventType_WeatherMap_MinTemperature = 15046;
+        public const uint WeatherEventType_WeatherMap_MinTemperature = 15043;
 
         /// <summary>
         /// The identifier for the WeatherEventType_WeatherMap_MinTemperature_Data Variable.
         /// </summary>
-        public const uint WeatherEventType_WeatherMap_MinTemperature_Data = 15119;
+        public const uint WeatherEventType_WeatherMap_MinTemperature_Data = 15044;
 
         /// <summary>
         /// The identifier for the WeatherEventType_WeatherMap_MinTemperature_Info Variable.
         /// </summary>
-        public const uint WeatherEventType_WeatherMap_MinTemperature_Info = 15048;
+        public const uint WeatherEventType_WeatherMap_MinTemperature_Info = 15045;
 
         /// <summary>
         /// The identifier for the WeatherEventType_WeatherMap_Pressure Variable.
         /// </summary>
-        public const uint WeatherEventType_WeatherMap_Pressure = 15049;
+        public const uint WeatherEventType_WeatherMap_Pressure = 15046;
 
         /// <summary>
         /// The identifier for the WeatherEventType_WeatherMap_Pressure_Data Variable.
         /// </summary>
-        public const uint WeatherEventType_WeatherMap_Pressure_Data = 15120;
+        public const uint WeatherEventType_WeatherMap_Pressure_Data = 15047;
 
         /// <summary>
         /// The identifier for the WeatherEventType_WeatherMap_Pressure_Info Variable.
         /// </summary>
-        public const uint WeatherEventType_WeatherMap_Pressure_Info = 15051;
+        public const uint WeatherEventType_WeatherMap_Pressure_Info = 15048;
 
         /// <summary>
         /// The identifier for the WeatherEventType_WeatherMap_City Variable.
@@ -316,69 +306,64 @@ namespace Quickstarts.MyOPCServer
         public const uint WeatherEventType_WeatherMap_City = 15052;
 
         /// <summary>
-        /// The identifier for the WeatherMapVariableType_Date Variable.
-        /// </summary>
-        public const uint WeatherMapVariableType_Date = 15056;
-
-        /// <summary>
         /// The identifier for the WeatherMapVariableType_Temperature Variable.
         /// </summary>
-        public const uint WeatherMapVariableType_Temperature = 15057;
+        public const uint WeatherMapVariableType_Temperature = 15049;
 
         /// <summary>
         /// The identifier for the WeatherMapVariableType_Temperature_Data Variable.
         /// </summary>
-        public const uint WeatherMapVariableType_Temperature_Data = 15121;
+        public const uint WeatherMapVariableType_Temperature_Data = 15050;
 
         /// <summary>
         /// The identifier for the WeatherMapVariableType_Temperature_Info Variable.
         /// </summary>
-        public const uint WeatherMapVariableType_Temperature_Info = 15059;
+        public const uint WeatherMapVariableType_Temperature_Info = 15051;
 
         /// <summary>
         /// The identifier for the WeatherMapVariableType_MaxTemperature Variable.
         /// </summary>
-        public const uint WeatherMapVariableType_MaxTemperature = 15087;
+        public const uint WeatherMapVariableType_MaxTemperature = 15056;
 
         /// <summary>
         /// The identifier for the WeatherMapVariableType_MaxTemperature_Data Variable.
         /// </summary>
-        public const uint WeatherMapVariableType_MaxTemperature_Data = 15122;
+        public const uint WeatherMapVariableType_MaxTemperature_Data = 15057;
 
         /// <summary>
         /// The identifier for the WeatherMapVariableType_MaxTemperature_Info Variable.
         /// </summary>
-        public const uint WeatherMapVariableType_MaxTemperature_Info = 15089;
+        public const uint WeatherMapVariableType_MaxTemperature_Info = 15058;
 
         /// <summary>
         /// The identifier for the WeatherMapVariableType_MinTemperature Variable.
         /// </summary>
-        public const uint WeatherMapVariableType_MinTemperature = 15090;
+        public const uint WeatherMapVariableType_MinTemperature = 15059;
 
         /// <summary>
         /// The identifier for the WeatherMapVariableType_MinTemperature_Data Variable.
         /// </summary>
-        public const uint WeatherMapVariableType_MinTemperature_Data = 15123;
+        public const uint WeatherMapVariableType_MinTemperature_Data = 15087;
 
         /// <summary>
         /// The identifier for the WeatherMapVariableType_MinTemperature_Info Variable.
         /// </summary>
-        public const uint WeatherMapVariableType_MinTemperature_Info = 15092;
+        public const uint WeatherMapVariableType_MinTemperature_Info = 15088;
 
         /// <summary>
         /// The identifier for the WeatherMapVariableType_Pressure Variable.
         /// </summary>
-        public const uint WeatherMapVariableType_Pressure = 15093;
+        public const uint WeatherMapVariableType_Pressure = 15089;
 
         /// <summary>
         /// The identifier for the WeatherMapVariableType_Pressure_Data Variable.
         /// </summary>
-        public const uint WeatherMapVariableType_Pressure_Data = 15124;
+        public const uint WeatherMapVariableType_Pressure_Data = 15090;
 
         /// <summary>
         /// The identifier for the WeatherMapVariableType_Pressure_Info Variable.
         /// </summary>
-        public const uint WeatherMapVariableType_Pressure_Info = 15095;
+        public const uint WeatherMapVariableType_Pressure_Info = 15091;
 
         /// <summary>
         /// The identifier for the WeatherMapVariableType_City Variable.
@@ -406,69 +391,64 @@ namespace Quickstarts.MyOPCServer
         public const uint OpenWeatherMap_WeatherData = 15019;
 
         /// <summary>
-        /// The identifier for the OpenWeatherMap_WeatherData_Date Variable.
-        /// </summary>
-        public const uint OpenWeatherMap_WeatherData_Date = 15100;
-
-        /// <summary>
         /// The identifier for the OpenWeatherMap_WeatherData_Temperature Variable.
         /// </summary>
-        public const uint OpenWeatherMap_WeatherData_Temperature = 15101;
+        public const uint OpenWeatherMap_WeatherData_Temperature = 15092;
 
         /// <summary>
         /// The identifier for the OpenWeatherMap_WeatherData_Temperature_Data Variable.
         /// </summary>
-        public const uint OpenWeatherMap_WeatherData_Temperature_Data = 15126;
+        public const uint OpenWeatherMap_WeatherData_Temperature_Data = 15093;
 
         /// <summary>
         /// The identifier for the OpenWeatherMap_WeatherData_Temperature_Info Variable.
         /// </summary>
-        public const uint OpenWeatherMap_WeatherData_Temperature_Info = 15103;
+        public const uint OpenWeatherMap_WeatherData_Temperature_Info = 15094;
 
         /// <summary>
         /// The identifier for the OpenWeatherMap_WeatherData_MaxTemperature Variable.
         /// </summary>
-        public const uint OpenWeatherMap_WeatherData_MaxTemperature = 15104;
+        public const uint OpenWeatherMap_WeatherData_MaxTemperature = 15095;
 
         /// <summary>
         /// The identifier for the OpenWeatherMap_WeatherData_MaxTemperature_Data Variable.
         /// </summary>
-        public const uint OpenWeatherMap_WeatherData_MaxTemperature_Data = 15127;
+        public const uint OpenWeatherMap_WeatherData_MaxTemperature_Data = 15098;
 
         /// <summary>
         /// The identifier for the OpenWeatherMap_WeatherData_MaxTemperature_Info Variable.
         /// </summary>
-        public const uint OpenWeatherMap_WeatherData_MaxTemperature_Info = 15106;
+        public const uint OpenWeatherMap_WeatherData_MaxTemperature_Info = 15100;
 
         /// <summary>
         /// The identifier for the OpenWeatherMap_WeatherData_MinTemperature Variable.
         /// </summary>
-        public const uint OpenWeatherMap_WeatherData_MinTemperature = 15107;
+        public const uint OpenWeatherMap_WeatherData_MinTemperature = 15101;
 
         /// <summary>
         /// The identifier for the OpenWeatherMap_WeatherData_MinTemperature_Data Variable.
         /// </summary>
-        public const uint OpenWeatherMap_WeatherData_MinTemperature_Data = 15128;
+        public const uint OpenWeatherMap_WeatherData_MinTemperature_Data = 15102;
 
         /// <summary>
         /// The identifier for the OpenWeatherMap_WeatherData_MinTemperature_Info Variable.
         /// </summary>
-        public const uint OpenWeatherMap_WeatherData_MinTemperature_Info = 15109;
+        public const uint OpenWeatherMap_WeatherData_MinTemperature_Info = 15103;
 
         /// <summary>
         /// The identifier for the OpenWeatherMap_WeatherData_Pressure Variable.
         /// </summary>
-        public const uint OpenWeatherMap_WeatherData_Pressure = 15110;
+        public const uint OpenWeatherMap_WeatherData_Pressure = 15104;
 
         /// <summary>
         /// The identifier for the OpenWeatherMap_WeatherData_Pressure_Data Variable.
         /// </summary>
-        public const uint OpenWeatherMap_WeatherData_Pressure_Data = 15129;
+        public const uint OpenWeatherMap_WeatherData_Pressure_Data = 15105;
 
         /// <summary>
         /// The identifier for the OpenWeatherMap_WeatherData_Pressure_Info Variable.
         /// </summary>
-        public const uint OpenWeatherMap_WeatherData_Pressure_Info = 15112;
+        public const uint OpenWeatherMap_WeatherData_Pressure_Info = 15106;
 
         /// <summary>
         /// The identifier for the OpenWeatherMap_WeatherData_City Variable.
@@ -681,11 +661,6 @@ namespace Quickstarts.MyOPCServer
         public static readonly ExpandedNodeId OpenWeatherMapType_WeatherData = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.OpenWeatherMapType_WeatherData, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
 
         /// <summary>
-        /// The identifier for the OpenWeatherMapType_WeatherData_Date Variable.
-        /// </summary>
-        public static readonly ExpandedNodeId OpenWeatherMapType_WeatherData_Date = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.OpenWeatherMapType_WeatherData_Date, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
-
-        /// <summary>
         /// The identifier for the OpenWeatherMapType_WeatherData_Temperature Variable.
         /// </summary>
         public static readonly ExpandedNodeId OpenWeatherMapType_WeatherData_Temperature = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.OpenWeatherMapType_WeatherData_Temperature, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
@@ -761,11 +736,6 @@ namespace Quickstarts.MyOPCServer
         public static readonly ExpandedNodeId WeatherEventType_WeatherMap = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.WeatherEventType_WeatherMap, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
 
         /// <summary>
-        /// The identifier for the WeatherEventType_WeatherMap_Date Variable.
-        /// </summary>
-        public static readonly ExpandedNodeId WeatherEventType_WeatherMap_Date = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.WeatherEventType_WeatherMap_Date, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
-
-        /// <summary>
         /// The identifier for the WeatherEventType_WeatherMap_Temperature Variable.
         /// </summary>
         public static readonly ExpandedNodeId WeatherEventType_WeatherMap_Temperature = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.WeatherEventType_WeatherMap_Temperature, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
@@ -829,11 +799,6 @@ namespace Quickstarts.MyOPCServer
         /// The identifier for the WeatherEventType_WeatherMap_City Variable.
         /// </summary>
         public static readonly ExpandedNodeId WeatherEventType_WeatherMap_City = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.WeatherEventType_WeatherMap_City, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
-
-        /// <summary>
-        /// The identifier for the WeatherMapVariableType_Date Variable.
-        /// </summary>
-        public static readonly ExpandedNodeId WeatherMapVariableType_Date = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.WeatherMapVariableType_Date, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
 
         /// <summary>
         /// The identifier for the WeatherMapVariableType_Temperature Variable.
@@ -919,11 +884,6 @@ namespace Quickstarts.MyOPCServer
         /// The identifier for the OpenWeatherMap_WeatherData Variable.
         /// </summary>
         public static readonly ExpandedNodeId OpenWeatherMap_WeatherData = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.OpenWeatherMap_WeatherData, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
-
-        /// <summary>
-        /// The identifier for the OpenWeatherMap_WeatherData_Date Variable.
-        /// </summary>
-        public static readonly ExpandedNodeId OpenWeatherMap_WeatherData_Date = new ExpandedNodeId(Quickstarts.MyOPCServer.Variables.OpenWeatherMap_WeatherData_Date, Quickstarts.MyOPCServer.Namespaces.MyOPCServer);
 
         /// <summary>
         /// The identifier for the OpenWeatherMap_WeatherData_Temperature Variable.
@@ -1098,11 +1058,6 @@ namespace Quickstarts.MyOPCServer
         /// The BrowseName for the Data component.
         /// </summary>
         public const string Data = "Data";
-
-        /// <summary>
-        /// The BrowseName for the Date component.
-        /// </summary>
-        public const string Date = "Date";
 
         /// <summary>
         /// The BrowseName for the Info component.
