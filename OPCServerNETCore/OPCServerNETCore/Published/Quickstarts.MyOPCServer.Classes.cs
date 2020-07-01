@@ -33,6 +33,7 @@ using System.Text;
 using System.Xml;
 using System.Runtime.Serialization;
 using Opc.Ua;
+using Opc.Ua.Server;
 
 namespace Quickstarts.MyOPCServer
 {
@@ -1020,6 +1021,8 @@ namespace Quickstarts.MyOPCServer
 
             return base.FindChild(context, browseName, createOrReplace, replacement);
         }
+
+        
         #endregion
 
         #region Private Fields

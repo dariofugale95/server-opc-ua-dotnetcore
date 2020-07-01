@@ -79,6 +79,15 @@ namespace Quickstarts.MyOPCServer.Properties {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a fb727b9cdbmshb33ea79c969d9f3p1617aejsnbd4e69f7a5e7.
+        /// </summary>
+        internal static string apiKey3 {
+            get {
+                return ResourceManager.GetString("apiKey3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Published/Quickstarts.MyOPCServer.PredefinedNodes.uanodes.
         /// </summary>
         internal static string BinaryNodePath {
