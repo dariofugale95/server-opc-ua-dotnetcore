@@ -571,53 +571,15 @@ namespace Quickstarts.MyOPCServer
                 maxTemperature.Data = openWeatherData.Main.TempMax;
                 maxTemperature.Info = info_temp;
                 weatherInfo.MaxTemperature = maxTemperature;
-
-
-
-
                 minTemperature.Data = openWeatherData.Main.TempMin;
                 minTemperature.Info = info_temp;
                 weatherInfo.MinTemperature = minTemperature;
-
-                
                 temperature.Data = openWeatherData.Main.Temp;
-                //variable.Temperature.Data = new float();
-                
                 temperature.Info = info_temp;
-                /*
-                variable.Temperature.Info.Value.DisplayName = info_temp.DisplayName;
-                variable.Temperature.Info.Value.NamespaceUri = info_temp.NamespaceUri;
-                variable.Temperature.Info.Value.Description = info_temp.Description;
-                variable.Temperature.Info.Value.UnitId = info_temp.UnitId;
-                variable.Temperature.Info.DisplayName = info_temp.DisplayName;
-                */
                 weatherInfo.Temperature = temperature;
-
-
-
                 pressure.Data = openWeatherData.Main.Pressure;
                 pressure.Info = info_press;
                 weatherInfo.Pressure = pressure;
-
-
-                //update child
-
-
-
-                
-
-                 // variable.Temperature.Value =;
-                /* variable.Temperature.Data=new BaseDataVariableState<float>(variable);
-                 variable.Temperature.Info= new PropertyState<EUInformation>(variable);
-
-                 variable.Temperature.Data.Value = weatherInfo.Temperature.Data;
-                 variable.Temperature.Info.Value = weatherInfo.Temperature.Info;*/
-
-               
-
-
-
-
 
             }
             //timer set on 
@@ -631,11 +593,8 @@ namespace Quickstarts.MyOPCServer
         {
 
             NodeStateCollection predefinedNodes = new NodeStateCollection();
-
-
             predefinedNodes.LoadFromBinaryResource(context, Resources.BinaryNodePath.ToString(), this.GetType().GetTypeInfo().Assembly, true);
             Console.WriteLine("***MyOPCServer: number of Node loaded from source " + predefinedNodes.Count.ToString() + "***");
-
             return predefinedNodes;
         }
 
@@ -645,7 +604,7 @@ namespace Quickstarts.MyOPCServer
         {
             lock (Lock)
             {
-                //m_simulationTimer.Dispose();
+                m_simulationTimer.Dispose();
             }
 
         }
@@ -704,7 +663,6 @@ namespace Quickstarts.MyOPCServer
         private MyOPCServerConfiguration m_configuration;
         private OpenWeatherMapApiRequests apiRequests;
 
-       // private  List<WeatherMapVariableState> variables = new List<WeatherMapVariableState>();
         private Dictionary<WeatherMapVariableState, AnalogVariableState> variables = new Dictionary<WeatherMapVariableState, AnalogVariableState>();
         private ushort m_namespaceIndex;
         private ushort m_typeNamespaceIndex;
