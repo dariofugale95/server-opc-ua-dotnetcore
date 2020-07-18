@@ -131,3 +131,4 @@ D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCor
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Management.dll
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\Quickstarts.MyOPCServer.Properties.Resources.resources
 D:\Progetti\II_Project\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\OPCServerNETCore.csproj.GenerateResource.cache
+C:\Users\giuli\Documents\GitHub\server-opc-ua-dotnetcore\OPCServerNETCore\OPCServerNETCore\obj\Debug\netcoreapp3.1\OPCServerNETCore.csprojAssemblyReference.cache
