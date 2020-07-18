@@ -169,12 +169,12 @@ namespace Quickstarts.MyOPCServer
 
                     WeatherMapVariableState catania = CreateVariable(citiesNodes, "Catania", "Catania", new NodeId(DataTypeIds.WeatherData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar);
                     List<BaseVariableState> childCatania= CreateChild(catania);
-           ///*
+          
                      WeatherMapVariableState palermo = CreateVariable(citiesNodes, "Palermo", "Palermo", new NodeId(DataTypeIds.WeatherData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar);
                      List<BaseVariableState> childPalermo =CreateChild(palermo);
                      WeatherMapVariableState messina = CreateVariable(citiesNodes, "Messina", "Messina", new NodeId(DataTypeIds.WeatherData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar);
                      List<BaseVariableState> childMessina = CreateChild(messina);
-                    //*/
+               
                      variables.Add(palermo, childPalermo);
                      variables.Add(messina, childMessina);
              
