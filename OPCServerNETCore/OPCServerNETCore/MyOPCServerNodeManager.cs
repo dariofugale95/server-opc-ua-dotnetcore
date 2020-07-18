@@ -59,7 +59,8 @@ namespace Quickstarts.MyOPCServer
         /// Initializes the node manager.
         /// </summary>
         public MyOPCServerNodeManager(IServerInternal server, ApplicationConfiguration configuration)
-        : base(server, configuration, Namespaces.MyOPCServer)
+        :
+            base(server, configuration, Namespaces.MyOPCServer)
         {
             SystemContext.NodeIdFactory = this;
 
@@ -89,7 +90,7 @@ namespace Quickstarts.MyOPCServer
 
         private void OnRaiseSystemEvents(object state)
         {
-            // Console.WriteLine("Data refresh!\n");
+           // Console.WriteLine("Data refresh!\n");
             UpdateValues();
             Console.WriteLine(DateTime.UtcNow);
 
@@ -142,8 +143,6 @@ namespace Quickstarts.MyOPCServer
 
                 IList<IReference> references = null;
 
-
-
                 if (!externalReferences.TryGetValue(Opc.Ua.ObjectIds.ObjectsFolder, out references))
                 {
                     externalReferences[Opc.Ua.ObjectIds.ObjectsFolder] = references = new List<IReference>();
@@ -158,7 +157,7 @@ namespace Quickstarts.MyOPCServer
                 root.Description = "A folder containing data sources";
 
                 AddRootNotifier(root);
-
+                
 
 
 
@@ -169,24 +168,18 @@ namespace Quickstarts.MyOPCServer
                     citiesNodes.Description = "This folder contains nodes of the city stations";
 
                     WeatherMapVariableState catania = CreateVariable(citiesNodes, "Catania", "Catania", new NodeId(DataTypeIds.WeatherData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar);
-                    WeatherData weatherDataCatania = GetNewValue(catania.SymbolicName.ToString());
-                    AnalogData tempCatania = weatherDataCatania.Temperature;
-                    AnalogVariableState tempCataniaVariable = CreateVariableChild(catania, "TempCatania", "TempCatania", new NodeId(DataTypeIds.AnalogData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar, tempCatania);
-
-                    WeatherMapVariableState palermo = CreateVariable(citiesNodes, "Palermo", "Palermo", new NodeId(DataTypeIds.WeatherData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar);
-                    WeatherData weatherDataPalermo = GetNewValue(palermo.SymbolicName.ToString());
-                    AnalogData tempPalermo = weatherDataPalermo.Temperature;
-                    AnalogVariableState tempPalermoVariable = CreateVariableChild(palermo, "TempPalermo", "TempPalermo", new NodeId(DataTypeIds.AnalogData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar, tempPalermo);
-
-                    WeatherMapVariableState messina = CreateVariable(citiesNodes, "Messina", "Messina", new NodeId(DataTypeIds.WeatherData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar);
-                    WeatherData weatherDataMessina = GetNewValue(messina.SymbolicName.ToString());
-                    AnalogData tempMessina = weatherDataMessina.Temperature;
-                    AnalogVariableState tempMessinaVariable = CreateVariableChild(messina, "TempCatania", "TempCatania", new NodeId(DataTypeIds.AnalogData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar, tempMessina);
-
-   
-                    variables.Add(catania,tempCataniaVariable);
-                    variables.Add(palermo, tempPalermoVariable);
-                    variables.Add(messina, tempMessinaVariable);
+                    List<BaseVariableState> childCatania= CreateChild(catania);
+           ///*
+                     WeatherMapVariableState palermo = CreateVariable(citiesNodes, "Palermo", "Palermo", new NodeId(DataTypeIds.WeatherData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar);
+                     List<BaseVariableState> childPalermo =CreateChild(palermo);
+                     WeatherMapVariableState messina = CreateVariable(citiesNodes, "Messina", "Messina", new NodeId(DataTypeIds.WeatherData.Identifier, DataTypeIds.WeatherData.NamespaceIndex), ValueRanks.Scalar);
+                     List<BaseVariableState> childMessina = CreateChild(messina);
+                    //*/
+                     variables.Add(palermo, childPalermo);
+                     variables.Add(messina, childMessina);
+             
+                    variables.Add(catania,childCatania);
+                    
                 }
 
                 catch (Exception e)
@@ -196,8 +189,60 @@ namespace Quickstarts.MyOPCServer
 
 
                 AddPredefinedNode(SystemContext, root);
+                //variable.SetChildValue(SystemContext,BrowseNames.Temperature, variable.Value.Temperature, false);
+
+
+
 
             }
+        }
+
+        private List<BaseVariableState> CreateChild(WeatherMapVariableState variable)
+        {
+            List<BaseVariableState> child = new List<BaseVariableState>();
+            
+            AnalogData info = new AnalogData();
+            
+
+
+            info = variable.Value.Temperature;
+
+            AnalogVariableState childTemperatura = (AnalogVariableState)CreateVariableChild(null, "Temperature", "Temperature", new NodeId(VariableTypeIds.WeatherMapVariableType.Identifier, VariableTypeIds.WeatherMapVariableType.NamespaceIndex), new NodeId(DataTypeIds.AnalogData.Identifier, DataTypeIds.AnalogData.NamespaceIndex), ValueRanks.Scalar, info, null);
+            
+            variable.AddChild(childTemperatura);
+            child.Add(childTemperatura);
+
+            //info = null;
+
+            info = variable.Value.Pressure;
+
+            AnalogVariableState childPressure = (AnalogVariableState)CreateVariableChild(null, "Pressure", "Pressure", new NodeId(VariableTypeIds.WeatherMapVariableType.Identifier, VariableTypeIds.WeatherMapVariableType.NamespaceIndex), new NodeId(DataTypeIds.AnalogData.Identifier, DataTypeIds.AnalogData.NamespaceIndex), ValueRanks.Scalar, info,null);
+
+            variable.AddChild(childPressure);
+            child.Add(childPressure);
+
+            // info = null;
+
+            info = variable.Value.MaxTemperature;
+
+            AnalogVariableState childMaxTemp = (AnalogVariableState)CreateVariableChild(null, "MaxTemperature", "MaxTemperature", new NodeId(VariableTypeIds.WeatherMapVariableType.Identifier, VariableTypeIds.WeatherMapVariableType.NamespaceIndex), new NodeId(DataTypeIds.AnalogData.Identifier, DataTypeIds.AnalogData.NamespaceIndex), ValueRanks.Scalar, info,null);
+
+            variable.AddChild(childMaxTemp);
+            child.Add(childMaxTemp);
+
+            info = variable.Value.MinTemperature;
+
+            AnalogVariableState childMinTemp = (AnalogVariableState)CreateVariableChild(null, "MinTemperature", "MinTemperature", new NodeId(VariableTypeIds.WeatherMapVariableType.Identifier, VariableTypeIds.WeatherMapVariableType.NamespaceIndex), new NodeId(DataTypeIds.AnalogData.Identifier, DataTypeIds.AnalogData.NamespaceIndex), ValueRanks.Scalar, info,null);
+
+            variable.AddChild(childMinTemp);
+            child.Add(childMinTemp);
+
+            BaseVariableState childCity= CreateVariableChild(null, "City", "City", Opc.Ua.VariableTypeIds.BaseVariableType, Opc.Ua.DataTypeIds.String, ValueRanks.Scalar, null, new String(variable.Value.CityName));
+            variable.AddChild(childCity);
+            child.Add(childCity);
+            return child;
+
+           
         }
 
         private void SetupNodes()
@@ -232,8 +277,11 @@ namespace Quickstarts.MyOPCServer
                     info_press.NamespaceUri = new string("http://www.opcfoundation.org/UA/units/un/cefact");
                     info_press.UnitId = 4932940;
 
+
+
                     switch (measureOfTemperature)
                     {
+
                         case "K":
                             Console.WriteLine("Unit of measurement for Temperature choosed: " + "Kelvin");
                             info_temp.DisplayName = new String("K");
@@ -249,7 +297,10 @@ namespace Quickstarts.MyOPCServer
                             info_temp.NamespaceUri = new string("http://www.opcfoundation.org/UA/units/un/cefact");
                             info_temp.UnitId = 4408652;
 
+
+
                             conversionFactor = 273.15;
+
 
                             break;
 
@@ -271,6 +322,9 @@ namespace Quickstarts.MyOPCServer
                         insideMaxTempData.Info = info_temp;
                         insideData.MaxTemperature = insideMaxTempData;
 
+
+
+
                         insideMinTempData.Data = (float)(openWeatherData.Main.TempMin - conversionFactor);
                         insideMinTempData.Info = info_temp;
                         insideData.MinTemperature = insideMinTempData;
@@ -285,6 +339,10 @@ namespace Quickstarts.MyOPCServer
                         insideData.Pressure = insidePressureData;
 
                         insideData.CityName = new string(city);
+
+
+
+
 
                         if (insideData != null)
                         {
@@ -316,7 +374,7 @@ namespace Quickstarts.MyOPCServer
             tempCity = city;
 
             // start the simulation.
-
+            
 
             return WriteWeatherData(tempCity, tempMeasureOfTemperature);
         }
@@ -351,58 +409,135 @@ namespace Quickstarts.MyOPCServer
 
             return folder;
         }
+        /// Creates a new variable.
+        /// </summary>
 
-        private AnalogVariableState CreateVariableChild(NodeState parent, string path, string name, NodeId dataType, int valueRank, AnalogData analogData)
+
+        /// <summary>
+        /// Creates a new variable.
+        /// </summary>
+        /// 
+        private BaseVariableState CreateVariableChild(NodeState parent, string path, string name,NodeId typeDefinitionId, NodeId dataType, int valueRank,AnalogData valueAnalog,String cityName)
         {
+
+            if (cityName == null) { 
             AnalogVariableState variable = new AnalogVariableState(parent);
 
-            variable.SymbolicName = name;
-            variable.ReferenceTypeId = ReferenceTypes.Organizes;
-            variable.TypeDefinitionId = new NodeId(VariableTypeIds.WeatherMapVariableType.Identifier, VariableTypeIds.WeatherMapVariableType.NamespaceIndex);
-            variable.NodeId = new NodeId(path, NamespaceIndex);
-            variable.BrowseName = new QualifiedName(path, NamespaceIndex);
-            variable.DisplayName = new LocalizedText("en", name);
-            variable.WriteMask = AttributeWriteMask.DisplayName | AttributeWriteMask.Description;
-            variable.UserWriteMask = AttributeWriteMask.DisplayName | AttributeWriteMask.Description;
-            variable.Description = new String("Information about weather for" + variable.SymbolicName.ToString());
-            variable.Value = analogData;
-            variable.DataType = dataType;
-            variable.ValueRank = valueRank;
-            variable.AccessLevel = AccessLevels.CurrentReadOrWrite;
-            variable.UserAccessLevel = AccessLevels.CurrentRead;
-            variable.Historizing = true;
 
-            if (variable.Value != null)
-            {
-                variable.StatusCode = StatusCodes.Good;
+                variable.SymbolicName = name;
+                variable.ReferenceTypeId = ReferenceTypes.Organizes;
+                variable.TypeDefinitionId = typeDefinitionId;
+                variable.NodeId = new NodeId(path, NamespaceIndex);
+                variable.BrowseName = new QualifiedName(path, NamespaceIndex);
+                variable.DisplayName = new LocalizedText("en", name);
+                variable.WriteMask = AttributeWriteMask.DisplayName | AttributeWriteMask.Description;
+                variable.UserWriteMask = AttributeWriteMask.DisplayName | AttributeWriteMask.Description;
+                variable.Description = new String("Information about weather for" + variable.SymbolicName.ToString());
+
+                variable.DataType = dataType;
+                variable.ValueRank = valueRank;
+                variable.AccessLevel = AccessLevels.CurrentReadOrWrite;
+                variable.UserAccessLevel = AccessLevels.CurrentRead;
+                variable.Historizing = true;
+
+                variable.Value = valueAnalog;
+
+
+                if (variable.Value != null)
+                {
+                    variable.StatusCode = StatusCodes.Good;
+
+                }
+                else
+                {
+                    variable.StatusCode = StatusCodes.Bad;
+                }
+                variable.Timestamp = DateTime.UtcNow;
+
+                if (valueRank == ValueRanks.OneDimension)
+                {
+                    variable.ArrayDimensions = new ReadOnlyList<uint>(new List<uint> { 0 });
+                }
+                else if (valueRank == ValueRanks.TwoDimensions)
+                {
+                    variable.ArrayDimensions = new ReadOnlyList<uint>(new List<uint> { 0, 0 });
+                }
+
+                if (parent != null)
+                {
+
+                    parent.AddChild(variable);
+                }
+
+
+                return variable;
+
+
             }
             else
             {
-                variable.StatusCode = StatusCodes.Bad;
-            }
-            variable.Timestamp = DateTime.UtcNow;
+                BaseVariableState variable = new BaseDataVariableState<String>(parent);
 
-            if (valueRank == ValueRanks.OneDimension)
-            {
-                variable.ArrayDimensions = new ReadOnlyList<uint>(new List<uint> { 0 });
-            }
-            else if (valueRank == ValueRanks.TwoDimensions)
-            {
-                variable.ArrayDimensions = new ReadOnlyList<uint>(new List<uint> { 0, 0 });
+                variable.SymbolicName = name;
+                variable.ReferenceTypeId = ReferenceTypes.Organizes;
+                variable.TypeDefinitionId = Opc.Ua.VariableTypeIds.BaseVariableType; ;
+                variable.NodeId = new NodeId(path, NamespaceIndex);
+                variable.BrowseName = new QualifiedName(path, NamespaceIndex);
+                variable.DisplayName = new LocalizedText("en", name);
+                variable.WriteMask = AttributeWriteMask.DisplayName | AttributeWriteMask.Description;
+                variable.UserWriteMask = AttributeWriteMask.DisplayName | AttributeWriteMask.Description;
+                variable.Description = new String("Information about weather for" + variable.SymbolicName.ToString());
+
+                variable.DataType = dataType;
+                variable.ValueRank = valueRank;
+                variable.AccessLevel = AccessLevels.CurrentReadOrWrite;
+                variable.UserAccessLevel = AccessLevels.CurrentRead;
+                variable.Historizing = true;
+                Console.WriteLine(cityName);
+                variable.Value = cityName.ToString();
+
+
+                if (variable.Value != null)
+                {
+                    variable.StatusCode = StatusCodes.Good;
+
+                }
+                else
+                {
+                    variable.StatusCode = StatusCodes.Bad;
+                }
+                variable.Timestamp = DateTime.UtcNow;
+
+                if (valueRank == ValueRanks.OneDimension)
+                {
+                    variable.ArrayDimensions = new ReadOnlyList<uint>(new List<uint> { 0 });
+                }
+                else if (valueRank == ValueRanks.TwoDimensions)
+                {
+                    variable.ArrayDimensions = new ReadOnlyList<uint>(new List<uint> { 0, 0 });
+                }
+
+                if (parent != null)
+                {
+
+                    parent.AddChild(variable);
+                }
+
+
+                return variable;
             }
 
-            if (parent != null)
-            {
-                parent.AddChild(variable);
-            }
+            
 
-            return variable;
         }
+
 
         private WeatherMapVariableState CreateVariable(NodeState parent, string path, string name, NodeId dataType, int valueRank)
         {
             WeatherMapVariableState variable = new WeatherMapVariableState(parent);
 
+            //variable.CityName.Value = "i";
+
             variable.SymbolicName = name;
             variable.ReferenceTypeId = ReferenceTypes.Organizes;
             variable.TypeDefinitionId = new NodeId(VariableTypeIds.WeatherMapVariableType.Identifier, VariableTypeIds.WeatherMapVariableType.NamespaceIndex);
@@ -412,24 +547,26 @@ namespace Quickstarts.MyOPCServer
             variable.WriteMask = AttributeWriteMask.DisplayName | AttributeWriteMask.Description;
             variable.UserWriteMask = AttributeWriteMask.DisplayName | AttributeWriteMask.Description;
             variable.Description = new String("Information about weather for" + variable.SymbolicName.ToString());
+            //variable.ClearChangeMasks(SystemContext, true);
             variable.DataType = dataType;
             variable.ValueRank = valueRank;
             variable.AccessLevel = AccessLevels.CurrentReadOrWrite;
             variable.UserAccessLevel = AccessLevels.CurrentRead;
             variable.Historizing = true;
-
-
-            variable.Value = GetNewValue(variable.SymbolicName.ToString());
+      
+            
+          variable.Value = GetNewValue(variable.SymbolicName.ToString()); 
             if (variable.Value != null)
             {
                 variable.StatusCode = StatusCodes.Good;
-            }
+               
 
+
+            }
             else
             {
                 variable.StatusCode = StatusCodes.Bad;
             }
-
             variable.Timestamp = DateTime.UtcNow;
 
             if (valueRank == ValueRanks.OneDimension)
@@ -448,47 +585,96 @@ namespace Quickstarts.MyOPCServer
             }
 
 
+
             return variable;
         }
-        private void UpdateValues()
-        {
+        private void UpdateValues() {
 
-            Console.Write("I'm tryin to update ", variables.Count + " nodes");
 
+            //Console.Write("I'm trying to update nodes ");
             for (int index = 0; index < variables.Count; index++)
             {
+
                 var item = variables.ElementAt(index);
-                var itemKey = item.Key;
-                var itemValue = item.Value;
+                var itemKey = item.Key; //padre
+                var itemValue = item.Value; //figlio
 
                 WeatherData weatherInfo = new WeatherData();
                 weatherInfo = GetNewValue(itemKey.SymbolicName.ToString());
+
+
 
                 if (weatherInfo != null)
                 {
                     itemKey.Timestamp = DateTime.UtcNow;
                     itemKey.Value = weatherInfo;
                     itemKey.StatusCode = StatusCodes.Good;
+                    Console.WriteLine("For node "+ itemKey.SymbolicName.ToString()+ " Found  "+ itemValue.Count + "childrens");
 
-                    itemValue.Timestamp = itemKey.Timestamp;
-                    itemValue.Value = weatherInfo.Temperature;
-                    itemValue.StatusCode = itemKey.StatusCode;
+                    for (int ii = 0; ii < itemValue.Count; ii++) 
+                    {
+                        Console.WriteLine(" Child: "+itemValue[ii].SymbolicName.ToString());
+                       switch(itemValue[ii].SymbolicName.ToString()) 
+                        {
+                            case "Temperature":
+                                itemValue[ii].Timestamp = itemKey.Timestamp;
+                                itemValue[ii].Value = weatherInfo.Temperature;
+                                itemValue[ii].StatusCode = itemKey.StatusCode;
+                                break;
 
+                            case "Pressure":
+                                itemValue[ii].Timestamp = itemKey.Timestamp;
+                                itemValue[ii].Value = weatherInfo.Pressure;
+                                itemValue[ii].StatusCode = itemKey.StatusCode;
+                                break;
+                            case "MaxTemperature":
+                                itemValue[ii].Timestamp = itemKey.Timestamp;
+                                itemValue[ii].Value = weatherInfo.MaxTemperature;
+                                itemValue[ii].StatusCode = itemKey.StatusCode;
+                                break;
+
+                            case "MinTemperature":
+                                itemValue[ii].Timestamp = itemKey.Timestamp;
+                                itemValue[ii].Value = weatherInfo.MinTemperature;
+                                itemValue[ii].StatusCode = itemKey.StatusCode;
+                                break;
+
+                            
+                            case "City":
+                                itemValue[ii].Timestamp = itemKey.Timestamp;
+                                itemValue[ii].Value = weatherInfo.CityName;
+                                itemValue[ii].StatusCode = itemKey.StatusCode;
+                                break;
+                            
+                            default:
+                                itemValue[ii].Timestamp = itemKey.Timestamp;
+                                itemValue[ii].Value = null;
+                                itemValue[ii].StatusCode = StatusCodes.Bad;
+                                break;
+
+
+                        }
+
+                    } //chiusura figli
+
+                    
+                    Console.WriteLine("Update follow Node " + itemKey.SymbolicName+" ");
                     itemKey.ClearChangeMasks(SystemContext, true);
-                    Console.WriteLine(itemKey.SymbolicName.ToString());
-                    Console.WriteLine(itemValue.SymbolicName.ToString());
                 }
                 else
-                {
-                    Console.WriteLine("I can't update nodes");
-                }
+                Console.WriteLine("I can't update nodes");
+
+                List<BaseInstanceState> child = new List<BaseInstanceState>();
+                itemKey.GetChildren(SystemContext, child);
+                Console.WriteLine(child.Count);
+               
             }
-
         }
-
         private WeatherData GetNewValue(String name)
 
         {
+
+            
             WeatherData weatherInfo = new WeatherData();
             OpenWeatherMapDataClass openWeatherData = apiRequests.GetWeatherDataByCity(name);
             if (openWeatherData != null)
@@ -518,37 +704,30 @@ namespace Quickstarts.MyOPCServer
                 maxTemperature.Data = openWeatherData.Main.TempMax;
                 maxTemperature.Info = info_temp;
                 weatherInfo.MaxTemperature = maxTemperature;
-
                 minTemperature.Data = openWeatherData.Main.TempMin;
                 minTemperature.Info = info_temp;
                 weatherInfo.MinTemperature = minTemperature;
                 temperature.Data = openWeatherData.Main.Temp;
                 temperature.Info = info_temp;
                 weatherInfo.Temperature = temperature;
-
-
-
                 pressure.Data = openWeatherData.Main.Pressure;
                 pressure.Info = info_press;
                 weatherInfo.Pressure = pressure;
 
             }
-
             //timer set on 
             m_simulationTimer = new Timer(OnRaiseSystemEvents, null, 20000, 20000);
-
+      
             return weatherInfo;
+
         }
 
         protected override NodeStateCollection LoadPredefinedNodes(ISystemContext context)
         {
 
             NodeStateCollection predefinedNodes = new NodeStateCollection();
-
-
             predefinedNodes.LoadFromBinaryResource(context, Resources.BinaryNodePath.ToString(), this.GetType().GetTypeInfo().Assembly, true);
             Console.WriteLine("***MyOPCServer: number of Node loaded from source " + predefinedNodes.Count.ToString() + "***");
-
             return predefinedNodes;
         }
 
@@ -562,8 +741,8 @@ namespace Quickstarts.MyOPCServer
             }
 
         }
-
         #endregion
+
         protected override NodeState AddBehaviourToPredefinedNode(ISystemContext context, NodeState predefinedNode)
         {
             BaseObjectState passiveNode = predefinedNode as BaseObjectState;
@@ -583,6 +762,8 @@ namespace Quickstarts.MyOPCServer
 
             switch ((uint)typeId.Identifier)
             {
+                // Write cases in same way for all defined ObjectTypes
+
                 case ObjectTypes.OpenWeatherMapType:
                     {
                         if (passiveNode is OpenWeatherMapState)
@@ -600,18 +781,22 @@ namespace Quickstarts.MyOPCServer
 
                         return activeNode;
                     }
+
+
+
             }
 
             return predefinedNode;
         }
+
+        
 
 
         #region Private Fields
         private MyOPCServerConfiguration m_configuration;
         private OpenWeatherMapApiRequests apiRequests;
 
-        private Dictionary<WeatherMapVariableState, AnalogVariableState> variables = new Dictionary<WeatherMapVariableState, AnalogVariableState>();
-
+        private Dictionary<WeatherMapVariableState, List<BaseVariableState>> variables = new Dictionary<WeatherMapVariableState, List<BaseVariableState>>();
         private ushort m_namespaceIndex;
         private ushort m_typeNamespaceIndex;
 

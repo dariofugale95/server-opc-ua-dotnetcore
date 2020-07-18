@@ -56,9 +56,7 @@
   <opc:VariableType SymbolicName="WeatherMapVariableType" DataType="WeatherData" BaseType="ua:BaseDataVariableType" ValueRank="Scalar" ExposesItsChildren="true">
     <opc:Description>Represents a WeatherMapData</opc:Description>
     <opc:Children>
-        
-      <opc:Variable SymbolicName="Date" TypeDefinition="ua:BaseDataVariableType" DataType="ua:DateTime" ModellingRule="Mandatory"> 
-        <opc:Description>Datetime of weather prevision </opc:Description> </opc:Variable>
+
       <opc:Variable SymbolicName="Temperature" TypeDefinition="AnalogVariableType" ModellingRule="Mandatory" ExposesItsChildren="true">
         <opc:Description>Temperature in Kelvin </opc:Description></opc:Variable>
       <opc:Variable SymbolicName="MaxTemperature" TypeDefinition="AnalogVariableType" ModellingRule="Mandatory" ExposesItsChildren="true">
@@ -66,8 +64,9 @@
       <opc:Variable SymbolicName="MinTemperature" TypeDefinition="AnalogVariableType" ModellingRule="Mandatory" ExposesItsChildren="true">
         <opc:Description>Min Temperature in Kelvin </opc:Description>  </opc:Variable>
       <opc:Variable SymbolicName="Pressure" TypeDefinition="AnalogVariableType" ModellingRule="Mandatory" ExposesItsChildren="true">
-        <opc:Description>Pressure in Pascal </opc:Description>  </opc:Variable>
+        <opc:Description>Pressure in Pascal </opc:Description>  </opc:Variable>-->
       <opc:Variable SymbolicName="City" TypeDefinition="ua:BaseDataVariableType" DataType="ua:String" ModellingRule="Mandatory">
+     
         <opc:Description>City of weather prevision </opc:Description> </opc:Variable>
     
     </opc:Children>

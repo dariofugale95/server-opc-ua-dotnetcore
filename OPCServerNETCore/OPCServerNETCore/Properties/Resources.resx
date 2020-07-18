@@ -125,6 +125,10 @@
     <value>4d3cead10emsh22c88221fbfa4c8p1a1f26jsnd25259491041</value>
     <comment>api key for openweather map giulia</comment>
   </data>
+  <data name="apiKey3" xml:space="preserve">
+    <value>fb727b9cdbmshb33ea79c969d9f3p1617aejsnbd4e69f7a5e7</value>
+    <comment>api key for openweather map giulia2</comment>
+  </data>
   <data name="BinaryNodePath" xml:space="preserve">
     <value>Published/Quickstarts.MyOPCServer.PredefinedNodes.uanodes</value>
     <comment>path of binary file where are stored nodes</comment>
